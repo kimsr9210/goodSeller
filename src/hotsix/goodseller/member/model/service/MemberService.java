@@ -15,6 +15,7 @@ public class MemberService {
 		boolean result = mDAO.memberJoin(conn, m);
 		JDBCTemplate.close(conn);
 		
+		System.out.println(result);
 		return result;
 	}
 	
@@ -23,5 +24,19 @@ public class MemberService {
 		Member m=mDAO.memberLogin(conn, userId, userPw);
 		JDBCTemplate.close(conn);
 		return m;
+	}
+	
+	public String idCheck(String userIdCheck) {
+		Connection conn = JDBCTemplate.getConnection();
+		String userId = mDAO.idCheck(conn, userIdCheck);
+		JDBCTemplate.close(conn);
+		return userId;
+	}
+	
+	public String nickCheck(String userNickCheck) {
+		Connection conn = JDBCTemplate.getConnection();
+		String userNick = mDAO.nickCheck(conn, userNickCheck);
+		JDBCTemplate.close(conn);
+		return userNick;
 	}
 }

@@ -62,7 +62,9 @@
 									<div class="col-12 col-md-8 border-0">
 										아이디 <input type="text" class="form-input form-control"
 											name="userId" id="userId" placeholder="아이디 입력(영문,숫자 5~11자)"
-											onblur="idCheck();" /> <span id="idMessage"
+											readonly onblur="idCheck();" />
+											<button type="button" id="idCheckBtn" class="btn btn-outline-secondary btn-sm">중복확인</button>
+											 <span id="idMessage"
 											class="checkMessage"></span>
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>
@@ -96,7 +98,9 @@
 										닉네임 <input type="text" class="form-input form-control"
 											name="userNick" id="userNick"
 											placeholder="닉네임 입력(영문,숫자 5~11자, 한글 2~6자)"
-											onblur="nickCheck();" /> <span id="nickMessage"
+											onblur="nickCheck();" readonly /> 
+											<button type="button" id="nickCheckBtn" class="btn btn-outline-secondary btn-sm">중복확인</button>
+											<span id="nickMessage"
 											class="checkMessage"></span>
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>

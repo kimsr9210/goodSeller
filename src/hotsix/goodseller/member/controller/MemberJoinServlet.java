@@ -33,6 +33,8 @@ public class MemberJoinServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		Member m = new Member();
 		m.setUserId(request.getParameter("userId"));
@@ -55,6 +57,7 @@ public class MemberJoinServlet extends HttpServlet {
 		
 		boolean result = new MemberService().memberJoin(m);
 		
+		System.out.println(result);
 		PrintWriter out = response.getWriter();
 		if(result) {
 			out.println("<script>alert('회원가입 성공');</script>");
@@ -63,7 +66,7 @@ public class MemberJoinServlet extends HttpServlet {
 		}
 		
 		//로그인창 완성되면 로그인창으로 보내기
-		response.sendRedirect("/index.jsp");
+		response.sendRedirect("/views/member/memberLogin.jsp");
 	}
 
 	/**

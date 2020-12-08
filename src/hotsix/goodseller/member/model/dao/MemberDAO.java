@@ -29,7 +29,8 @@ public class MemberDAO {
 			pstmt.setString(9, m.getAddress());
 			pstmt.setString(10, m.getAccount());
 			int result = pstmt.executeUpdate();
-
+			
+			System.out.println(result);
 			if (result > 0) {
 				JDBCTemplate.commit(conn);
 				return true;
@@ -88,6 +89,59 @@ public class MemberDAO {
 		}
 
 		return m;
-
+	}
+	
+	public String idCheck(Connection conn, String userIdCheck) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String userId = null;
+	
+		String query = "select * from member where userid=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userIdCheck);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				userId = rset.getString("userid");	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return userId;
+	}
+	
+	public String nickCheck(Connection conn, String userNickCheck) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String userNick = null;
+	
+		String query = "select * from member where userNick=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNickCheck);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				userNick = rset.getString("userNick");	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return userNick;
 	}
 }
