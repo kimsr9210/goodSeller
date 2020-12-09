@@ -39,7 +39,7 @@
 						<div class="mb-3">
 							<form id="searchForm" action="#">
 								<fildset> <input type="text" id="search-input"
-									placeholder="  검색" />
+									placeholder="  검색" class="menu-none"/>
 								<button type="submit" id="search-btn">
 									<img src="/resources/images/searchImg.png" id="search-img">
 								</button>
