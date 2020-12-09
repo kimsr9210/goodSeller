@@ -34,7 +34,7 @@
 
 
 
-				<div class="col-8 col-md-7 col-lg-7">
+				<div class="col-6 col-md-5 col-lg-7">
 					<div id="search-box">
 						<div class="mb-3">
 							<form id="searchForm" action="#">
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-3 col-md-2 col-lg-3">
+				<div class="col-5 col-md-4 col-lg-3">
 					<div id="side-navi" class="container">
 						<a href="#"><img
 							src="/resources/images/iconmonstr-menu-2-240.png" id="menu-img2" /></a>
@@ -59,20 +59,24 @@
 							Member m = (Member) session.getAttribute("member");
 							if (m != null) {
 						%>
-						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
+<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
 							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
 							<a href="#" class="btn btn-outline-secondary">마이페이지</a>
-						</div>
+						</div> -->
+                            <a href="#"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
+                            <a href="/memberLogout.do"><div class="btn btn-outline-dark" id="login">로그아웃</div></a>
 						<!--
 
 						<span id="tooltiptext-user">마이페이지</span> -->
 						<%
 							} else {
 						%>
-						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
+<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
 							<a href="/views/member/memberLogin.jsp" class="btn btn-outline-secondary">로그인</a>
 							<a href="/views/member/memberJoin.jsp" class="btn btn-outline-secondary">회원가입</a>
-						</div>
+						</div> -->
+                            <a href="/views/member/memberLogin.jsp"><div class="btn btn-outline-dark" id="login">로그인</div></a>
+                            <a href="/views/member/memberJoin.jsp"><div class="btn btn-outline-dark" id="join">회원가입</div></a>
 						<%
 							}
 						%>

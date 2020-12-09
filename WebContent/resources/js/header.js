@@ -31,7 +31,6 @@ $(function(){
                 $('.menu-none').click(function(){
                     if(($('#side-menu').children().css('display')=='block')||($('#main-menu').children().css('display')=='block')){
                         event.stopPropagation();
-                        console.log($(this));
                         $('#side-menu').children().css('display','none');
                         $('#contents').css('opacity','1.0');
                         $('#footer').css('opacity','1.0');
@@ -40,6 +39,7 @@ $(function(){
                         $('#footer').css('opacity','1.0');
                     }
                 });
+                
                 
 //            새로고침
             $('#logo-img').click(function(){

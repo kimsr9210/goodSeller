@@ -323,7 +323,8 @@
 		</div>
 		
 		<!-- Footer -->
-		<%@ include file="/views/common/header&footer/footer.jsp"%>
+		
 	</div>
+	<%@ include file="/views/common/header&footer/footer.jsp"%>
 </body>
 </html>

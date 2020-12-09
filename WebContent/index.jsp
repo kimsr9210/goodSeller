@@ -33,9 +33,9 @@
 </head>
 
 <body>
+			<%@ include file="/views/common/header&footer/header.jsp" %>
      <div id="wrap"> <!-- 전체 틀-->
-        
-        <%@ include file="/views/common/header&footer/header.jsp" %>
+		
         
         <div id="contents" class="menu-none">
             <div class="container py-5">
@@ -57,7 +57,7 @@
             </div>
         </div>
         
-        <%@ include file="/views/common/header&footer/footer.jsp" %>
     </div>
+        <%@ include file="/views/common/header&footer/footer.jsp" %>
 </body>
 </html>

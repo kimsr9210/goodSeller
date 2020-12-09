@@ -70,7 +70,7 @@
 		<!-- 전체 틀-->
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 		
-		<div id="contents">
+		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
 					<div class="col-12" style="height: 80%;">
