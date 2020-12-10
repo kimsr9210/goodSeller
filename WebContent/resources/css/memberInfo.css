@@ -1,0 +1,82 @@
+@charset "UTF-8";
+         /*--contents 네비 건들지 말것-------------------------------------------------------------*/
+        #contents{
+            background-color: white;
+        }
+        #contents-navi{
+            margin-left: -40px;
+            line-height: 50px;
+        }
+        #contents-navi>li{
+            list-style-type: none;
+            float: left;
+            text-align: center;
+            height: 30px;
+        }
+        #contents-navi>li>a{
+            height: 300px;
+            height: 100%;
+            text-decoration: none;
+            font-size: 12px;
+            color: black;
+            font-weight: 600;
+        }
+        #contents-navi>li>a:hover{
+            color: #5B5AFF;
+            border-bottom: 2px solid #5B5AFF;
+        }
+        
+        #contents-mypage{
+            border-top: 1px solid #CCCCCC;
+        }
+        /* 선택된 front 색깔 표시*/
+        #contents-navi>li:nth-child(1)>a{
+            color: #5B5AFF;
+            border-bottom: 2px solid #5B5AFF;
+        }
+        /*-----------------컨텐츠내용-------------------*/
+        #modify-box{
+            border: 1px solid #CCCCCC;
+            margin: 30px auto;
+            border-radius: 12px;
+        }
+        
+        #info-title{
+            width: 100%;
+            align-content: center;
+            margin: 15px 0px 15px 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .modify-box-size{
+            width: 100%;
+            margin: 15px -30px 15px 15px;
+            height: 50px;
+            border-bottom: 1px solid #CCCCCC;
+            line-height: 50px;
+        }
+        .modify-box-size:nth-last-child(1){
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+        .modify-box-size>a>div:nth-child(1){
+            width: 25%;
+            float: left;
+            font-size: 12px;
+        }
+        .modify-box-size>a>div:nth-child(2){
+            width: 70%;
+            float: left;
+            font-size: 15px;
+        }
+        .modify-box-size>a>div:nth-child(3){
+            width: 5%;
+            float: left;
+        }
+        .modify-box-size>a{
+            color: black;
+        }
+        .modify-box-size>a:hover{
+            color: #5B5AFF;
+            font-weight: 800;
+        }
