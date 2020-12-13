@@ -32,7 +32,6 @@
 	rel="stylesheet">
 <title>Insert title here</title>
 </head>
-
 <body>
 	<div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
@@ -40,20 +39,17 @@
 		<div id="contents">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<h3>디지털</h3>
+					<h3>뷰티&잡화</h3>
 				</div>
 				<div id="core-contents-2" class="row">
 					<div class="d-none d-md-block col-md-3"></div>
 					<div class="col-md-6">
 						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link active" href="#">카메라</a>
+							<li class="nav-item"><a class="nav-link active" href="#">화장품/향수</a>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="#">음향기기</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">게임</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">핸드폰</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">테블릿</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">컴퓨터</a></li>
-							
+							<li class="nav-item"><a class="nav-link" href="#">바디/헤어</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">패션잡화</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">쥬얼리/시계/선글라스</a></li>
 						</ul>
 					</div>
 					<div class="d-none d-md-block col-md-3"></div>
@@ -66,7 +62,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -81,7 +77,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -96,7 +92,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -111,71 +107,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
-					</div>
-					<div class="col-12 p-0">
-						<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -194,7 +126,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -209,7 +141,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -224,7 +156,7 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
@@ -239,7 +171,71 @@
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU"
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
+													class="card-img-top" alt="...">
+												<div class="card-body">
+													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<p class="card-text">
+														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+													</p>
+
+												</div>
+											</div>
+										</div>
+									</div>
+					</div>
+					<div class="col-12 p-0">
+						<div id="goods" class="row">
+										<div class="col-md-3">
+											<div class="card"
+												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
+												<img
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
+													class="card-img-top" alt="...">
+												<div class="card-body">
+													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<p class="card-text">
+														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+													</p>
+
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card"
+												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
+												<img
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
+													class="card-img-top" alt="...">
+												<div class="card-body">
+													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<p class="card-text">
+														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+													</p>
+
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card"
+												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
+												<img
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
+													class="card-img-top" alt="...">
+												<div class="card-body">
+													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<p class="card-text">
+														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+													</p>
+
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card"
+												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
+												<img
+													src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg"
 													class="card-img-top" alt="...">
 												<div class="card-body">
 													<h6 class="card-title">(판매자가 제목입력)</h6>
