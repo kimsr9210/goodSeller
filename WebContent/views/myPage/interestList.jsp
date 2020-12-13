@@ -10,14 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<!-- css -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/interestList.css" />
 
-	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="/resources/css/transactionList.css" />
 </head>
 <body>
-	<%@ include file="/views/common/header&footer/header.jsp" %>
-			
-     <div id="wrap"> <!-- 전체 틀-->
+<%@ include file="/views/common/header&footer/header.jsp" %>
+    <div id="wrap"> <!-- 전체 틀-->
+    
     
         <!-- -------------------------------------------------------------------- -->
         <div id="contents" class="menu-none">
@@ -37,31 +37,27 @@
                 <div class="container">
                     <div id="transaction-box" class="row col-12 col-lg-12">
                         <div id="info-title">
-                            <div>거래 내역</div>
-                        </div>
-                        <div id="search-date">
-                                <button class="d-none d-md-inline">1주일</button>
-                                <button class="d-none d-md-inline">1개월</button>
-                                <button class="d-none d-md-inline">3개월</button>
-                                <button class="d-none d-md-inline">전체시기</button>
-                            <form>
-                                <input type="date" value="2020-12-12" name="date-first"/>
-                                -
-                                <input type="date" value="2020-12-12" name="date-last"/>
-                                <button>검색</button>
-                            </form>
+                            <div>관심 목록</div>
                         </div>
                         <div id="transaction-navi">
                                 <div>상품정보</div>
-                                <div>거래일자</div>
-                                <div>거래금액</div>
+                                <div>시작가</div>
+                                <div>현재가</div>
                                 <div>판매자</div>
                                 <div>거래상태</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#"><img src="/resources/images/exe.jpg" class="image"></a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
+                                <div>30,000원</div>
+                                <div><a href="#">asd0049</a></div>
+                                <div>판매중</div>
+                        </div>
+                        <div class="transaction-box-size">
+                                <div><a href="#">사진</a></div>
+                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
                                 <div>거래완료</div>
@@ -69,65 +65,56 @@
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>판매중</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>판매중</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>거래중</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>판매중</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
+                                <div>20,000원</div>
                                 <div>30,000원</div>
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>판매중</div>
                         </div>
                         <div class="transaction-box-size">
                                 <div><a href="#">사진</a></div>
                                 <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
+                                <div>20,000원</div>
+                                <div>30,000원</div >
                                 <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
+                                <div>판매중</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-        <%@ include file="/views/common/header&footer/footer.jsp" %>
+    <%@ include file="/views/common/header&footer/footer.jsp" %>
 </body>
 </html>

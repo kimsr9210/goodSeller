@@ -32,14 +32,14 @@
         <div id="contents" class="menu-none">
                 <div class="container">
                     <ul id="contents-navi" class="row">
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">회원정보</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">거래내역</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">구매내역</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">판매내역</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">관심목록</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">신고내역</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">Q&A</a></li>
-                        <li class="col-6 col-md-3 col-lg-1"><a href="#">상품문의</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/member/memberInfo.jsp">회원정보</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/transactionList.jsp">거래내역</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/purchaseList.jsp">구매내역</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/salesList.jsp">판매내역</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/interestList.jsp">관심목록</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/reportList.jsp">신고내역</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/qnaList.jsp">Q&A</a></li>
+                        <li class="col-6 col-md-3 col-lg-1"><a href="/views/myPage/productInquiryList.jsp">상품문의</a></li>
                     </ul>
                 </div>
             <div id="contents-mypage">

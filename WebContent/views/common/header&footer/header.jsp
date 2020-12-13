@@ -77,7 +77,7 @@
 							src="/resources/images/iconmonstr-menu-2-240.png" id="menu-img2" /></a>
 						<%
 							Member m = (Member) session.getAttribute("member");
-							if (m == null) {
+							if (m != null) {
 						%>
 <!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
 							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
