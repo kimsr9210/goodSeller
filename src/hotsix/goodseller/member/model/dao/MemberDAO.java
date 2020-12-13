@@ -144,4 +144,54 @@ public class MemberDAO {
 		}
 		return userNick;
 	}
+
+	public int deleteMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MEMBER SET END_YN='Y' WHERE userId=? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int changeMember(Connection conn, Member m) {
+		
+		PreparedStatement pstmt = null;
+		
+		String query = "UPDATE MEMBER SET " + "userPw =?, " + "userName = ?, " + "userNick = ?, " + "birth =?, "
+				+ "gender =?, " + "email =?, " + "phone =?, " + "address = ?, " + "acconunt = ? WHERE userid=?";
+
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getUserPw());
+			pstmt.setString(2, m.getUserName());
+			pstmt.setString(3, m.getUserNick());
+			pstmt.setString(4, m.getBirth());
+			pstmt.setString(5, Character.toString(m.getGender()));
+			pstmt.setString(6, m.getEmail());
+			pstmt.setString(7, m.getPhone());
+			pstmt.setString(8, m.getAddress());
+			pstmt.setString(9, m.getAccount());
+				
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 }

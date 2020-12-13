@@ -39,4 +39,31 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return userNick;
 	}
+
+	public int deleteMember(String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = mDAO.deleteMember(conn,userId);
+		if(result>0)
+		{
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	public int changeMember(Member m) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = mDAO.changeMember(conn,m);
+		if(result>0)
+		{
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 }

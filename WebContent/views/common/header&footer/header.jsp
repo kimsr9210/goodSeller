@@ -5,6 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- bootstrap -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+	
+<!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 </head>
 <body>
@@ -34,12 +54,12 @@
 
 
 
-				<div class="col-8 col-md-7 col-lg-7">
+				<div class="col-6 col-md-5 col-lg-7">
 					<div id="search-box">
 						<div class="mb-3">
 							<form id="searchForm" action="#">
 								<fildset> <input type="text" id="search-input"
-									placeholder="  검색" />
+									placeholder="  검색" class="menu-none"/>
 								<button type="submit" id="search-btn">
 									<img src="/resources/images/searchImg.png" id="search-img">
 								</button>
@@ -51,7 +71,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-3 col-md-2 col-lg-3">
+				<div class="col-5 col-md-4 col-lg-3">
 					<div id="side-navi" class="container">
 						<a href="#"><img
 							src="/resources/images/iconmonstr-menu-2-240.png" id="menu-img2" /></a>
@@ -59,20 +79,24 @@
 							Member m = (Member) session.getAttribute("member");
 							if (m != null) {
 						%>
-						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
+<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
 							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
 							<a href="#" class="btn btn-outline-secondary">마이페이지</a>
-						</div>
+						</div> -->
+                            <a href="/views/member/memberInfo.jsp"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
+                            <a href="/memberLogout.do"><div class="btn btn-outline-dark" id="login">로그아웃</div></a>
 						<!--
 
 						<span id="tooltiptext-user">마이페이지</span> -->
 						<%
 							} else {
 						%>
-						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
+<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
 							<a href="/views/member/memberLogin.jsp" class="btn btn-outline-secondary">로그인</a>
 							<a href="/views/member/memberJoin.jsp" class="btn btn-outline-secondary">회원가입</a>
-						</div>
+						</div> -->
+                            <a href="/views/member/memberLogin.jsp"><div class="btn btn-outline-dark" id="login">로그인</div></a>
+                            <a href="/views/member/memberJoin.jsp"><div class="btn btn-outline-dark" id="join">회원가입</div></a>
 						<%
 							}
 						%>
