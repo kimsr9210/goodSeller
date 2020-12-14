@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="hotsix.goodseller.board.model.vo.BoardPageData" %>
+	<%@ page import="hotsix.goodseller.board.model.vo.Board" %>
+	<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -17,7 +20,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.1" />
 
 </head>
 <body>
@@ -68,129 +71,26 @@
 					<div
 						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">답변여부</div>
 				</div>
+				
+				<%
+				BoardPageData bpd = (BoardPageData)request.getAttribute("bpd");
+				
+				ArrayList<Board> list = bpd.getList();
+				String pageNavi = bpd.getPageNavi();
+				%>
+				
+				<%for(Board board : list){ %>
+					<div class="row p-0 m-0 line-content text-center">
+						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
+						<div class="col-12 col-md-5 p-0"><a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
+						<div class="col-3 col-md-2 p-0 "><%=board.getUserId() %></div>
+						<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
+						<div class="col-3 col-md-1 p-0 "><%=board.getHit() %></div>
+						<div class="col-3 col-md-1 p-0 "><%=board.getAnswerYN() %></div>
+					</div>
+				<%} %>
 
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-				<div class="row p-0 m-0 line-content text-center">
-					<div class="d-none d-md-block col-md-1 p-0 ">번호</div>
-					<div class="col-12 col-md-5 p-0">제목</div>
-					<div class="col-3 col-md-2 p-0 ">작성자</div>
-					<div class="col-3 col-md-2 p-0 ">날짜</div>
-					<div class="col-3 col-md-1 p-0 ">조회수</div>
-					<div class="col-3 col-md-1 p-0 ">답변여부</div>
-				</div>
-
-				<div class="row p-0 m-0 number">
+				<div class="row p-0 m-0 boardNavi">
 					<div class="col-12 p-0 m-0 overview">
 						<nav aria-label="Page navigation example">
 						<ul class="pagination">
@@ -212,7 +112,7 @@
 
 				<div class="row p-0 m-0 write">
 					<div class="col-12 p-0 ">
-						<button type="button" class="btn btn-primary">게시글 작성</button>
+						<button type="button" class="btn btn-primary" id="writeBtn">게시글 작성</button>
 					</div>
 				</div>
 			</div>
@@ -221,6 +121,17 @@
 
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
+	
+	<script>
+	$(function(){
+		$('#writeBtn').click(function(){
+			location.href="/views/board/boardWrite.jsp";
+		});
+		
+	})
+	</script>
+	
+	
 </body>
 
 </html>

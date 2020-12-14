@@ -45,22 +45,15 @@
 	margin-top: 5px;
 }
 
-.number>div>nav>ul {
-	margin: 10px 0;
+.boardNavi>div>nav>ul {
+margin:10px auto;
+display: block;
+width : 28%;
+}
+.boardNavi>div>nav>ul>li{
+	float : left;
 }
 
-.number>div>nav {
-	display: inline;
-	margin: 0 auto;
-	text-align: center;
-	<!--
-	어떻게
-	가운데로할지..?
-	다
-	해봤는데
-	안돼..
-	-->
-}
 
 .searchBar {
 	text-align: right;
