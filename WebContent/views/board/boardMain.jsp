@@ -20,7 +20,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.1" />
+<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.3" />
 
 </head>
 <body>
@@ -52,6 +52,7 @@
 							</select>
 							<input type="text" name="search" id="search"/>
 							<button type="button" class="btn btn-outline-dark" name="searchBtn" id="searchBtn">검색</button>
+							<br>
 						</fieldset>
 						</form>
 					</div>
@@ -94,6 +95,8 @@
 					<div class="col-12 p-0 m-0 overview">
 						<nav aria-label="Page navigation example">
 						<ul class="pagination">
+						
+						<!-- 
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a></li>
@@ -105,7 +108,8 @@
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a></li>
-							
+						-->
+						
 							<%=pageNavi %>
 						
 						</ul>

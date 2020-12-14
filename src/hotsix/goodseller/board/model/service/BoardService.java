@@ -14,7 +14,7 @@ public class BoardService {
 	public BoardPageData selectAllListPage(int currentPage) {
 		
 		Connection conn = JDBCTemplate.getConnection();
-		int recordPerPage = 15;
+		int recordPerPage = 1;
 		ArrayList<Board> list = boardDAO.selectAllListPage(conn, currentPage, recordPerPage);
 		
 		int naviCountPerPage = 5;
@@ -41,6 +41,12 @@ public class BoardService {
 		JDBCTemplate.close(conn);
 		
 		return result;
+	}
+
+	public Board postOneClick(String boardNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Board board = boardDAO.postOneClick(conn, boardNo);
+		return board;
 	}
 
 	

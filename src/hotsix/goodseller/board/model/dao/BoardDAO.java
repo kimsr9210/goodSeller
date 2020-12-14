@@ -21,8 +21,8 @@ public class BoardDAO {
 		int end = currentPage * recordPerPage;
 
 		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) "
-				+ "AS Row_Num,BOARD.* "
-				+ "FROM BOARD WHERE DEL_YN='N') WHERE Row_Num between ? and ?";
+				+ "AS Row_Num,CSBOARD.* "
+				+ "FROM CSBOARD WHERE DEL_YN='N') WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -157,6 +157,42 @@ public class BoardDAO {
 		String query = "update CSBOARD SET hit=hit+1 where boardNo=?";
 		//이런식으로? 조금 더 생각.. 
 	
+	}
+
+	public Board postOneClick(Connection conn, String boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Board board = null;
+		
+		String query = "SELECT * FROM CSBOARD WHERE BOARDNO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setUserId(rset.getString("userId"));
+				board.setSubject(rset.getString("subject"));
+				board.setBoardContent(rset.getString("boardContent"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return board;
+		
 	}
 
 

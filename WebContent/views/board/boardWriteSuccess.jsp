@@ -9,7 +9,7 @@
 <body>
 	<script>
 		alert("글작성 완료");
-		location.replace('/views/board/boardMain.jsp');
+		location.replace('/boardAllListPage.do');
 	</script>
 
 </body>
