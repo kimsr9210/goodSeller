@@ -27,6 +27,7 @@
 
 <%@ include file="/views/common/header&footer/header.jsp" %>
 <%
+if (m != null) {
 	String birthYear = m.getBirth().split("/")[0];
 	String birthMonth = m.getBirth().split("/")[1];
 	String birthDay = m.getBirth().split("/")[2];
@@ -37,7 +38,7 @@
 		gender = "여자";
 	}
 %>
-
+	
   <div id="wrap"> <!-- 전체 틀-->
         <!-- -------------------------------------------------------------------- -->
         <div id="contents" class="menu-none">
@@ -59,97 +60,132 @@
                         <div id="info-title">
                             <div>기본 정보</div>
                         </div>
+            
+                        <div class="modify-box-size">
+                            <div class="container">
+                            	<div class="row">
+	                                <div class="col-3">이름</div>
+	                                <div class="col-6"><%=m.getUserName() %></div>
+	                                <div class="col-3"></div>
+                            	</div>
+                            </div>
+                        </div>
                         
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>이름</div>
-                                <div><%=m.getUserName() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">아이디</div>
+                                <div class="col-6"><%=m.getUserId() %></div>
+                                <div class="col-3"></div>
+                            </div></div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>아이디</div>
-                                <div><%=m.getUserId() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">비밀번호</div>
+                                <div class="col-6">**********</div>
+                                <div class="col-3"><button type="button" id="pwChange" class="btn btn-outline-secondary btn-sm">비밀번호 변경</button></div>
+                            </div></div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>비밀번호</div>
-                                <div>**********</div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">닉네임</div>
+                                <div class="col-6"><%=m.getUserNick() %></div>
+                                <div class="col-3"><button type="button" id="nickChange" class="btn btn-outline-secondary btn-sm">닉네임 변경</button></div>
+                            </div></div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>닉네임</div>
-                                <div><%=m.getUserNick() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">생년월일</div>
+                                <div class="col-6"><%=birthYear %>년 <%=birthMonth %>월 <%=birthDay %>일</div>
+                                <div class="col-3"></div>
+                            </div></div>
                         </div>
+                        
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>생년 월일</div>
-                                <div><%=birthYear %>년 <%=birthMonth %>월 <%=birthDay %>일</div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">성별</div>
+                                <div class="col-6"><%=gender %></div>
+                                <div class="col-3"></div>
+                            </div></div>
                         </div>
-                        <div class="modify-box-size">
-                            <a href="#">
-                                <div>성별</div>
-                                <div><%=gender %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+
+						<div class="modify-box-size">
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">전화번호</div>
+                                <div class="col-6"><%=m.getPhone() %></div>
+                                <div class="col-3"><button type="button" id="phoneChange" class="btn btn-outline-secondary btn-sm">전화번호 변경</button></div>
+                            </div></div>
                         </div>
-                        <div class="modify-box-size">
-                            <a href="#">
-                                <div>전화번호</div>
-                                <div><%=m.getPhone() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+
+						<div class="modify-box-size">
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">주소</div>
+                                <div class="col-6"><%=m.getAddress() %></div>
+                                <div class="col-3"><button type="button" id="addrChange" class="btn btn-outline-secondary btn-sm">주소 변경</button></div>
+                            </div></div>
                         </div>
-                        <div class="modify-box-size">
-                            <a href="#">
-                                <div>주소</div>
-                                <div><%=m.getAddress() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+
+						<div class="modify-box-size">
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">계좌번호</div>
+                                <div class="col-6"><%=m.getAccount() %></div>
+                                <div class="col-3"><button type="button" id="accountChange" class="btn btn-outline-secondary btn-sm">계좌번호 변경</button></div>
+                            </div></div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>계좌번호</div>
-                                <div><%=m.getAccount() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row" style="height:100%">
+                                	<div class="col-3">이메일</div>
+                                	<div id="email" class="col-6"><%=m.getEmail() %></div>
+                                	<div id="chEmailForm" class="col-6" style="display:none">
+                                		<form action="memberUpdate.do" method="post">
+                                			<input type="text" name="chEmail" placeholder="변경할 이메일" class="form-input form-control"/>
+                                			<input id="emailChangeOk" type="submit" value="변경" class="btn btn-outline-secondary" />
+                                			<input id="emailChangeCancel" type="reset" value="취소" class="btn btn-outline-secondary" />
+                                		</form>
+                                	</div>
+                                	<div class="col-3">
+                                		<button style="display:block;" type="button" id="emailChange" class="btn btn-outline-secondary btn-sm">이메일 변경</button>
+                                	</div>
+                            	</div>
+                            </div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>이메일</div>
-                                <div><%=m.getEmail() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">신고당한 횟수</div>
+                                <div class="col-6"><%=m.getReported() %></div>
+                                <div class="col-3"></div>
+                            </div></div>
                         </div>
+                        
                         <div class="modify-box-size">
-                            <a href="#">
-                                <div>신고당한 횟수</div>
-                                <div><%=m.getReported() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
-                        </div>
-                        <div class="modify-box-size">
-                            <a href="#">
-                                <div>거래취소 횟수</div>
-                                <div><%=m.getCancellation() %></div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
+                            <div class="container">
+                            	<div class="row">
+                                <div class="col-3">거래취소 횟수</div>
+                                <div class="col-6"><%=m.getCancellation() %></div>
+                                <div class="col-3"></div>
+                            </div></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-11">
                         <!-- 여기작업하시면 되요 소련누나---------------------------- -->
                             <div id="delete-btn-box">
-                                <a href="#" id="delete-btn">회원탈퇴</a>
+                                <a href="#" id="delete-btn"><div class="btn btn-outline-dark">회원탈퇴</div></a>
                             </div>
                         <!-- 여기작업하시면 되요 소련누나---------------------------- -->
                         </div>
@@ -160,8 +196,39 @@
         </div>
         <!-- -------------------------------------------------------------------- -->
     </div>
-	
+	<script>
+	$(function(){
+		$('#emailChange').click(function(){
+			$('#email').css('display','none');
+			$('#chEmailForm').css('display','block');
+			$('#emailChange').css('display','none');
+		});
+		$('#emailChangeCancel').click(function(){
+			$('#email').css('display','block');
+			$('#chEmailForm').css('display','none');
+			$('#emailChange').css('display','block');
+		});
+		$('#emailChangeOk').click(function(){
+			if (/^[a-z0-9]{4,12}@/.test($("input[name='chEmail']").val())){
+				if(confirm('이메일을 변경하시겠습니까?')){
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				alert('올바른 이메일 형식을 사용하세요.');
+				return false;
+			}
+		});
+	})
+	</script>
 <%@ include file="/views/common/header&footer/footer.jsp"%>
+<%} else { %>
+	<script>
+		alert("세션 만료. 다시 로그인하여 주십시오");
+		location.href ="/index.jsp";
+	</script>
+<% } %>
 </body>
 
 </html>
