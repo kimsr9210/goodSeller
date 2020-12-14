@@ -3,4 +3,4 @@ git commit -m "커밋메시지"
 git push origin master
 
 항상 풀먼저
-git pull  origin master
+git pull origin master
