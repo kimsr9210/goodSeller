@@ -83,7 +83,7 @@
 							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
 							<a href="#" class="btn btn-outline-secondary">마이페이지</a>
 						</div> -->
-                            <a href="/views/member/memberInfo.jsp"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
+                            <a href="/memberSelectOne.do"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
                             <a href="/memberLogout.do"><div class="btn btn-outline-dark" id="login">로그아웃</div></a>
 						<!--
 
