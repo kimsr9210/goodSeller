@@ -66,8 +66,7 @@
 								</fildset>
 							</form>
 							<span id="tooltiptext-search">검색</span> <span
-								id="tooltiptext-side">고객센터</span>
-							<!--  <span id="tooltiptext-user">마이페이지</span> -->
+								id="tooltiptext-side">고객센터</span>		
 						</div>
 					</div>
 				</div>
@@ -79,22 +78,11 @@
 							Member m = (Member) session.getAttribute("member");
 							if (m != null) {
 						%>
-<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
-							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
-							<a href="#" class="btn btn-outline-secondary">마이페이지</a>
-						</div> -->
-                            <a href="/memberSelectOne.do"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
+                            <a href="/views/member/memberInfo.jsp"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
                             <a href="/memberLogout.do"><div class="btn btn-outline-dark" id="login">로그아웃</div></a>
-						<!--
-
-						<span id="tooltiptext-user">마이페이지</span> -->
 						<%
 							} else {
 						%>
-<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
-							<a href="/views/member/memberLogin.jsp" class="btn btn-outline-secondary">로그인</a>
-							<a href="/views/member/memberJoin.jsp" class="btn btn-outline-secondary">회원가입</a>
-						</div> -->
                             <a href="/views/member/memberLogin.jsp"><div class="btn btn-outline-dark" id="login">로그인</div></a>
                             <a href="/views/member/memberJoin.jsp"><div class="btn btn-outline-dark" id="join">회원가입</div></a>
 						<%

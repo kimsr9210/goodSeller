@@ -26,6 +26,17 @@
 <body>
 
 <%@ include file="/views/common/header&footer/header.jsp" %>
+<%
+	String birthYear = m.getBirth().split("/")[0];
+	String birthMonth = m.getBirth().split("/")[1];
+	String birthDay = m.getBirth().split("/")[2];
+	String gender = "";
+	if(m.getGender() == 'M'){
+		gender = "남자";
+	}else{
+		gender = "여자";
+	}
+%>
 
   <div id="wrap"> <!-- 전체 틀-->
         <!-- -------------------------------------------------------------------- -->
@@ -48,70 +59,91 @@
                         <div id="info-title">
                             <div>기본 정보</div>
                         </div>
-                        <div id="info-id" class="modify-box-size">
+                        
+                        <div class="modify-box-size">
                             <a href="#">
                                 <div>이름</div>
-                                <div>로직처리</div>
-                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
-                            </a>
-                        </div>
-                        <div id="info-gender" class="modify-box-size">
-                            <a href="#">
-                                <div>생년 월일</div>
-                                <div>로직처리</div>
+                                <div><%=m.getUserName() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
-                                <div>성별</div>
-                                <div>로직처리</div>
+                                <div>아이디</div>
+                                <div><%=m.getUserId() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>비밀번호</div>
-                                <div>로직처리</div>
+                                <div>**********</div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>닉네임</div>
-                                <div>로직처리</div>
+                                <div><%=m.getUserNick() %></div>
+                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
+                            </a>
+                        </div>
+                        <div class="modify-box-size">
+                            <a href="#">
+                                <div>생년 월일</div>
+                                <div><%=birthYear %>년 <%=birthMonth %>월 <%=birthDay %>일</div>
+                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
+                            </a>
+                        </div>
+                        <div class="modify-box-size">
+                            <a href="#">
+                                <div>성별</div>
+                                <div><%=gender %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>전화번호</div>
-                                <div>로직처리</div>
+                                <div><%=m.getPhone() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>주소</div>
-                                <div>로직처리</div>
+                                <div><%=m.getAddress() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>계좌번호</div>
-                                <div>로직처리</div>
+                                <div><%=m.getAccount() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
                         <div class="modify-box-size">
                             <a href="#">
                                 <div>이메일</div>
-                                <div>로직처리</div>
+                                <div><%=m.getEmail() %></div>
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
-                        
+                        <div class="modify-box-size">
+                            <a href="#">
+                                <div>신고당한 횟수</div>
+                                <div><%=m.getReported() %></div>
+                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
+                            </a>
+                        </div>
+                        <div class="modify-box-size">
+                            <a href="#">
+                                <div>거래취소 횟수</div>
+                                <div><%=m.getCancellation() %></div>
+                                <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
+                            </a>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-11">
