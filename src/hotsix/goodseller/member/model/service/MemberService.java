@@ -9,10 +9,17 @@ import hotsix.goodseller.member.model.vo.Member;
 public class MemberService {
 	MemberDAO mDAO = new MemberDAO();
 	
-	public boolean memberJoin(Member m) {
+	public int memberJoin(Member m) {
 		// TODO Auto-generated method stub
 		Connection conn = JDBCTemplate.getConnection();
-		boolean result = mDAO.memberJoin(conn, m);
+		int result = mDAO.memberJoin(conn, m);
+		
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
 		JDBCTemplate.close(conn);
 		
 		System.out.println(result);
@@ -54,9 +61,9 @@ public class MemberService {
 		return result;
 	}
 
-	public int changeMember(Member m) {
+	public int memberUpdate(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = mDAO.changeMember(conn,m);
+		int result = mDAO.memberUpdate(conn,m);
 		if(result>0)
 		{
 			JDBCTemplate.commit(conn);

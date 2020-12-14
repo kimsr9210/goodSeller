@@ -55,11 +55,11 @@ public class MemberJoinServlet extends HttpServlet {
 		m.setEmail(request.getParameter("email"));
 		m.setAccount(request.getParameter("account"));
 		
-		boolean result = new MemberService().memberJoin(m);
+		int result = new MemberService().memberJoin(m);
 		
 		System.out.println(result);
 		PrintWriter out = response.getWriter();
-		if(result) {
+		if(result > 0) {
 			out.println("<script>alert('회원가입 성공');</script>");
 		} else {
 			out.println("<script>alert('회원가입 실패 관리자에게 문의하세요');</script>");
