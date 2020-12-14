@@ -75,7 +75,7 @@
 									<div class="col-12 col-md-8 border-0">
 										비밀번호 <input type="password" class="form-input form-control"
 											name="userPw" id="userPw"
-											placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자 최대 8자)"
+											placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자 최대 16자)"
 											onblur="pwCheck();" /> <span id="pwMessage"
 											class="checkMessage"></span>
 									</div>
