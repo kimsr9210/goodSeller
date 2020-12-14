@@ -1,7 +1,8 @@
 @charset "UTF-8";
-         /*--contents 네비 건들지 말것-------------------------------------------------------------*/
+
+@charset "UTF-8";
         #contents{
-            background-color: white;
+            background-color: red;
         }
         #contents-navi{
             margin-left: -40px;
@@ -79,4 +80,27 @@
         .modify-box-size>a:hover{
             color: #5B5AFF;
             font-weight: 800;
+        }
+        
+        #delete-btn{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            float: right;
+            font-size: 13px;
+            background-color: black;
+            text-align: center;
+            text-decoration: 0;
+            color: white;
+            font-weight: 800;
+            transition: 0.2s;
+        }
+        #delete-btn-box{
+            height: 40px;
+            margin-top: -20px;
+            margin-bottom: 30px;
+        }
+        #delete-btn:hover{
+            background-color: #D9D9D9;
+            color: black;
         }

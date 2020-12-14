@@ -35,7 +35,7 @@
                         <p>두번째, 원하는 물품 검색 후 입찰<br><br></p>
                         <p>세번째, 더이상 입찰하는 고객이 없으면 즉시 구매!<br><br></p>
                         <p>거래는 홈페이지를 통해 결제되니 사기 걱정 NO!<br><br></p>
-                        <a href="/views/myPage/transactionList.jsp">거래내역으로 이동</a>
+                        <a href="/views/member/memberInfo.jsp">마이페이지로 이동</a>
                     </div>
                 </div>
                 <div id="core-contents-bottom" class="row">

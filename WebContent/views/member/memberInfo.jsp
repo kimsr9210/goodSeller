@@ -27,7 +27,7 @@
 
 <%@ include file="/views/common/header&footer/header.jsp" %>
 
-    <div id="wrap"> <!-- 전체 틀-->
+  <div id="wrap"> <!-- 전체 틀-->
         <!-- -------------------------------------------------------------------- -->
         <div id="contents" class="menu-none">
                 <div class="container">
@@ -111,12 +111,22 @@
                                 <div>&nbsp;<img src="/resources/images/d-right.png" style="width:10px;"/></div>
                             </a>
                         </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-11">
+                        <!-- 여기작업하시면 되요 소련누나---------------------------- -->
+                            <div id="delete-btn-box">
+                                <a href="#" id="delete-btn">회원탈퇴</a>
+                            </div>
+                        <!-- 여기작업하시면 되요 소련누나---------------------------- -->
+                        </div>
+                        <div class="col-lg-1"></div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- -------------------------------------------------------------------- -->
-
     </div>
 	
 <%@ include file="/views/common/header&footer/footer.jsp"%>
