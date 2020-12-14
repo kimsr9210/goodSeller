@@ -73,7 +73,7 @@
 				</div>
 				
 				<%
-				BoardPageData bpd = (BoardPageData)request.getAttribute("bpd");
+				BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
 				
 				ArrayList<Board> list = bpd.getList();
 				String pageNavi = bpd.getPageNavi();
@@ -105,6 +105,9 @@
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a></li>
+							
+							<%=pageNavi %>
+						
 						</ul>
 						</nav>
 					</div>

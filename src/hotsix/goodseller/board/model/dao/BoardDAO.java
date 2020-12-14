@@ -101,25 +101,24 @@ public class BoardDAO {
 		}
 
 		StringBuilder sb = new StringBuilder();
-		
+
 		if(startNavi!=1)
 		{
-			sb.append("<li class='page-item'><a class='page-link' href='/boardAllListPage.kh?currentPage="+(startNavi-1)+"'> < </a></li>");
-			sb.append("<a href='/boardAllListPage.kh?currentPage="+(startNavi-1)+"'> < </a>");
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+(startNavi-1)+"'> < </a></li>");	
 		}
 		
 		for(int i = startNavi; i<=endNavi; i++)
 		{
 			if(i==currentPage)
 			{
-				sb.append("<a href='/boardAllListPage.kh?currentPage="+i+"'><b> "+i+" </b></a>");
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+i+"'><b> "+ i +" </b></a></li>");
 			}else {
-				sb.append("<a href='/boardAllListPage.kh?currentPage="+i+"'> "+i+"</a>");
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+i+"'> "+ i +" </a></li>");	
 			}
 		}
 		if(endNavi != pageTotalCount)
 		{
-			sb.append("<a href='/boardAllListPage.kh?currentPage="+(endNavi+1)+"'> > </a>");
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+(endNavi+1)+"'> > </a></li>");	
 		}
 
 	return sb.toString();
@@ -130,7 +129,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO CSBOARD VALUES(board_seq.nextval, ?, ?, ?, default, sysdate , 'N', 'N' )"; 
+		String query = "INSERT INTO CSBOARD VALUES(boardNo_seq.nextval, ?, ?, ?, default, sysdate , 'N', 'N' )"; 
 		
 		try {
 			pstmt = conn.prepareStatement(query);

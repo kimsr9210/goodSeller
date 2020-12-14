@@ -38,12 +38,13 @@ public class BoardAllListPageServlet extends HttpServlet {
 		}else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		
+		System.out.println("currentPage");
 		BoardPageData bpd = new BoardService().selectAllListPage(currentPage);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardMain.jsp");
 		request.setAttribute("pageData", bpd);
 		view.forward(request, response);
+		System.out.println(bpd.getPageNavi());
 	}
 
 	/**

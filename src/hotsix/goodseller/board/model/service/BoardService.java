@@ -12,6 +12,7 @@ public class BoardService {
 	BoardDAO boardDAO = new BoardDAO();
 	
 	public BoardPageData selectAllListPage(int currentPage) {
+		
 		Connection conn = JDBCTemplate.getConnection();
 		int recordPerPage = 15;
 		ArrayList<Board> list = boardDAO.selectAllListPage(conn, currentPage, recordPerPage);
@@ -22,6 +23,7 @@ public class BoardService {
 		BoardPageData bpd = new BoardPageData();
 		bpd.setList(list);
 		bpd.setPageNavi(pageNavi);
+		
 		JDBCTemplate.close(conn);
 		
 		return bpd;

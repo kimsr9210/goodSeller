@@ -90,7 +90,7 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/views/board/boardMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Q & A</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;Q & A</a></li>
 						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;신고게시판</a></li>
 						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;이용안내</a></li>
 					</ul>
