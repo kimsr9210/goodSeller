@@ -42,11 +42,36 @@ public class BoardService {
 		
 		return result;
 	}
-
-	public Board postOneClick(String boardNo) {
+	public void updateHit(int boardNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = boardDAO.updateHit(conn, boardNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+	}
+	
+	public Board postOneClick(int boardNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		Board board = boardDAO.postOneClick(conn, boardNo);
 		return board;
+	}
+
+	public int boardDelete(int boardNo, String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = boardDAO.boardDelete(conn, boardNo, userId);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 	

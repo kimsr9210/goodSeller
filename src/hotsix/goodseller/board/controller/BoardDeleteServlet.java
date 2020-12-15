@@ -8,21 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import hotsix.goodseller.board.model.service.BoardService;
-import hotsix.goodseller.board.model.vo.BoardPageData;
+import hotsix.goodseller.member.model.vo.Member;
 
 /**
- * Servlet implementation class BoardAllListPageServlet
+ * Servlet implementation class BoardDeleteServlet
  */
-@WebServlet("/boardAllListPage.do")
-public class BoardAllListPageServlet extends HttpServlet {
+@WebServlet("/boardDelete.do")
+public class BoardDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardAllListPageServlet() {
+    public BoardDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +32,27 @@ public class BoardAllListPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int currentPage;//현재 페이지 값을 가지고 있는 변수
 		
-		if(request.getParameter("currentPage") == null) {
-			currentPage = 1;
+		//이전 페이지에서 넘어온 값 받아오기 
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("member");
+		String userId = m.getUserId();
+		System.out.println(userId);
+		System.out.println(boardNo);
+		//비즈니스 로직 처리 
+		int result = new BoardService().boardDelete(boardNo, userId);
+		
+		//결과 처리 
+		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardDelete.jsp");
+		if(result>0) {
+			request.setAttribute("result", true);
 		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			request.setAttribute("result", false);
 		}
-		
-		//비즈니스 로직 처리
-		BoardPageData bpd = new BoardService().selectAllListPage(currentPage);
-		
-		//결과 처리
-		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardMain.jsp");
-		request.setAttribute("pageData", bpd);
 		view.forward(request, response);
-		//System.out.println(bpd.getPageNavi());
+		
 	}
 
 	/**

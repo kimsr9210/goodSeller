@@ -149,17 +149,29 @@ public class BoardDAO {
 		
 	}
 	
-	//조회수 증가 메소드 ?? 
-	public void updateHit(Connection conn, int boardNo) {
+	//조회수 증가 메소드 
+	public int updateHit(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update CSBOARD SET hit=hit+1 where boardNo=?";
-		//이런식으로? 조금 더 생각.. 
+		String query = "UPDATE CSBOARD SET hit = hit+1 where boardNo=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	
 	}
 
-	public Board postOneClick(Connection conn, String boardNo) {
+	public Board postOneClick(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Board board = null;
@@ -168,7 +180,7 @@ public class BoardDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, boardNo);
+			pstmt.setInt(1, boardNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -192,6 +204,30 @@ public class BoardDAO {
 		}
 		
 		return board;
+		
+	}
+
+	public int boardDelete(Connection conn, int boardNo, String userId) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE CSBOARD SET DEL_YN='Y' WHERE boardNo=? AND userId=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 		
 	}
 
