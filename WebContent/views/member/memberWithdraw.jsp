@@ -5,55 +5,86 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+</head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
 <style>
-#withdrawBtn {
-	color: gray;
-	cursor: pointer;
+* {
+	margin: 0;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.wrap {
+	width: 100%;
+	height: 800px;
+}
+
+.box {
+	width: 600px;
+	height: 500px;
+	border: 1px solid #ccc;
+	padding: 50px;
+	margin-top: 120px;
+}
+
+p {
+	margin: 10px 0 50px 0;
+}
+
+.box input {
+	width: 500px;
+	height: 50px;
+	margin: 10px;
+	float: right;
+}
+
+.form {
+	height: 300px;
+	margn-top: 200px;
+}
+
+span{
+border : 1px;
 }
 </style>
-
-</head>
 <body>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+		charset="utf-8"></script>
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-	<!--김소련 회원탈퇴 -->
-	<!-- 마이페이지에 회원 탈퇴버튼이 있다고 가정 한다면 ?  -->
+	<%@ include file="/views/common/header&footer/header.jsp"%>
 
-	<script>
-	$(function(){
-		$('#withdrawBtn').click(function(){
-			var result = window.confirm("정말로 탈퇴 하시겠습니까?");
-			if(result==true)
-			{
-				//탈퇴를 하겠다고 하면 form태그가 기본적으로 가지고 있는 submit 이벤트를 발동 시켜라!
-				//$('#memberDelForm').submit();
-				
-				$('#userPw').attr('type','password');
-				$('#checkBtn').css('display','inline');
-				//form 태그안에 Btn을 만들면 기본적으로 submit 특징을 가지고 있음
-			}
-			else{
-				return false;
-			}
-		});
-		
-	});
-	</script>
+	<!-- 전체 틀-->
 
-
-	<!--<a href="/memberWithdraw.do" id="withdrawBtn">회원탈퇴</a> -->
-
-	<form action="/memberWithdraw.do" method="post">
-		<span id="withdrawBtn">회원탈퇴</span>
-		<input type="hidden" name="userPw" id="userPw" placeholder="비밀번호를 입력 해주세요." />
-		<input type="submit" id="checkBtn" style="display:none;" />
-	</form>
+	<div class="wrap">
+		<div class="box">
+			<h2>비밀번호 재확인</h2>
+			<p>안전한 탈퇴를 위해 비밀번호를 확인해 주세요.</p>
+			<div class="form">
+				<form action="/memberWithdraw.do" method="post">
+					<div><input type="text" name=userId value="<%=m.getUserId() %>" />
+					<input type="password" name="userPw" placeholder="  비밀번호를 입력해 주세요. " /><br> 
+					<input id="withdrawBtn" type="submit" class="btn btn-outline-secondary" value="확인" />
+				</form>
+			</div>
+		</div>
+	</div>
 
 
+	<%@ include file="/views/common/header&footer/footer.jsp"%>
 
 </body>
 </html>

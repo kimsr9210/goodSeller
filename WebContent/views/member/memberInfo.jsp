@@ -289,8 +289,9 @@ if (m != null) {
 						<div class="col-12 col-lg-11">
 							<!-- 여기작업하시면 되요 소련누나---------------------------- -->
 							<div id="delete-btn-box">
-								<a href="#" id="delete-btn"><div
-										class="btn btn-outline-dark">회원탈퇴</div></a>
+								<a href="/views/member/memberWithdrawView.jsp" id="delete-btn">
+									<div class="btn btn-outline-dark">회원탈퇴</div>
+								</a>
 							</div>
 							<!-- 여기작업하시면 되요 소련누나---------------------------- -->
 						</div>
@@ -312,3 +313,4 @@ if (m != null) {
 </body>
 
 </html>
+
