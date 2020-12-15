@@ -42,13 +42,13 @@
 				<!--                    여기가 메뉴-->
 				<ul id="main-menu">
 					<li><a id="home" href="/views/auction/auctionMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Home</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
+					<li><a href="/views/auction/auctionClothing.jsp">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
+					<li><a href="/views/auction/auctionLiving.jsp">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
+					<li><a href="/views/auction/auctionHomeAppliances.jsp">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
 					<li><a href="/views/auction/auctionDigital.jsp">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a href="/views/auction/auctionBooks.jsp">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
+					<li><a href="/views/auction/auctionBeauty.jsp">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
+					<li><a href="/views/auction/auctionSports.jsp">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 
