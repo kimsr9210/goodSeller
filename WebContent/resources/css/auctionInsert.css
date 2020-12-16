@@ -1,0 +1,192 @@
+@charset "UTF-8";
+       #page-title{
+            height: 60px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 60px;
+            
+            
+            border-bottom: 1px solid #CCCCCC;
+        }
+        /* 제목 입력 */
+        #post-title{
+            height: 40px;
+            text-align: center;
+            margin: 8px auto;
+        }
+        #post-title>input{
+            height: 100%;
+            width: 100%;
+            border: 1px solid #999999;
+            border-radius: 5px;
+        }
+        
+        /* 카테고리 입력 */
+        #post-category{
+            height: 30px;
+            text-align: right;
+        }
+        
+        /* 게시물 사진 등록 칸 */
+        #post-img-box{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+        }
+        /* 이미지 메인 */
+        #post-img-main{
+            float: left;
+            padding: 0;
+            overflow: hidden;
+        }
+        #post-img-main>div:nth-child(1){
+            font-size: 13px;
+            margin: 5px;
+            font-weight: 800;
+            color: #4747CC;
+        }
+        #post-img-main>div:nth-child(2){
+            border: 1px solid #CCCCCC;
+        }
+        
+        .file-upload{
+           font-size: 11px;
+            border: 0;
+            margin: 0;
+        }
+        
+        /* 이미지 서브 */
+        #post-img-sub{
+            height: 100%;
+            float: left;
+            overflow: hidden;
+        }
+        #post-img-sub>div:nth-child(1){
+            font-size: 13px;
+            margin: 5px;
+            font-weight: 800;
+            color: #4747CC;
+        }
+        
+        #img-sub-top{
+            width: 100%;
+            height: 50%;
+            float: left;
+            overflow: hidden;
+        }
+        
+        #img-sub-bottom{
+            width: 100%;
+            height: 50%;
+            float: left;
+            overflow: hidden;
+            
+        }
+        
+        #img-sub-top div{
+            width: 50%;
+            height: 100%;
+            float: left;
+            
+            border: 1px solid #CCCCCC;
+            border-bottom: 0;
+        }
+        #img-sub-bottom div{
+            width: 50%;
+            height: 100%;
+            float: left;
+            
+            border: 1px solid #CCCCCC;
+        }
+        
+        /* 물품 상세 정보 입력 */
+        #post-select{
+            height: 200px;
+        }
+        #post-select>div{
+            height: 25%;
+        }
+        #post-select>div>div:nth-child(1){
+            font-size: 12px;
+            margin: 5px;
+            font-weight: 800;
+            color: #4747CC;
+        }
+        
+        #post-select>div>div:nth-child(2){
+            font-size: 12px;
+            margin: 5px;
+            font-weight: 800;
+        }
+        
+        .input-date{
+            width: 120px;
+            height: 25px;
+        }
+        .input-text{
+            width: 100px;
+            height: 25px;
+            text-align: right;
+        }
+        /* 카테고리 선택 */
+        #category-main{
+            width: 120px;
+            height: 25px;
+        }
+        #category-sub{
+            width: 120px;
+            height: 25px;
+        }
+        
+        #trans-method{
+            width: 120px;
+            height: 25px;
+        }
+        
+        /* 상세 내용 입력 */
+        #text-box{
+            margin-top: 10px;
+            width: 100%;
+            height: 300px;
+        }
+        #text-box>textarea{
+            width: 100%;
+            height: 100%;
+            border: 1px solid;
+            overflow: auto;
+            resize: none;
+            border: 1px solid #999999;
+            border-radius: 10px;
+        }
+        #text-box>div{
+            font-size: 13px;
+            margin: 5px;
+            font-weight: 800;
+            color: #4747CC;
+        }
+        
+        /* 서브밋 버튼 */
+        #submit-btn{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 13px;
+            float: right;
+            background-color: black;
+            text-align: center;
+            text-decoration: 0;
+            color: white;
+            font-weight: 800;
+            transition: 0.2s;
+            border: 0;
+        }
+        #submit-btn-box{
+            height: 50px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        #submit-btn:hover{
+            background-color: #D9D9D9;
+            color: black;
+        }
