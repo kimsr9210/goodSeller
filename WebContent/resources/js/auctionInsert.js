@@ -1,6 +1,3 @@
-/**
- * 
- */
 $(function(){
             $('#category-main').change(function(){
                var $text = $('#category-main').val();
@@ -70,3 +67,33 @@ $(function(){
                event.returnValue = false;
            }
        }
+        
+        /*사진미리보기*/
+        var sel_file;
+        var $img_path;
+           $(document).ready(function(){
+               $('.file-upload').on('change', handleImgFileSelect);
+           });
+            $('.file-upload').click(function(){
+                $img_path = $(this);
+                console.log($img_path);
+            })
+            function handleImgFileSelect(e){
+                var files = e.target.files;
+                var filesArr = Array.prototype.slice.call(files);
+                
+                filesArr.forEach(function(f){
+                    if(!f.type.match('image.*')){
+                        alert("확장자는 이미지 확장자만 가능합니다.");
+                        return;
+                    }
+                    
+                    sel_file = f;
+                    
+                    var reader = new FileReader();
+                    reader.onload = function(e){
+                        $img_path.prev().prev().attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(f);
+                })
+            }

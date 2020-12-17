@@ -43,44 +43,49 @@
 
 
 						<div id="post-img-box" class="row">
-							<div id="post-img-main" class="col-12 col-md-6 col-lg-4">
+							<div id="post-img-main" class="col-12 col-md-12 col-lg-6" >
 								<div>메인 사진 선택</div>
 								<div>
-									<img src="img/carrot.jpg" style="width: 100%" /><br><input
+									<img src="/resources/images/basic_img.png" class='img-size'/><br><input
 										type="file" name="file" class="file-upload" />
 								</div>
 							</div>
-							<div id="post-img-sub" class="col-12 col-md-6 col-lg-4">
+							<div id="post-img-sub" class="col-12 col-md-12 col-lg-6">
 								<div>서브 사진 선택</div>
 								<div id="img-sub-top">
 									<div>
-										<img src="img/carrot.jpg" style="width: 100%" /><br><input
-											type="file" name="file" class="file-upload" />
+										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+											type="file" name="file" class="file-upload-top file-upload" />
 									</div>
 									<div>
-										<img src="img/carrot.jpg" style="width: 100%" /><br><input
-											type="file" name="file" class="file-upload" />
+										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+											type="file" name="file" class="file-upload-top file-upload" />
 									</div>
 
 								</div>
 								<div id="img-sub-bottom">
 									<div>
-										<img src="img/carrot.jpg" style="width: 100%" /><br><input
-											type="file" name="file" class="file-upload" />
+										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+											type="file" name="file" class="file-upload-bot file-upload"  />
 									</div>
-									<div>
-										<img src="img/carrot.jpg" style="width: 100%" /><br><input
-											type="file" name="file" class="file-upload" />
+									<div >
+										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+											type="file" name="file" class="file-upload-bot file-upload" />
 									</div>
 								</div>
 							</div>
-							<div id="post-select" class="col-6 col-md-6 col-lg-2">
+                            
+                            
+							<div class="col-6 col-md-4 col-lg-2 post-select">
 								<div>
 									<div>종료 날짜 설정</div>
 									<div>
 										<input type="date" class="input-date" value="2020-12-12" />
 									</div>
 								</div>
+							</div>
+                            
+                            <div class="col-6 col-md-4 col-lg-2 post-select">
 								<div>
 									<div>시작 금액 설정</div>
 									<div>
@@ -89,7 +94,10 @@
 										원
 									</div>
 								</div>
-								<div>
+							</div>
+                            
+                            <div class="col-6 col-md-4 col-lg-2 post-select">
+								<div> 
 									<div>즉시 구매 금액</div>
 									<div>
 										<input type="type" class="input-text" placeholder="0"
@@ -99,7 +107,7 @@
 								</div>
 							</div>
 
-							<div id="post-select" class="col-6 col-md-6 col-lg-2">
+							<div class="col-6 col-md-4 col-lg-2 post-select">
 								<div>
 									<div>거래 방식</div>
 									<div>
@@ -110,6 +118,9 @@
 										</select>
 									</div>
 								</div>
+							</div>
+                            
+                            <div class="col-6 col-md-4 col-lg-2 post-select">
 								<div>
 									<div>주 카테고리</div>
 									<div>
@@ -125,6 +136,9 @@
 										</select>
 									</div>
 								</div>
+							</div>
+                            
+                            <div class="col-6 col-md-4 col-lg-2 post-select">
 								<div>
 									<div>상세 카테고리</div>
 									<div>
@@ -134,6 +148,8 @@
 									</div>
 								</div>
 							</div>
+                            
+                            
 						</div>
 						<div id="text-box">
 							<div>상세내용 입력</div>
