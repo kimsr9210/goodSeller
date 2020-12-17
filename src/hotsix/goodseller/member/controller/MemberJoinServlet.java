@@ -32,9 +32,7 @@ public class MemberJoinServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		
 		Member m = new Member();
 		m.setUserId(request.getParameter("userId"));
@@ -55,18 +53,25 @@ public class MemberJoinServlet extends HttpServlet {
 		m.setEmail(request.getParameter("email"));
 		m.setAccount(request.getParameter("account"));
 		
-		boolean result = new MemberService().memberJoin(m);
+		int result = new MemberService().memberJoin(m);
 		
-		System.out.println(result);
-		PrintWriter out = response.getWriter();
-		if(result) {
+		if(result > 0) {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+
+			PrintWriter out = response.getWriter();
+			
 			out.println("<script>alert('회원가입 성공');</script>");
+			out.println("<script>location.replace('/views/member/memberLogin.jsp');</script>");
 		} else {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+
+			PrintWriter out = response.getWriter();
+			
 			out.println("<script>alert('회원가입 실패 관리자에게 문의하세요');</script>");
+			out.println("<script>location.replace('/index.jsp');</script>");
 		}
-		
-		//로그인창 완성되면 로그인창으로 보내기
-		response.sendRedirect("/views/member/memberLogin.jsp");
 	}
 
 	/**

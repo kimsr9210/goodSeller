@@ -21,8 +21,8 @@ public class BoardDAO {
 		int end = currentPage * recordPerPage;
 
 		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) "
-				+ "AS Row_Num,BOARD.* "
-				+ "FROM BOARD WHERE DEL_YN='N') WHERE Row_Num between ? and ?";
+				+ "AS Row_Num,CSBOARD.* "
+				+ "FROM CSBOARD WHERE DEL_YN='N') WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -101,25 +101,24 @@ public class BoardDAO {
 		}
 
 		StringBuilder sb = new StringBuilder();
-		
+
 		if(startNavi!=1)
 		{
-			sb.append("<li class='page-item'><a class='page-link' href='/boardAllListPage.kh?currentPage="+(startNavi-1)+"'> < </a></li>");
-			sb.append("<a href='/boardAllListPage.kh?currentPage="+(startNavi-1)+"'> < </a>");
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+(startNavi-1)+"'> < </a></li>");	
 		}
 		
 		for(int i = startNavi; i<=endNavi; i++)
 		{
 			if(i==currentPage)
 			{
-				sb.append("<a href='/boardAllListPage.kh?currentPage="+i+"'><b> "+i+" </b></a>");
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+i+"'><b> "+ i +" </b></a></li>");
 			}else {
-				sb.append("<a href='/boardAllListPage.kh?currentPage="+i+"'> "+i+"</a>");
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+i+"'> "+ i +" </a></li>");	
 			}
 		}
 		if(endNavi != pageTotalCount)
 		{
-			sb.append("<a href='/boardAllListPage.kh?currentPage="+(endNavi+1)+"'> > </a>");
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/boardAllListPage.do?currentPage="+(endNavi+1)+"'> > </a></li>");	
 		}
 
 	return sb.toString();
@@ -130,7 +129,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO CSBOARD VALUES(board_seq.nextval, ?, ?, ?, default, sysdate , 'N', 'N' )"; 
+		String query = "INSERT INTO CSBOARD VALUES(boardNo_seq.nextval, ?, ?, ?, default, sysdate , 'N', 'N' )"; 
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -150,14 +149,86 @@ public class BoardDAO {
 		
 	}
 	
-	//조회수 증가 메소드 ?? 
-	public void updateHit(Connection conn, int boardNo) {
+	//조회수 증가 메소드 
+	public int updateHit(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update CSBOARD SET hit=hit+1 where boardNo=?";
-		//이런식으로? 조금 더 생각.. 
+		String query = "UPDATE CSBOARD SET hit = hit+1 where boardNo=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	
+	}
+
+	public Board postOneClick(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Board board = null;
+		
+		String query = "SELECT * FROM CSBOARD WHERE BOARDNO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setUserId(rset.getString("userId"));
+				board.setSubject(rset.getString("subject"));
+				board.setBoardContent(rset.getString("boardContent"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return board;
+		
+	}
+
+	public int boardDelete(Connection conn, int boardNo, String userId) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE CSBOARD SET DEL_YN='Y' WHERE boardNo=? AND userId=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
 	}
 
 

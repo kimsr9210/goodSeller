@@ -7,9 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		boolean result = (boolean)request.getAttribute("result");
+	%>
+	
 	<script>
-		alert("글작성 완료");
+	<%if(result==true){ %>
+		alert("문의글 삭제가 정상적으로 처리되었습니다.");
 		location.replace('/boardAllListPage.do');
+	<%}else {%>
+		alert("문의글 삭제에 실패하였습니다.");
+		history.back(-1);
+	<%} %>
 	</script>
 
 </body>

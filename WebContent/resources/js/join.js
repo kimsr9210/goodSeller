@@ -15,22 +15,12 @@ window.onload = function() {
 	userNick = document.getElementById("userNick");
 	userName = document.getElementById("userName");
 	phone = document.getElementById("phone");
-	addr = document.getElementById("addr_detailAddress");
+	addr = document.getElementById("addr_address");
+	detailAddr = document.getElementById("addr_detailAddress");
 	email = document.getElementById("email");
 	account = document.getElementById("account");
 }
 
-function init() {
-	idMessage.innerHTML = "";
-	pwMessage.innerHTML = "";
-	pwReMessage.innerHTML = "";
-	nickMessage.innerHTML = "";
-	nameMessage.innerHTML = "";
-	phoneMessage.innerHTML = "";
-	addrMessage.innerHTML = "";
-	emailMessage.innerHTML = "";
-	accountMessage.innerHTML = "";
-}
 function check() {
 	if(!idCheck()){
 		userId.focus();
@@ -62,11 +52,12 @@ function check() {
 }
 
 function idCheck() {
-	if (userId.value == "") //아이디 검사
-	{
+	if (userId.value == "") {
 		idMessage.style.color = "red";
 		idMessage.innerHTML = "중복확인 버튼을 눌러 아이디를 입력하세요";
 		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -106,6 +97,8 @@ function nickCheck() {
 		nickMessage.style.color = "red";
 		nickMessage.innerHTML = "중복확인 버튼을 눌러 닉네임을 입력하세요";
 		return false;
+	}  else {
+		return true;
 	}
 }
 

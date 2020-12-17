@@ -42,13 +42,13 @@
 				<!--                    여기가 메뉴-->
 				<ul id="main-menu">
 					<li><a id="home" href="/views/auction/auctionMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Home</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
+					<li><a href="/views/auction/auctionClothing.jsp">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
+					<li><a href="/views/auction/auctionLiving.jsp">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
+					<li><a href="/views/auction/auctionHomeAppliances.jsp">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
 					<li><a href="/views/auction/auctionDigital.jsp">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a href="/views/auction/auctionBooks.jsp">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
+					<li><a href="/views/auction/auctionBeauty.jsp">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
+					<li><a href="/views/auction/auctionSports.jsp">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 
@@ -66,8 +66,7 @@
 								</fildset>
 							</form>
 							<span id="tooltiptext-search">검색</span> <span
-								id="tooltiptext-side">고객센터</span>
-							<!--  <span id="tooltiptext-user">마이페이지</span> -->
+								id="tooltiptext-side">고객센터</span>		
 						</div>
 					</div>
 				</div>
@@ -79,22 +78,11 @@
 							Member m = (Member) session.getAttribute("member");
 							if (m != null) {
 						%>
-<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
-							<a href="/memberLogout.do" class="btn btn-outline-secondary">로그아웃</a>
-							<a href="#" class="btn btn-outline-secondary">마이페이지</a>
-						</div> -->
-                            <a href="/memberSelectOne.do"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
+                            <a href="/views/member/memberInfo.jsp"><div class="btn btn-outline-dark" id="join">마이페이지</div></a>
                             <a href="/memberLogout.do"><div class="btn btn-outline-dark" id="login">로그아웃</div></a>
-						<!--
-
-						<span id="tooltiptext-user">마이페이지</span> -->
 						<%
 							} else {
 						%>
-<!-- 						<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">
-							<a href="/views/member/memberLogin.jsp" class="btn btn-outline-secondary">로그인</a>
-							<a href="/views/member/memberJoin.jsp" class="btn btn-outline-secondary">회원가입</a>
-						</div> -->
                             <a href="/views/member/memberLogin.jsp"><div class="btn btn-outline-dark" id="login">로그인</div></a>
                             <a href="/views/member/memberJoin.jsp"><div class="btn btn-outline-dark" id="join">회원가입</div></a>
 						<%
@@ -102,7 +90,7 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/views/board/boardMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Q & A</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;Q & A</a></li>
 						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;신고게시판</a></li>
 						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;이용안내</a></li>
 					</ul>

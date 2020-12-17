@@ -10,12 +10,13 @@ import hotsix.goodseller.member.model.vo.Member;
 
 public class MemberDAO {
 
-	public boolean memberJoin(Connection conn, Member m) {
+	public int memberJoin(Connection conn, Member m) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 
 		String query = "INSERT INTO MEMBER VALUES (MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT,'N')";
-
+		
+		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, m.getUserId());
@@ -28,24 +29,15 @@ public class MemberDAO {
 			pstmt.setString(8, m.getPhone());
 			pstmt.setString(9, m.getAddress());
 			pstmt.setString(10, m.getAccount());
-			int result = pstmt.executeUpdate();
-			
-			System.out.println(result);
-			if (result > 0) {
-				JDBCTemplate.commit(conn);
-				return true;
-			} else {
-				JDBCTemplate.rollback(conn);
-				return false;
-			}
+			result = pstmt.executeUpdate();
+	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
-
-		return false;
+		return result;
 	}
 
 	public Member memberLogin(Connection conn, String userId, String userPw) {
@@ -163,27 +155,25 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int changeMember(Connection conn, Member m) {
+	public int memberUpdate(Connection conn, Member m) {
 		
 		PreparedStatement pstmt = null;
 		
-		String query = "UPDATE MEMBER SET " + "userPw =?, " + "userName = ?, " + "userNick = ?, " + "birth =?, "
-				+ "gender =?, " + "email =?, " + "phone =?, " + "address = ?, " + "acconunt = ? WHERE userid=?";
+		String query = "UPDATE MEMBER SET " + "userPw =?, " + "userNick = ?, " +
+				 "email =?, " + "phone =?, " + "address = ?, " + "account = ? WHERE userid=?";
 
 		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, m.getUserPw());
-			pstmt.setString(2, m.getUserName());
-			pstmt.setString(3, m.getUserNick());
-			pstmt.setString(4, m.getBirth());
-			pstmt.setString(5, Character.toString(m.getGender()));
-			pstmt.setString(6, m.getEmail());
-			pstmt.setString(7, m.getPhone());
-			pstmt.setString(8, m.getAddress());
-			pstmt.setString(9, m.getAccount());
-				
+			pstmt.setString(2, m.getUserNick());
+			pstmt.setString(3, m.getEmail());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getAddress());
+			pstmt.setString(6, m.getAccount());
+			pstmt.setString(7, m.getUserId());
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

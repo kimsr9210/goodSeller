@@ -20,7 +20,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.1" />
+<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.5" />
 
 </head>
 <body>
@@ -52,8 +52,10 @@
 							</select>
 							<input type="text" name="search" id="search"/>
 							<button type="button" class="btn btn-outline-dark" name="searchBtn" id="searchBtn">검색</button>
+							<br>
 						</fieldset>
 						</form>
+						<br>
 					</div>
 				</div>
 
@@ -73,7 +75,7 @@
 				</div>
 				
 				<%
-				BoardPageData bpd = (BoardPageData)request.getAttribute("bpd");
+				BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
 				
 				ArrayList<Board> list = bpd.getList();
 				String pageNavi = bpd.getPageNavi();
@@ -82,7 +84,7 @@
 				<%for(Board board : list){ %>
 					<div class="row p-0 m-0 line-content text-center">
 						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
-						<div class="col-12 col-md-5 p-0"><a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
+						<div class="col-12 col-md-5 p-0"><a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>" id="postClickBtn"><%=board.getSubject() %></a></div>
 						<div class="col-3 col-md-2 p-0 "><%=board.getUserId() %></div>
 						<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
 						<div class="col-3 col-md-1 p-0 "><%=board.getHit() %></div>
@@ -94,6 +96,8 @@
 					<div class="col-12 p-0 m-0 overview">
 						<nav aria-label="Page navigation example">
 						<ul class="pagination">
+						
+						<!-- 
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a></li>
@@ -105,6 +109,10 @@
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a></li>
+						-->
+						
+							<%=pageNavi %>
+						
 						</ul>
 						</nav>
 					</div>
