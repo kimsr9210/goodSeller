@@ -73,4 +73,11 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	
+	public String memberFindId(String method, String userName, String userInfo) {
+		Connection conn = JDBCTemplate.getConnection();
+		String userId = mDAO.memberFindId(conn,method,userName,userInfo);
+		JDBCTemplate.close(conn);
+		return userId;
+	}
 }

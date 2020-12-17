@@ -184,4 +184,42 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	public String memberFindId(Connection conn, String method, String userName, String userInfo) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		String userId=null;
+		String query=null;
+		
+		if(method.equals("email")) {
+			query="SELECT USERID FROM MEMBER WHERE USERNAME=? AND EMAIL=? AND END_YN='N'";
+
+		}
+		else if(method.equals("phone")) {
+			query="SELECT USERID FROM MEMBER WHERE USERNAME=? AND PHONE=? AND END_YN='N'";
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userInfo);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				userId=rset.getString("USERID");
+			}
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return userId;
+		
+		
+	}
 }
