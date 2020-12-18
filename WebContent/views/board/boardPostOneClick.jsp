@@ -22,11 +22,6 @@
 			padding-bottom:50px;
 		}
 		
-		#postContent
-		{
-			border-radius: 10px;
-		}
-
 		.subject
 		{
 			background-color:#dcdcdc;
@@ -44,7 +39,6 @@
 		
 		.postInfo
 		{
-			height:30px;
 			line-height:28px;
 			text-align:center;
 			border-bottom: 1px solid gray;
@@ -90,6 +84,7 @@
 	</style>
 </head>
 <body>
+
 	<%
 		Board board = (Board)request.getAttribute("board");
 	%>

@@ -35,24 +35,31 @@ public class BoardWriteServlet extends HttpServlet {
 		//1.인코딩
 		request.setCharacterEncoding("UTF-8");
 		
-		//2.이전 페이지에서 작성한 내용 가져오기 
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
-		
-		//3.session에서 작성자 값 불러오기 
-		HttpSession session = request.getSession();
-		Member m = (Member)session.getAttribute("member");
-		String userId = m.getUserId();
-		
-		int result = new BoardService().writeBoard(userId, subject, content);
-		
-		if(result>0)
-		{
-		   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteSuccess.jsp");
-		   	view.forward(request, response);
-		}else {
-		   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteFail.jsp");
-		   	view.forward(request, response);
+		try {
+
+			//2.이전 페이지에서 작성한 내용 가져오기 
+			String subject = request.getParameter("subject");
+			String content = request.getParameter("content");
+			char postLockYN = request.getParameter("postLock").charAt(0);
+			
+			//3.session에서 작성자 값 불러오기 
+			HttpSession session = request.getSession();
+			Member m = (Member)session.getAttribute("member");
+			String userId = m.getUserId();
+			
+			int result = new BoardService().writeBoard(userId, subject, content, postLockYN);
+			
+			if(result>0)
+			{
+			   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteSuccess.jsp");
+			   	view.forward(request, response);
+			}else {
+			   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteFail.jsp");
+			   	view.forward(request, response);
+			}
+			
+		} catch (Exception e) {
+			response.sendRedirect("/views/board/boardWriteFail.jsp");
 		}
 	}
 

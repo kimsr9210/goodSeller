@@ -21,9 +21,18 @@
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/boardMain.css?ver=1.8" />
+	href="/resources/css/boardMain.css?ver=1.6" />
 
 </head>
+				<%
+				BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
+				
+				ArrayList<Board> list = bpd.getList();
+				String pageNavi = bpd.getPageNavi();
+				
+				String selectBox = (String)request.getAttribute("selectBox");
+				String searchText = (String)request.getAttribute("searchText");
+				%>
 <body>
 	<div id="wrapper">
 		<!-- 
@@ -46,11 +55,11 @@
 					<div class="col-12 p-0 searchBar">
 						<form action="/postSearch.do" method="get">
 							<fieldset>
-								<select name="selectBox">
+								<select name="selectBox" id="selectOne">
 									<option value="subject">제목</option>
 									<option value="content">내용</option>
 									<option value="writer">작성자</option>
-								</select> <input type="text" name="searchText" id="searchText" />
+								</select> <input type="text" name="searchText" id="searchText" value="<%=searchText%>"/>
 								<input type="submit" class="btn btn-outline-dark"
 									name="searchBtn" id="searchBtn">
 								<br>
@@ -77,12 +86,6 @@
 						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">답변여부</div>
 				</div>
 
-				<%
-				BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
-				
-				ArrayList<Board> list = bpd.getList();
-				String pageNavi = bpd.getPageNavi();
-				%>
 
 				<%for(Board board : list){ %>
 				<div class="row p-0 m-0 line-content text-center">
@@ -100,7 +103,6 @@
 							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
 							<%} %>
 						<%}%>
-						
 					</div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
 					<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
@@ -127,7 +129,7 @@
 					<br><br>
 						<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
-
+						
 							<!-- 
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -170,15 +172,28 @@
 			$('#postLock').click(function() {
 				alert("작성자만 게시글을 조회할 수 있습니다.");
 			});
-			
-			$('#searchBtn').click(function(){
-				 
-			});
-
+			 
 		})
 	</script>
-
-
+	
+	<%if(selectBox.equals("subject")){ %>
+		<script>
+			$("#selectOne option:eq(0)").attr("selected", "selected");
+		</script>
+	
+	<%}else if(selectBox.equals("content")){ %>
+	
+		<script>
+			$("#selectOne option:eq(1)").attr("selected", "selected");
+		</script>
+	
+	<%}else{ %>
+	
+		<script>
+			$("#selectOne option:eq(2)").attr("selected", "selected");
+		</script>
+	
+	<%} %>
 </body>
 
 </html>

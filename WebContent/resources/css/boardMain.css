@@ -1,3 +1,5 @@
+
+*{box-sizing:border-box;}
 #content div {
 	margin: 0px;
 	padding: 0px;
@@ -23,12 +25,10 @@
 }
 
 .line-name {
-	height: 45px;
 	line-height: 40px;
 }
 
 .line-content {
-	height: 35px;
 	line-height: 32px;
 	border-bottom: 1px solid #dcdcdc;
 }
@@ -44,15 +44,6 @@
 .write>div {
 	height: 40px;
 	margin-top: 5px;
-}
-
-.boardNavi>div>nav>ul {
-margin:10px auto;
-display: block;
-width : 18%;
-}
-.boardNavi>div>nav>ul>li{
-	float : left;
 }
 
 
@@ -78,3 +69,9 @@ width : 18%;
 	text-decoration : none;
 	color : black;
 }
+#postLock
+{
+	text-decoration : none;
+	color : black;
+}
+
