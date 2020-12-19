@@ -252,6 +252,11 @@
 					</div>
 				</div>
 				<div id="core-contents-4" class="row">
+					<div class="col-12 p-0">
+						<button type="button" class="btn btn-outline-dark float-right">상품등록</button>
+						</div>
+					</div>
+				<div id="core-contents-5" class="row">
 					<div class="col-12">
 					<br>
 					
