@@ -1,0 +1,82 @@
+div {
+	border: 0px solid black;
+	text-align: center;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/*--detail page--*/
+#contents-deail-1>h3{
+	height: 15%;
+	margin: 30px auto;
+}
+#contents-deail-1{
+	height: 100px;
+}
+
+#contents-deail-2{
+	height: 100px;
+}
+#contents-deail-3{
+	height: 505px;
+}
+
+#main-img>img{
+	position: absolute; top:0; left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	border-radius: 10%;
+}
+.sub-img>img{
+	position: absolute; top:0; left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	border-radius: 10%;
+}
+.sub-img:hover>img {
+	box-shadow: 0px 0px 10px #A4A4A4;
+}
+.sub-img{
+	width: 125px;
+	height: 250px;	
+	
+}
+#progress-height{
+	height: 30px;
+}
+.selleInformation{
+	height: 80%;
+	width: 100%;
+	text-align: left;
+	border: 0px solid black;
+	padding: 10px 10px 10px 10px;
+	box-shadow: 0px 0px 5px #A4A4A4;
+}
+
+#contents-deail-4{
+	height: 220px;
+}
+
+#contents-deail-5{
+	height: 400px;
+}
+#textarea{
+	height: 300px;
+	width: 100%;
+	resize: none;
+	border-radius: 15px;
+}
+fieldset {
+	width : 100%;
+	height : 100%;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+legend {
+	text-align: left;	
+	border: 1px solid black;
+}
