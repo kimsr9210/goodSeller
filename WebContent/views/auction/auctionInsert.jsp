@@ -35,10 +35,10 @@
 					<p>게시물 작성</p>
 				</div>
 				<div id="post-contents-box">
-					<form>
+					<form action="/postInsert.do" method="post" enctype="multipart/form-data">
 
 						<div id="post-title">
-							<input name="postName" placeholder="제목을 입력하세요." />
+							<input name="subject" placeholder="제목을 입력하세요." />
 						</div>
 
 
@@ -47,7 +47,7 @@
 								<div>메인 사진 선택</div>
 								<div>
 									<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-										type="file" name="file" class="file-upload" />
+										type="file" name="mainImg" class="file-upload"/>
 								</div>
 							</div>
 							<div id="post-img-sub" class="col-12 col-md-12 col-lg-6">
@@ -55,22 +55,22 @@
 								<div id="img-sub-top">
 									<div>
 										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-											type="file" name="file" class="file-upload-top file-upload" />
+											type="file" name="subImg_1" class="file-upload-top file-upload" />
 									</div>
 									<div>
 										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-											type="file" name="file" class="file-upload-top file-upload" />
+											type="file" name="subImg_2" class="file-upload-top file-upload" />
 									</div>
 
 								</div>
 								<div id="img-sub-bottom">
 									<div>
 										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-											type="file" name="file" class="file-upload-bot file-upload"  />
+											type="file" name="subImg_3" class="file-upload-bot file-upload"  />
 									</div>
 									<div >
 										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-											type="file" name="file" class="file-upload-bot file-upload" />
+											type="file" name="subImg_4" class="file-upload-bot file-upload" />
 									</div>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 								<div>
 									<div>종료 날짜 설정</div>
 									<div>
-										<input type="date" class="input-date" value="2020-12-12" />
+										<input type="date" class="input-date" value="2020-12-12" name="endDate"/>
 									</div>
 								</div>
 							</div>
@@ -89,7 +89,7 @@
 								<div>
 									<div>시작 금액 설정</div>
 									<div>
-										<input type="type" class="input-text" placeholder="0"
+										<input type="type" name="startPrice" class="input-text" placeholder="0"
 											onkeyup="f_setCommaValue(this);" onkeypress="f_onlyNum();" />
 										원
 									</div>
@@ -100,7 +100,7 @@
 								<div> 
 									<div>즉시 구매 금액</div>
 									<div>
-										<input type="type" class="input-text" placeholder="0"
+										<input type="type" name="buyPrice" class="input-text" placeholder="0"
 											onkeyup="f_setCommaValue(this);" onkeypress="f_onlyNum();" />
 										원
 									</div>
@@ -111,7 +111,7 @@
 								<div>
 									<div>거래 방식</div>
 									<div>
-										<select id="trans-method">
+										<select id="trans-method" name="sellMethod">
 											<option>------선택------</option>
 											<option>직거래</option>
 											<option>택배거래</option>
@@ -124,7 +124,7 @@
 								<div>
 									<div>주 카테고리</div>
 									<div>
-										<select id="category-main">
+										<select id="category-main" name="mainCategory">
 											<option>------선택------</option>
 											<option>의류 브랜드 패션</option>
 											<option>생활 건강</option>
@@ -142,7 +142,7 @@
 								<div>
 									<div>상세 카테고리</div>
 									<div>
-										<select id="category-sub">
+										<select id="category-sub" name="subCategory">
 											<option>------선택------</option>
 										</select>
 									</div>
@@ -153,7 +153,7 @@
 						</div>
 						<div id="text-box">
 							<div>상세내용 입력</div>
-							<textarea placeholder="내용을 입력하세요"></textarea>
+							<textarea placeholder="내용을 입력하세요" name="content"></textarea>
 						</div>
 
 

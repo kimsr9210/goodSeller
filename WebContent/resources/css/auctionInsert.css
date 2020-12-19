@@ -56,7 +56,7 @@
         }
         /* 파일 태그 */
         .img-size{
-            max-width: 100%;
+            width: 100%;
             opacity: 0.9;
         }
         .file-upload{
