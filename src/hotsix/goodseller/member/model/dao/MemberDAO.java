@@ -185,18 +185,18 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public String memberFindId(Connection conn, String method, String userName, String userInfo) {
+	public Member memberFindId(Connection conn, String method, String userName, String userInfo) {
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
-		String userId=null;
-		String query=null;
+		Member m=null;
+		String query="";
 		
 		if(method.equals("email")) {
-			query="SELECT USERID FROM MEMBER WHERE USERNAME=? AND EMAIL=? AND END_YN='N'";
+			query="SELECT * FROM MEMBER WHERE USERNAME=? AND EMAIL=? AND END_YN='N'";
 
 		}
 		else if(method.equals("phone")) {
-			query="SELECT USERID FROM MEMBER WHERE USERNAME=? AND PHONE=? AND END_YN='N'";
+			query="SELECT * FROM MEMBER WHERE USERNAME=? AND PHONE=? AND END_YN='N'";
 		}
 		
 		try {
@@ -206,9 +206,22 @@ public class MemberDAO {
 			rset=pstmt.executeQuery();
 			
 			if(rset.next()) {
-				userId=rset.getString("USERID");
+				m=new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setAccount(rset.getString("ACCOUNT"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
 			}
-
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -218,8 +231,93 @@ public class MemberDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return userId;
+		return m;
 		
+		
+	}
+
+	public Member memberFindPw(Connection conn, String method, String userName, String userId, String userInfo) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		Member m=null;
+		String query="";
+		
+		if(method.equals("email")) {
+			query="SELECT * FROM MEMBER WHERE USERNAME=? AND USERID=? AND EMAIL=? AND END_YN='N'";
+
+		}
+		else if(method.equals("phone")) {
+			query="SELECT * FROM MEMBER WHERE USERNAME=? AND USERID=? AND PHONE=? AND END_YN='N'";
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userInfo);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m=new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setAccount(rset.getString("ACCOUNT"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return m;
+		
+	}
+
+	public int memberTempPw(Connection conn, String method, String userName, String userId, String userInfo, String userNewPw) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query="";
+		
+		if(method.equals("email")) {
+			query = "UPDATE MEMBER SET USERPW=? WHERE USERNAME=? AND USERID=? AND EMAIL=? and END_YN='N'";
+
+		}
+		else if(method.equals("phone")) {
+			query = "UPDATE MEMBER SET USERPW=? WHERE USERNAME=? AND USERID=? AND phone=? and END_YN='N'";
+		}
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userNewPw);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userId);
+			pstmt.setString(4, userInfo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 		
 	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.member.model.service.MemberService;
+import hotsix.goodseller.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberFindIdServlet
@@ -40,13 +41,42 @@ public class MemberFindIdServlet extends HttpServlet {
 		System.out.println("이름="+userName);
 		System.out.println("찾는정보="+userInfo);
 		
-		String userId = new MemberService().memberFindId(method,userName,userInfo);
+		Member m = new MemberService().memberFindId(method,userName,userInfo);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/member/memberFindIdResult.jsp");
-		request.setAttribute("userId", userId);
-		if(userId!=null)
-		{
+		
+		if(m!=null) {
 			request.setAttribute("result", true);
+			request.setAttribute("method", method);
+			request.setAttribute("name", m.getUserName());
+			request.setAttribute("userInfo", userInfo);
+			
+			String maskedPhone = m.getPhone();
+			String maskedEmail = m.getEmail();
+			
+			if(maskedPhone.length() == 11){
+	            String num1 = maskedPhone.substring(0, 3);
+	            String num3 = maskedPhone.substring(7);
+	            
+	            maskedPhone = num1 + "****" + num3;
+			}
+			
+			String[] splitEmail = maskedEmail.split("@");
+			String maskedEid = splitEmail[0].substring(0,(splitEmail[0].length()/2));
+			for(int i=splitEmail[0].length()/2; i<splitEmail[0].length(); i++){
+				maskedEid += "*";
+			}
+			maskedEmail = maskedEid + "@" +splitEmail[1];
+			
+			String maskedUserId = m.getUserId().substring(0,(m.getUserId().length()/2));
+			for(int i=m.getUserId().length()/2; i<m.getUserId().length(); i++){
+				maskedUserId += "*";
+			}
+			
+			request.setAttribute("maskedUserId", maskedUserId);
+			request.setAttribute("maskedPhone", maskedPhone);
+			request.setAttribute("maskedEmail", maskedEmail);
+			
 		}else {
 			request.setAttribute("result", false);
 		}
