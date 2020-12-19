@@ -73,4 +73,34 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	
+	public Member memberFindId(String method, String userName, String userInfo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member m = mDAO.memberFindId(conn,method,userName,userInfo);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+	
+	public Member memberFindPw(String method, String userName, String userId, String userInfo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member m = mDAO.memberFindPw(conn,method,userName,userId,userInfo);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+
+	public int memberTempPw( String method, String userName, String userId, String userInfo, String userNewPw) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = mDAO.memberTempPw(conn,method,userName,userId,userInfo,userNewPw);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}
+		else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+		
+	}
 }

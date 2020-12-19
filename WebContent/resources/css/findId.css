@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#contents {
+	
+}
+
+h3 {
+	text-align: center;
+}
+
+#check_method {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+label {
+	width: 30%;
+	text-align: left;
+}
+
+.textbox {
+	padding: 0px;
+}
+
+.textbox>input {
+	width: 70%;
+}

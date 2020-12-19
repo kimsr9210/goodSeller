@@ -32,10 +32,11 @@ public class BoardPostClickServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//이전 페이지에서 넘어온 값 저장
-		String boardNo = request.getParameter("boardNo");
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
 		//비즈니스 로직 처리 
 		Board board = new BoardService().postOneClick(boardNo);
+		new BoardService().updateHit(boardNo);
 		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardPostOneClick.jsp");
 		request.setAttribute("board", board);
 		view.forward(request, response);

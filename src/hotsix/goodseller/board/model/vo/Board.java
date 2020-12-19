@@ -9,6 +9,7 @@ public class Board {
 	private String boardContent;
 	private int hit;
 	private Date writeDate;
+	private char postLockYN;
 	private char answerYN;
 	private char delYN;
 	
@@ -18,7 +19,7 @@ public class Board {
 	}
 	
 	public Board(int boardNo, String userId, String subject, String boardContent, int hit, Date writeDate,
-			char answerYN, char delYN) {
+			char postLockYN, char answerYN, char delYN) {
 		super();
 		this.boardNo = boardNo;
 		this.userId = userId;
@@ -26,6 +27,7 @@ public class Board {
 		this.boardContent = boardContent;
 		this.hit = hit;
 		this.writeDate = writeDate;
+		this.postLockYN = postLockYN;
 		this.answerYN = answerYN;
 		this.delYN = delYN;
 	}
@@ -78,6 +80,14 @@ public class Board {
 		this.writeDate = writeDate;
 	}
 
+	public char getPostLockYN() {
+		return postLockYN;
+	}
+
+	public void setPostLockYN(char postLockYN) {
+		this.postLockYN = postLockYN;
+	}
+
 	public char getAnswerYN() {
 		return answerYN;
 	}
@@ -94,5 +104,5 @@ public class Board {
 		this.delYN = delYN;
 	}
 	
-
+	
 }

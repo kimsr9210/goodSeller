@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="hotsix.goodseller.board.model.vo.BoardPageData" %>
-	<%@ page import="hotsix.goodseller.board.model.vo.Board" %>
-	<%@ page import="java.util.ArrayList" %>
+<%@ page import="hotsix.goodseller.board.model.vo.BoardPageData"%>
+<%@ page import="hotsix.goodseller.board.model.vo.Board"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -20,7 +20,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/boardMain.css?ver=1.3" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/boardMain.css?ver=1.8" />
 
 </head>
 <body>
@@ -43,18 +44,19 @@
 				</div>
 				<div class="row p-0 m-0">
 					<div class="col-12 p-0 searchBar">
-						<form action="" method=get>
-						<fieldset>
-							<select>
-								<option>제목</option>
-								<option>내용</option>
-								<option>작성자</option>
-							</select>
-							<input type="text" name="search" id="search"/>
-							<button type="button" class="btn btn-outline-dark" name="searchBtn" id="searchBtn">검색</button>
-							<br>
-						</fieldset>
+						<form action="/postSearch.do" method="get">
+							<fieldset>
+								<select name="selectBox">
+									<option value="subject">제목</option>
+									<option value="content">내용</option>
+									<option value="writer">작성자</option>
+								</select> <input type="text" name="searchText" id="searchText" />
+								<input type="submit" class="btn btn-outline-dark"
+									name="searchBtn" id="searchBtn">
+								<br>
+							</fieldset>
 						</form>
+						<br>
 					</div>
 				</div>
 
@@ -64,39 +66,69 @@
 					<div
 						class="col-5 d-none d-lg-block p-0 m-0 font-weight-bold c-name">제목</div>
 					<div
-						class="col-2 d-none d-lg-block p-0 m-0 font-weight-bold c-name">작성자</div>
+						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">작성자</div>
 					<div
 						class="col-2 d-none d-lg-block p-0 m-0 font-weight-bold c-name">날짜</div>
 					<div
 						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">조회수</div>
 					<div
+						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">공개여부</div>
+					<div
 						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">답변여부</div>
 				</div>
-				
+
 				<%
 				BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
 				
 				ArrayList<Board> list = bpd.getList();
 				String pageNavi = bpd.getPageNavi();
 				%>
-				
+
 				<%for(Board board : list){ %>
-					<div class="row p-0 m-0 line-content text-center">
-						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
-						<div class="col-12 col-md-5 p-0"><a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
-						<div class="col-3 col-md-2 p-0 "><%=board.getUserId() %></div>
-						<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
-						<div class="col-3 col-md-1 p-0 "><%=board.getHit() %></div>
-						<div class="col-3 col-md-1 p-0 "><%=board.getAnswerYN() %></div>
+				<div class="row p-0 m-0 line-content text-center">
+					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
+					<div class="col-12 col-md-5 p-0">
+
+						<%if(board.getPostLockYN()=='N'){ %>
+							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+						<%}else if(board.getPostLockYN()=='Y'){ %>
+							<%if(m!=null &&(m.getUserId().equals(board.getUserId()))){ %>
+							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+							<%}else{ %>
+							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+							<%} %>
+						<%}%>
+						
 					</div>
+					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
+					<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
+					<div class="col-2 col-md-1 p-0 "><%=board.getHit() %></div>
+					<div class="col-2 col-md-1 p-0 ">
+						<%if(board.getPostLockYN()=='Y'){ %>
+						비밀글
+						<%}else{ %>
+						공개글
+						<%} %>
+					</div>
+					<div class="col-2 col-md-1 p-0 ">
+						<%if(board.getAnswerYN()=='N'){ %>
+						미답변
+						<%}else{ %>
+						답변
+						<%} %>
+					</div>
+				</div>
 				<%} %>
 
 				<div class="row p-0 m-0 boardNavi">
 					<div class="col-12 p-0 m-0 overview">
+					<br><br>
 						<nav aria-label="Page navigation example">
-						<ul class="pagination">
-						
-						<!-- 
+						<ul class="pagination justify-content-center">
+
+							<!-- 
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a></li>
@@ -109,36 +141,44 @@
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a></li>
 						-->
-						
+
 							<%=pageNavi %>
-						
+
 						</ul>
 						</nav>
 					</div>
 				</div>
-
+				<%if(m!=null){ %>
 				<div class="row p-0 m-0 write">
 					<div class="col-12 p-0 ">
 						<button type="button" class="btn btn-primary" id="writeBtn">게시글 작성</button>
 					</div>
 				</div>
+				<%} %>
 			</div>
 
 		</div>
 
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
-	
 	<script>
-	$(function(){
-		$('#writeBtn').click(function(){
-			location.href="/views/board/boardWrite.jsp";
-		});
-		
-	})
+		$(function() {
+			$('#writeBtn').click(function() {
+				location.href = "/views/board/boardWrite.jsp";
+			});
+
+			$('#postLock').click(function() {
+				alert("작성자만 게시글을 조회할 수 있습니다.");
+			});
+			
+			$('#searchBtn').click(function(){
+				 
+			});
+
+		})
 	</script>
-	
-	
+
+
 </body>
 
 </html>

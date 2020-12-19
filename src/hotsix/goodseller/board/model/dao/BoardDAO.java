@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.board.model.vo.Board;
 import hotsix.goodseller.common.JDBCTemplate;
+import hotsix.goodseller.member.model.vo.Member;
 
 public class BoardDAO {
 	
@@ -36,9 +37,9 @@ public class BoardDAO {
 				board.setBoardNo(rset.getInt("boardNo"));
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
-				board.setBoardContent(rset.getString("boardContent"));
 				board.setHit(rset.getInt("hit"));
 				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 				
 				list.add(board);
@@ -125,17 +126,18 @@ public class BoardDAO {
 	
 	}
 	
-	public int writeBoard(Connection conn, String userId, String subject, String content) {
+	public int writeBoard(Connection conn, String userId, String subject, String content, char postLockYN) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO CSBOARD VALUES(boardNo_seq.nextval, ?, ?, ?, default, sysdate , 'N', 'N' )"; 
+		String query = "INSERT INTO CSBOARD VALUES(boardNo_seq.nextval, ?, ?, ?, default, default , ?, 'N', 'N' )"; 
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, subject);
 			pstmt.setString(3, content);
+			pstmt.setString(4, Character.toString(postLockYN));
 			
 			result = pstmt.executeUpdate();
 			
@@ -149,17 +151,29 @@ public class BoardDAO {
 		
 	}
 	
-	//조회수 증가 메소드 ?? 
-	public void updateHit(Connection conn, int boardNo) {
+	//조회수 증가 메소드 
+	public int updateHit(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update CSBOARD SET hit=hit+1 where boardNo=?";
-		//이런식으로? 조금 더 생각.. 
+		String query = "UPDATE CSBOARD SET hit = hit+1 where boardNo=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	
 	}
 
-	public Board postOneClick(Connection conn, String boardNo) {
+	public Board postOneClick(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Board board = null;
@@ -168,7 +182,7 @@ public class BoardDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, boardNo);
+			pstmt.setInt(1, boardNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -180,6 +194,7 @@ public class BoardDAO {
 				board.setBoardContent(rset.getString("boardContent"));
 				board.setHit(rset.getInt("hit"));
 				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 				
 			}
@@ -194,6 +209,173 @@ public class BoardDAO {
 		return board;
 		
 	}
+
+	public int boardDelete(Connection conn, int boardNo, String userId) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE CSBOARD SET DEL_YN='Y' WHERE boardNo=? AND userId=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	public ArrayList<Board> boardSearchSubjectList(Connection conn, int currentPage, int recordPerPage, String searchText) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		Board board = null;
+		
+		int start = currentPage * recordPerPage - (recordPerPage-1);
+		int end = currentPage * recordPerPage;
+		
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + 
+									"AS Row_Num,CSBOARD.* " + 
+									"FROM CSBOARD WHERE SUBJECT LIKE ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+ searchText +"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setUserId(rset.getString("userId"));
+				board.setSubject(rset.getString("subject"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+				
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+		
+	}
+
+	public ArrayList<Board> boardSearchContentList(Connection conn, int currentPage, int recordPerPage,
+			String searchText) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		Board board = null;
+		
+		int start = currentPage * recordPerPage - (recordPerPage-1);
+		int end = currentPage * recordPerPage;
+		
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + 
+									"AS Row_Num,CSBOARD.* " + 
+									"FROM CSBOARD WHERE BOARDCONTENT LIKE ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+ searchText +"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setUserId(rset.getString("userId"));
+				board.setSubject(rset.getString("subject"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+				
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+		
+	}
+
+	public ArrayList<Board> boardSearchWriterList(Connection conn, int currentPage, int recordPerPage,
+			String searchText) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		Board board = null;
+		
+		int start = currentPage * recordPerPage - (recordPerPage-1);
+		int end = currentPage * recordPerPage;
+		
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + 
+									"AS Row_Num,CSBOARD.* " + 
+									"FROM CSBOARD WHERE USERID LIKE ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+ searchText +"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setUserId(rset.getString("userId"));
+				board.setSubject(rset.getString("subject"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+				
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+
 
 
 

@@ -46,7 +46,7 @@ public class BoardAllListPageServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardMain.jsp");
 		request.setAttribute("pageData", bpd);
 		view.forward(request, response);
-		System.out.println(bpd.getPageNavi());
+		//System.out.println(bpd.getPageNavi());
 	}
 
 	/**

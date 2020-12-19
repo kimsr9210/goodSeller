@@ -1,3 +1,5 @@
+
+*{box-sizing:border-box;}
 #content div {
 	margin: 0px;
 	padding: 0px;
@@ -5,7 +7,8 @@
 }
 
 #content {
-	margin: 50px 100px;
+	margin: 50px auto;
+	width:70%;
 }
 
 .title {
@@ -22,12 +25,10 @@
 }
 
 .line-name {
-	height: 45px;
 	line-height: 40px;
 }
 
 .line-content {
-	height: 35px;
 	line-height: 32px;
 	border-bottom: 1px solid #dcdcdc;
 }
@@ -43,15 +44,6 @@
 .write>div {
 	height: 40px;
 	margin-top: 5px;
-}
-
-.boardNavi>div>nav>ul {
-margin:10px auto;
-display: block;
-width : 14%;
-}
-.boardNavi>div>nav>ul>li{
-	float : left;
 }
 
 
@@ -71,3 +63,15 @@ width : 14%;
 	padding: 0;
 	margin-top: -5px;
 }
+
+#postClickBtn
+{
+	text-decoration : none;
+	color : black;
+}
+#postLock
+{
+	text-decoration : none;
+	color : black;
+}
+

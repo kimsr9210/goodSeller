@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GoodSeller 회원가입</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -37,7 +37,6 @@
 <!-- index.css -->
 
 <link rel="stylesheet" type="text/css" href="/resources/css/join.css" />
-<title>GoodSeller 회원가입</title>
 </head>
 
 <body>
@@ -55,56 +54,7 @@
 					<div class="col-8">
 						<form action="/memberJoin.do" method="post">
 							<div class="container">
-
-								<div class="row border-0 my-3">
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-									<div class="col-12 col-md-8 border-0">
-										아이디 <input type="text" class="form-input form-control"
-											name="userId" id="userId" placeholder="아이디 입력(영문,숫자 5~11자)"
-											readonly onblur="idCheck();" />
-											<button type="button" id="idCheckBtn" class="btn btn-outline-secondary btn-sm">중복확인</button>
-											 <span id="idMessage"
-											class="checkMessage"></span>
-									</div>
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-								</div>
-
-								<div class="row border-0 my-3">
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-									<div class="col-12 col-md-8 border-0">
-										비밀번호 <input type="password" class="form-input form-control"
-											name="userPw" id="userPw"
-											placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자 최대 16자)"
-											onblur="pwCheck();" /> <span id="pwMessage"
-											class="checkMessage"></span>
-									</div>
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-								</div>
-
-								<div class="row border-0 my-3">
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-									<div class="col-12 col-md-8 border-0">
-										비밀번호 확인 <input type="password" class="form-input form-control"
-											id="userPwRe" placeholder="비밀번호 확인" onblur="pwReCheck();" />
-										<span id="pwReMessage" class="checkMessage"></span>
-									</div>
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-								</div>
-
-								<div class="row border-0 my-3">
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-									<div class="col-12 col-md-8 border-0">
-										닉네임 <input type="text" class="form-input form-control"
-											name="userNick" id="userNick"
-											placeholder="닉네임 입력(영문,숫자 5~11자, 한글 2~6자)"
-											onblur="nickCheck();" readonly /> 
-											<button type="button" id="nickCheckBtn" class="btn btn-outline-secondary btn-sm">중복확인</button>
-											<span id="nickMessage"
-											class="checkMessage"></span>
-									</div>
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-								</div>
-
+								
 								<div class="row border-0 my-3">
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 									<div class="col-12 col-md-8 border-0">
@@ -115,7 +65,7 @@
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 								</div>
-
+								
 								<div class="row border-0 my-3">
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 									<div class="col-12 col-md-8 border-0">
@@ -248,18 +198,73 @@
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 								</div>
-
+								
 								<div class="row border-0 my-3">
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 									<div class="col-12 col-md-8 border-0">
 										휴대전화 <input type="text" class="form-input form-control"
 											name="phone" id="phone" maxlength="11"
-											placeholder="- 제외하고 입력" onblur="phoneCheck();" /> <span
-											id="phoneMessage" class="checkMessage"></span>
+											placeholder="- 제외하고 입력" onblur="phoneCheck();" />
+											<button style="display:block" type="button" id="sendSms" class="btn btn-outline-secondary btn-sm mt-2">인증번호 발송</button>
+									
+											<input style="display:none" type="text" class="form-input form-control mt-2"
+											name="phone" id="inputAuthNum" maxlength="11"
+											placeholder="인증번호 입력" /> 
+											<button style="display:none" id="smsCheck" type="button" class="btn btn-outline-secondary btn-sm mt-2">인증</button>
+											<span id="phoneMessage" class="checkMessage"></span>
+									</div>
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+								</div>
+								
+								
+								<div class="row border-0 my-3">
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+									<div class="col-12 col-md-8 border-0">
+										아이디 <input type="text" class="form-input form-control"
+											name="userId" id="userId" placeholder="아이디 입력(영문,숫자 5~11자)"
+											readonly onblur="idCheck();" />
+											<button style="display:block" type="button" id="idCheckBtn" class="btn btn-outline-secondary btn-sm mt-2">중복확인</button>
+											 <span id="idMessage"
+											class="checkMessage"></span>
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>
 								</div>
 
+								<div class="row border-0 my-3">
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+									<div class="col-12 col-md-8 border-0">
+										비밀번호 <input type="password" class="form-input form-control"
+											name="userPw" id="userPw"
+											placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자 최대 16자)"
+											onblur="pwCheck();" /> <span id="pwMessage"
+											class="checkMessage"></span>
+									</div>
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+								</div>
+
+								<div class="row border-0 my-3">
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+									<div class="col-12 col-md-8 border-0">
+										비밀번호 확인 <input type="password" class="form-input form-control"
+											id="userPwRe" placeholder="비밀번호 확인" onblur="pwReCheck();" />
+										<span id="pwReMessage" class="checkMessage"></span>
+									</div>
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+								</div>
+
+								<div class="row border-0 my-3">
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+									<div class="col-12 col-md-8 border-0">
+										닉네임 <input type="text" class="form-input form-control"
+											name="userNick" id="userNick"
+											placeholder="닉네임 입력(영문,숫자 5~11자, 한글 2~6자)"
+											onblur="nickCheck();" readonly /> 
+											<button style="display:block" type="button" id="nickCheckBtn" class="btn btn-outline-secondary btn-sm mt-2">중복확인</button>
+											<span id="nickMessage"
+											class="checkMessage"></span>
+									</div>
+									<div class="d-none d-md-block col-md-2 border-0"></div>
+								</div>
 
 								<div class="row border-0 my-3">
 									<div class="d-none d-md-block col-md-2 border-0"></div>
@@ -342,6 +347,8 @@
 		userNick = document.getElementById("userNick");
 		userName = document.getElementById("userName");
 		phone = document.getElementById("phone");
+		authNum = document.getElementById("inputAuthNum");
+		sendBtn = document.getElementById("sendSms");
 		addr = document.getElementById("addr_address");
 		detailAddr = document.getElementById("addr_detailAddress");
 		email = document.getElementById("email");
@@ -349,7 +356,23 @@
 	}
 
 	function check() {
-		if(!idCheck()){
+		if (!nameCheck()) {
+			userName.focus();
+			return false;
+		} else if (!phoneCheck()) {
+			phone.focus();
+			return false;
+		} else if (authNum.style.display == "none"){
+			sendBtn.focus();
+			phoneMessage.style.color = "red";
+			phoneMessage.innerHTML = "인증절차를 진행하여 주십시오";
+			return false;
+		} else if (!authNum.readOnly) {
+			authNum.focus();
+			phoneMessage.style.color = "red";
+			phoneMessage.innerHTML = "인증번호를 옳바르게 입력하고 인증 버튼을 눌러 인증을 진행해 주십시오";
+			return false;
+		} else if(!idCheck()){
 			userId.focus();
 			return false;
 		} else if (!pwCheck()){
@@ -360,12 +383,6 @@
 			return false;
 		} else if (!nickCheck()) {
 			userNick.focus();
-			return false;
-		} else if (!nameCheck()) {
-			userName.focus();
-			return false;
-		} else if (!phoneCheck()) {
-			phone.focus();
 			return false;
 		} else if (!addrCheck()) {
 			addr.focus();
@@ -443,15 +460,18 @@
 			return true;
 		}
 	}
-
+	
 	function phoneCheck() {
-		if (!((/^(010[1-9][0-9]{7})$/.test(phone.value)))) //폰 검사
+		if (phone.value == "") //폰 검사
 		{
 			phoneMessage.style.color = "red";
-			phoneMessage.innerHTML = "핸드폰 번호는 010으로 시작하며 숫자 11자리로 입력하여 주십시오";
+			phoneMessage.innerHTML = "핸드폰 번호입력 후 인증절차를 진행하여 주십시오";
+			return false;
+		} else if (!(/^(010[1-9][0-9]{7})$/.test(phone.value))){
+			phoneMessage.style.color = "red";
+			phoneMessage.innerHTML = "핸드폰번호는 010으로 시작해 11자리로 입력해주세요(- 제외하고 입력)";
 			return false;
 		} else {
-			phoneMessage.innerHTML = "";
 			return true;
 		}
 	}
@@ -571,7 +591,54 @@
 							"width=500px height=200px");
 				});
 	});
-
+	
+	$(function() {
+		$('#sendSms').click(
+				function() {
+					if (((/^(010[1-9][0-9]{7})$/.test($("#phone").val())))) {
+						$('#smsCheck').css('display','block');
+						$('#inputAuthNum').css('display','block');
+						$('#phoneMessage').html('');
+						$.ajax({
+							url: "/sendSms.do",
+							data: {
+								receiver: $("#phone").val()
+							},
+							type: "post"
+						});
+					} else {
+						$('#phoneMessage').css('color', 'red');
+						$('#phoneMessage').html('핸드폰번호는 010으로 시작해 11자리로 입력해주세요(- 제외하고 입력)');
+					}
+				});
+		
+		$('#smsCheck').click(
+				function() {
+					$.ajax({
+						url: "/smsCheck.do",
+						type : "post",
+						data: {
+							inputNum: $("#inputAuthNum").val()
+						},
+						success: function(data){
+							if(data.result == "true"){
+								alert("번호 인증 성공");
+								$('#phoneMessage').css('color', 'blue');
+								$('#phoneMessage').html('인증완료');
+								$('#phone').attr('readonly', true);
+								$('#inputAuthNum').attr('readonly', true);
+								$('#smsCheck').css('display','none');
+								$('#changePhone').css('display', 'none');
+							} else {
+								alert("옳바르지 않은 인증번호 입니다.");
+							}
+						}, error: function() {
+							alert("알수없는 오류 관리자에게 문의하세요.");
+						}
+					});
+				});
+	});
+	
 	</script>
 	
 	<%@ include file="/views/common/header&footer/footer.jsp"%>

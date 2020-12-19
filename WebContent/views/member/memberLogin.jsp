@@ -22,7 +22,7 @@
 
 /*--contents--*/
 #core-contents-1 {
-	height: 800px;
+	
 }
 
 #core-contents-1 input {
@@ -44,7 +44,7 @@
 
 #core-contents-1 a:hover {
 	text-decoration: none;
-	color: darksalmon;
+	color: #212529;
 }
 
 /*--footer--*/
@@ -69,61 +69,30 @@
 	<div id="wrap">
 		<!-- 전체 틀-->
 		<%@ include file="/views/common/header&footer/header.jsp"%>
-		
+
 		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<div class="col-12" style="height: 80%;">
+					<div class="col-12">
 						<div class="col-4" style="margin: 0px auto;">
+							<br><h2>로그인</h2>
 							<form action="/memberLogin.do" method="post">
 								<input type="text" name="userId" placeholder="아이디"> <input
 									type="password" name="userPw" placeholder="비밀번호"> <input
 									type="submit" class="btn btn-outline-secondary" value="로그인" />
 							</form>
 							<div class="col-12">
-								<a href=#>아이디 찾기</a> <span>|</span> <a href=#>비밀번호 찾기</a> <span>|</span>
-								<a href=#>회원가입</a>
+								<a href='/views/member/memberFindId.jsp'>아이디 찾기</a> <span>|</span> <a href='/views/member/memberFindPw.jsp'>비밀번호 찾기</a> <span>|</span>
+								<a href='/views/member/memberJoin.jsp'>회원가입</a>
 							</div>
 							<hr>
-							<div id="naver_id_login">
-								<script type="text/javascript">
-									var naver_id_login = new naver_id_login(
-											"v8wNh3mXHTpu196w4Imy",
-											"YOUR_CALLBACK_URL");
-									var state = naver_id_login.getUniqState();
-									naver_id_login.setButton("green", 3, 50);
-									naver_id_login
-											.setDomain("http://localhost:8080/actionMall/MemberLogin.html");
-									naver_id_login.setState(state);
-									naver_id_login.setPopup();
-									naver_id_login.init_naver_id_login();
-								</script>
-							</div>
-							<div class="p-3">
-								<a id="custom-login-btn" href="javascript:loginWithKakao()">
-									<img
-									src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-									width="222" />
-								</a>
-								<script type="text/javascript">
-									function loginWithKakao() {
-										Kakao.Auth.login({
-											success : function(authObj) {
-												alert(JSON.stringify(authObj))
-											},
-											fail : function(err) {
-												alert(JSON.stringify(err))
-											},
-										})
-									}
-								</script>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
+
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
 
