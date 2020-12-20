@@ -43,18 +43,18 @@
 					<div id="sub-img" class="col-6">
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="" src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg">
+							<img alt="" src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="" src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg">
+							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU9anatZdJ9PehB7sLgmXbdA7lVEfs-tv0QA&usqp=CAU">
 						</div>
 						</div>
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="" src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg">
+							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="" src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg">
+							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU">
 						</div>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 										현재 입찰가 : <strong style="color:red">50000원</strong>
 									</div>
 									<div class="col-3  p-1">
-										<button type="button" class="btn btn-secondary float-right" style="width: 140px">관심상품등록</button>
+										<button id="InterestedBtn" type="button" class="btn btn-secondary float-right" style="width: 140px">관심상품등록</button>
 									</div>
 								</div>
 							</div>	
@@ -98,7 +98,7 @@
 						<div class="selleInformation">
 						<div class="row">
 							<div class="col-4" style="margin-top: 30px">
-  							<img src="/resources/images/image.png" class="mr-3" alt="..." style="width: 100px; height: 100px; border-radius: 50%; ">
+  								<img src="/resources/images/image.png" class="mr-3" alt="..." style="width: 100px; height: 100px; border-radius: 50%; ">
   							</div>
   							<div class="col-8">
   							<div class="media-body">
@@ -129,5 +129,6 @@
 	</div>
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
+	<script type="text/javascript" src="/resources/js/auction.js"></script>
 </body>
 </html>
