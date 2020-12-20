@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import hotsix.goodseller.board.model.dao.BoardDAO;
 import hotsix.goodseller.board.model.vo.Board;
 import hotsix.goodseller.board.model.vo.BoardPageData;
+import hotsix.goodseller.board.model.vo.Register;
+import hotsix.goodseller.board.model.vo.ReqBoardPageData;
 import hotsix.goodseller.common.JDBCTemplate;
 
 public class BoardService {
@@ -126,6 +128,39 @@ public class BoardService {
 		JDBCTemplate.close(conn);
 		
 		return bpd;		
+	}
+
+	public int InsertRegister(String userId, String subject, String content, String reguserId) {
+		Connection conn = JDBCTemplate.getConnection();
+		 
+		int result =boardDAO.InsertRegister(conn,userId,subject,content,reguserId);
+
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public ReqBoardPageData selectRegisterAllListPage(int currentPage, String selectBox, String searchText) {
+		Connection conn = JDBCTemplate.getConnection();
+		int recordPerPage = 15; //한 페이지당 몇개씩 게시물이 보이게 할 것인지를 정함.
+		ArrayList<Register> list = boardDAO.selectRegisterAllListPage(conn, currentPage, recordPerPage, selectBox, searchText);
+		
+		//네비바 만듬 12345> <678910> ...
+		int naviCountPerPage = 5; // PageNavi 값이 몇개씩 보여줄 것인지 
+		String regGetpageNavi = boardDAO.regGetpageNavi(conn,currentPage,recordPerPage,naviCountPerPage);
+		
+		ReqBoardPageData bpd = new ReqBoardPageData();
+		bpd.setList(list);
+		bpd.setPageNavi(regGetpageNavi);
+		
+		JDBCTemplate.close(conn);
+		return bpd;
+		
 	}
 
 

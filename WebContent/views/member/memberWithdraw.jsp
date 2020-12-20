@@ -82,6 +82,7 @@ border : 1px;
 			</div>
 		</div>
 	</div>
+	<br><br><br><br><br><br>
 
 
 	<%@ include file="/views/common/header&footer/footer.jsp"%>
