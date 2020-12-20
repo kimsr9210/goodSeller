@@ -46,7 +46,14 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return userNick;
 	}
-
+	
+	public String phoneCheck(String checkPhone) {
+		Connection conn = JDBCTemplate.getConnection();
+		String phone = mDAO.phoneCheck(conn, checkPhone);
+		JDBCTemplate.close(conn);
+		return phone;
+	}
+	
 	public int deleteMember(String userId) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = mDAO.deleteMember(conn,userId);

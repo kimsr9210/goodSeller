@@ -137,6 +137,33 @@ public class MemberDAO {
 		return userNick;
 	}
 
+	public String phoneCheck(Connection conn, String checkPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String phone = null;
+	
+		String query = "select * from member where phone=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, checkPhone);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				phone = rset.getString("phone");	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return phone;
+	}
+	
 	public int deleteMember(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		int result = 0;

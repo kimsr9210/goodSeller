@@ -1,13 +1,15 @@
 package hotsix.goodseller.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import hotsix.goodseller.member.model.service.MemberService;
 
@@ -36,19 +38,19 @@ public class MemberNickCheckServlet extends HttpServlet {
 		String userNickCheck = request.getParameter("userNickCheck");
 		String userNick = new MemberService().nickCheck(userNickCheck);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/memberNickCheck.jsp");
-		request.setAttribute("nick", userNickCheck);
-		if(userNick!=null)
+		JSONObject object = new JSONObject();
+		if(userNick == null)
 		{
-			request.setAttribute("use", "imposible");
+			object.put("result", "true");
 		}else {
-			request.setAttribute("use", "posible");
+			object.put("result", "false");
 		}
 		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
 		
-		view.forward(request, response);
+		PrintWriter out = response.getWriter();
+		out.print(object);
 	}
 
 	/**

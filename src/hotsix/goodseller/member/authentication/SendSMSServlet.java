@@ -24,8 +24,9 @@ import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.logging.LogFactory;
+import org.json.simple.JSONObject;
+
+import hotsix.goodseller.member.model.service.MemberService;
 /**
  * Servlet implementation class SendSMSServlet
  */
@@ -51,6 +52,7 @@ public class SendSMSServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		String receiver = request.getParameter("receiver");
+		
 		int rand = (int) (Math.random() * 899999) + 100000;
 		
 		// 문자 보내기

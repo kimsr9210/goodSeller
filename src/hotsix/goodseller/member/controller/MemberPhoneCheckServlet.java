@@ -3,7 +3,6 @@ package hotsix.goodseller.member.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +14,16 @@ import org.json.simple.JSONObject;
 import hotsix.goodseller.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberIdCheckServlet
+ * Servlet implementation class MemberPhoneCheckServlet
  */
-@WebServlet("/idCheck.do")
-public class MemberIdCheckServlet extends HttpServlet {
+@WebServlet("/phoneCheck.do")
+public class MemberPhoneCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberIdCheckServlet() {
+    public MemberPhoneCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +32,17 @@ public class MemberIdCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		String receiver = request.getParameter("receiver");
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String userIdCheck = request.getParameter("userIdCheck");
-		String userId = new MemberService().idCheck(userIdCheck);
+		String phoneCheck = new MemberService().phoneCheck(receiver);
 		
 		JSONObject object = new JSONObject();
-		if(userId == null)
-		{
+		if(phoneCheck == null) {
 			object.put("result", "true");
-		}else {
+		} else {
 			object.put("result", "false");
 		}
-		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		

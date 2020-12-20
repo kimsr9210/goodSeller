@@ -211,6 +211,7 @@
 											name="phone" id="inputAuthNum" maxlength="11"
 											placeholder="인증번호 입력" /> 
 											<button style="display:none" id="smsCheck" type="button" class="btn btn-outline-secondary btn-sm mt-2">인증</button>
+											<button style="display:none" id="changePhone" type="button" class="btn btn-outline-secondary btn-sm mt-2">번호변경</button>
 											<span id="phoneMessage" class="checkMessage"></span>
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>
@@ -222,8 +223,9 @@
 									<div class="col-12 col-md-8 border-0">
 										아이디 <input type="text" class="form-input form-control"
 											name="userId" id="userId" placeholder="아이디 입력(영문,숫자 5~11자)"
-											readonly onblur="idCheck();" />
+											onblur="idCheck();" />
 											<button style="display:block" type="button" id="idCheckBtn" class="btn btn-outline-secondary btn-sm mt-2">중복확인</button>
+											 <button style="display:none" type="button" id="idChangeBtn" class="btn btn-outline-secondary btn-sm mt-2">변경하기</button>
 											 <span id="idMessage"
 											class="checkMessage"></span>
 									</div>
@@ -258,8 +260,9 @@
 										닉네임 <input type="text" class="form-input form-control"
 											name="userNick" id="userNick"
 											placeholder="닉네임 입력(영문,숫자 5~11자, 한글 2~6자)"
-											onblur="nickCheck();" readonly /> 
+											onblur="nickCheck();" /> 
 											<button style="display:block" type="button" id="nickCheckBtn" class="btn btn-outline-secondary btn-sm mt-2">중복확인</button>
+											<button style="display:none" type="button" id="nickChangeBtn" class="btn btn-outline-secondary btn-sm mt-2">변경하기</button>
 											<span id="nickMessage"
 											class="checkMessage"></span>
 									</div>
@@ -340,7 +343,10 @@
 		phoneMessage = document.getElementById("phoneMessage");
 		addrMessage = document.getElementById("addrMessage");
 		accountMessage = document.getElementById("accountMessage");
-
+		
+		nickMessage.style.color = "red";
+		idMessage.style.color = "red";
+		
 		userId = document.getElementById("userId");
 		userPw = document.getElementById("userPw");
 		userPwRe = document.getElementById("userPwRe");
@@ -375,6 +381,10 @@
 		} else if(!idCheck()){
 			userId.focus();
 			return false;
+		} else if (idMessage.style.color == "red"){
+			idCheckBtn.focus();
+			idMessage.innerHTML = "중복확인을 눌러 중복확인을 진행해 주십시오";
+			return false;
 		} else if (!pwCheck()){
 			userPw.focus();
 			return false;
@@ -383,6 +393,10 @@
 			return false;
 		} else if (!nickCheck()) {
 			userNick.focus();
+			return false;
+		} else if (nickMessage.style.color == "red"){
+			nickCheckBtn.focus();
+			nickMessage.innerHTML = "중복확인을 눌러 중복확인을 진행해 주십시오";
 			return false;
 		} else if (!addrCheck()) {
 			addr.focus();
@@ -399,15 +413,15 @@
 	}
 
 	function idCheck() {
-		if (userId.value == "") {
-			idMessage.style.color = "red";
-			idMessage.innerHTML = "중복확인 버튼을 눌러 아이디를 입력하세요";
-			return false;
-		} else {
+		if ((/^[a-z][a-z0-9]{5,11}$/.test(userId.value))) {
 			return true;
+			idMessage.innerHTML = "";
+		} else{
+			idMessage.style.color = "red";
+			idMessage.innerHTML = "ID는 영 소문자 숫자 조합으로 최소 6글자 최대 12글자로 입력바랍니다.";
+			return false;
 		}
 	}
-
 	function pwCheck() {
 		if (!(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
 				.test(userPw.value))) //비밀번호 검사
@@ -439,13 +453,16 @@
 		}
 	}
 	function nickCheck() {
-		if (userNick.value == "") //아이디 검사
-		{
-			nickMessage.style.color = "red";
-			nickMessage.innerHTML = "중복확인 버튼을 눌러 닉네임을 입력하세요";
-			return false;
-		} else {
+		if ((/^[a-z][a-z0-9]{4,10}$/.test(userNick.value))) {
 			return true;
+			nickMessage.innerHTML = "";
+		} else if ((/^[가-힣][가-힣0-9]{1,5}$/.test(userNick.value))){
+			return true;
+			nickMessage.innerHTML = "";
+		} else{
+			nickMessage.style.color = "red";
+			nickMessage.innerHTML = "닉네임은 영문,숫자 5~11자, 한글 2~6자로 입력 바랍니다.";
+			return false;
 		}
 	}
 
@@ -579,39 +596,116 @@
 	$(function() {
 		$('#idCheckBtn').click(
 				function() {
-					window.open("/views/member/memberIdCheck.jsp", "_blank",
-							"width=500px height=200px");
+					if(idCheck()) {
+						$.ajax({
+							url: "/idCheck.do",
+							data: {
+								userIdCheck: $("#userId").val()
+							},
+							type: "post",
+							success: function(data){
+								if(data.result == "true"){
+									if(confirm("사용 가능한 ID입니다. 사용하시겠습니까?")){
+										$('#userId').attr('readonly', true);
+										$('#idMessage').css('color', 'blue');
+										$('#idMessage').html('중복확인 완료');	
+										$('#idCheckBtn').css('display', 'none');
+										$('#idChangeBtn').css('display', 'block');
+									}
+								} else {
+									alert("중복된 ID 입니다.");
+									$('#idMessage').css('color', 'red');
+									$('#idMessage').html('중복된 ID 입니다.');
+								}
+							}
+						});	
+					}
 				});
+		$('#idChangeBtn').click(
+				function() {
+					$('#idNick').attr('readonly', false);
+					$('#idMessage').css('color', 'red');
+					$('#idMessage').html('');	
+					$('#idCheckBtn').css('display', 'block');
+					$('#idChangeBtn').css('display', 'none');
+					$('#userId').focus();
+		});
 	});
-
+	
 	$(function() {
 		$('#nickCheckBtn').click(
 				function() {
-					window.open("/views/member/memberNickCheck.jsp", "_blank",
-							"width=500px height=200px");
+					if(nickCheck()) {
+						$.ajax({
+							url: "/nickCheck.do",
+							data: {
+								userNickCheck: $("#userNick").val()
+							},
+							type: "post",
+							success: function(data){
+								if(data.result == "true"){
+									if(confirm("사용 가능한 닉네임 입니다. 사용하시겠습니까?")){
+										$('#userNick').attr('readonly', true);
+										$('#nickMessage').css('color', 'blue');
+										$('#nickMessage').html('중복확인 완료');	
+										$('#nickCheckBtn').css('display', 'none');
+										$('#nickChangeBtn').css('display', 'block');
+									}
+								} else {
+									alert("중복된 닉네임 입니다.");
+									$('#nickMessage').css('color', 'red');
+									$('#nickMessage').html('중복된 닉네임 입니다.');
+								}
+							}
+						});	
+					}
 				});
+		$('#nickChangeBtn').click(
+				function() {
+					$('#userNick').attr('readonly', false);
+					$('#nickMessage').css('color', 'red');
+					$('#nickMessage').html('');	
+					$('#nickCheckBtn').css('display', 'block');
+					$('#nickChangeBtn').css('display', 'none');
+					$('#userNick').focus();
+		});
 	});
 	
 	$(function() {
 		$('#sendSms').click(
 				function() {
 					if (((/^(010[1-9][0-9]{7})$/.test($("#phone").val())))) {
-						$('#smsCheck').css('display','block');
-						$('#inputAuthNum').css('display','block');
-						$('#phoneMessage').html('');
 						$.ajax({
-							url: "/sendSms.do",
+							url: "/phoneCheck.do",
 							data: {
 								receiver: $("#phone").val()
 							},
-							type: "post"
+							type: "post",
+							success: function(data){
+								if(data.result == "true"){
+									$('#smsCheck').css('display','block');
+									$('#inputAuthNum').css('display','block');
+									$('#phoneMessage').html('');
+									
+									$.ajax({
+										url: "/sendSms.do",
+										data: {
+											receiver: $("#phone").val()
+										},
+										type: "post"
+									});
+								} else {
+									alert("이미 가입된 전화번호 입니다.");
+									$('#phoneMessage').css('color', 'red');
+									$('#phoneMessage').html('이미 가입된 전화번호 입니다.');
+								}
+							}
 						});
 					} else {
 						$('#phoneMessage').css('color', 'red');
 						$('#phoneMessage').html('핸드폰번호는 010으로 시작해 11자리로 입력해주세요(- 제외하고 입력)');
 					}
 				});
-		
 		$('#smsCheck').click(
 				function() {
 					$.ajax({
@@ -628,7 +722,8 @@
 								$('#phone').attr('readonly', true);
 								$('#inputAuthNum').attr('readonly', true);
 								$('#smsCheck').css('display','none');
-								$('#changePhone').css('display', 'none');
+								$('#changePhone').css('display', 'block');
+								$('#sendSms').css('display', 'none');
 							} else {
 								alert("옳바르지 않은 인증번호 입니다.");
 							}
@@ -636,6 +731,16 @@
 							alert("알수없는 오류 관리자에게 문의하세요.");
 						}
 					});
+				});
+		$('#changePhone').click(
+				function() {
+					$('#phoneMessage').css('color', 'red');
+					$('#phoneMessage').html('');
+					$('#phone').attr('readonly', false);
+					$('#inputAuthNum').attr('readonly', false);
+					$('#inputAuthNum').css('display', 'none');
+					$('#sendSms').css('display', 'block');
+					$('#changePhone').css('display', 'none');
 				});
 	});
 	
