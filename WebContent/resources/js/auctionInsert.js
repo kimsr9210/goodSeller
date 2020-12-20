@@ -9,15 +9,15 @@ $(function(){
                                             "<option>가방</option>"+
                                             "<option>신발</option>");
                 }else if($text=="생활 건강"){
-                    $('#category-sub').html("<option>인테리어용품</option>"+
-                                            "<option>수납용품</option>"+
-                                            "<option>주방용품</option>"+
-                                            "<option>세탁용품</option>"+
-                                            "<option>욕실용품</option>");
+                    $('#category-sub').html("<option>인테리어 용품</option>"+
+                                            "<option>수납 용품</option>"+
+                                            "<option>주방 용품</option>"+
+                                            "<option>세탁 용품</option>"+
+                                            "<option>욕실 용품</option>");
                 }else if($text=="가구 가전"){
-                    $('#category-sub').html("<option>수납가구</option>"+
-                            				"<option>거실가구</option>"+
-				                            "<option>침실가구</option>"+
+                    $('#category-sub').html("<option>수납 가구</option>"+
+                            				"<option>거실 가구</option>"+
+				                            "<option>침실 가구</option>"+
 				                            "<option>TV</option>"+
 				                            "<option>냉장고</option>"+
 				                            "<option>에어컨</option>"+

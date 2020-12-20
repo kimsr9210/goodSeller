@@ -42,13 +42,13 @@
 				<!--                    여기가 메뉴-->
 				<ul id="main-menu">
 					<li><a id="home" href="/views/auction/auctionMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Home</a></li>
-					<li><a href="/views/auction/auctionClothing.jsp">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
-					<li><a href="/views/auction/auctionLiving.jsp">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
-					<li><a href="/views/auction/auctionHomeAppliances.jsp">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
-					<li><a href="/views/auction/auctionDigital.jsp">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
-					<li><a href="/views/auction/auctionBooks.jsp">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
-					<li><a href="/views/auction/auctionBeauty.jsp">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="/views/auction/auctionSports.jsp">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
+					<li><a href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
+					<li><a href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
+					<li><a href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
+					<li><a href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
+					<li><a href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
+					<li><a href="/auctionList.do?mainCategory=스포츠&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 

@@ -1,4 +1,4 @@
-#contents div{
+#contents>div{
 	border: 0px solid black;
 	text-align: center;
 	box-sizing: border-box;
@@ -62,4 +62,8 @@
 }
 .nav-link{
 	color: black;
+}
+#subCategory>li>a:hover{
+    color: #5B5AFF;
+    font-weight: 800;
 }

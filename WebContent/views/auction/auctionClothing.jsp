@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="hotsix.goodseller.post.model.vo.PostPageData" %>
+<%@ page import="hotsix.goodseller.post.model.vo.Post" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="hotsix.goodseller.member.model.vo.Member" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,6 +38,50 @@
 </head>
 <body>
 <%@ include file="/views/common/header&footer/header.jsp"%>
+<%
+	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
+	String subCategory = (String)request.getAttribute("subCategory");
+	ArrayList<Post> list = ppd.getList();
+	String pageNavi = ppd.getPageNavi();
+%>
+	
+	<% if(subCategory.equals("티셔츠")){ %>
+			<style>
+				#subCategory>li:nth-child(1)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("바지")){%>
+			<style>
+				#subCategory>li:nth-child(2)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("아우터")){%>
+			<style>
+				#subCategory>li:nth-child(3)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("가방")){%>
+			<style>
+				#subCategory>li:nth-child(4)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("신발")){%>
+			<style>
+				#subCategory>li:nth-child(5)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} %>
+
 	<div id="wrap">
 		<!-- contents  -->
 		<div id="contents">
@@ -44,13 +92,12 @@
 				<div id="core-contents-2" class="row">
 					<div class="d-none d-md-block col-md-3"></div>
 					<div class="col-md-6">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link active" href="#">티셔츠</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">바지</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">아우터</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">가방</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">신발</a></li>
+						<ul id="subCategory"class="nav nav-tabs">
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">티셔츠</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=바지">바지</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=아우터">아우터</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=가방">가방</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=신발">신발</a></li>
 							
 						</ul>
 					</div>
@@ -60,219 +107,38 @@
 				<div id="core-contents-3" class="row">
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
+						<%for(Post p : list){ %>
 										<div class="col-md-3">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
 												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
+													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
 												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<h6 class="card-title"><%=p.getSubject() %></h6>
 													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+														현재 입찰금 : <%=p.getStartPrice() %><br>즉시구매가 : <%=p.getBuyPrice() %>
 													</p>
 
 												</div>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
-					</div>
-					<div class="col-12 p-0">
-						<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
-					</div>
-					<div class="col-12 p-0">
-						<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
+						<%} %>		
 					</div>
 				</div>
+			</div>
 				<div id="core-contents-4" class="row">
 					<div class="col-12 p-0">
 						<a href="/views/auction/auctionInsert.jsp"><button type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
-						</div>
 					</div>
+				</div>
 				<div id="core-contents-5" class="row">
 					<div class="col-12">
 					<br>
 					
 						<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							</a></li>
+						<ul id="" class="pagination justify-content-center" >
+							<%=ppd.getPageNavi() %>
 						</ul>
 						</nav>
 						</div>
@@ -281,5 +147,7 @@
 			</div>
 		</div>
 <%@ include file="/views/common/header&footer/footer.jsp"%>
+
+
 </body>
 </html>

@@ -274,6 +274,8 @@ public class PostInsertServlet extends HttpServlet {
 		// 상세 카테고리
 		String subCategory = multi.getParameter("subCategory");
 		
+		System.out.println(startPrice);
+		System.out.println(buyPrice);
 		// 금액 형 변환
 		String[] arr = startPrice.split(",");
 		startPrice = arr[0];
@@ -288,6 +290,9 @@ public class PostInsertServlet extends HttpServlet {
 			buyPrice += arr1[i];
 		}
 		int bPrice = Integer.parseInt(buyPrice);
+		
+		System.out.println(sPrice);
+		System.out.println(bPrice);
 		
 //		
 //		System.out.println("작성자 : " + userId);

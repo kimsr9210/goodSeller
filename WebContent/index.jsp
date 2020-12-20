@@ -34,7 +34,7 @@
                         <p>세번째, 더이상 입찰하는 고객이 없으면 즉시 구매!<br><br></p>
                         <a href="/views/auction/auctionInsert.jsp">게시물 작 성페이지</a><br>
                         <a href="/views/member/memberInfo.jsp">마이페이지로 이동</a><br>
-                        <a href="/views/auction/test.jsp">파일보기</a><br>
+                        <a href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠" >의류 브랜드 패션</a><br>
                     </div>
                 </div>
                 <div id="core-contents-bottom" class="row">

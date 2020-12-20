@@ -176,7 +176,7 @@
 	<%} else { %>
 	<script>
 		alert("로그인 후 상품 등록이 가능합니다.");
-		location.href ="/index.jsp";
+		history.back(-1);
 	</script>
 	<% } %>
 	<!--    자바 스크립트    -->

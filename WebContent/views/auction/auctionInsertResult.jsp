@@ -15,9 +15,9 @@
 	%>
 	<script>
 	<%if(result==true){ %>
-		alert("파일 업로드 완료");
+		alert("게시물 작성 완료");
 	<%} else {%>
-		alert("파일 업로드 실패(지속적인 문제 발생시 관리자에게 문의해주세요)");
+		alert("게시물 작성 실패(지속적인 문제 발생시 관리자에게 문의해주세요)");
 	<%} %>
 	location.replace("/index.jsp");
 	</script>
