@@ -1236,5 +1236,6 @@
 		</div>
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
+	<script type="text/javascript" src="/resources/js/auction.js"></script>
 </body>
 </html>

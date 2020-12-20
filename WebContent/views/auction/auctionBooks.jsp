@@ -282,5 +282,6 @@
 			</div>
 		</div>
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
+		<script type="text/javascript" src="/resources/js/auction.js"></script>
 </body>
 </html>

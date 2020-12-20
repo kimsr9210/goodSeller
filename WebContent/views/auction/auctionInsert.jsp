@@ -181,5 +181,6 @@
 	<% } %>
 	<!--    자바 스크립트    -->
 	<script type="text/javascript" src="/resources/js/auctionInsert.js"></script>
+
 </body>
 </html>
