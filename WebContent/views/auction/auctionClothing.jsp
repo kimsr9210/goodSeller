@@ -84,7 +84,7 @@
 
 	<div id="wrap">
 		<!-- contents  -->
-		<div id="contents">
+		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
 					<h3>의 류</h3>
