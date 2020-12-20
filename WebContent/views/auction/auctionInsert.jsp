@@ -38,7 +38,7 @@
 					<form action="/postInsert.do" method="post" enctype="multipart/form-data">
 
 						<div id="post-title">
-							<input name="subject" placeholder="제목을 입력하세요." />
+							<input id="subject" name="subject" placeholder="제목을 입력하세요." />
 						</div>
 
 
@@ -47,7 +47,7 @@
 								<div>메인 사진 선택</div>
 								<div>
 									<img src="/resources/images/basic_img.png" class='img-size'/><br><input
-										type="file" name="mainImg" class="file-upload"/>
+										type="file" id="mainImg" name="mainImg" class="file-upload"/>
 								</div>
 							</div>
 							<div id="post-img-sub" class="col-12 col-md-12 col-lg-6">
@@ -89,7 +89,7 @@
 								<div>
 									<div>시작 금액 설정</div>
 									<div>
-										<input type="type" name="startPrice" class="input-text" placeholder="0"
+										<input type="type" id="startPrice" name="startPrice" class="input-text" placeholder="0"
 											onkeyup="f_setCommaValue(this);" onkeypress="f_onlyNum();" />
 										원
 									</div>
@@ -100,7 +100,7 @@
 								<div> 
 									<div>즉시 구매 금액</div>
 									<div>
-										<input type="type" name="buyPrice" class="input-text" placeholder="0"
+										<input type="type" id="buyPrice" name="buyPrice" class="input-text" placeholder="0"
 											onkeyup="f_setCommaValue(this);" onkeypress="f_onlyNum();" />
 										원
 									</div>
@@ -153,7 +153,7 @@
 						</div>
 						<div id="text-box">
 							<div>상세내용 입력</div>
-							<textarea placeholder="내용을 입력하세요" name="content"></textarea>
+							<textarea placeholder="내용을 입력하세요" id="content" name="content"></textarea>
 						</div>
 
 

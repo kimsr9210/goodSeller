@@ -32,8 +32,9 @@
                         <p>첫번째, 간편 회원가입 후 로그인<br><br></p>
                         <p>두번째, 원하는 물품 검색 후 입찰<br><br></p>
                         <p>세번째, 더이상 입찰하는 고객이 없으면 즉시 구매!<br><br></p>
-                        <a href="/views/auction/auctionInsert.jsp">게시물 작성페이지</a><br>
-                        <a href="/views/member/memberInfo.jsp">마이페이지로 이동</a>
+                        <a href="/views/auction/auctionInsert.jsp">게시물 작 성페이지</a><br>
+                        <a href="/views/member/memberInfo.jsp">마이페이지로 이동</a><br>
+                        <a href="/views/auction/test.jsp">파일보기</a>
                     </div>
                 </div>
                 <div id="core-contents-bottom" class="row">
