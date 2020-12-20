@@ -33,8 +33,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
+	<div id="wrap">
 		<!-- contents  -->
 		<div id="contents">
 			<div class="container">
@@ -254,7 +254,7 @@
 				</div>
 				<div id="core-contents-4" class="row">
 					<div class="col-12 p-0">
-						<button type="button" class="btn btn-outline-dark float-right">상품등록</button>
+						<a href="/views/auction/auctionInsert.jsp"><button type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
 						</div>
 					</div>
 				<div id="core-contents-5" class="row">
@@ -282,6 +282,5 @@
 			</div>
 		</div>
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
-	</div>
 </body>
 </html>
