@@ -83,7 +83,8 @@
 				<%for(Register board : list){ %>
 				<div class="row p-0 m-0 line-content text-center">
 					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
-					<div class="col-12 col-md-5 p-0"><%=board.getSubject() %></div>
+					
+					<div class="col-12 col-md-5 p-0"><a href=""=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
 					<div class="col-3 col-md-2 p-0 ">11</div>
 					<div class="col-2 col-md-1 p-0 ">test</div>
