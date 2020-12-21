@@ -1,10 +1,10 @@
-#contents div{
+/* div{
 	border: 0px solid black;
 	text-align: center;
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-}
+} */
 
 /*--contents--*/
 #core-contents-1>h3 {
@@ -66,4 +66,13 @@
 #subCategory>li>a:hover{
     color: #5B5AFF;
     font-weight: 800;
+}
+#postImgMain{
+    overflow: hidden;
+}
+.card-title{
+	z-index: 1;
+}
+.card-text{
+	z-index: 1;
 }

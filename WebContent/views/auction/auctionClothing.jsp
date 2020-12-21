@@ -111,7 +111,7 @@
 										<div class="col-md-3">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
+												<img id="postImgMain"
 													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
 												<div class="card-body">
