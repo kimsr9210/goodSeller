@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="hotsix.goodseller.user.post.model.vo.PostPageData" %>
+<%@ page import="hotsix.goodseller.user.post.model.vo.Post" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="hotsix.goodseller.member.model.vo.Member" %>
+<%@ page import="java.text.DecimalFormat" %>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,6 +47,14 @@ $(function() {
 	});
 });
 </script>
+<%
+	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
+	String subCategory = (String)request.getAttribute("subCategory");
+	ArrayList<Post> list = ppd.getList();
+	String pageNavi = ppd.getPageNavi();
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	String subject = "";
+%>
 	<div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 		<!-- contents  -->

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import ="hotsix.goodseller.post.model.vo.Post" %>
+    <%@ page import ="hotsix.goodseller.user.post.model.vo.Post" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -143,12 +143,12 @@ $(function() {
 									</div>
 								</div>
 							</div>	
-							<div class="col-12 p-1"><button type="button" class="btn btn-primary btn-lg btn-block">입찰 하기</button>
+							<div class="col-12 p-1"><button type="button" class="btn btn-primary btn-lg btn-block" id="auctionBtn">입찰 하기</button>
 
-								<form  id="auctionForm" method="post" action="/views.auction/acuctionFunction.jsp" target="childwin">
-									<input type="hidden" name="" value="">
-									<input type="hidden" name="" value="">
-									<input type="hidden" name="" value="">
+								<form  id="auctionForm" method="post" action="/views/auction/auctionFunction.jsp" target="childwin">
+									<input type="hidden" name="startPrice" value="<%=p.getStartPrice()%>">
+									<input type="hidden" name="auctionPrice" value="<%=p.getAuctionPrice()%>">
+									<input type="hidden" name="sell_YN" value="<%=p.getSell_yn()%>">
 								</form>
 								
 								<script>
@@ -156,6 +156,7 @@ $(function() {
 										$('#auctionBtn').click(function(){
 											var settings = "width=500px, height=500px";
 											auctionPage = window.open("/views/auction/auctionFunction.jsp", "childwin", settings);
+											$('#auctionForm').submit();
 										});
 									});
 								</script>
