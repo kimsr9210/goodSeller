@@ -1,10 +1,10 @@
-#contents div{
+/* div{
 	border: 0px solid black;
 	text-align: center;
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-}
+} */
 
 /*--contents--*/
 #core-contents-1>h3 {
@@ -43,18 +43,18 @@
 }
 
 .card:hover {
+	cursor:pointer;
 	box-shadow: 0px 0px 10px #A4A4A4;
 }
 
-.card:hover>img {
-	transform: scale(1.1);
-	transition: all 0.4s ease-in-out;
+#postImgMain:hover{
+	transform: scale(1.02);
 }
 
-.card>img {
+#postImgMain{
 	border-radius: 10%;
 	transform: scale(1);
-	transition: all 0.4s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 .nav-item {
@@ -66,4 +66,17 @@
 #subCategory>li>a:hover{
     color: #5B5AFF;
     font-weight: 800;
+}
+#postImgMain{
+    overflow: hidden;
+}
+.card-title{
+	z-index: 1;
+	font-weight : 800;
+	height: 40px;
+	overflow: hidden;
+}
+.card-text{
+	z-index: 1;
+	overflow: hidden;
 }

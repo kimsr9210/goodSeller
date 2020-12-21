@@ -1,6 +1,7 @@
 package hotsix.goodseller.post.controller;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,7 +33,7 @@ public class PostPageList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+		DecimalFormat formatter = new DecimalFormat("###,###");
 		//카테고리가 무엇인지
 		String mainCategory = request.getParameter("mainCategory");
 		String subCategory = request.getParameter("subCategory");

@@ -23,6 +23,7 @@ public class Post {
 	private String subCategory;
 	private char sell_yn;
 	private char del_yn;
+	private int hit;
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,7 +31,7 @@ public class Post {
 	public Post(int postNo, String subject, String content, String writer, Date endDate, Date regDate,
 			String mainImgName, String subImgName_1, String subImgName_2, String subImgName_3, String subImgName_4,
 			int startPrice, int buyPrice, int auctionPrice, String buyer, String sellMethod, String mainCategory,
-			String subCategory, char sell_yn, char del_yn) {
+			String subCategory, char sell_yn, char del_yn, int hit) {
 		super();
 		this.postNo = postNo;
 		this.subject = subject;
@@ -52,6 +53,7 @@ public class Post {
 		this.subCategory = subCategory;
 		this.sell_yn = sell_yn;
 		this.del_yn = del_yn;
+		this.hit = hit;
 	}
 	public int getPostNo() {
 		return postNo;
@@ -173,6 +175,12 @@ public class Post {
 	public void setDel_yn(char del_yn) {
 		this.del_yn = del_yn;
 	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	@Override
 	public String toString() {
 		return "Post [postNo=" + postNo + ", subject=" + subject + ", content=" + content + ", writer=" + writer
@@ -180,7 +188,7 @@ public class Post {
 				+ subImgName_1 + ", subImgName_2=" + subImgName_2 + ", subImgName_3=" + subImgName_3 + ", subImgName_4="
 				+ subImgName_4 + ", startPrice=" + startPrice + ", buyPrice=" + buyPrice + ", auctionPrice="
 				+ auctionPrice + ", buyer=" + buyer + ", sellMethod=" + sellMethod + ", mainCategory=" + mainCategory
-				+ ", subCategory=" + subCategory + ", sell_yn=" + sell_yn + ", del_yn=" + del_yn + "]";
+				+ ", subCategory=" + subCategory + ", sell_yn=" + sell_yn + ", del_yn=" + del_yn + ", hit=" + hit + "]";
 	}
 	
 	

@@ -45,6 +45,7 @@ $(function(){
                     $('#category-sub').html("<option>골프</option>"+
 				                            "<option>스키/보드</option>"+
 				                            "<option>수영/수상레저</option>"+
+				                            "<option>구기/라켓</option>"+
 				                            "<option>헬스/요가/필라테스</option>");
                 }
             });     

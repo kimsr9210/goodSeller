@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="hotsix.goodseller.post.model.vo.PostPageData" %>
+<%@ page import="hotsix.goodseller.post.model.vo.Post" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="hotsix.goodseller.member.model.vo.Member" %>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/auctionMain.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -33,246 +39,126 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<%@ include file="/views/common/header&footer/header.jsp"%>
+<script>
+$(function() {
+	$(".card").click(function() {
+		location.href = "/views/auction/auctionDetailPage.jsp";
+	});
+});
+</script>
+<%@ include file="/views/common/header&footer/header.jsp"%>
+<%
+	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
+	String subCategory = (String)request.getAttribute("subCategory");
+	ArrayList<Post> list = ppd.getList();
+	String pageNavi = ppd.getPageNavi();
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	String subject = "";
+%>
+	
+	<% if(subCategory.equals("인테리어 용품")){ %>
+			<style>
+				#subCategory>li:nth-child(1)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("수납 용품")){%>
+			<style>
+				#subCategory>li:nth-child(2)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("주방 용품")){%>
+			<style>
+				#subCategory>li:nth-child(3)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("세탁 용품")){%>
+			<style>
+				#subCategory>li:nth-child(4)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} else if(subCategory.equals("욕실 용품")){%>
+			<style>
+				#subCategory>li:nth-child(5)>a{
+	            color: #5B5AFF;
+	            font-weight: 800;
+				}
+			</style>
+	<%} %>
+
 	<div id="wrap">
 		<!-- contents  -->
-		<div id="contents">
+		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
 					<h3>생활 건강</h3>
 				</div>
 				<div id="core-contents-2" class="row">
-					<div class="d-none d-md-block col-md-2"></div>
-					<div class="col-md-8">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link active" href="#">인테리어 용품</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">수납 용품</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">주방 용품</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">세탁 용품</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">욕실 용품</a></li>
-							
+					<div class="d-none d-md-block col-md-3"></div>
+					<div class="col-md-6">
+						<ul id="subCategory"class="nav nav-tabs">
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">인테리어 용품</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=생활 건강&subCategory=수납 용품">수납 용품</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=생활 건강&subCategory=주방 용품">주방 용품</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=생활 건강&subCategory=세탁 용품">세탁 용품</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=생활 건강&subCategory=욕실 용품">욕실 용품</a></li>
 						</ul>
 					</div>
-					<div class="d-none d-md-block col-md-2"></div>
+					<div class="d-none d-md-block col-md-3"></div>
 				</div>
 				<br>
 				<div id="core-contents-3" class="row">
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
+						<%for(Post p : list){ %>
+						<%
+							if(p.getSubject().length()>=28){
+								subject = p.getSubject().substring(0,25)+"...";
+							} else{
+								subject = p.getSubject();
+							}
+						%>
 										<div class="col-md-3">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
+												<div style="height:300px;overflow:hidden;">
+													<img id="postImgMain"
+													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
+												</div>
 												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
+													<h6 class="card-title"><%=subject %></h6>
 													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
+														현재 입찰금 : <%=formatter.format(p.getStartPrice()) %><br>
+														즉시 구매가 : <%=formatter.format(p.getBuyPrice()) %>
 													</p>
 
 												</div>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
-					</div>
-					<div class="col-12 p-0">
-						<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
-					</div>
-					<div class="col-12 p-0">
-						<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div>
+						<%} %>		
 					</div>
 				</div>
+			</div>
 				<div id="core-contents-4" class="row">
 					<div class="col-12 p-0">
 						<a href="/views/auction/auctionInsert.jsp"><button type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
-						</div>
 					</div>
+				</div>
 				<div id="core-contents-5" class="row">
 					<div class="col-12">
 					<br>
 					
 						<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							</a></li>
+						<ul id="" class="pagination justify-content-center" >
+							<%=ppd.getPageNavi() %>
 						</ul>
 						</nav>
 						</div>
@@ -280,7 +166,8 @@
 				</div>
 			</div>
 		</div>
-		<%@ include file="/views/common/header&footer/footer.jsp"%>
-		<script type="text/javascript" src="/resources/js/auction.js"></script>
+<%@ include file="/views/common/header&footer/footer.jsp"%>
+
+
 </body>
 </html>
