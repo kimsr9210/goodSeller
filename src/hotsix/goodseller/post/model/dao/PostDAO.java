@@ -19,7 +19,7 @@ public class PostDAO {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,NULL,NULL,?,?,?,'N','N')";
+		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,NULL,NULL,?,?,?,'N','N',0)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
