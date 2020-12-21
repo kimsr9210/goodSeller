@@ -19,7 +19,7 @@ public class PostDAO {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,NULL,NULL,?,?,?,'N','N',0)";
+		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,?,NULL,?,?,?,'N','N',0)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -34,9 +34,10 @@ public class PostDAO {
 			pstmt.setString(9, subChangedFileName_4);
 			pstmt.setInt(10, sPrice);
 			pstmt.setInt(11, bPrice);
-			pstmt.setString(12, sellMethod);
-			pstmt.setString(13, mainCategory);
-			pstmt.setString(14, subCategory);
+			pstmt.setInt(12, sPrice);
+			pstmt.setString(13, sellMethod);
+			pstmt.setString(14, mainCategory);
+			pstmt.setString(15, subCategory);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

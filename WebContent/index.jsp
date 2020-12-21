@@ -69,6 +69,17 @@
 .card-text{
 	z-index: 1;
 	overflow: hidden;
+	font-weight: 600;
+}
+.startPrice{
+	font-weight: 500;
+	color: red;
+	font-size: 18px;
+}
+.buyPrice{
+	font-weight: 500;
+	color: #5B5AFF;
+	font-size: 18px;
 }
 </style>
 <%
@@ -121,8 +132,8 @@
 												<div class="card-body">
 													<h6 class="card-title"><%=subject %></h6>
 													<p class="card-text">
-														현재 입찰금 : <b><%=formatter.format(p.getStartPrice()) %></b> 원<br>
-														즉시 구매가 : <b><%=formatter.format(p.getBuyPrice()) %></b> 원
+														현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span> 원<br>
+														즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span> 원
 													</p>
 
 												</div>

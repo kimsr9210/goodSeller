@@ -48,7 +48,7 @@
 					<li><a href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
 					<li><a href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
 					<li><a href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="/auctionList.do?mainCategory=스포츠&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 
