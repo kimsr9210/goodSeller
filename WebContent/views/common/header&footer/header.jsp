@@ -27,35 +27,6 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 <!-- font 사용 -->
-<style>
-@font-face {
-    font-family: 'Binggrae-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TmoneyRoundWindExtraBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
- #main-menu>li>a{
- 	font-family: Binggrae-Bold;
- 	font-size: 13px;
- }
- #side-menu>li>a{
- 	font-family: Binggrae-Bold;
- }
- #side-navi>a{
- 	font-family: Binggrae-Bold;
- }
- #tooltiptext-search{
- 	font-family: Jeju Myeongjo;
- }
- 
-</style>
-
 </head>
 <body>
 	<div id="header">
@@ -71,14 +42,14 @@
 				</div>
 				<!--                    여기가 메뉴-->
 				<ul id="main-menu">
-					<li><a id="home" href="/views/auction/auctionMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;Home</a></li>
-					<li><a href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</a></li>
-					<li><a href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</a></li>
-					<li><a href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</a></li>
-					<li><a href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
-					<li><a href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
-					<li><a href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a id="home" href="/views/auction/auctionMain.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/home.png" class="imgSize"/>&nbsp;&nbsp;Home</a></li>
+					<li><a href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/clothes.png" class="imgSize"/>&nbsp;&nbsp;의류 브랜드 패션</a></li>
+					<li><a href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/muscle.png" class="imgSize"/>&nbsp;&nbsp;생활 건강</a></li>
+					<li><a href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/product.png" class="imgSize"/>&nbsp;&nbsp;가구 가전</a></li>
+					<li><a href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/computer.png" class="imgSize"/>&nbsp;&nbsp;디지털 컴퓨터</a></li>
+					<li><a href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/book.png" class="imgSize"/>&nbsp;&nbsp;도서 문구</a></li>
+					<li><a href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/beauty.png" class="imgSize"/>&nbsp;&nbsp;뷰티 잡화</a></li>
+					<li><a href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/sports.png" class="imgSize"/>&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 
@@ -89,7 +60,7 @@
 						<div class="mb-3">
 							<form id="searchForm" action="#">
 								<fildset> <input type="text" id="search-input"
-									placeholder="  검색" class="menu-none"/>
+									placeholder="  찾고싶은 상품을 검색해주세요!" class="menu-none"/>
 								<button type="submit" id="search-btn">
 									<img src="/resources/images/searchImg.png" id="search-img">
 								</button>
@@ -120,9 +91,9 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;자유게시판</a></li>
-						<li><a href="/views/board/boardRegister.jsp">&nbsp;&nbsp;&nbsp;&nbsp;신고게시판</a></li>
-						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;이용안내</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/board1.png" class="imgSize"/>&nbsp;&nbsp;자유게시판</a></li>
+						<li><a href="/views/board/boardRegister.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/surprise.png" class="imgSize"/>&nbsp;&nbsp;신고게시판</a></li>
+						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/info.png" class="imgSize"/>&nbsp;&nbsp;이용안내</a></li>
 					</ul>
 				</div>
 			</div>
