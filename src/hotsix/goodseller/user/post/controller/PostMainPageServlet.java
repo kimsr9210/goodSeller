@@ -1,7 +1,7 @@
-package hotsix.goodseller.post.controller;
+package hotsix.goodseller.user.post.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.post.model.service.PostService;
-import hotsix.goodseller.user.post.model.vo.Post;
+import hotsix.goodseller.user.post.model.service.PostService;
 
 /**
- * Servlet implementation class PostIndexPage
+ * Servlet implementation class PostMainPageServlet
  */
-@WebServlet("/index.do")
-public class PostIndexPage extends HttpServlet {
+@WebServlet("/auctionMain.do")
+public class PostMainPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostIndexPage() {
+    public PostMainPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +31,18 @@ public class PostIndexPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<Post> list = new PostService().selectHitPost();
+		request.setCharacterEncoding("UTF-8");
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		//카테고리가 무엇인지
 		
+		String MC_Clothing = null;
+		String MC_Living = null;
+		String MC_HomeAppliances = null;
+		String MC_Digital = null;
+		String MC_Books = null;
+		String MC_Beauty = null;
+		String MC_Sports = null;
 		
-		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-		request.setAttribute("list", list);
-		view.forward(request, response);
 	}
 
 	/**

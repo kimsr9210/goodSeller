@@ -1,7 +1,6 @@
-package hotsix.goodseller.post.controller;
+package hotsix.goodseller.user.post.controller;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.post.model.service.PostService;
+import hotsix.goodseller.user.post.model.service.PostService;
+import hotsix.goodseller.user.post.model.vo.Post;
 
 /**
- * Servlet implementation class PostMainPageServlet
+ * Servlet implementation class PostDetailPage
  */
-@WebServlet("/auctionMain.do")
-public class PostMainPageServlet extends HttpServlet {
+@WebServlet("/auctionDetailPage.do")
+public class PostDetailPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostMainPageServlet() {
+    public PostDetailPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,17 +31,16 @@ public class PostMainPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		DecimalFormat formatter = new DecimalFormat("###,###");
-		//카테고리가 무엇인지
 		
-		String MC_Clothing = null;
-		String MC_Living = null;
-		String MC_HomeAppliances = null;
-		String MC_Digital = null;
-		String MC_Books = null;
-		String MC_Beauty = null;
-		String MC_Sports = null;
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		
+		Post p = new PostService().auctionDetail(postNo);
+		
+		System.out.println(postNo);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");
+		request.setAttribute("post", p);
+		view.forward(request, response);		
 		
 	}
 

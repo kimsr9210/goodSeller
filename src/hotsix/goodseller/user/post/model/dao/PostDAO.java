@@ -1,4 +1,4 @@
-package hotsix.goodseller.post.model.dao;
+package hotsix.goodseller.user.post.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

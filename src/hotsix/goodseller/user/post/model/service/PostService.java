@@ -1,10 +1,10 @@
-package hotsix.goodseller.post.model.service;
+package hotsix.goodseller.user.post.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.post.model.dao.PostDAO;
+import hotsix.goodseller.user.post.model.dao.PostDAO;
 import hotsix.goodseller.user.post.model.vo.Post;
 import hotsix.goodseller.user.post.model.vo.PostPageData;
 
