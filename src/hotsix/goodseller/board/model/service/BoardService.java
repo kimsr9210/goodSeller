@@ -163,6 +163,17 @@ public class BoardService {
 		
 	}
 
+	public Register RegisterOneClick(int boardNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Register register = boardDAO.RegisterOneClick(conn,boardNo);
+		
+		
+		return register;
+	}
+
+
+
+
 
 	
 }

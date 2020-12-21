@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.board.model.service.BoardService;
-import hotsix.goodseller.board.model.vo.Board;
+import hotsix.goodseller.board.model.vo.Register;
 
 /**
  * Servlet implementation class BoardRegisterOneClickServlet
@@ -31,9 +31,18 @@ public class BoardRegisterOneClickServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
-		//비즈니스 로직 처리 
+				//이전 페이지에서 넘어온 값 저장
+				int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+				
+				//비즈니스 로직 처리 
+				Register register = new BoardService().RegisterOneClick(boardNo);
+				
+				RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterOneClick.jsp");
+				request.setAttribute("register", register);
+				view.forward(request, response);
+				
+				
 
 	}
 

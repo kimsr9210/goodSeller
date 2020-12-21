@@ -55,7 +55,7 @@ width: 60%;
 <body>
 
 						<%
-							Register r = (Register) session.getAttribute("register");
+							Register r = (Register) request.getAttribute("register");
 						%>
 						
 
@@ -75,20 +75,20 @@ width: 60%;
 
 				<div class="row">
 					<div class="col-md-2">작성자</div>
-					<div class="col-md-10"><%=m.getUserId() %></div>
+					<div class="col-md-10"><%=r.getUserId() %></div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-2"><%=r.getReguserId() %></div>
+					<div class="col-md-2">신고자</div>
 					<div class="col-md-10">
-						<input type="text" class="input-sty" name="reguserId" />
+						<input type="text" class="input-sty" name="reguserId" value="<%=r.getReguserId() %>" />
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-2" id="note"><%=r.getBoardContent() %></div>
+					<div class="col-md-2" id="note">내용</div>
 					<div class="col-md-10" style="padding: 20px;">
-						<textarea name="content" style="height: 100%; width: 100%;"></textarea>
+						<textarea name="content" style="height: 100%; width: 100%;"><%=r.getContent() %></textarea>
 
 					</div>
 				</div><br>

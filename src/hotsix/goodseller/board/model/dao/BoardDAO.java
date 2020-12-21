@@ -495,4 +495,44 @@ public class BoardDAO {
 		return sb.toString();
 
 	}
+
+	public Register RegisterOneClick(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Register register = null;
+		
+		String query = "SELECT * FROM REG_BOARD WHERE BOARDNO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) //게시글 한개가 잇다면 ~
+			{
+				register = new Register();
+				register.setBoardNo(rset.getInt("boardNo"));
+				register.setUserId(rset.getString("userId"));
+				register.setSubject(rset.getString("subject"));
+				
+				register.setContent(rset.getString("content"));
+				register.setReguserId(rset.getString("reguserId"));
+				
+				register.setCreatedate(rset.getDate("createDate"));
+				register.setBoardcomment(rset.getString("boardComment"));
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		
+	}return register;
+
+
+}
 }

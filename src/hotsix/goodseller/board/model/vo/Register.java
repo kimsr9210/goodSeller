@@ -7,7 +7,7 @@ public class Register {
 	private int boardNo;
 	private String userId;
 	private String subject;
-	private String boardContent;
+	private String content;
 	private String reguserId;
 	private Date createdate;
 	private String boardcomment;
@@ -29,11 +29,11 @@ public class Register {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getBoardContent() {
-		return boardContent;
+	public String getContent() {
+		return content;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getReguserId() {
 		return reguserId;
@@ -53,13 +53,13 @@ public class Register {
 	public void setBoardcomment(String boardcomment) {
 		this.boardcomment = boardcomment;
 	}
-	public Register(int boardNo, String userId, String subject, String boardContent, String reguserId, Date createdate,
+	public Register(int boardNo, String userId, String subject, String content, String reguserId, Date createdate,
 			String boardcomment) {
 		super();
 		this.boardNo = boardNo;
 		this.userId = userId;
 		this.subject = subject;
-		this.boardContent = boardContent;
+		this.content = content;
 		this.reguserId = reguserId;
 		this.createdate = createdate;
 		this.boardcomment = boardcomment;
