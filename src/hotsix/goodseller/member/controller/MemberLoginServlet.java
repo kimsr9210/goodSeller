@@ -47,7 +47,7 @@ public class MemberLoginServlet extends HttpServlet {
 		if(m!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("member", m);
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/index.do");
 			
 		} else {
 			out.println("<script>alert('ID 또는 PW를 확인해주세요');</script>");

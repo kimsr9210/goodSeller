@@ -66,7 +66,7 @@ public class MemberTempPwPhoneServlet extends HttpServlet {
 		else {
 			out.println("<script>alert('임시 비밀번호 발급에 실패했습니다.\n다시 시도 해주세요.');</script>");
 		}
-		out.println("<script>location.replace('/index.jsp');</script>");
+		out.println("<script>location.replace('/index.do');</script>");
 		
 	}
 
