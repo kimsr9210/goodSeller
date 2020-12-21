@@ -50,5 +50,13 @@ public class PostService {
 		
 		
 	}
+	public ArrayList<Post> selectHitPost() {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Post> list = pDAO.selectHitPost(conn);
+		JDBCTemplate.close(conn);
+		return list;
+		
+	}
 
 }

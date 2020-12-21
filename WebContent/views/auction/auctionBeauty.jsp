@@ -4,6 +4,7 @@
 <%@ page import="hotsix.goodseller.post.model.vo.Post" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="hotsix.goodseller.member.model.vo.Member" %>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,6 +43,8 @@
 	String subCategory = (String)request.getAttribute("subCategory");
 	ArrayList<Post> list = ppd.getList();
 	String pageNavi = ppd.getPageNavi();
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	String subject = "";
 %>
 <% if(subCategory.equals("화장품/향수")){ %>
 			<style>
@@ -73,27 +76,6 @@
 			</style>
 	<%} %>
 <%@ include file="/views/common/header&footer/header.jsp"%>
-	<!-- <div id="wrap">
-		contents 
-		<div id="contents">
-			<div class="container">
-				<div id="core-contents-1" class="row">
-					<h3>뷰티&잡화</h3>
-				</div>
-				<div id="core-contents-2" class="row">
-					<div class="d-none d-md-block col-md-3"></div>
-					<div class="col-md-6">
-						<ul class="nav nav-tabs">
-							<li class="nav-item"><a class="nav-link active" href="#">화장품/향수</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">바디/헤어</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">패션잡화</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">쥬얼리/시계/선글라스</a></li>
-						</ul>
-					</div>
-					<div class="d-none d-md-block col-md-3"></div>
-				</div>
-				<br> -->
 				<div id="wrap">
 		<!-- contents  -->
 		<div id="contents" class="menu-none">
@@ -119,16 +101,26 @@
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
 						<%for(Post p : list){ %>
+						<%
+							if(p.getSubject().length()>=28){
+								subject = p.getSubject().substring(0,25)+"...";
+							} else{
+								subject = p.getSubject();
+							}
+						%>
 										<div class="col-md-3">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img id="postImgMain"
+												<div style="height:300px;overflow:hidden;">
+													<img id="postImgMain"
 													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
+												</div>
 												<div class="card-body">
-													<h6 class="card-title"><%=p.getSubject() %></h6>
+													<h6 class="card-title"><%=subject %></h6>
 													<p class="card-text">
-														현재 입찰금 : <%=p.getStartPrice() %><br>즉시구매가 : <%=p.getBuyPrice() %>
+														현재 입찰금 : <%=formatter.format(p.getStartPrice()) %><br>
+														즉시 구매가 : <%=formatter.format(p.getBuyPrice()) %>
 													</p>
 
 												</div>

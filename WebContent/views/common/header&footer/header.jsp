@@ -35,7 +35,7 @@
 					<div id="main-navi">
 						<a href="#" id="menu-navi-tag"><img
 							src="/resources/images/main_menu.png" id="main-navi-img" /></a> <a
-							href="/index.jsp"><img class="d-none d-md-block"
+							href="/index.do"><img class="d-none d-md-block"
 							src="/resources/images/logo.png" id="logo-img" /></a>
 					</div>
 				</div>
