@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/auctionMain.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -37,6 +38,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script>
+$(function() {
+	$(".card").click(function() {
+		location.href = "/views/auction/auctionDetailPage.jsp";
+	});
+});
+</script>
 <%
 	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
 	String subCategory = (String)request.getAttribute("subCategory");
@@ -158,6 +166,6 @@
 			</div>
 		</div>
 <%@ include file="/views/common/header&footer/footer.jsp"%>
-<script type="text/javascript" src="/resources/js/auction.js"></script>
+
 </body>
 </html>

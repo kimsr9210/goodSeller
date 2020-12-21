@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/auctionDetail.css" />	
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -19,6 +20,54 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<script>
+//게시물 상세 페이지 사진 변경
+$(function() {
+	var mainSrc = $("#main-img>img").attr("src");
+
+	$(".sub-img>img").click(function() {
+		var mSrc = $("#main-img>img").attr("src");
+		var subSrc = $(this).attr("src");
+		if (mSrc == subSrc) {
+			$("#main-img>img").attr("src", mainSrc);
+			$(this).css("box-shadow", "");
+		} else {
+			$("#main-img>img").attr("src", subSrc);
+			$(".sub-img>img").css("box-shadow", "");
+			$(this).css("box-shadow", "0px 0px 10px #A4A4A4");
+		}
+	});
+
+});
+
+// 관심 상품 등록
+$(function() {
+	var result;
+	$("#InterestedBtn").click(function() {
+		if (result == null) {
+			result = confirm('관심상품으로 등록 하시겠습니까?');
+			if (result == true) {
+				$(this).attr("class", "btn btn-warning float-right");
+			} else {
+				result = null;
+			}
+			
+		}else{
+			if(result == true)
+				{
+					result = confirm('관심상품등록을 취소 하시겠습니까?');
+					if(result == true)
+						{
+						$(this).attr("class", "btn btn-secondary float-right");
+						result = null;
+						}
+				} else {
+					result = true;
+				}
+		}
+	});
+});
+</script>
 <div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 		<!-- contents  -->
@@ -130,6 +179,6 @@
 	</div>
 		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>
-	<script type="text/javascript" src="/resources/js/auction.js"></script>
+
 </body>
 </html>
