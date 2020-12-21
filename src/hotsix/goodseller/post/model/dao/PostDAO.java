@@ -105,6 +105,7 @@ public class PostDAO {
 				p.setSubCategory(rset.getString("subCategory"));
 				p.setSell_yn(rset.getString("sell_yn").charAt(0));
 				p.setDel_yn(rset.getString("del_yn").charAt(0));
+				p.setHit(rset.getInt("hit"));
 				
 				list.add(p);
 			}
