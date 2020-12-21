@@ -31,13 +31,13 @@
             background-color: white;
             z-index: 2;
             text-align: left;
+            border: 1px solid #CCCCCC;
         }
         
         #main-menu>li{
             list-style-type: none;
             margin: 0;
             display: none;
-            border: 1px solid #CCCCCC;
             border-top: 0;
             overflow: hidden;
         }
@@ -56,9 +56,7 @@
             display: block;
             text-decoration: none;
             color: black;
-            font-size: 12px;
             transition: 0.1s;
-            font-weight: 500;
         }
         
         #logo-img{
