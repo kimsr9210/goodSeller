@@ -44,7 +44,7 @@
 
 .card:hover {
 	cursor:pointer;
-	box-shadow: 0px 0px 10px #A4A4A4;
+	box-shadow: 0px 0px 3px #9E9E9E;
 }
 
 #postImgMain:hover{
@@ -62,24 +62,33 @@
 }
 .card-title{
 	z-index: 1;
-	font-weight : 800;
-	height: 40px;
+	height: 30px;
 	overflow: hidden;
+	font-size: 12px;
 }
 .card-text{
 	z-index: 1;
 	overflow: hidden;
 	font-weight: 600;
+	font-size: 12px;
 }
 .startPrice{
-	font-weight: 500;
-	color: red;
+	font-weight: bold;
+	color: #ED4C00;
 	font-size: 18px;
 }
 .buyPrice{
-	font-weight: 500;
+	font-weight: bold;
 	color: #5B5AFF;
 	font-size: 18px;
+}
+#postImgBox{
+	height:300px;
+	overflow:hidden;
+}
+#postClick{
+	color:black;
+	text-decoration: none;
 }
 </style>
 <%
@@ -122,9 +131,10 @@
 							}
 						%>
 										<div class="col-md-3">
+										<a id="postClick" href = "/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<div style="height:300px;overflow:hidden;">
+												<div id="postImgBox">
 													<img id="postImgMain"
 													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
@@ -138,6 +148,7 @@
 
 												</div>
 											</div>
+											</a>
 										</div>
 						<%} %>		
 					</div>

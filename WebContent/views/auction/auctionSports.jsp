@@ -117,9 +117,10 @@ $(function() {
 							}
 						%>
 										<div class="col-md-3">
+										<a id="postClick" href = "/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
 											<div class="card"
 												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<div style="height:300px;overflow:hidden;">
+												<div id="postImgBox">
 													<img id="postImgMain"
 													src="/resources/file/<%=p.getMainImgName() %>"
 													class="card-img-top" alt="...">
@@ -127,20 +128,21 @@ $(function() {
 												<div class="card-body">
 													<h6 class="card-title"><%=subject %></h6>
 													<p class="card-text">
-														현재 입찰금 : <%=formatter.format(p.getStartPrice()) %><br>
-														즉시 구매가 : <%=formatter.format(p.getBuyPrice()) %>
+														현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span> 원<br>
+														즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span> 원
 													</p>
 
 												</div>
 											</div>
+											</a>
 										</div>
-						<%} %>		
+						<%} %>			
 					</div>
 				</div>
 			</div>
 				<div id="core-contents-4" class="row">
 					<div class="col-12 p-0">
-						<a href="/views/auction/auctionInsert.jsp"><button type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
+						<a href="/views/auction/auctionInsert.jsp"><button id="insertBtn" type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
 					</div>
 				</div>
 				<div id="core-contents-5" class="row">
