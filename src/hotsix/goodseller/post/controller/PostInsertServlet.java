@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.post.controller;
+package hotsix.goodseller.post.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import hotsix.goodseller.file.model.service.FileService;
 import hotsix.goodseller.file.model.vo.FileData;
 import hotsix.goodseller.member.model.vo.Member;
-import hotsix.goodseller.user.post.model.service.PostService;
+import hotsix.goodseller.post.model.service.PostService;
 
 /**
  * Servlet implementation class PostInsertServlet

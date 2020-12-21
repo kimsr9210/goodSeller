@@ -1,7 +1,6 @@
-package hotsix.goodseller.user.post.controller;
+package hotsix.goodseller.post.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.post.model.service.PostService;
-import hotsix.goodseller.user.post.model.vo.Post;
+import hotsix.goodseller.post.model.service.PostService;
+import hotsix.goodseller.post.model.vo.Post;
 
 /**
- * Servlet implementation class PostIndexPage
+ * Servlet implementation class PostDetailPage
  */
-@WebServlet("/index.do")
-public class PostIndexPage extends HttpServlet {
+@WebServlet("/auctionDetailPage.do")
+public class PostDetailPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostIndexPage() {
+    public PostDetailPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +31,17 @@ public class PostIndexPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<Post> list = new PostService().selectHitPost();
 		
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		
-		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-		request.setAttribute("list", list);
-		view.forward(request, response);
+		Post p = new PostService().auctionDetail(postNo);
+		
+		System.out.println(postNo);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");
+		request.setAttribute("post", p);
+		view.forward(request, response);		
+		
 	}
 
 	/**

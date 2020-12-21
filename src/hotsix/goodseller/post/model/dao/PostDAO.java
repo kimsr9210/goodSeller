@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.post.model.dao;
+package hotsix.goodseller.post.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.board.model.vo.Board;
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.post.model.vo.Post;
+import hotsix.goodseller.post.model.vo.Post;
 
 public class PostDAO {
 

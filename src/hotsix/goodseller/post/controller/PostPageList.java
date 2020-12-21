@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.post.controller;
+package hotsix.goodseller.post.controller;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.post.model.service.PostService;
-import hotsix.goodseller.user.post.model.vo.PostPageData;
+import hotsix.goodseller.post.model.service.PostService;
+import hotsix.goodseller.post.model.vo.PostPageData;
 
 /**
  * Servlet implementation class PostClothing

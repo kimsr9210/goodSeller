@@ -1,7 +1,7 @@
-package hotsix.goodseller.user.post.controller;
+package hotsix.goodseller.post.controller;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.post.model.service.PostService;
+import hotsix.goodseller.post.model.service.PostService;
+import hotsix.goodseller.post.model.vo.Post;
 
 /**
- * Servlet implementation class PostMainPageServlet
+ * Servlet implementation class PostIndexPage
  */
-@WebServlet("/auctionMain.do")
-public class PostMainPageServlet extends HttpServlet {
+@WebServlet("/index.do")
+public class PostIndexPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostMainPageServlet() {
+    public PostIndexPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +32,13 @@ public class PostMainPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		DecimalFormat formatter = new DecimalFormat("###,###");
-		//카테고리가 무엇인지
+
+		ArrayList<Post> list = new PostService().selectHitPost();
 		
-		String MC_Clothing = null;
-		String MC_Living = null;
-		String MC_HomeAppliances = null;
-		String MC_Digital = null;
-		String MC_Books = null;
-		String MC_Beauty = null;
-		String MC_Sports = null;
 		
+		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+		request.setAttribute("list", list);
+		view.forward(request, response);
 	}
 
 	/**
