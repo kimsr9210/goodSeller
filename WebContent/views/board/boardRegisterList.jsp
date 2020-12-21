@@ -40,7 +40,7 @@
 			<div id="container p-0 m-0">
 
 				<div class="row title p-0 m-0">
-					<div class="col-12 text-center p-0 m-0">신고게시판 리스트</div>
+					<div class="col-12 text-center p-0 m-0">[관리자] 신고게시판 리스트</div>
 				</div>
 				<div class="row p-0 m-0">
 					<div class="col-12 p-0 searchBar">
@@ -84,7 +84,7 @@
 				<div class="row p-0 m-0 line-content text-center">
 					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
 					
-					<div class="col-12 col-md-5 p-0"><a href=""=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
+					<div class="col-12 col-md-5 p-0"><a href="/boardRegisterOneClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
 					<div class="col-3 col-md-2 p-0 ">11</div>
 					<div class="col-2 col-md-1 p-0 ">test</div>
