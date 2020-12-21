@@ -54,7 +54,7 @@ public class MemberFindFullIdEmailServlet extends HttpServlet {
 			out.println("<script>alert('메일 발송이 실패했습니다.');</script>");
 		}
 		
-		out.println("<script>location.replace('/index.jsp');</script>");
+		out.println("<script>location.replace('/index.do');</script>");
 		
 	}
 

@@ -60,8 +60,8 @@ public class PostPageList extends HttpServlet {
 		case "스포츠 레저": cate="auctionSports";break;
 		}
 		
-		System.out.println(cate);
-		System.out.println(subCategory);
+		//System.out.println(cate);
+		//System.out.println(subCategory);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/auction/"+cate+".jsp");
 		request.setAttribute("PostPageData", ppd);

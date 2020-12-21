@@ -1,4 +1,4 @@
-package hotsix.goodseller.member.controller;
+package hotsix.goodseller.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,16 +14,16 @@ import hotsix.goodseller.member.model.service.MemberService;
 import hotsix.goodseller.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberLoginServlet
+ * Servlet implementation class adminLoginServlet
  */
-@WebServlet("/memberLogin.do")
-public class MemberLoginServlet extends HttpServlet {
+@WebServlet("/adminLogin.do")
+public class adminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLoginServlet() {
+    public adminLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class MemberLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 		
 		String userId=request.getParameter("userId");
 		String userPw=request.getParameter("userPw");
@@ -44,17 +44,21 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		PrintWriter out=response.getWriter();
 		
-		if(m!=null) {
-			HttpSession session=request.getSession();
-			session.setAttribute("member", m);
-			response.sendRedirect("/index.do");
-			
-		} else {
+		if(m==null) {
 			out.println("<script>alert('ID 또는 PW를 확인해주세요');</script>");
 		}
+		else {
+			if(!m.getUserId().equals("user")) {
+				out.println("<script>alert('관리자 아이디로 로그인해주세요');</script>");
+			}
+			else {
+				HttpSession session=request.getSession();
+				session.setAttribute("admin", m);
+				response.sendRedirect("/views/admin/adminIndex.jsp");
+			}
+		}
 		
-		out.println("<script>location.replace('/views/member/memberLogin.jsp');</script>");
-
+		out.println("<script>location.replace('/views/admin/adminLogin.jsp');</script>");
 	}
 
 	/**

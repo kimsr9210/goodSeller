@@ -66,6 +66,7 @@
 					<br>
 					<p>사업자 등록번호 : 123-45-678910 &nbsp;&nbsp;서울특별시 영등포구</p>
 					<p>@HotSixMarket Inc.</p>
+					<p><a href="/views/admin/adminLogin.jsp">관리자 페이지</a></p>
 				</div>
 				<div class="col-3"></div>
 			</div>

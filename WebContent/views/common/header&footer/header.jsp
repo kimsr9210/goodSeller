@@ -26,6 +26,36 @@
 	
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
+<!-- font 사용 -->
+<style>
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TmoneyRoundWindExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ #main-menu>li>a{
+ 	font-family: Binggrae-Bold;
+ 	font-size: 13px;
+ }
+ #side-menu>li>a{
+ 	font-family: Binggrae-Bold;
+ }
+ #side-navi>a{
+ 	font-family: Binggrae-Bold;
+ }
+ #tooltiptext-search{
+ 	font-family: Jeju Myeongjo;
+ }
+ 
+</style>
+
 </head>
 <body>
 	<div id="header">
@@ -48,7 +78,7 @@
 					<li><a href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</a></li>
 					<li><a href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</a></li>
 					<li><a href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</a></li>
-					<li><a href="/auctionList.do?mainCategory=스포츠&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
+					<li><a href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</a></li>
 				</ul>
 				<span id="tooltiptext-main">카테고리</span>
 
@@ -90,7 +120,7 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;Q & A</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;자유게시판</a></li>
 						<li><a href="/views/board/boardRegister.jsp">&nbsp;&nbsp;&nbsp;&nbsp;신고게시판</a></li>
 						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;이용안내</a></li>
 					</ul>

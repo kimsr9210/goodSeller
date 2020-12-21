@@ -1,0 +1,140 @@
+/* div{
+	border: 0px solid black;
+	text-align: center;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+} */
+
+/*--contents--*/
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+/* font 설정 */
+#mainCate{
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+
+#subCategory>li>a{
+	font-family: Binggrae-Bold;
+	font-size: 15px;
+}
+
+
+#core-contents-1>span {
+	height: 15%;
+	margin: 20px auto;
+	margin-bottom: 0px;
+}
+
+#core-contents-2 {
+	height: 15%;
+}
+
+#insertBtn {
+	margin: 5px auto;
+}
+
+#core-contents-3 {
+	height: 100%;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#core-contents-4 {
+	height: 50px;
+}
+
+#goods {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.card {
+	width: 95%;
+	height: 95%;
+	margin: 5px auto;
+	border: 1px solid white;
+	border-radius: 10%;
+	overflow: hidden;
+}
+
+.card:hover {
+	cursor:pointer;
+	box-shadow: 0px 0px 3px #9E9E9E;
+}
+
+#postImgMain:hover{
+	transform: scale(1.02);
+}
+
+#postImgMain{
+	border-radius: 10%;
+	transform: scale(1);
+	transition: all 0.2s ease-in-out;
+}
+
+.nav-item {
+	margin: 0 auto;
+}
+.nav-link{
+	color: black;
+}
+#subCategory>li>a:hover{
+    color: #5B5AFF;
+    font-weight: 800;
+    border:0;
+}
+
+
+#subCategory{
+	border:0;
+}
+#postImgMain{
+    overflow: hidden;
+}
+.card-title{
+	z-index: 1;
+	height: 30px;
+	overflow: hidden;
+	font-size: 12px;
+}
+.card-text{
+	z-index: 1;
+	overflow: hidden;
+	font-weight: 600;
+	font-size: 12px;
+}
+.startPrice{
+	font-weight: bold;
+	color: #ED4C00;
+	font-size: 18px;
+}
+.buyPrice{
+	font-weight: bold;
+	color: #5B5AFF;
+	font-size: 18px;
+}
+#postImgBox{
+	height:250px;
+	overflow:hidden;
+}
+#postClick{
+	color:black;
+	text-decoration: none;
+}
+
+

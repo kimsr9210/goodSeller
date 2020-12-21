@@ -70,7 +70,7 @@ public class MemberJoinServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script>alert('회원가입 실패 관리자에게 문의하세요');</script>");
-			out.println("<script>location.replace('/index.jsp');</script>");
+			out.println("<script>location.replace('/index.do');</script>");
 		}
 	}
 

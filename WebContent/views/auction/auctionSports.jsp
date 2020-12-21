@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/auctionMain.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/auctionPage.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -27,25 +27,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
-<!--    폰트-->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-$(function() {
-	$(".card").click(function() {
-		location.href = "/views/auction/auctionDetailPage.jsp";
-	});
-});
-</script>
 <%@ include file="/views/common/header&footer/header.jsp"%>
 <%
 	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
@@ -98,11 +82,11 @@ $(function() {
 		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<h3>스포츠&레저</h3>
+					<span id="mainCate">스포츠&레저</span>
 				</div>
 				<div id="core-contents-2" class="row">
-					<div class="d-none d-md-block col-md-3"></div>
-					<div class="col-md-6">
+					<div class="d-none d-md-block col-md-1"></div>
+					<div class="col-12 col-md-10">
 						<ul id="subCategory"class="nav nav-tabs">
 							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">골프</a></li>
 							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=스키/보드">스키/보드</a></li>
@@ -111,45 +95,44 @@ $(function() {
 							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=헬스/요가/필라테스">헬스/요가/필라테스</a></li>
 						</ul>
 					</div>
-					<div class="d-none d-md-block col-md-3"></div>
+					<div class="d-none d-md-block col-md-1"></div>
 				</div>
 				<br>
 				<div id="core-contents-3" class="row">
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
 						<%for(Post p : list){ %>
-						<%
+							<%
 							if(p.getSubject().length()>=28){
 								subject = p.getSubject().substring(0,25)+"...";
 							} else{
 								subject = p.getSubject();
 							}
-						%>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<div style="height:300px;overflow:hidden;">
-													<img id="postImgMain"
-													src="/resources/file/<%=p.getMainImgName() %>"
-													class="card-img-top" alt="...">
-												</div>
-												<div class="card-body">
-													<h6 class="card-title"><%=subject %></h6>
-													<p class="card-text">
-														현재 입찰금 : <%=formatter.format(p.getStartPrice()) %><br>
-														즉시 구매가 : <%=formatter.format(p.getBuyPrice()) %>
-													</p>
-
-												</div>
-											</div>
+							%>
+							<div class="col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0;border-radius: 10%;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
-						<%} %>		
+										<div class="card-body">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
+							<%} %>			
 					</div>
 				</div>
 			</div>
 				<div id="core-contents-4" class="row">
 					<div class="col-12 p-0">
-						<a href="/views/auction/auctionInsert.jsp"><button type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
+						<a href="/views/auction/auctionInsert.jsp"><button id="insertBtn" type="button" class="btn btn-outline-dark float-right">상품등록</button></a>
 					</div>
 				</div>
 				<div id="core-contents-5" class="row">

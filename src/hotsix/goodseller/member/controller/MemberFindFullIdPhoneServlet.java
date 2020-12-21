@@ -57,7 +57,7 @@ public class MemberFindFullIdPhoneServlet extends HttpServlet {
 			out.println("<script>alert('문자 발송이 실패했습니다.');</script>");
 		}
 		
-		out.println("<script>location.replace('/index.jsp');</script>");
+		out.println("<script>location.replace('/index.do');</script>");
 
 		
 	}

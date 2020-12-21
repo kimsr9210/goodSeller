@@ -19,7 +19,7 @@ public class PostDAO {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,NULL,NULL,?,?,?,'N','N',0)";
+		String query = "INSERT INTO POSTTBL VALUES(POSTTBL_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?,?,?,NULL,?,?,?,'N','N',0)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -34,9 +34,10 @@ public class PostDAO {
 			pstmt.setString(9, subChangedFileName_4);
 			pstmt.setInt(10, sPrice);
 			pstmt.setInt(11, bPrice);
-			pstmt.setString(12, sellMethod);
-			pstmt.setString(13, mainCategory);
-			pstmt.setString(14, subCategory);
+			pstmt.setInt(12, sPrice);
+			pstmt.setString(13, sellMethod);
+			pstmt.setString(14, mainCategory);
+			pstmt.setString(15, subCategory);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -271,6 +272,56 @@ public class PostDAO {
 			}
 			
 			return list;
+		}
+
+		public Post auctionDetail(Connection conn, int postNo) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			Post p = null;
+			
+			String query = "SELECT * FROM POSTTBL WHERE postNo = ?";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, postNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return p;
 		}
 
 }
