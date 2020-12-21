@@ -1,11 +1,11 @@
-package hotsix.goodseller.user.file.model.dao;
+package hotsix.goodseller.file.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.file.model.vo.FileData;
+import hotsix.goodseller.file.model.vo.FileData;
 
 public class FileDAO {
 

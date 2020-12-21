@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.file.model.vo;
+package hotsix.goodseller.file.model.vo;
 
 import java.sql.Timestamp;
 
