@@ -67,5 +67,25 @@ public class PostService {
 		
 		return p;
 	}
+	public ArrayList<Post> mainCategoryPost(String mainClothing) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.mainCategoryPost(conn, mainClothing);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public void updateHit(int postNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = pDAO.updateHit(conn, postNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		
+	}
 
 }

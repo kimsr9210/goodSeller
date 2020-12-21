@@ -48,10 +48,7 @@ $(function() {
 });
 </script>
 <%
-	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
-	String subCategory = (String)request.getAttribute("subCategory");
-	ArrayList<Post> list = ppd.getList();
-	String pageNavi = ppd.getPageNavi();
+	ArrayList<Post> clothingList = (ArrayList<Post>)request.getAttribute("clothingList");
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	String subject = "";
 %>
@@ -178,66 +175,35 @@ $(function() {
 								<div class="carousel-item active">
 
 									<div id="goods" class="row">
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
+									
+						<%for(Post p : clothingList){ %>
+							<%
+							if(p.getSubject().length()>=28){
+								subject = p.getSubject().substring(0,25)+"...";
+							} else{
+								subject = p.getSubject();
+							}
+							%>
+							<div class="col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0;border-radius: 10%;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
+										<div class="card-body">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>원
+												<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>원
+											</p>
 										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<img
-													src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg"
-													class="card-img-top" alt="...">
-												<div class="card-body">
-													<h6 class="card-title">(판매자가 제목입력)</h6>
-													<p class="card-text">
-														현재 입찰금 : 50,000원<br>즉시구매가 : 150,000원
-													</p>
-
-												</div>
-											</div>
-										</div>
+									</div>
+								</a>
+							</div>
+							<%} %>			
+							
+							
+							//
 									</div>
 
 								</div>

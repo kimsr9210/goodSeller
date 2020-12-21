@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hotsix.goodseller.user.board.model.service.BoardService;
 import hotsix.goodseller.user.post.model.service.PostService;
 import hotsix.goodseller.user.post.model.vo.Post;
 
@@ -35,7 +36,7 @@ public class PostDetailPage extends HttpServlet {
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		
 		Post p = new PostService().auctionDetail(postNo);
-		
+		new PostService().updateHit(postNo);
 		System.out.println(postNo);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");

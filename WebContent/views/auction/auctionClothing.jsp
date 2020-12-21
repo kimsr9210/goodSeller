@@ -113,7 +113,7 @@
 							%>
 							<div class="col-md-3">
 								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-									<div class="card" style="border:0;border-radius: 10%;">
+									<div class="card" style="border:0; border-radius: 10%;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>

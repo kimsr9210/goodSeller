@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.post.model.vo.Post;
 
 public class PostDAO {
@@ -75,7 +74,7 @@ public class PostDAO {
 		int end = currentPage*recordCountPerPage;
 		
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY PostNO DESC) AS ROW_NUM, POSTTBL.* "+
-						"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=?) WHERE ROW_NUM between ? and ?";
+						"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=? AND SELL_YN='N') WHERE ROW_NUM between ? and ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, mainCategory);
@@ -205,7 +204,7 @@ public class PostDAO {
 			int postTotalCount = 0;
 			
 			String query = "SELECT COUNT(*) AS TOTALCOUNT " + 
-					"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=?";
+					"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=? AND SELL_YN='N' ";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -280,7 +279,7 @@ public class PostDAO {
 			ResultSet rset = null;
 			Post p = null;
 			
-			String query = "SELECT * FROM POSTTBL WHERE postNo = ?";
+			String query = "SELECT * FROM POSTTBL WHERE postNo = ? ";
 			try {
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, postNo);
@@ -322,6 +321,85 @@ public class PostDAO {
 			}
 			
 			return p;
+		}
+
+		public ArrayList<Post> mainCategoryPost(Connection conn, String mainClothing) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 5";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, mainClothing);
+				
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+					
+					
+					System.out.println(p);
+					
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+			
+		}
+
+		public int updateHit(Connection conn, int postNo) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+
+			String query = "UPDATE POSTTBL SET hit = hit+1 where postNo=?";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, postNo);
+				result = pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+
+			return result;
+
 		}
 
 }
