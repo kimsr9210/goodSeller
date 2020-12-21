@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.board.controller;
+package hotsix.goodseller.board.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.board.model.service.BoardService;
-import hotsix.goodseller.user.board.model.vo.BoardPageData;
+import hotsix.goodseller.board.model.service.BoardService;
+import hotsix.goodseller.board.model.vo.BoardPageData;
 
 /**
  * Servlet implementation class BoardSearchServlet

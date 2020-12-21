@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.board.controller;
+package hotsix.goodseller.board.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.board.model.service.BoardService;
-import hotsix.goodseller.user.board.model.vo.Board;
+import hotsix.goodseller.board.model.service.BoardService;
+import hotsix.goodseller.board.model.vo.BoardPageData;
 
 /**
- * Servlet implementation class BoardPostClickServlet
+ * Servlet implementation class BoardAllListPageServlet
  */
-@WebServlet("/boardPostClick.do")
-public class BoardPostClickServlet extends HttpServlet {
+@WebServlet("/boardAllListPage.do")
+public class BoardAllListPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPostClickServlet() {
+    public BoardAllListPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +31,22 @@ public class BoardPostClickServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//이전 페이지에서 넘어온 값 저장
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		int currentPage;//현재 페이지 값을 가지고 있는 변수
 		
-		//비즈니스 로직 처리 
-		Board board = new BoardService().postOneClick(boardNo);
-		new BoardService().updateHit(boardNo);
-		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardPostOneClick.jsp");
-		request.setAttribute("board", board);
+		if(request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		//비즈니스 로직 처리
+		BoardPageData bpd = new BoardService().selectAllListPage(currentPage);
+		
+		//결과 처리
+		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardMain.jsp");
+		request.setAttribute("pageData", bpd);
 		view.forward(request, response);
+		//System.out.println(bpd.getPageNavi());
 	}
 
 	/**

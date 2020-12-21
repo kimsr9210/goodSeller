@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.board.model.vo;
+package hotsix.goodseller.board.model.vo;
 
 import java.sql.Date;
 
