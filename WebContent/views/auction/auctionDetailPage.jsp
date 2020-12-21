@@ -138,7 +138,7 @@ $(function() {
 								</div>
 							</div>	
 							<div class="col-12 p-1">
-								<button type="button" class="btn btn-primary btn-lg btn-block "onclick="window.open('/views/auction/auctionFunction', '입찰하기', 'width=500px, height=500px')"
+								<button type="button" class="btn btn-primary btn-lg btn-block "onclick="window.open('/views/auction/auctionFunction.jsp', '입찰하기', 'width=500px, height=500px')"
 								>입찰 하기</button>
 							</div>
 						</div>
