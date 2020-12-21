@@ -317,7 +317,7 @@
 									<div class="col-12 col-md-8 border-0">
 										<input type="submit" class="btn btn-outline-secondary"
 											value="회원가입" onclick="return check();" /> <a
-											href="/index.jsp" class="btn btn-outline-secondary">돌아가기</a>
+											href="/index.do" class="btn btn-outline-secondary">돌아가기</a>
 									</div>
 									<div class="d-none d-md-block col-  md-2 border-0"></div>
 								</div>
