@@ -37,25 +37,20 @@ request.setCharacterEncoding("UTF-8");
 		String userId=request.getParameter("userId");
 		String userPw=request.getParameter("userPw");
 		
-		Member m=new MemberService().memberLogin(userId, userPw);
+		Member admin=new MemberService().adminLogin(userId, userPw);
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out=response.getWriter();
 		
-		if(m==null) {
+		if(admin!=null) {
+			HttpSession session=request.getSession();
+			session.setAttribute("admin", admin);
+			response.sendRedirect("/views/admin/adminIndex.jsp");
+			
+		} else {
 			out.println("<script>alert('ID 또는 PW를 확인해주세요');</script>");
-		}
-		else {
-			if(!m.getUserId().equals("user")) {
-				out.println("<script>alert('관리자 아이디로 로그인해주세요');</script>");
-			}
-			else {
-				HttpSession session=request.getSession();
-				session.setAttribute("admin", m);
-				response.sendRedirect("/views/admin/adminIndex.jsp");
-			}
 		}
 		
 		out.println("<script>location.replace('/views/admin/adminLogin.jsp');</script>");

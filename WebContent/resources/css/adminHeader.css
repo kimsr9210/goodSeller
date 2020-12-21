@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#header {
+	background-color: #595959;
+	
+}
+
+#contents-header {
+	height: 100%;
+	text-align: left;
+	color: white;
+	font-size: 12px;
+}

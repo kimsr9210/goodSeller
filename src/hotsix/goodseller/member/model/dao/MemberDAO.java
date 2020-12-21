@@ -342,4 +342,46 @@ public class MemberDAO {
 		return result;
 		
 	}
+
+	public Member adminLogin(Connection conn, String userId, String userPw) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member admin = null;
+
+		String query = "SELECT * FROM MEMBER WHERE USERID=? AND USERPW=? AND END_YN='N' AND USERNO BETWEEN 1 AND 100";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPw);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				admin = new Member();
+				admin.setUserNo(rset.getInt("USERNO"));
+				admin.setUserId(rset.getString("USERID"));
+				admin.setUserPw(rset.getString("USERPW"));
+				admin.setUserName(rset.getString("USERNAME"));
+				admin.setUserNick(rset.getString("USERNICK"));
+				admin.setBirth(rset.getString("BIRTH"));
+				admin.setGender(rset.getString("GENDER").charAt(0));
+				admin.setEmail(rset.getString("EMAIL"));
+				admin.setPhone(rset.getString("PHONE"));
+				admin.setAddress(rset.getString("ADDRESS"));
+				admin.setReported(rset.getInt("REPORTED"));
+				admin.setCancellation(rset.getInt("CANCELLATION"));
+				admin.setEnrollDate(rset.getDate("ENROLLDATE"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return admin;
+	}
 }

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#footer {
+	background-color: #595959;
+}
+
+#contents-footer {
+	height: 100%;
+	text-align: left;
+	color: white;
+	font-size: 12px;
+}
+
+#contents-footer > p {
+	margin: 0px;
+	font-size: 12px;
+	color: white;
+	text-align: center;
+}
+
+ 

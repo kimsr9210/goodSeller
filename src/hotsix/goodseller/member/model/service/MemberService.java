@@ -110,4 +110,11 @@ public class MemberService {
 		
 		
 	}
+
+	public Member adminLogin(String userId, String userPw) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member admin=mDAO.adminLogin(conn, userId, userPw);
+		JDBCTemplate.close(conn);
+		return admin;
+	}
 }
