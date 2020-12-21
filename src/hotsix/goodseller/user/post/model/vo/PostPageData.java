@@ -1,4 +1,4 @@
-package hotsix.goodseller.post.model.vo;
+package hotsix.goodseller.user.post.model.vo;
 
 import java.util.ArrayList;
 

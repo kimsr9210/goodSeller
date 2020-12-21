@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.post.model.dao.PostDAO;
-import hotsix.goodseller.post.model.vo.Post;
-import hotsix.goodseller.post.model.vo.PostPageData;
+import hotsix.goodseller.user.post.model.vo.Post;
+import hotsix.goodseller.user.post.model.vo.PostPageData;
 
 public class PostService {
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.board.model.vo.Board;
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.post.model.vo.Post;
+import hotsix.goodseller.user.post.model.vo.Post;
 
 public class PostDAO {
 

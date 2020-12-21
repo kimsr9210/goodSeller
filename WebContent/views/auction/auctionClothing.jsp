@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="hotsix.goodseller.post.model.vo.PostPageData" %>
-<%@ page import="hotsix.goodseller.post.model.vo.Post" %>
+<%@ page import="hotsix.goodseller.user.post.model.vo.PostPageData" %>
+<%@ page import="hotsix.goodseller.user.post.model.vo.Post" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="hotsix.goodseller.member.model.vo.Member" %>
 <%@ page import="java.text.DecimalFormat" %>

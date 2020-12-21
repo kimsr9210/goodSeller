@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.post.model.service.PostService;
-import hotsix.goodseller.post.model.vo.PostPageData;
+import hotsix.goodseller.user.post.model.vo.PostPageData;
 
 /**
  * Servlet implementation class PostClothing
