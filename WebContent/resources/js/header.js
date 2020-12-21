@@ -48,7 +48,7 @@
 //            새로고침
             $('#logo-img').click(function(){
                 location.reload();
-            })
+            });
             
             $('#main-navi-img').hover(function(){
                 if($('#side-menu').children().css('display')=='block'){
@@ -58,7 +58,7 @@
                 }
             }, function(){
                 $('#tooltiptext-main').css('visibility','hidden');
-            })
+            });
             
             $('#menu-img2').hover(function(){
                 if($('#side-menu').children().css('display')=='block'){
@@ -68,17 +68,28 @@
                 }
             }, function(){
                 $('#tooltiptext-side').css('visibility','hidden');
-            })
+            });
             
             $('#login-box').hover(function(){
                 $('#tooltiptext-user').css('visibility','visible');
             }, function(){
                 $('#tooltiptext-user').css('visibility','hidden');
-            })
+            });
             
             $('#search-btn').hover(function(){
                 $('#tooltiptext-search').css('visibility','visible');
             }, function(){
                 $('#tooltiptext-search').css('visibility','hidden');
-            })
+            });
+            
+            $('#search-input').focus(function(){
+            	$(this).attr('placeholder','');
+            });
+            
+            $('#search-input').focusin(function(){
+        	$(this).attr('placeholder','');
+	        });
+	        $('#search-input').focusout(function(){
+	        	$(this).attr('placeholder','  찾고싶은 상품을 검색해주세요!');
+	        });
         })
