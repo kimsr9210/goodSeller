@@ -51,7 +51,6 @@ public class MemberJoinServlet extends HttpServlet {
 		String addr = addr1 + " " + addr2;
 		m.setAddress(addr);
 		m.setEmail(request.getParameter("email"));
-		m.setAccount(request.getParameter("account"));
 		
 		int result = new MemberService().memberJoin(m);
 		

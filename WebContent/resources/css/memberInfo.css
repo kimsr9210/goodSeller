@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+		::placeholder {
+			font-size: 0.7em;
+		}
         #contents-navi{
             margin-left: -40px;
             line-height: 50px;

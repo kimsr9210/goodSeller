@@ -14,7 +14,7 @@ public class MemberDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 
-		String query = "INSERT INTO MEMBER VALUES (MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT,'N')";
+		String query = "INSERT INTO MEMBER VALUES (MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT,'N')";
 		
 		int result = 0;
 		try {
@@ -28,7 +28,6 @@ public class MemberDAO {
 			pstmt.setString(7, m.getEmail());
 			pstmt.setString(8, m.getPhone());
 			pstmt.setString(9, m.getAddress());
-			pstmt.setString(10, m.getAccount());
 			result = pstmt.executeUpdate();
 	
 		} catch (SQLException e) {
@@ -66,7 +65,6 @@ public class MemberDAO {
 				m.setEmail(rset.getString("EMAIL"));
 				m.setPhone(rset.getString("PHONE"));
 				m.setAddress(rset.getString("ADDRESS"));
-				m.setAccount(rset.getString("ACCOUNT"));
 				m.setReported(rset.getInt("REPORTED"));
 				m.setCancellation(rset.getInt("CANCELLATION"));
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));
@@ -187,7 +185,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		
 		String query = "UPDATE MEMBER SET " + "userPw =?, " + "userNick = ?, " +
-				 "email =?, " + "phone =?, " + "address = ?, " + "account = ? WHERE userid=?";
+				 "email =?, " + "phone =?, " + "address = ? WHERE userid=?";
 
 		int result = 0;
 		
@@ -198,8 +196,7 @@ public class MemberDAO {
 			pstmt.setString(3, m.getEmail());
 			pstmt.setString(4, m.getPhone());
 			pstmt.setString(5, m.getAddress());
-			pstmt.setString(6, m.getAccount());
-			pstmt.setString(7, m.getUserId());
+			pstmt.setString(6, m.getUserId());
 			
 			result = pstmt.executeUpdate();
 			
@@ -244,7 +241,6 @@ public class MemberDAO {
 				m.setEmail(rset.getString("EMAIL"));
 				m.setPhone(rset.getString("PHONE"));
 				m.setAddress(rset.getString("ADDRESS"));
-				m.setAccount(rset.getString("ACCOUNT"));
 				m.setReported(rset.getInt("REPORTED"));
 				m.setCancellation(rset.getInt("CANCELLATION"));
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));
@@ -297,7 +293,6 @@ public class MemberDAO {
 				m.setEmail(rset.getString("EMAIL"));
 				m.setPhone(rset.getString("PHONE"));
 				m.setAddress(rset.getString("ADDRESS"));
-				m.setAccount(rset.getString("ACCOUNT"));
 				m.setReported(rset.getInt("REPORTED"));
 				m.setCancellation(rset.getInt("CANCELLATION"));
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));

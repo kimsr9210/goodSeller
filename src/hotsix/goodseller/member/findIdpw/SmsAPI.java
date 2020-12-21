@@ -20,10 +20,10 @@ import org.apache.http.HttpHost;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public class SmsAPI {
-	public static String appid = "goodseller66";
-	public static String apikey = "f61bd2c8417411eb92650cc47a1fcfae";
+	public static String appid = "goodSeller";
+	public static String apikey = "a9946018411b11ebb6810cc47a1fcfae";
 	public static String content = "";
-	public static String sender = "01056967949";
+	public static String sender = "01071658397";
 	public static String receiver = "";
 	
 	public boolean sendSms(String userName, String phone, String userIdPw, String IdPw) {

@@ -208,7 +208,7 @@
 											<button style="display:block" type="button" id="sendSms" class="btn btn-outline-secondary btn-sm mt-2">인증번호 발송</button>
 									
 											<input style="display:none" type="text" class="form-input form-control mt-2"
-											name="phone" id="inputAuthNum" maxlength="11"
+											name="authNum" id="inputAuthNum" maxlength="11"
 											placeholder="인증번호 입력" /> 
 											<button style="display:none" id="smsCheck" type="button" class="btn btn-outline-secondary btn-sm mt-2">인증</button>
 											<button style="display:none" id="changePhone" type="button" class="btn btn-outline-secondary btn-sm mt-2">번호변경</button>
@@ -296,17 +296,6 @@
 										이메일 <input type="text" class="form-input form-control"
 											name="email" id="email" placeholder="이메일"
 											onblur="emailCheck();" /> <span id="emailMessage"
-											class="checkMessage"></span>
-									</div>
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-								</div>
-
-								<div class="row border-0 my-3">
-									<div class="d-none d-md-block col-md-2 border-0"></div>
-									<div class="col-12 col-md-8 border-0">
-										계좌번호 <input type="text" class="form-input form-control"
-											name="account" id="account" placeholder="계좌번호"
-											onblur="accountCheck();" /> <span id="accountMessage"
 											class="checkMessage"></span>
 									</div>
 									<div class="d-none d-md-block col-md-2 border-0"></div>

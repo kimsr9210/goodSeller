@@ -13,7 +13,6 @@ public class Member {
 	private String email;
 	private String phone;
 	private String address;
-	private String account;
 	private int reported;
 	private int cancellation;
 	private Date enrollDate;
@@ -25,7 +24,7 @@ public class Member {
 	}
 
 	public Member(int userNo, String userId, String userPw, String userName, String userNick, String birth, char gender,
-			String email, String phone, String address, String account, int reported, int cancellation, Date enrollDate,
+			String email, String phone, String address, int reported, int cancellation, Date enrollDate,
 			char endYN) {
 		super();
 		this.userNo = userNo;
@@ -38,7 +37,6 @@ public class Member {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
-		this.account = account;
 		this.reported = reported;
 		this.cancellation = cancellation;
 		this.enrollDate = enrollDate;
@@ -123,14 +121,6 @@ public class Member {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
 	}
 
 	public int getReported() {

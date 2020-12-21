@@ -63,17 +63,17 @@ public class MemberWithdrawServlet extends HttpServlet {
 				
 				session.invalidate(); //탈퇴가 되었다면 세션을 파기해라
 				out.println("<script>alert('회원 탈퇴가 완료 되었습니다.');</script>");
-				out.println("<script>location.replace('/index.jsp');</script>");
+				out.println("<script>location.replace('/index.do');</script>");
 				//response.sendRedirect("/index.jsp");
 				
 			}else {
 				out.println("<script>alert('회원 탈퇴가 이루어 지지 않았습니다. 재시도 바랍니다.');</script>");
-				out.println("<script>location.replace('/index.jsp');</script>");
+				out.println("<script>location.replace('/index.do');</script>");
 			}
 		}else {
 			//사용자가 입력한 값과 실제 session에 저장된 값이 다르다면! (비밀번호가 틀렸다면!)
 			out.println("<script>alert('비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요');</script>");
-			out.println("<script>location.replace('/index.jsp');</script>");
+			out.println("<script>location.replace('/index.do');</script>");
 			
 		}
 		

@@ -1,3 +1,9 @@
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+  };
+}, true);
+
 $(function(){
 		$('#pwChange').click(function(){
 			$('#pw').css('display','none');
@@ -37,17 +43,26 @@ $(function(){
 			$('#chNickForm').css('display','none');
 			$('#nickChange').css('display','block');
 		});
-		$('#nickChangeOk').click(function(){
-			if ((/^[a-z][a-z0-9]{4,10}$/.test($("input[name='chNick']").val())) || 
-					(/^[가-힣][가-힣0-9]{1,5}$/.test($("input[name='chNick']").val()))){
-				if(confirm('닉네임을 변경하시겠습니까?')){
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				alert('올바른 닉네임 형식을 사용하세요.');
-				return false;
+		
+		$('#nickChangeOk').click(function() {
+			if((/^[a-z][a-z0-9]{4,10}$/.test($("input[name='chNick']").val())) || 
+				(/^[가-힣][가-힣0-9]{1,5}$/.test($("input[name='chNick']").val()))) {
+				$.ajax({
+					url: "/nickCheck.do",
+					data: {
+						userNickCheck: $("#chNick").val()
+					},
+					type: "post",
+					success: function(data){
+						if(data.result == "true"){
+							if(confirm("사용 가능한 닉네임 입니다. 사용하시겠습니까?")){
+								$('#updateNickForm').submit();
+							}
+						} else {
+							alert("중복된 닉네임 입니다.");
+						}
+					}
+				});	
 			}
 		});
 		
@@ -58,21 +73,86 @@ $(function(){
 		});
 		$('#phoneChangeCancel').click(function(){
 			$('#phone').css('display','block');
+			$('#sendSms').css('display','inline-block');
 			$('#chPhoneForm').css('display','none');
 			$('#phoneChange').css('display','block');
+			$('#phoneMessage').html('');
+			$('#phoneChangeOk').css('display','none');
+			$('#inputAuthNum').css('display','none');
+			$('#inputAuthNum').val('');
+			$('#chPhone').val('');
 		});
-		$('#phoneChangeOk').click(function(){
-			if (/^(010[1-9][0-9]{7})$/.test($("input[name='chPhone']").val())){
-				if(confirm('전화번호를 변경하시겠습니까?')){
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				alert('올바른 전화번호 형식을 사용하세요.');
-				return false;
-			}
-		});
+		
+		$(function() {
+			$('#sendSms').click(
+					function() {
+						if (((/^(010[1-9][0-9]{7})$/.test($("#chPhone").val())))) {
+							$.ajax({
+								url: "/phoneCheck.do",
+								data: {
+									receiver: $("#chPhone").val()
+								},
+								type: "post",
+								success: function(data){
+									if(data.result == "true"){
+										$('#phoneChangeOk').css('display','inline-block');
+										$('#inputAuthNum').css('display','block');
+										$('#phoneMessage').html('');
+										$('#sendSms').css('display','none');
+										$.ajax({
+											url: "/sendSms.do",
+											data: {
+												receiver: $("#chPhone").val()
+											},
+											type: "post"
+										});
+									} else {
+										alert("이미 가입된 전화번호 입니다.");
+										$('#phoneMessage').css('color', 'red');
+										$('#phoneMessage').html('이미 가입된 전화번호 입니다.');
+									}
+								}
+							});
+						} else {
+							$('#phoneMessage').css('color', 'red');
+							$('#phoneMessage').html('핸드폰번호는 010으로 시작해 11자리로 입력해주세요(- 제외하고 입력)');
+						}
+					});
+			$('#phoneChangeOk').click(
+					function() {
+						$.ajax({
+							url: "/smsCheck.do",
+							type : "post",
+							data: {
+								inputNum: $("#inputAuthNum").val()
+							},
+							success: function(data){
+								if(data.result == "true"){
+									if(confirm('번호인증 성공 전화번호를 변경하시겠습니까?')){
+										$('#updatePhoneForm').submit();
+										
+									}
+									$('#phone').css('display','block');
+									$('#sendSms').css('display','inline-block');
+									$('#chPhoneForm').css('display','none');
+									$('#phoneChange').css('display','block');
+									$('#phoneMessage').html('');
+									$('#phoneChangeOk').css('display','none');
+									$('#inputAuthNum').css('display','none');
+									$('#inputAuthNum').val('');
+									$('#chPhone').val('');
+								} else {
+									alert("옳바르지 않은 인증번호 입니다.");
+									$('#phoneMessage').html('올바르지 않은 인증번호');
+								}
+							}, error: function() {
+								alert("알수없는 오류 관리자에게 문의하세요.");
+								return false;
+							}
+						});
+					});
+		});		
+		
 		
 		$('#addrChange').click(function(){
 			$('#addr').css('display','none');
@@ -103,30 +183,6 @@ $(function(){
 		});
 		
 		
-		$('#accountChange').click(function(){
-			$('#account').css('display','none');
-			$('#chAccountForm').css('display','block');
-			$('#accountChange').css('display','none');
-		});
-		$('#accountChangeCancel').click(function(){
-			$('#account').css('display','block');
-			$('#chAccountForm').css('display','none');
-			$('#accountChange').css('display','block');
-		});
-		$('#accountChangeOk').click(function(){
-			if (/^[0-9]{8,12}/.test($("input[name='chAccount']").val())){
-				if(confirm('계좌번호를 변경하시겠습니까?')){
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				alert('올바른 계좌번호 형식을 사용하세요.');
-				return false;
-			}
-		});
-		
-		
 		$('#emailChange').click(function(){
 			$('#email').css('display','none');
 			$('#chEmailForm').css('display','block');
@@ -149,8 +205,7 @@ $(function(){
 				return false;
 			}
 		});
-	})
-	
+	});
 function addrSearch() {
 	//여기다가 테마 변경 코드 넣기
 	var themeObj = {

@@ -7,7 +7,6 @@ window.onload = function() {
 		emailMessage = document.getElementById("emailMessage");
 		phoneMessage = document.getElementById("phoneMessage");
 		addrMessage = document.getElementById("addrMessage");
-		accountMessage = document.getElementById("accountMessage");
 		
 		nickMessage.style.color = "red";
 		idMessage.style.color = "red";
@@ -23,7 +22,6 @@ window.onload = function() {
 		addr = document.getElementById("addr_address");
 		detailAddr = document.getElementById("addr_detailAddress");
 		email = document.getElementById("email");
-		account = document.getElementById("account");
 	}
 
 	function check() {
@@ -68,9 +66,6 @@ window.onload = function() {
 			return false;
 		} else if (!emailCheck()) {
 			email.focus();
-			return false;
-		} else if (!accountCheck()){
-			account.focus();
 			return false;
 		} else {
 			return true;
@@ -186,18 +181,6 @@ window.onload = function() {
 		}
 	}
 
-	function accountCheck() {
-		if (!(/^[0-9]{8,12}/.test(account.value))) //이메일 검사
-		{
-			accountMessage.style.color = "red";
-			accountMessage.innerHTML = "계좌번호 재확인 바람";
-			return false;
-		} else {
-			accountMessage.style.color = "blue";
-			accountMessage.innerHTML = "유효한 계좌번호입니다.";
-			return true;
-		}
-	}
 	function addrSearch() {
 		//여기다가 테마 변경 코드 넣기
 		var themeObj = {

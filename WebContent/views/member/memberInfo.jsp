@@ -127,11 +127,11 @@ if (m != null) {
 									<div class="col-3">닉네임</div>
 									<div id="nick" class="col-6"><%=m.getUserNick() %></div>
 									<div id="chNickForm" class="col-6" style="display: none">
-										<form action="/memberUpdate.do" method="post">
-											<input type="text" name="chNick"
+										<form id="updateNickForm" action="/memberUpdate.do" method="post">
+											<input type="text" name="chNick" id="chNick"
 												placeholder="변경할 닉네임 (영문,숫자 5~11자, 한글 2~6자)"
 												class="form-input form-control" /> <input id="nickChangeOk"
-												type="submit" value="변경" class="btn btn-outline-secondary" />
+												type="button" value="변경" class="btn btn-outline-secondary" />
 											<input id="nickChangeCancel" type="reset" value="취소"
 												class="btn btn-outline-secondary" />
 										</form>
@@ -175,13 +175,17 @@ if (m != null) {
 									<div class="col-3">전화번호</div>
 									<div id="phone" class="col-6"><%=m.getPhone() %></div>
 									<div id="chPhoneForm" class="col-6" style="display: none">
-										<form action="/memberUpdate.do" method="post">
-											<input type="text" name="chPhone"
-												placeholder="변경할 전화번호 (-빼고 입력)"
-												class="form-input form-control" /> <input id="phoneChangeOk"
-												type="submit" value="변경" class="btn btn-outline-secondary" />
-											<input id="phoneChangeCancel" type="reset" value="취소"
-												class="btn btn-outline-secondary" />
+										<form id="updatePhoneForm" action="/memberUpdate.do" method="post">
+											<input type="text" name="chPhone" id="chPhone"
+											placeholder="변경할 전화번호 (-빼고 입력)" class="form-input form-control" />
+											<input style="display:none" type="text" name="authNum" id="inputAuthNum"
+											placeholder="인증번호 입력" class="form-input form-control mt-3" />	
+											<span id="phoneMessage" style="display:block; font-size: 0.8em; color:red;"></span>
+											
+											<input id="sendSms" type="button" value="인증번호 발송" class="btn btn-outline-secondary" />
+											<input style="display:none" id="phoneChangeOk" type="button" value="인증&변경" 
+											class="btn btn-outline-secondary" />
+											<input id="phoneChangeCancel" type="reset" value="취소" class="btn btn-outline-secondary" />
 										</form>
 									</div>
 									<div class="col-3">
@@ -212,32 +216,6 @@ if (m != null) {
 									<div class="col-3">
 										<button style="display: block;" type="button" id="addrChange"
 											class="btn btn-outline-secondary btn-sm">주소 변경</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						
-						
-						<div class="modify-box-size">
-							<div class="container">
-								<div class="row">
-									<div class="col-3">계좌번호</div>
-									<div id="account" class="col-6"><%=m.getAccount() %></div>
-									<div id="chAccountForm" class="col-6" style="display: none">
-										<form action="/memberUpdate.do" method="post">
-											<input type="text" name="chAccount" placeholder="변경할 계좌번호"
-												class="form-input form-control" /> <input
-												id="accountChangeOk" type="submit" value="변경"
-												class="btn btn-outline-secondary" /> <input
-												id="accountChangeCancel" type="reset" value="취소"
-												class="btn btn-outline-secondary" />
-										</form>
-									</div>
-									<div class="col-3">
-										<button style="display: block;" type="button"
-											id="accountChange" class="btn btn-outline-secondary btn-sm">계좌번호
-											변경</button>
 									</div>
 								</div>
 							</div>
@@ -307,7 +285,7 @@ if (m != null) {
 	<%} else { %>
 	<script>
 		alert("세션 만료. 다시 로그인하여 주십시오");
-		location.href ="/index.jsp";
+		location.href ="/index.do";
 	</script>
 	<% } %>
 </body>

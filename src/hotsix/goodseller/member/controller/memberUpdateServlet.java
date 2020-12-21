@@ -48,11 +48,18 @@ public class memberUpdateServlet extends HttpServlet {
 		String addr2 = request.getParameter("detailAddr");
 		String address = addr1 + " " + addr2;
 		
-		String account = request.getParameter("chAccount");
-		
 		if(userPw != null) {
 			if(currentPw.equals(m.getUserPw())) {
-				m.setUserPw(userPw);
+				if(currentPw.equals(userPw)) {
+					response.setCharacterEncoding("UTF-8");
+					response.setContentType("text/html; charset=UTF-8");
+					
+					PrintWriter out = response.getWriter();
+					
+					out.println("<script>alert('현재 비밀번호와 동일한 비밀번호로 변경할 수 없습니다.');</script>");
+				} else {
+					m.setUserPw(userPw);
+				}
 			} else {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html; charset=UTF-8");
@@ -65,29 +72,12 @@ public class memberUpdateServlet extends HttpServlet {
 			}
 		}
 		if (userNick != null) {
-			String userNickCheck = new MemberService().nickCheck(userNick);
-			if(userNickCheck != null) {
-				response.setCharacterEncoding("UTF-8");
-				response.setContentType("text/html; charset=UTF-8");
-				
-				PrintWriter out = response.getWriter();
-				
-				out.println("<script>alert('중복된 닉네임입니다.');</script>");
-				out.println("<script>location.replace('/views/member/memberInfo.jsp');</script>");
-				
-			}
 			m.setUserNick(userNick);
-		}
-		if (phone != null) {
+		} if (phone != null) {
 			m.setPhone(phone);
-		}
-		if (addr1 != null && addr2 != null) {
+		} if (addr1 != null && addr2 != null) {
 			m.setAddress(address);
-		} 
-		if (account != null) {
-			m.setAccount(account);
-		}
-		if (email != null) {
+		} if (email != null) {
 			m.setEmail(email);
 		} 
 		int result = new MemberService().memberUpdate(m);
