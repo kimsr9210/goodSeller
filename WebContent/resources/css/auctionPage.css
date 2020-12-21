@@ -7,9 +7,42 @@
 } */
 
 /*--contents--*/
-#core-contents-1>h3 {
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24Dangdanghae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+/* font 설정 */
+#mainCate{
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+
+#subCategory>li>a{
+	font-family: Binggrae-Bold;
+	font-size: 15px;
+}
+
+
+#core-contents-1>span {
 	height: 15%;
-	margin: 30px auto;
+	margin: 20px auto;
+	margin-bottom: 0px;
 }
 
 #core-contents-2 {
@@ -40,6 +73,9 @@
 	width: 95%;
 	height: 95%;
 	margin: 5px auto;
+	border: 1px solid white;
+	border-radius: 10%;
+	overflow: hidden;
 }
 
 .card:hover {
@@ -66,6 +102,12 @@
 #subCategory>li>a:hover{
     color: #5B5AFF;
     font-weight: 800;
+    border:0;
+}
+
+
+#subCategory{
+	border:0;
 }
 #postImgMain{
     overflow: hidden;
@@ -93,10 +135,12 @@
 	font-size: 18px;
 }
 #postImgBox{
-	height:300px;
+	height:250px;
 	overflow:hidden;
 }
 #postClick{
 	color:black;
 	text-decoration: none;
 }
+
+

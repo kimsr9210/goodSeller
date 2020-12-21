@@ -30,13 +30,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-$(function() {
-	$(".card").click(function() {
-		location.href = "/views/auction/auctionDetailPage.jsp";
-	});
-});
-</script>
 <%@ include file="/views/common/header&footer/header.jsp"%>
 <%
 	PostPageData ppd = (PostPageData)request.getAttribute("PostPageData");
@@ -103,11 +96,10 @@ $(function() {
 		<div id="contents" class="menu-none">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<h3>가구&가전</h3>
+					<span id="mainCate">가구&가전</span>
 				</div>
 				<div id="core-contents-2" class="row">
-					<div class="d-none d-md-block col-md-3"></div>
-					<div class="col-md-6">
+					<div class="col-12">
 						<ul id="subCategory"class="nav nav-tabs">
 							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">수납 가구</a></li>
 							<li class="nav-item"><a class="nav-link" href="/auctionList.do?mainCategory=가구 가전&subCategory=거실 가구">거실 가구</a></li>
@@ -119,41 +111,37 @@ $(function() {
 							
 						</ul>
 					</div>
-					<div class="d-none d-md-block col-md-3"></div>
 				</div>
 				<br>
 				<div id="core-contents-3" class="row">
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
 						<%for(Post p : list){ %>
-						<%
+							<%
 							if(p.getSubject().length()>=28){
 								subject = p.getSubject().substring(0,25)+"...";
 							} else{
 								subject = p.getSubject();
 							}
-						%>
-										<div class="col-md-3">
-										<a id="postClick" href = "/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-											<div class="card"
-												style="border: 1px solid white; border-radius: 10%; overflow: hidden;">
-												<div id="postImgBox">
-													<img id="postImgMain"
-													src="/resources/file/<%=p.getMainImgName() %>"
-													class="card-img-top" alt="...">
-												</div>
-												<div class="card-body">
-													<h6 class="card-title"><%=subject %></h6>
-													<p class="card-text">
-														현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span> 원<br>
-														즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span> 원
-													</p>
-
-												</div>
-											</div>
-											</a>
+							%>
+							<div class="col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0;border-radius: 10%;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
-						<%} %>	
+										<div class="card-body">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
+							<%} %>
 					</div>
 				</div>
 			</div>
