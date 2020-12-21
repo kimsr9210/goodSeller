@@ -58,6 +58,7 @@ public class PostService {
 		return list;
 		
 	}
+	
 	public Post auctionDetail(int postNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -67,13 +68,7 @@ public class PostService {
 		
 		return p;
 	}
-	public ArrayList<Post> mainCategoryPost(String mainClothing) {
-		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Post> list = pDAO.mainCategoryPost(conn, mainClothing);
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}
+
 	public void updateHit(int postNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = pDAO.updateHit(conn, postNo);
@@ -86,6 +81,56 @@ public class PostService {
 		JDBCTemplate.close(conn);
 		
 		
+	}
+	
+	public ArrayList<Post> auctionMainPostClothing(String cateClothing) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostClothing(conn, cateClothing);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostLiving(String cateLiving) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostLiving(conn, cateLiving);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostHomeAppliances(String cateHomeAppliances) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostHomeAppliances(conn, cateHomeAppliances);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostDigital(String cateDigital) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostDigital(conn, cateDigital);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostBooks(String cateBooks) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostBooks(conn, cateBooks);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostBeauty(String cateBeauty) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostBeauty(conn, cateBeauty);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	public ArrayList<Post> auctionMainPostSports(String cateSports) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Post> list = pDAO.auctionMainPostSports(conn, cateSports);
+		JDBCTemplate.close(conn);
+		
+		return list;
 	}
 
 }

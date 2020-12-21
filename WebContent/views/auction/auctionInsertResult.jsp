@@ -19,7 +19,7 @@
 	<%} else {%>
 		alert("게시물 작성 실패(지속적인 문제 발생시 관리자에게 문의해주세요)");
 	<%} %>
-	location.replace("/index.jsp");
+	location.replace("/index.do");
 	</script>
 </body>
 </html>

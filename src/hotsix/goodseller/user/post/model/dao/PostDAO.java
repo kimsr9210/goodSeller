@@ -322,8 +322,30 @@ public class PostDAO {
 			
 			return p;
 		}
+		
 
-		public ArrayList<Post> mainCategoryPost(Connection conn, String mainClothing) {
+		public int updateHit(Connection conn, int postNo) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+
+			String query = "UPDATE POSTTBL SET hit = hit+1 where postNo=?";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, postNo);
+				result = pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+
+			return result;
+
+		}
+
+		public ArrayList<Post> auctionMainPostClothing(Connection conn, String cateClothing) {
 			
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
@@ -331,11 +353,12 @@ public class PostDAO {
 			Post p = null;
 			
 			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
-					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 5";
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, mainClothing);
+				pstmt.setString(1, cateClothing);
 				
+				rset = pstmt.executeQuery();
 				while(rset.next()) {
 					p = new Post();
 
@@ -360,10 +383,7 @@ public class PostDAO {
 					p.setSell_yn(rset.getString("sell_yn").charAt(0));
 					p.setDel_yn(rset.getString("del_yn").charAt(0));
 					p.setHit(rset.getInt("hit"));
-					
-					
-					System.out.println(p);
-					
+				
 					list.add(p);
 					
 				}
@@ -381,25 +401,334 @@ public class PostDAO {
 			
 		}
 
-		public int updateHit(Connection conn, int postNo) {
+		public ArrayList<Post> auctionMainPostLiving(Connection conn, String cateLiving) {
+			
 			PreparedStatement pstmt = null;
-			int result = 0;
-
-			String query = "UPDATE POSTTBL SET hit = hit+1 where postNo=?";
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, postNo);
-				result = pstmt.executeUpdate();
+				pstmt.setString(1, cateLiving);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
 
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} finally {
+			}finally {
+				JDBCTemplate.close(rset);
 				JDBCTemplate.close(pstmt);
 			}
-
-			return result;
-
+			
+			return list;
 		}
+
+		public ArrayList<Post> auctionMainPostHomeAppliances(Connection conn, String cateHomeAppliances) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, cateHomeAppliances);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+		}
+
+		public ArrayList<Post> auctionMainPostDigital(Connection conn, String cateDigital) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, cateDigital);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+		}
+
+		public ArrayList<Post> auctionMainPostBooks(Connection conn, String cateBooks) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, cateBooks);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+		}
+
+		public ArrayList<Post> auctionMainPostBeauty(Connection conn, String cateBeauty) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, cateBeauty);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+		}
+
+		public ArrayList<Post> auctionMainPostSports(Connection conn, String cateSports) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Post> list = new ArrayList<Post>();
+			Post p = null;
+			
+			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
+					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, cateSports);
+				
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					p = new Post();
+
+					p.setPostNo(rset.getInt("postNo"));
+					p.setSubject(rset.getString("subject"));
+					p.setContent(rset.getString("content"));
+					p.setWriter(rset.getString("writer"));
+					p.setEndDate(rset.getDate("endDate"));
+					p.setRegDate(rset.getDate("regDate"));
+					p.setMainImgName(rset.getString("mainImgName"));
+					p.setSubImgName_1(rset.getString("subImgName_1"));
+					p.setSubImgName_2(rset.getString("subImgName_2"));
+					p.setSubImgName_3(rset.getString("subImgName_3"));
+					p.setSubImgName_4(rset.getString("subImgName_4"));
+					p.setStartPrice(rset.getInt("startPrice"));
+					p.setBuyPrice(rset.getInt("buyPrice"));
+					p.setAuctionPrice(rset.getInt("auctionPrice"));
+					p.setBuyer(rset.getString("buyer"));
+					p.setSellMethod(rset.getString("sellMethod"));
+					p.setMainCategory(rset.getString("mainCategory"));
+					p.setSubCategory(rset.getString("subCategory"));
+					p.setSell_yn(rset.getString("sell_yn").charAt(0));
+					p.setDel_yn(rset.getString("del_yn").charAt(0));
+					p.setHit(rset.getInt("hit"));
+				
+					list.add(p);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+			
+		}
+
 
 }
