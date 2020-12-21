@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import hotsix.goodseller.board.model.vo.Board;
 import hotsix.goodseller.common.JDBCTemplate;
+import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.post.model.vo.Post;
 
 public class PostDAO {

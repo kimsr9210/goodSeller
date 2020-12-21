@@ -1,10 +1,10 @@
-package hotsix.goodseller.file.model.service;
+package hotsix.goodseller.user.file.model.service;
 
 import java.sql.Connection;
 
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.file.model.dao.FileDAO;
-import hotsix.goodseller.file.model.vo.FileData;
+import hotsix.goodseller.user.file.model.dao.FileDAO;
+import hotsix.goodseller.user.file.model.vo.FileData;
 
 public class FileService {
 	FileDAO fDAO = new FileDAO();

@@ -1,4 +1,4 @@
-package hotsix.goodseller.board.model.dao;
+package hotsix.goodseller.user.board.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import hotsix.goodseller.board.model.vo.Board;
-import hotsix.goodseller.board.model.vo.Register;
 import hotsix.goodseller.common.JDBCTemplate;
+import hotsix.goodseller.user.board.model.vo.Board;
+import hotsix.goodseller.user.board.model.vo.Register;
 
 public class BoardDAO {
 

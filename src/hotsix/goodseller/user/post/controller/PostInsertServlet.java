@@ -18,9 +18,9 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import hotsix.goodseller.file.model.service.FileService;
-import hotsix.goodseller.file.model.vo.FileData;
 import hotsix.goodseller.member.model.vo.Member;
+import hotsix.goodseller.user.file.model.service.FileService;
+import hotsix.goodseller.user.file.model.vo.FileData;
 import hotsix.goodseller.user.post.model.service.PostService;
 
 /**

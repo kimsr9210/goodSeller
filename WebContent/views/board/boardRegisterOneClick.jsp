@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import = "hotsix.goodseller.board.model.vo.Register" %>	
+<%@ page import = "hotsix.goodseller.user.board.model.vo.Register" %>	
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,14 +1,14 @@
-package hotsix.goodseller.board.model.service;
+package hotsix.goodseller.user.board.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import hotsix.goodseller.board.model.dao.BoardDAO;
-import hotsix.goodseller.board.model.vo.Board;
-import hotsix.goodseller.board.model.vo.BoardPageData;
-import hotsix.goodseller.board.model.vo.Register;
-import hotsix.goodseller.board.model.vo.ReqBoardPageData;
 import hotsix.goodseller.common.JDBCTemplate;
+import hotsix.goodseller.user.board.model.dao.BoardDAO;
+import hotsix.goodseller.user.board.model.vo.Board;
+import hotsix.goodseller.user.board.model.vo.BoardPageData;
+import hotsix.goodseller.user.board.model.vo.Register;
+import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 
 public class BoardService {
 	BoardDAO boardDAO = new BoardDAO();
