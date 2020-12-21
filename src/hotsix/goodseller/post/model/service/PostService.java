@@ -58,5 +58,14 @@ public class PostService {
 		return list;
 		
 	}
+	public Post auctionDetail(int postNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Post p = pDAO.auctionDetail(conn, postNo);
+		JDBCTemplate.close(conn);
+		
+		return p;
+	}
 
 }

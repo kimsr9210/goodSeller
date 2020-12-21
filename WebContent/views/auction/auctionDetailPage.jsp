@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import ="hotsix.goodseller.post.model.vo.Post" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,6 +69,11 @@ $(function() {
 	});
 });
 </script>
+
+<%
+	Post p = (Post)request.getAttribute("post");
+%>
+
 <div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 		<!-- contents  -->
@@ -79,7 +85,7 @@ $(function() {
 				<hr>
 				<div id="contents-deail-2" class="row">
 					<div class="col-12">
-						<div class="alert alert-light" role="alert" style="border: 1px solid black; text-align: left;">하루입은 옷 경매시작함(제목등록)</div>
+						<div class="alert alert-light" role="alert" style="border: 1px solid black; text-align: left;"><%=p.getSubject() %></div>
 					</div>
 					<div>
 					</div>
@@ -87,23 +93,23 @@ $(function() {
 
 				<div id="contents-deail-3" class="row">
 					<div id="main-img" class="col-6">
-							<img alt="" src="https://cdn.imweb.me/thumbnail/20200924/04d62185d7243.jpg">
+							<img alt="상품 메인이미지" src="/resources/file/<%=p.getMainImgName()%>">
 					</div>
 					<div id="sub-img" class="col-6">
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="" src="https://img.maisonkorea.com/2020/05/msk_5ec5cfb8aa17a.jpg">
+							<img alt="상품 서브이미지 1" src="/resources/file/<%=p.getSubImgName_1()%>">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU9anatZdJ9PehB7sLgmXbdA7lVEfs-tv0QA&usqp=CAU">
+							<img alt="상품 서브이미지 2" src="/resources/file/<%=p.getSubImgName_2()%>">
 						</div>
 						</div>
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbXBL78qMxffbLmm2PNBrhl1-ORm_SbkoXw&usqp=CAU">
+							<img alt="상품 서브이미지 3" src="<%=p.getSubImgName_3()%>">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCzXx9f0jod1W0na_iSS3QWfNaOdqzR0yLA&usqp=CAU">
+							<img alt="상품 서브이미지 4" src="<%=p.getSubImgName_4()%>">
 						</div>
 						</div>
 					</div>
@@ -113,14 +119,14 @@ $(function() {
 						<div id="bid">
 							<div id="progress-height" class="col-12">
 								<div class="progress" style="height: 100%; margin: 1px;">
- 									 <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">남은기간 :3일</div>
+ 									 <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><%=p.getEndDate() %></div>
 								</div>
 							</div>
 							<br>
 							<div class="col-12">
 								<div class="row">
 									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										즉시 구매가 : 150000원
+										즉시 구매가 : <%=p.getBuyPrice() %>
 									</div>
 									<div class="col-3  p-1">
 										<button type="button" class="btn btn-danger float-right" style="width: 140px">즉시 구매</button>
@@ -130,16 +136,29 @@ $(function() {
 							<div class="col-12">
 								<div class="row">
 									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										현재 입찰가 : <strong style="color:red">50000원</strong>
+										현재 입찰가 : <strong style="color:red"><%=p.getAuctionPrice() %></strong>
 									</div>
 									<div class="col-3  p-1">
 										<button id="InterestedBtn" type="button" class="btn btn-secondary float-right" style="width: 140px">관심상품등록</button>
 									</div>
 								</div>
 							</div>	
-							<div class="col-12 p-1">
-								<button type="button" class="btn btn-primary btn-lg btn-block "onclick="window.open('/views/auction/auctionFunction.jsp', '입찰하기', 'width=500px, height=500px')"
-								>입찰 하기</button>
+							<div class="col-12 p-1"><button type="button" class="btn btn-primary btn-lg btn-block">입찰 하기</button>
+
+								<form  id="auctionForm" method="post" action="/views.auction/acuctionFunction.jsp" target="childwin">
+									<input type="hidden" name="" value="">
+									<input type="hidden" name="" value="">
+									<input type="hidden" name="" value="">
+								</form>
+								
+								<script>
+									$(function(){
+										$('#auctionBtn').click(function(){
+											var settings = "width=500px, height=500px";
+											auctionPage = window.open("/views/auction/auctionFunction.jsp", "childwin", settings);
+										});
+									});
+								</script>
 							</div>
 						</div>
 					</div>
@@ -152,13 +171,11 @@ $(function() {
   							</div>
   							<div class="col-8">
   							<div class="media-body">
-   							 	<h4 class="mt-0" style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;판매자 ID</h4>
+   							 	<h4 class="mt-0" style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=p.getWriter() %></h4>
    							 	<br>
-   							 		<p style="margin: 0;text-align: left;"> 주소 : 서울시 영등포구</p>
+   							 		<p style="margin: 0;text-align: left;"> 주소 : </p>
     								<p style="margin: 0; text-align: left;"> 상품 : 5</p>
     								<p style="margin: 0; text-align: left;"> 신뢰도 : 우수</p>
-  
-    								
     								
   							</div>
   							</div>

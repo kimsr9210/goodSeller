@@ -94,7 +94,7 @@
 								id="postClickBtn"><%=board.getSubject() %></a>
 						<%}else if(board.getPostLockYN()=='Y'){ %>
 							<%if(m!=null &&(m.getUserId().equals(board.getUserId()))){ %>
-							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
 								id="postClickBtn"><%=board.getSubject() %></a>
 							<%}else{ %>
 							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
