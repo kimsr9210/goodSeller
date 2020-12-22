@@ -27,6 +27,16 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 <!-- font 사용 -->
+<style>
+	#tooltiptext-side
+        {
+            margin-top: 11px;
+        }
+        #tooltiptext-search
+        {
+            margin-top: 11px;
+        }
+</style>
 </head>
 <body>
 	<div id="header">

@@ -101,7 +101,7 @@
 
             /* 말풍선 위치 */
             position: absolute;
-            margin-top: -5px;
+            margin-top: 5px;
             margin-left: 95%;
             z-index: 1;
             font-size: 10px;
@@ -119,7 +119,7 @@
 
             /* 말풍선 위치 */
             position: absolute;
-            margin-top: -5px;
+            margin-top: 5px;
             margin-left: 87%;
             z-index: 1;
             font-size: 10px;
