@@ -54,7 +54,7 @@
 					<li class="col-3 col-md-3 col-lg-3"><a
 						href="/views/member/memberList.jsp">게시글 관리</a></li>
 					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/views/member/memberList.jsp">회원 신고</a></li>
+						href="/adminReportAllPageList.do">회원 신고</a></li>
 					<li class="col-3 col-md-3 col-lg-3"><a
 						href="/views/member/memberList.jsp">QnA</a></li>
 				</ul>

@@ -130,8 +130,8 @@
 		<div>
 				<center>	
 				<br>
-				<input type="submit" value="작성 완료" />
-				<input type="reset" value="작성 초기화" />
+				<button type="submit" class="btn btn-outline-secondary">작성 완료</button>
+				<button type="reset" class="btn btn-outline-secondary">작성 초기화</button>
 				</center>
 		</div>
 		</form>

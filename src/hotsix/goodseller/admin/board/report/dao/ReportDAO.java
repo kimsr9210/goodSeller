@@ -4,16 +4,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
+import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.Report;
 
 public class ReportDAO {
+	
 
-	public ArrayList<Report> selectRegisterAllListPage(Connection conn, int currentPage, int recordPerPage,
-			String selectBox, String searchText) {
+	private int reportNo;
+	private String userId;
+	private String reporId;
+	private String subject;
+	private String content;
+	private Timestamp writeDate;
+	private char answerYN;
+
+	public ArrayList<Report> selectAllListPage(Connection conn, int currentPage, int recordPerPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
@@ -22,45 +32,27 @@ public class ReportDAO {
 		int start = currentPage * recordPerPage - (recordPerPage - 1);
 		int end = currentPage * recordPerPage;
 
-		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) "
-				+ "AS Row_Num,REG_BOARD.* FROM REG_BOARD) WHERE Row_Num between ? and ?";
-
-		/* 검색 텍스트가 있을경우에만 실행 */
-		if (searchText != null && !"".equals(searchText)) {
-			if ("subject".equals(selectBox)) {
-				query += "AND SUBJECT LIKE ?";
-			}
-			if ("content".equals(selectBox)) {
-				query += "AND CONTENT LIKE ?";
-			}
-			if ("writer".equals(selectBox)) {
-				query += "AND USERID = ?";
-			}
-		}
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by writeDate) " + "AS Row_Num,REPORTTBL.* "
+				+ "FROM REPORTTBL) WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
-			if (searchText != null && !"".equals(searchText)) {
-				if (!"writer".equals(selectBox)) {
-					pstmt.setString(3, "%" + searchText + "%");
-				} else {
-					pstmt.setString(3, searchText);
-				}
-			}
 
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				Report regAll = new Report();
-				regAll.setBoardNo(rset.getInt("boardNo"));
-				regAll.setUserId(rset.getString("userId"));
-				regAll.setSubject(rset.getString("subject"));
-				regAll.setCreatedate(rset.getDate("createDate"));
-				regAll.setBoardcomment(rset.getString("boardComment"));
+				Report r = new Report();
+				r.setReportNo(rset.getInt("reportNo"));
+				r.setUserId(rset.getString("userId"));
+				r.setReportId(rset.getString("reportId"));
+				r.setSubject(rset.getString("subject"));
+				r.setContent(rset.getString("content"));
+				r.setWriteDate(rset.getTimestamp("writeDate"));
+				r.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
-				list.add(regAll);
+				list.add(r);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,94 +63,15 @@ public class ReportDAO {
 		}
 
 		return list;
-
+		
 	}
 
-	public String regGetpageNavi(Connection conn, int currentPage, int recordPerPage, int naviCountPerPage) {
-		int postTotalCount = postTotalCount(conn); // 전체 게시물의 개수를 구하기 위한 메소드
-
-		int pageTotalCount; // 전체 페이지를 저장하는 변수
-		if (postTotalCount % recordPerPage > 0) { // 나머지가 0 보다 크다면
-			pageTotalCount = postTotalCount / recordPerPage + 1;
-		} else {
-			pageTotalCount = postTotalCount / recordPerPage;
-		}
-
-		int startNavi = currentPage;
-		int endNavi = startNavi + 4;
-
-		if (endNavi > pageTotalCount) {
-			endNavi = pageTotalCount;
-		}
-
-		StringBuilder sb = new StringBuilder();
-
-		// 만약 첫번째 pageVavi가 아니라면 '<'모양을 추가해라 (첫번째 pageNavi이면 추가하지 말아라)
-		// 스타트네비가 1과 같지 않다면 1 2 3 4 5 추가하면안됨
-		if (startNavi != 1) {
-			sb.append("<a href='/registerAllList.do?currentPage=" + (startNavi - 1) + "'><</a> ");
-		}
-
-		for (int i = startNavi; i <= endNavi; i++) {
-			if (i == currentPage) // 현재 페이지가 i와 같다면
-			{
-				sb.append("<a href='/registerAllList.do?currentPage=" + i + "'><b>" + i + "</b></a> "); // 볼드 추가
-			} else {
-				sb.append("<a href='/registerAllList.do?currentPage=" + i + "'>" + i + "</a> "); // 볼드빼기
-			}
-		}
-		if (endNavi != pageTotalCount) // 만약 마지막 pageVavi가 아니라면 '>'모양을 추가해라 (마지막 pageNavi이면 추가하지 말아라)
-		{
-			sb.append("<a href='/registerAllList.do?currentPage=" + (endNavi + 1) + "'>></a> "); // 전페이지로 감
-		}
-
-		return sb.toString();
-
-	}
-
-	public Report RegisterOneClick(Connection conn, int boardNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Report register = null;
-
-		String query = "SELECT * FROM REG_BOARD WHERE BOARDNO = ?";
-
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNo);
-			rset = pstmt.executeQuery();
-
-			if (rset.next()) // 게시글 한개가 잇다면 ~
-			{
-				register = new Report();
-				register.setBoardNo(rset.getInt("boardNo"));
-				register.setUserId(rset.getString("userId"));
-				register.setSubject(rset.getString("subject"));
-
-				register.setContent(rset.getString("content"));
-				register.setReguserId(rset.getString("reguserId"));
-
-				register.setCreatedate(rset.getDate("createDate"));
-				register.setBoardcomment(rset.getString("boardComment"));
-
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-
-		}
-		return register;
-	}
 	public int postTotalCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int postTotalCount = 0;
 
-		String query = "SELECT COUNT(*) as totalCount " + "FROM REG_BOARD";
+		String query = "SELECT COUNT(*) as totalCount " + "FROM REPORTTBL";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -177,64 +90,83 @@ public class ReportDAO {
 		return postTotalCount;
 	}
 
-	public int insertBoardComment(Connection conn, int boardNo, String comment, String userId) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = "INSERT INTO REG_COMMENT VALUES(BC_SEQ.NEXTVAL,?,?,?,SYSDATE,'N')";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNo);
-			pstmt.setString(2, comment);
-			pstmt.setString(3, userId);
-			result = pstmt.executeUpdate();
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(pstmt);
+	public String getpageNavi(Connection conn, int currentPage, int recordPerPage, int naviCountPerPage) {
+		int postTotalCount = postTotalCount(conn);
+
+		int pageTotalCount;
+		if (postTotalCount % recordPerPage > 0) {
+			pageTotalCount = postTotalCount / recordPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordPerPage;
 		}
-		return result;
+
+		int startNavi = currentPage;
+		int endNavi = startNavi + 4;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+
 	}
 
-	//신고게시판 댓글
-	public static ArrayList<ReportAnswer> selectCommentBoard(Connection conn, int boardNo) {
+	public Report postOneClick(Connection conn, int reportNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
-		
-		ArrayList<ReportAnswer> list = new ArrayList<ReportAnswer>();
-		
-		String query = "SELECT * FROM REG_COMMENT WHERE DEL_YN='N' AND boardNo=? ORDER BY conmmentNo DESC" ;
-		
+		Report r = null;
+
+		String query = "SELECT * FROM REPORTTBL WHERE reportNo = ?";
+
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNo);
+			pstmt.setInt(1, reportNo);
 			rset = pstmt.executeQuery();
-			
-			
-			while(rset.next()) {
-				ReportAnswer bc = new ReportAnswer();
-				bc.setCommntNo(rset.getInt("conmmentNo"));
-				bc.setBoardNo(rset.getInt("boardNo"));
-				bc.setContent(rset.getString("content"));
-				bc.setUserId(rset.getString("userId"));
-				bc.setRegDate(rset.getDate("regDate"));
-				
-				list.add(bc);
+
+			if (rset.next()) {
+				r = new Report();
+
+				r.setReportNo(rset.getInt("reportNo"));
+				r.setUserId(rset.getString("userId"));
+				r.setReportId(rset.getString("reportId"));
+				r.setSubject(rset.getString("subject"));
+				r.setContent(rset.getString("content"));
+				r.setWriteDate(rset.getTimestamp("writeDate"));
+				r.setAnswerYN(rset.getString("answer_YN").charAt(0));
+
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return list;
-		
+
+		return r;
 	}
+
 
 	
 }

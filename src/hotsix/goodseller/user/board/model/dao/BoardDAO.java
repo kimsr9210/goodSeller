@@ -505,9 +505,10 @@ public class BoardDAO {
 
 				report.setReportNo(rset.getInt("boardNo"));
 				report.setUserId(rset.getString("userId"));
+				report.setReportId(rset.getString("reportId"));
 				report.setSubject(rset.getString("subject"));
 				report.setContent(rset.getString("content"));
-				report.setWriteDate(rset.getDate("writeDate"));
+				report.setWriteDate(rset.getTimestamp("writeDate"));
 				report.setAnswerYN(rset.getString("answerYN").charAt(0));
 
 				list.add(report);

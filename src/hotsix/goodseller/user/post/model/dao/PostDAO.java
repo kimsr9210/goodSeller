@@ -683,7 +683,7 @@ public class PostDAO {
 			Post p = null;
 			
 			String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY hit DESC) AS Row_Num , postTbl.* FROM POSTTBL "
-					+ "WHERE mainCategory like ? AND DEL_YN='N' AND SELL_YN='N') WHERE Row_Num between 1 and 8";
+					+ "WHERE mainCategory like ? AND DEL_YN='N') WHERE Row_Num between 1 and 8";
 			try {
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, cateSports);
