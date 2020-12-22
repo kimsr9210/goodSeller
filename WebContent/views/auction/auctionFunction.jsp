@@ -75,12 +75,11 @@
 				if(result == true){
 					
 				$("#offerPrice", parent.opener.document).val(offerPrice);
-				location.
 				//부모창에 데이터를 보내주는것이 아닌 서블릿에 데이터 보내줘서 가격 업데이트?
 				//새로운 tbl만들어야한다
 				
 					//창이닫히고 새로고침
-			       opener.parent.location.replace("/auctionDetailPage.do?postNo=<%=postNo %>");
+			       opener.parent.location.replace("/auctionDetailPage.do?postNo=<%=postNo %>&offerPrice="+offerPrice);
 			       self.close();
 		}
 			}
