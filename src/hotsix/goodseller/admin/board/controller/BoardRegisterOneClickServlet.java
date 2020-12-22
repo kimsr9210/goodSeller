@@ -38,7 +38,7 @@ public class BoardRegisterOneClickServlet extends HttpServlet {
 				//비즈니스 로직 처리 
 				Register register = new RegisterService().RegisterOneClick(boardNo);
 				
-				RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterOneClick.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("/views/admin/boardRegisterOneClick.jsp");
 				request.setAttribute("register", register);
 				view.forward(request, response);
 				
