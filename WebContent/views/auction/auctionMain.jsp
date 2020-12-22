@@ -80,90 +80,90 @@
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">의 류</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionClothing.jsp">의류 메인</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">의류 메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">티셔츠</a> <a
-										class="dropdown-item" href="#">바지</a> <a class="dropdown-item"
-										href="#">아우터</a> <a class="dropdown-item" href="#">가방</a> <a
-										class="dropdown-item" href="#">신발</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">티셔츠</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=바지">바지</a> <a class="dropdown-item"
+										href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=아우터">아우터</a> <a class="dropdown-item" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=가방">가방</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=신발">신발</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">생활
 									건강</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionLiving.jsp">생활 건강
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">생활 건강
 										메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">인테리어 용품</a> <a
-										class="dropdown-item" href="#">수납 용품</a> <a
-										class="dropdown-item" href="#">주방 용품</a> <a
-										class="dropdown-item" href="#">세탁 용품</a> <a
-										class="dropdown-item" href="#">욕실 용품</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">인테리어 용품</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=수납 용품">수납 용품</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=주방 용품">주방 용품</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=세탁 용품">세탁 용품</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=생활 건강&subCategory=욕실 용품">욕실 용품</a>
 
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">가구&가전</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionHomeAppliances.jsp">가구&가전
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">가구&가전
 										메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">수납 가구</a> <a
-										class="dropdown-item" href="#">거실 가구</a> <a
-										class="dropdown-item" href="#">침실 가구</a> <a
-										class="dropdown-item" href="#">TV</a> <a class="dropdown-item"
-										href="#">냉장고</a> <a class="dropdown-item" href="#">에어컨</a> <a
-										class="dropdown-item" href="#">스타일러</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">수납 가구</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=거실 가구">거실 가구</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=침실 가구">침실 가구</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=TV">TV</a> <a class="dropdown-item"
+										href="/auctionList.do?mainCategory=가구 가전&subCategory=냉장고">냉장고</a> <a class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=에어컨">에어컨</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=가구 가전&subCategory=스타일러">스타일러</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">디지털</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionDigital.jsp">디지털 메인</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">디지털 메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">카메라</a> <a
-										class="dropdown-item" href="#">음향기기</a> <a
-										class="dropdown-item" href="#">게임</a> <a class="dropdown-item"
-										href="#">핸드폰</a> <a class="dropdown-item" href="#">테블릿</a><a
-										class="dropdown-item" href="#">컴퓨터</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=카메라">카메라</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=음향기기">음향기기</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=게임">게임</a> <a class="dropdown-item"
+										href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=핸드폰">핸드폰</a> <a class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=테블릿">테블릿</a><a
+										class="dropdown-item" href="/auctionList.do?mainCategory=디지털 컴퓨터&subCategory=컴퓨터">컴퓨터</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">도서&문구</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionBooks.jsp">도서&문구 메인</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">도서&문구 메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">입문/문학</a> <a
-										class="dropdown-item" href="#">교육/참고서</a> <a
-										class="dropdown-item" href="#">어린이 도서</a> <a
-										class="dropdown-item" href="#">장난감</a> <a
-										class="dropdown-item" href="#">피규어</a> <a
-										class="dropdown-item" href="#">사무용품</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=입문/문학">입문/문학</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=교육/참고서">교육/참고서</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=어린이/도서">어린이 도서</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=장난감">장난감</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=피규어">피규어</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=도서 문구&subCategory=사무용품">사무용품</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">뷰티&잡화</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionBeauty.jsp">뷰티&잡화
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">뷰티&잡화
 										메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">화장품/향수</a> <a
-										class="dropdown-item" href="#">바디/헤어</a> <a
-										class="dropdown-item" href="#">패션잡화</a> <a
-										class="dropdown-item" href="#">쥬얼리/시계/선글라스</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=화장품/향수">화장품/향수</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=바디/향수">바디/헤어</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=패션잡화">패션잡화</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=뷰티 잡화&subCategory=쥬얼리/시계/선글라스">쥬얼리/시계/선글라스</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 								role="button" aria-haspopup="true" aria-expanded="false">스포츠</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./auctionSports.jsp">스포츠 메인</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">스포츠 메인</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">골프</a> <a
-										class="dropdown-item" href="#">스키/보드</a> <a
-										class="dropdown-item" href="#">수영/수상레저</a> <a
-										class="dropdown-item" href="#">구기/라켓</a> <a
-										class="dropdown-item" href="#">헬스/요가/필라테스</a>
+									<a class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=골프">골프</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=스키/보드">스키/보드</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=수영/수상레저">수영/수상레저</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=구기/라켓">구기/라켓</a> <a
+										class="dropdown-item" href="/auctionList.do?mainCategory=스포츠 레저&subCategory=헬스/요가/필라테스">헬스/요가/필라테스</a>
 								</div></li>
 
 
@@ -193,31 +193,29 @@
 												Post p = new Post();
 												p = clothingList.get(i);
 												
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -240,31 +238,29 @@
 												p = clothingList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -308,31 +304,29 @@
 												Post p = new Post();
 												p = livingList.get(i);
 										
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -350,31 +344,29 @@
 												Post p = new Post();
 												p = livingList.get(i);
 												
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 38) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -419,31 +411,29 @@
 												p = homeAppliancesList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -462,31 +452,29 @@
 												p = homeAppliancesList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -529,31 +517,29 @@
 												p = digitalList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -570,31 +556,29 @@
 												p = digitalList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -639,31 +623,29 @@
 												p = booksList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -682,31 +664,29 @@
 												p = booksList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -751,31 +731,29 @@
 												p = beautyList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -794,31 +772,29 @@
 												p = beautyList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -863,31 +839,29 @@
 												p = sportsList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										<%
 											}
 										}
@@ -906,31 +880,29 @@
 												p = sportsList.get(i);
 										%>
 										<%
-											if (p.getSubject().length() >= 28) {
-													subject = p.getSubject().substring(0, 25) + "...";
+											if (p.getSubject().length() >= 32) {
+													subject = p.getSubject().substring(0, 28) + "...";
 												} else {
 													subject = p.getSubject();
 												}
 										%>
-										<div class="col-md-3">
-											<a id="postClick"
-												href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-												<div class="card" style="border: 0; border-radius: 10%;">
-													<div id="postImgBox">
-														<img id="postImgMain"
-															src="/resources/file/<%=p.getMainImgName()%>"
-															class="card-img-top" alt="..." />
-													</div>
-													<div class="card-body">
-														<h6 class="card-title"><%=subject%></h6>
-														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-														</p>
-													</div>
-												</div>
-											</a>
+										<div class="postBox col-md-3">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+									<div class="card" style="border:0; border-radius: 5px;">
+										<div id="postImgBox">
+											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
+										<div class="card-body-size">
+											<h6 class="card-title"><%=subject %></h6>
+											<p class="card-text">
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												원
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
 										
 										<%}
 											}%>
