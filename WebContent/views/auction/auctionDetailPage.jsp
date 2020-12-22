@@ -21,6 +21,39 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
+	
+	
+<style>
+#postTitle{
+	border:1px solid #cccccc;
+	color:#3c3c3c;
+}
+.postImg{
+	width: 100%;
+	padding: 10px;
+	border-radius: 5%;
+}
+#main-img{
+	height:500px;
+	overflow:hidden;
+}
+#sub-img{
+
+}
+#contents-deail-1{
+}
+
+#contents-deail-2{
+}
+#contents-deail-3{
+}
+#contents-deail-4{
+}
+
+#contents-deail-5{
+}
+</style>
+	
 </head>
 <body>
 
@@ -89,31 +122,49 @@ $(function() {
 				<hr>
 				<div id="contents-deail-2" class="row">
 					<div class="col-12">
-						<div class="alert alert-light" role="alert" style="border: 1px solid black; text-align: left;"><%=p.getSubject() %></div>
+						<div id="postTitle"class="alert alert-light" role="alert"><%=p.getSubject() %></div>
 					</div>
 					<div>
 					</div>
 				</div>
 
 				<div id="contents-deail-3" class="row">
-					<div id="main-img" class="col-6">
-							<img alt="상품 메인이미지" src="/resources/file/<%=p.getMainImgName()%>">
+					<div id="main-img" class="col-12 col-md-6">
+							<img class="postImg" alt="상품 메인이미지" src="/resources/file/<%=p.getMainImgName()%>">
 					</div>
-					<div id="sub-img" class="col-6">
+					<div id="sub-img" class="col-12 col-md-6">
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="상품 서브이미지 1" src="/resources/file/<%=p.getSubImgName_1()%>">
+							<%
+							String sub_1 = "images/imgX.png";
+							String sub_2 = "images/imgX.png";
+							String sub_3 = "images/imgX.png";
+							String sub_4 = "images/imgX.png";
+							if(p.getSubImgName_1()!=null){ 
+								sub_1 = "file/"+p.getSubImgName_1();
+							} 
+							if(p.getSubImgName_2()!=null){ 
+								sub_2 = "file/"+p.getSubImgName_2();
+							} 
+							if(p.getSubImgName_3()!=null){ 
+								sub_3 = "file/"+p.getSubImgName_3();
+							}
+							if(p.getSubImgName_4()!=null){ 
+								sub_4 = "file/"+p.getSubImgName_4();
+							}
+							%>
+							<img class="postImg" alt="상품 서브이미지 1" src="/resources/<%=sub_1%>">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="상품 서브이미지 2" src="/resources/file/<%=p.getSubImgName_2()%>">
+							<img class="postImg" alt="상품 서브이미지 2" src="/resources/<%=sub_2%>">
 						</div>
 						</div>
 						<div class="row">
 						<div class="sub-img col-6">
-							<img alt="상품 서브이미지 3" src="<%=p.getSubImgName_3()%>">
+							<img class="postImg" alt="상품 서브이미지 3" src="/resources/<%=sub_3%>">
 						</div>
 						<div class="sub-img col-6">
-							<img alt="상품 서브이미지 4" src="<%=p.getSubImgName_4()%>">
+							<img class="postImg" alt="상품 서브이미지 4" src="/resources/<%=sub_4%>">
 						</div>
 						</div>
 					</div>
@@ -137,6 +188,7 @@ $(function() {
 									</div>
 								</div>
 							</div>
+							<br>
 							<div class="col-12">
 								<div class="row">
 									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
