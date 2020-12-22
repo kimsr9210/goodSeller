@@ -11,11 +11,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/resources/css/auctionMain.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.js"
 	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/auctionMain.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -39,10 +38,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
+	rel="stylesheet">														
 <title>Insert title here</title>
 </head>
 <body>
+
 	<script>
 		$(function() {
 			$(".card").click(function() {
@@ -62,18 +62,19 @@
 		DecimalFormat formatter = new DecimalFormat("###,###");
 		String subject = "";
 	%>
+	
 	<div id="wrap">
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 		<!-- contents  -->
 		<div id="contents">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<span>제품 페이지</span>
+					<span id="mainCate">제품 페이지</span>
 				</div>
 				<div id="core-contents-2" class="row">
 					<div class="d-none d-md-block col-md-1"></div>
 					<div class="col-md-10">
-						<ul class="nav nav-pills">
+						<ul id="subCategory" class="nav nav-pills">
 
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
@@ -175,7 +176,7 @@
 					<div class="col-12 p-0" style="height: 90px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;의류 브랜드 패션</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -210,7 +211,7 @@
 													<div class="card-body">
 														<h6 class="card-title"><%=subject%></h6>
 														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
+															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
 															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
 														</p>
 													</div>
@@ -257,7 +258,7 @@
 													<div class="card-body">
 														<h6 class="card-title"><%=subject%></h6>
 														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
+															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
 															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
 														</p>
 													</div>
@@ -289,7 +290,7 @@
 					<div class="col-12 p-0" style="height: 70px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;생활 건강<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;생활 건강</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -325,7 +326,7 @@
 													<div class="card-body">
 														<h6 class="card-title"><%=subject%></h6>
 														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
+															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
 															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
 														</p>
 													</div>
@@ -367,7 +368,7 @@
 													<div class="card-body">
 														<h6 class="card-title"><%=subject%></h6>
 														<p class="card-text">
-															현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
+															<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
 															<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
 														</p>
 													</div>
@@ -399,7 +400,7 @@
 					<div class="col-12 p-0" style="height: 70px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;가구 가전<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;가구 가전</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -510,7 +511,7 @@
 					<div class="col-12 p-0" style="height: 90px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;디지털 컴퓨터</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -619,7 +620,7 @@
 					<div class="col-12 p-0" style="height: 90px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;도서 문구<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;도서 문구</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -731,7 +732,7 @@
 					<div class="col-12 p-0" style="height: 90px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;뷰티 잡화</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
@@ -843,7 +844,7 @@
 					<div class="col-12 p-0" style="height: 90px; text-align: left">
 						<hr>
 						<h4>
-							<b>&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저<b>
+							<span class="title">&nbsp;&nbsp;&nbsp;&nbsp;스포츠 레저</span>
 						</h4>
 					</div>
 					<div class="col-12 p-0">
