@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +29,29 @@
 </head>
 <body>
 	<%@ include file="/views/common/header&footer/header.jsp"%>
+	<%
+		Calendar cal = Calendar.getInstance();
+	
+	String mYear = String.valueOf(cal.get(Calendar.YEAR));
+	String mMonth = String.valueOf(cal.get(Calendar.MONTH)+1);
+	String mDay = String.valueOf(cal.get(Calendar.DATE)+3);
+	
+	String eDate = mYear+"-"+mMonth+"-"+mDay;
+	
+	String xYear = String.valueOf(cal.get(Calendar.YEAR));
+	String xMonth = String.valueOf(cal.get(Calendar.MONTH)+2);
+	String xDay = String.valueOf(cal.get(Calendar.DATE)+3);
+	
+	if(Integer.parseInt(xMonth)>12){
+		xMonth = "0"+String.valueOf(cal.get(Calendar.MONTH)-10);
+		xYear = String.valueOf(cal.get(Calendar.YEAR)+1);
+	}
+	
+	String zDate = xYear+"-"+xMonth+"-"+xDay;
+	%>
+	
+	<%=eDate %>
+	<%=zDate %>
 <%
 	if(m != null){
 %>
@@ -49,7 +74,7 @@
 							<div id="post-img-main" class="col-12 col-md-12 col-lg-6" >
 								<div>메인 사진 선택</div>
 								<div>
-									<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+									<img src="/resources/images/imgX.png" class='img-size'/><br><input
 										type="file" id="mainImg" name="mainImg" class="file-upload"/>
 								</div>
 							</div>
@@ -57,22 +82,22 @@
 								<div>서브 사진 선택</div>
 								<div id="img-sub-top">
 									<div>
-										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+										<img src="/resources/images/imgX.png" class='img-size'/><br><input
 											type="file" name="subImg_1" class="file-upload-top file-upload" />
 									</div>
 									<div>
-										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+										<img src="/resources/images/imgX.png" class='img-size'/><br><input
 											type="file" name="subImg_2" class="file-upload-top file-upload" />
 									</div>
 
 								</div>
 								<div id="img-sub-bottom">
 									<div>
-										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+										<img src="/resources/images/imgX.png" class='img-size'/><br><input
 											type="file" name="subImg_3" class="file-upload-bot file-upload"  />
 									</div>
 									<div >
-										<img src="/resources/images/basic_img.png" class='img-size'/><br><input
+										<img src="/resources/images/imgX.png" class='img-size'/><br><input
 											type="file" name="subImg_4" class="file-upload-bot file-upload" />
 									</div>
 								</div>
@@ -83,7 +108,7 @@
 								<div>
 									<div>종료 날짜 설정</div>
 									<div>
-										<input type="date" class="input-date" value="2020-12-12" name="endDate"/>
+										<input type="date" class="input-date" value="<%=eDate %>" min="<%=eDate %>" max="<%=zDate %>" name="endDate"/>
 									</div>
 								</div>
 							</div>

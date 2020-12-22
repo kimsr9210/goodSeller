@@ -1,11 +1,17 @@
  @charset "UTF-8";
+ @font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
       #page-title{
             height: 60px;
             text-align: center;
             font-size: 25px;
             font-weight: 700;
             line-height: 60px;
-            
+			font-family: Wemakeprice-Bold;
             
             border-bottom: 1px solid #CCCCCC;
         }
@@ -14,6 +20,7 @@
             height: 40px;
             text-align: center;
             margin: 8px auto;
+            
         }
         #post-title>input{
             height: 100%;
