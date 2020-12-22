@@ -146,7 +146,39 @@ public class BoardService {
 	}
 
 
+	public BoardPageData MyPageQnAList(int currentPage, String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int recordPerPage = 15; 
+		ArrayList<Board> list = boardDAO.MyPageQnAList(conn, currentPage, recordPerPage, userId);
+		
+		int naviCountPerPage = 5;
+		String pageNavi = boardDAO.getMyQnAPageNavi(conn, currentPage, recordPerPage, naviCountPerPage);
+				
+		BoardPageData bpd = new BoardPageData();
+		bpd.setList(list);
+		bpd.setPageNavi(pageNavi);
+		JDBCTemplate.close(conn);
+		
+		return bpd;
+	}
 
+	public ReqBoardPageData MyPageRegisterList(int currentPage, String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int recordPerPage = 15; 
+		ArrayList<Register> list = boardDAO.MyPageRegisterList(conn, currentPage, recordPerPage, userId);
+		
+		int naviCountPerPage = 5;
+		String pageNavi = boardDAO.getMyRegisterPageNavi(conn, currentPage, recordPerPage, naviCountPerPage);
+				
+		ReqBoardPageData rbpd = new ReqBoardPageData();
+		rbpd.setList(list);
+		rbpd.setPageNavi(pageNavi);
+		JDBCTemplate.close(conn);
+		
+		return rbpd;
+	}
 
 	
 }

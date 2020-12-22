@@ -393,5 +393,174 @@ public class BoardDAO {
 
 	}
 
+	public ArrayList<Board> MyPageQnAList(Connection conn,int currentPage,int recordPerPage, String userId) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 
+		ArrayList<Board> list = new ArrayList<Board>();
+		Board board = null;
+
+		int start = currentPage * recordPerPage - (recordPerPage - 1);
+		int end = currentPage * recordPerPage;
+
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + "AS Row_Num,CSBOARD.* "
+				+ "FROM CSBOARD WHERE USERID= ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				board = new Board();
+
+				board.setBoardNo(rset.getInt("boardNo"));
+				board.setSubject(rset.getString("subject"));
+				board.setHit(rset.getInt("hit"));
+				board.setWriteDate(rset.getDate("writeDate"));
+				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
+				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
+
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return list;
+	}
+	
+	public String getMyQnAPageNavi(Connection conn, int currentPage, int recordPerPage, int naviCountPerPage) {
+		int postTotalCount = postTotalCount(conn);
+
+		int pageTotalCount;
+		if (postTotalCount % recordPerPage > 0) {
+			pageTotalCount = postTotalCount / recordPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordPerPage;
+		}
+
+		int startNavi = currentPage;
+		int endNavi = startNavi + 4;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/qnaList.do?currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/qnaList.do?currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/qnaList.do?currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/qnaList.do?currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+
+	}
+	
+	public ArrayList<Register> MyPageRegisterList(Connection conn,int currentPage,int recordPerPage, String userId) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		ArrayList<Register> list = new ArrayList<Register>();
+		Register register = null;
+
+		int start = currentPage * recordPerPage - (recordPerPage - 1);
+		int end = currentPage * recordPerPage;
+
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + "AS Row_Num,REG_BOARD.* "
+				+ "FROM reg_board WHERE USERID= ?) WHERE Row_Num between ? and ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				register = new Register();
+
+				register.setBoardNo(rset.getInt("boardNo"));
+				register.setSubject(rset.getString("subject"));
+				register.setReguserId(rset.getString("reguserid"));
+				register.setCreatedate(rset.getDate("createdate"));
+				register.setBoardcomment(rset.getString("boardcomment"));
+
+				list.add(register);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return list;
+	}
+	
+	public String getMyRegisterPageNavi(Connection conn, int currentPage, int recordPerPage, int naviCountPerPage) {
+		int postTotalCount = postTotalCount(conn);
+
+		int pageTotalCount;
+		if (postTotalCount % recordPerPage > 0) {
+			pageTotalCount = postTotalCount / recordPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordPerPage;
+		}
+
+		int startNavi = currentPage;
+		int endNavi = startNavi + 4;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/reportList.do?currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/reportList.do?currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/reportList.do?currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/reportList.do?currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+
+	}
 }
