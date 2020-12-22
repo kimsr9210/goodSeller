@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.ReqBoardPageData"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.Register"%>
+<%@ page import="hotsix.goodseller.admin.board.vo.RegisterComment" %>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -79,15 +80,16 @@
 				ArrayList<Register> list = bpd.getList();
 				String pageNavi = bpd.getPageNavi();
 				%>
+				
 
 				<%for(Register board : list){ %>
 				<div class="row p-0 m-0 line-content text-center">
 					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
 					
-					<div class="col-12 col-md-5 p-0"><a href="/boardRegisterAdminOneClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
+					<div class="col-12 col-md-7 p-0"><a href="/boardRegisterAdminOneClick.do?boardNo=<%=board.getBoardNo()%>"><%=board.getSubject() %></a></div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
-					<div class="col-3 col-md-2 p-0 ">11</div>
-					<div class="col-2 col-md-1 p-0 ">test</div>
+					<div class="col-3 col-md-2 p-0 "><%=board.getCreatedate() %></div>
+					<div class="col-2 col-md-1 p-0 ">null</div>
 				</div>
 				<%} %>
 

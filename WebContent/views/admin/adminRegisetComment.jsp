@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,14 @@
 </head>
 <body>
 
+	<!-- 게시판 댓글 작성하는 페이지 -->
+
+
 	<script>
-		alert("신고 접수가 완료 되었습니다. \n 마이페이지를 통해 확인해주세요.");
+		alert("댓글 작성이 완료되었습니다.");
 		history.back(-1);
 	</script>
+
 
 </body>
 </html>

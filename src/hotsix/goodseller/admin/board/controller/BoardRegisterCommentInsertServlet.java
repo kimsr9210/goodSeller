@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import hotsix.goodseller.admin.board.service.RegisterService;
-import hotsix.goodseller.user.board.model.vo.Register;
+import hotsix.goodseller.member.model.vo.Member;
 
 /**
  * Servlet implementation class BoardRegisterCommentWriteServlet
@@ -40,26 +40,27 @@ public class BoardRegisterCommentInsertServlet extends HttpServlet {
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
 
-		// 2. 이전페이지에서 보내준 데이터를 가져와야 ㅇ한다
+		// 2. 이전페이지에서 보내준 데이터를 가져와야 한다
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		String comment = request.getParameter("comment");
 		
 		
 		// 3. 작성자값 (userId)을 가져오기 위해서 session에서 꺼내옴
 		HttpSession session = request.getSession();
-		Register r = (Register) session.getAttribute("register");
+		Member m = (Member) session.getAttribute("member");
 		
-		String userId = r.getUserId();
+		String userId = m.getUserId();
 		
 		//데이터가 잘 넘어오는지 확인
-		System.out.println("게시글번호 : " + boardNo);
-		System.out.println("댓글:" + comment);
+		System.out.println("유저아이디 : " + userId);
+		//System.out.println("댓글번호 : " + comment);
+		//System.out.println("게시물 번호:" + boardNo);
 		
 		//비지니스 로직
 		int result = new RegisterService().insertBoardComment(boardNo,comment,userId);
 
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/admin/boardRegisterOneClick.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminRegisetComment.jsp");
 		if (result > 0) {
 
 			// 데이터 입력에 성공했다면?
