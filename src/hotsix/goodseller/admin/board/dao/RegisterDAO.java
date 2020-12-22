@@ -175,4 +175,29 @@ public class RegisterDAO {
 
 		return postTotalCount;
 	}
+
+	public static int insertBoardComment(Connection conn, int boardNo, String comment, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO REG_COMMENT VALUES(BC_SEQ.NEXTVAL,?,?,?,SYSDATE,'N')";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, comment);
+			pstmt.setString(3, userId);
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+		
+		
+		
+	}
 }

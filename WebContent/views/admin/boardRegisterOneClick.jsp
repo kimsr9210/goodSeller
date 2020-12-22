@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import = "hotsix.goodseller.user.board.model.vo.Register" %>	
+<%@ page import="hotsix.goodseller.user.board.model.vo.Register"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +14,9 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/boardMain.css?ver=1.8" />
 <style>
-
-#container{
-height: 60%;
-width: 60%;
+#container {
+	height: 60%;
+	width: 60%;
 }
 
 .col-md-2 {
@@ -40,7 +39,7 @@ width: 60%;
 }
 
 #note {
-	height: 600px;
+	height: 400px;
 }
 
 #noteText {
@@ -54,57 +53,63 @@ width: 60%;
 </style>
 <body>
 
-						<%
-							Register r = (Register) request.getAttribute("register");
-						%>
-						
+	<%
+		Register r = (Register) request.getAttribute("register");
+	%>
+
 
 	<div id="wrapper">
-	<%@ include file="/views/common/header&footer/header.jsp"%>
-	
+		<%@ include file="/views/common/header&footer/header.jsp"%>
 
-	<form action="/boardRegisterOneClick.do" method="post">
-		<div id="content">
-			<div id="container">
-					<h1 style="text-align : center;">사용자신고 게시판</h1><br>
-				<div class="row">
-					<div class="col-md-2">제목</div>
-					<div class="col-md-10">
-						<%=r.getSubject() %></div>
-				</div>
 
-				<div class="row">
-					<div class="col-md-2">작성자</div>
-					<div class="col-md-10"><%=r.getUserId() %></div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-2">신고자</div>
-					<div class="col-md-10">
-						<input type="text" class="input-sty" name="reguserId" value="<%=r.getReguserId() %>" />
+		<form action="/boardRegisterOneClick.do" method="post">
+			<div id="content">
+				<div id="container">
+					<h1 style="text-align: center;">신고 게시판</h1>
+					<br>
+					<div class="row">
+						<div class="col-md-2">제목</div>
+						<div class="col-md-10">
+							<%=r.getSubject()%></div>
 					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-md-2" id="note">내용</div>
-					<div class="col-md-10" style="padding: 20px;">
-						<textarea name="content" style="height: 100%; width: 100%;"><%=r.getContent() %></textarea>
-
+					<div class="row">
+						<div class="col-md-2">작성자</div>
+						<div class="col-md-10"><%=r.getUserId()%></div>
 					</div>
-				</div><br>
 
-				<div class="row" id="rowBtn">
-					<div class="col-md-12"><br><br>
-
-						<input id="Btn" type="submit" class="btn btn-outline-secondary"
-							value="등록" /> <input id="Btn" type="button"
-							class="btn btn-outline-secondary" value="취소" /><br>
+					<div class="row">
+						<div class="col-md-2">신고자</div>
+						<div class="col-md-10">
+							<%=r.getReguserId()%></div>
 					</div>
+
+					<div class="row">
+						<div class="col-md-2" id="note">내용</div>
+						<div class="col-md-10" style="padding: 20px;">
+							<textarea name="content" disabled="true"
+								style="height: 100%; width: 100%; resize: none;"><%=r.getContent()%></textarea>
+
+						</div>
+					</div>
+
+					<!-------------------------------댓글 작성 ------------------------------->
+
+					<center>
+						<form action="/registerCommentWrite.do" method="post">
+							<br> 
+							<input type="text" size="70" name="comment" placeholder="댓글을 작성해주세요." /> 
+							<input type="hidden" name="boardNo" value="<%=r.getBoardNo()%>" /> 
+							<input type="submit" class="btn btn-outline-secondary" value="작성" /><br>
+						</form>
+					</center>
+					<!----------------------------------------------------------------------->
+
+
 				</div>
 			</div>
-		</div>
-	</form>
-	
+		</form>
 
-	<%@ include file="/views/common/header&footer/footer.jsp"%>
+
+		<%@ include file="/views/common/header&footer/footer.jsp"%>
 	</div>

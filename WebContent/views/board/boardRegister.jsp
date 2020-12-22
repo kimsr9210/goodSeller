@@ -39,7 +39,7 @@ width: 60%;
 }
 
 #note {
-	height: 600px;
+	height: 400px;
 }
 
 #noteText {
@@ -60,7 +60,7 @@ width: 60%;
 	<form action="/boradRegister.do" method="post">
 		<div id="content">
 			<div id="container">
-					<h1 style="text-align : center;">사용자신고 게시판</h1><br>
+					<h1 style="text-align : center;">신고 게시판</h1><br>
 				<div class="row">
 					<div class="col-md-2">제목</div>
 					<div class="col-md-10">
