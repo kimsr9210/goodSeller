@@ -46,7 +46,7 @@ public class MemberAllListServlet extends HttpServlet {
 				//모든 회원을 가져오는 비즈니스 로직 처리
 				ArrayList<Member> list=new AdminMemberService().selectMemberAll();
 				if(!(list.isEmpty())) {
-					RequestDispatcher view=request.getRequestDispatcher("/views/admin/adminMemberList.jsp");
+					RequestDispatcher view=request.getRequestDispatcher("/views/admin/member/adminMemberList.jsp");
 					request.setAttribute("list", list);
 					request.setAttribute("userNo", admin.getUserNo());
 					view.forward(request, response);

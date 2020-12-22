@@ -13,6 +13,24 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/adminHeader.css" />
+<style>
+#contents-header>p {
+	display: inline;
+	float: right;
+	margin-bottom: 0px;
+	margin-top: 5px;
+}
+#contents-header>p>a {
+	color: white;
+	font-size: 12px;
+}
+
+#contents-header>p>a:hover {
+	text-decoration: underline;
+	color: red;
+	
+}
+</style>
 </head>
 <body>
 	<%
@@ -24,14 +42,21 @@
 				<div class="col-12" id="contents-header">
 					<a href="/index.do"><img src="/resources/images/logo.png"
 						style="width: 80px;"></a> 웹 사이트 관리
+					<%
+						if (admin != null) {
+					%>
+					<p>
+						<a href="#"><%=admin.getUserNick()%>(<%=admin.getUserId()%>)</a> 접속중 &nbsp
+						<button style="border: 1px solid black; background-color: gray; color:white"
+						onclick = "location.href = '/adminLogout.do'">로그아웃</button>
+						<a href="/adminLogout.do"></a>
+					</p>
+
+					<%
+						}
+					%>
 				</div>
-				<%
-					if (admin != null) {
-				%>
-				
-				<%
-					}
-				%>
+
 			</div>
 		</div>
 	</div>

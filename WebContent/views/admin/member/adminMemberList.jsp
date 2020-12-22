@@ -50,7 +50,7 @@
 			<div class="row">
 				<ul class="col-12" id="contents-navi" style="width: 100%;">
 					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/views/member/memberList.jsp">회원 관리</a></li>
+						href="/memberAllList.do">회원 관리</a></li>
 					<li class="col-3 col-md-3 col-lg-3"><a
 						href="/views/member/memberList.jsp">게시글 관리</a></li>
 					<li class="col-3 col-md-3 col-lg-3"><a

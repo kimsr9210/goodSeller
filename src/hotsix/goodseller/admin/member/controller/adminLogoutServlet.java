@@ -1,7 +1,6 @@
-package hotsix.goodseller.member.controller;
+package hotsix.goodseller.admin.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MemberLogoutServlet
+ * Servlet implementation class adminLogoutServlet
  */
-@WebServlet("/memberLogout.do")
-public class MemberLogoutServlet extends HttpServlet {
+@WebServlet("/adminLogout.do")
+public class adminLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLogoutServlet() {
+    public adminLogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +27,11 @@ public class MemberLogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
-		 session.removeAttribute("member");
-		response.sendRedirect("/index.do");
+		session.removeAttribute("admin");
+		response.sendRedirect("/views/admin/adminLogin.jsp");
+		
 	}
 
 	/**
