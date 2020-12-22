@@ -6,18 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import hotsix.goodseller.admin.board.report.vo.ReportPost;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.board.model.vo.Register;
+import hotsix.goodseller.user.board.model.vo.Report;
 
 public class ReportDAO {
 
-	public ArrayList<Register> selectRegisterAllListPage(Connection conn, int currentPage, int recordPerPage,
+	public ArrayList<Report> selectRegisterAllListPage(Connection conn, int currentPage, int recordPerPage,
 			String selectBox, String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		ArrayList<Register> list = new ArrayList<Register>();
+		ArrayList<Report> list = new ArrayList<Report>();
 
 		int start = currentPage * recordPerPage - (recordPerPage - 1);
 		int end = currentPage * recordPerPage;
@@ -53,7 +53,7 @@ public class ReportDAO {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				Register regAll = new Register();
+				Report regAll = new Report();
 				regAll.setBoardNo(rset.getInt("boardNo"));
 				regAll.setUserId(rset.getString("userId"));
 				regAll.setSubject(rset.getString("subject"));
@@ -116,10 +116,10 @@ public class ReportDAO {
 
 	}
 
-	public Register RegisterOneClick(Connection conn, int boardNo) {
+	public Report RegisterOneClick(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Register register = null;
+		Report register = null;
 
 		String query = "SELECT * FROM REG_BOARD WHERE BOARDNO = ?";
 
@@ -130,7 +130,7 @@ public class ReportDAO {
 
 			if (rset.next()) // 게시글 한개가 잇다면 ~
 			{
-				register = new Register();
+				register = new Report();
 				register.setBoardNo(rset.getInt("boardNo"));
 				register.setUserId(rset.getString("userId"));
 				register.setSubject(rset.getString("subject"));
@@ -199,12 +199,12 @@ public class ReportDAO {
 	}
 
 	//신고게시판 댓글
-	public static ArrayList<ReportPost> selectCommentBoard(Connection conn, int boardNo) {
+	public static ArrayList<ReportAnswer> selectCommentBoard(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		
-		ArrayList<ReportPost> list = new ArrayList<ReportPost>();
+		ArrayList<ReportAnswer> list = new ArrayList<ReportAnswer>();
 		
 		String query = "SELECT * FROM REG_COMMENT WHERE DEL_YN='N' AND boardNo=? ORDER BY conmmentNo DESC" ;
 		
@@ -215,7 +215,7 @@ public class ReportDAO {
 			
 			
 			while(rset.next()) {
-				ReportPost bc = new ReportPost();
+				ReportAnswer bc = new ReportAnswer();
 				bc.setCommntNo(rset.getInt("conmmentNo"));
 				bc.setBoardNo(rset.getInt("boardNo"));
 				bc.setContent(rset.getString("content"));

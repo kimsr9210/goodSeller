@@ -25,6 +25,9 @@
 
 </head>
 <body>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	
 	<div id="wrapper">
 		<!-- 
 		<div id="header">
@@ -164,7 +167,7 @@
 	<script>
 		$(function() {
 			$('#writeBtn').click(function() {
-				location.href = "/views/board/boardWrite.jsp";
+				location.href = "/views/csBoard/boardWrite.jsp";
 			});
 
 			$('#postLock').click(function() {

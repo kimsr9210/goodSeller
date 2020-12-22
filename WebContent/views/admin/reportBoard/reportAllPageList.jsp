@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.ReqBoardPageData"%>
-<%@ page import="hotsix.goodseller.user.board.model.vo.Register"%>
-<%@ page import="hotsix.goodseller.admin.board.report.vo.ReportPost" %>
+<%@ page import="hotsix.goodseller.user.board.model.vo.Report"%>
+<%@ page import="hotsix.goodseller.admin.board.report.vo.ReportAnswer" %>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -75,14 +75,16 @@
 				</div>
 
 				<%
-				ReqBoardPageData bpd = (ReqBoardPageData)request.getAttribute("pageData");
-				
-				ArrayList<Register> list = bpd.getList();
-				String pageNavi = bpd.getPageNavi();
+					ReqBoardPageData bpd = (ReqBoardPageData)request.getAttribute("pageData");
+						
+						ArrayList<Report> list = bpd.getList();
+						String pageNavi = bpd.getPageNavi();
 				%>
 				
 
-				<%for(Register board : list){ %>
+				<%
+									for(Report board : list){
+								%>
 				<div class="row p-0 m-0 line-content text-center">
 					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
 					

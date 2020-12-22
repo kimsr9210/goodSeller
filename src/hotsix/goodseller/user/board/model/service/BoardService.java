@@ -7,7 +7,7 @@ import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.dao.BoardDAO;
 import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.BoardPageData;
-import hotsix.goodseller.user.board.model.vo.Register;
+import hotsix.goodseller.user.board.model.vo.Report;
 import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 
 public class BoardService {
@@ -167,7 +167,7 @@ public class BoardService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int recordPerPage = 15; 
-		ArrayList<Register> list = boardDAO.MyPageRegisterList(conn, currentPage, recordPerPage, userId);
+		ArrayList<Report> list = boardDAO.MyPageRegisterList(conn, currentPage, recordPerPage, userId);
 		
 		int naviCountPerPage = 5;
 		String pageNavi = boardDAO.getMyRegisterPageNavi(conn, currentPage, recordPerPage, naviCountPerPage);
