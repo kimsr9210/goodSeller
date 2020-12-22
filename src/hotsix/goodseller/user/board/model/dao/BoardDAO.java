@@ -369,18 +369,18 @@ public class BoardDAO {
 		return list;
 	}
 
-	public int InsertRegister(Connection conn, String userId, String subject, String content, String reguserId) {
+	public int ReportInsert(Connection conn, String userId, String subject, String content, String reportId) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
-		String query = "INSERT INTO REG_BOARD VALUES(REG_BOARD_SEQ.NEXTVAL, ?,?,?,?,SYSDATE,null)";
+		String query = "INSERT INTO REPORTTBL VALUES(REPORT_SEQ.NEXTVAL, ?,?,?,?,SYSDATE,'N')";
 
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
-			pstmt.setString(2, subject);
-			pstmt.setString(3, content);
-			pstmt.setString(4, reguserId);
+			pstmt.setString(2, reportId);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

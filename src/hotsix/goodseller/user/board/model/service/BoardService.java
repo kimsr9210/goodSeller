@@ -130,10 +130,10 @@ public class BoardService {
 		return bpd;		
 	}
 
-	public int InsertRegister(String userId, String subject, String content, String reguserId) {
+	public int ReportInsert(String userId, String subject, String content, String reportId) {
 		Connection conn = JDBCTemplate.getConnection();
 		 
-		int result =boardDAO.InsertRegister(conn,userId,subject,content,reguserId);
+		int result = boardDAO.ReportInsert(conn,userId,subject,content,reportId);
 
 		if(result>0) {
 			JDBCTemplate.commit(conn);

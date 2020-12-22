@@ -17,14 +17,14 @@ import hotsix.goodseller.user.board.model.service.BoardService;
 /**
  * Servlet implementation class BoradRegisterServlet
  */
-@WebServlet("/boradRegister.do")
-public class BoradRegisterServlet extends HttpServlet {
+@WebServlet("/reportWrite.do")
+public class ReportPostWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoradRegisterServlet() {
+    public ReportPostWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,27 +46,22 @@ public class BoradRegisterServlet extends HttpServlet {
 		Member m = (Member)session.getAttribute("member");
 		
 
-		if(m == null) {
-			//로그인 안되있을 때
-			out.println("<script>alert('로그인한 회원정보가 없습니다. \\n 다시 로그인해주세요.');</script>");
-		} else {
-			//로그인 됬을 때
 			try {
 
 				//2.이전 페이지에서 작성한 내용 가져오기 
 				String subject = request.getParameter("subject");
 				String content = request.getParameter("content");
-				String reguserId = request.getParameter("reguserId");
+				String reportId = request.getParameter("reportId");
 				
 				//3.session에서 작성자 값 불러오기 
 				String userId = m.getUserId();
 				
-				int result = new BoardService().InsertRegister(userId, subject, content,reguserId);
+				int result = new BoardService().ReportInsert(userId, subject, content, reportId);
 				//제목 내용 신고할사람
 				
 				if(result>0)
 				{
-				   	RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardRegisterSuccess.jsp");
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/reportBoard/reportWriteSuccess.jsp");
 				   	view.forward(request, response);
 				}else {
 				   	RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardWriteFail.jsp");
@@ -78,8 +73,7 @@ public class BoradRegisterServlet extends HttpServlet {
 			}
 		}
 		
-		
-	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

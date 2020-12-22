@@ -1,107 +1,150 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/boardMain.css?ver=1.8" />
 <style>
 
-#container{
-height: 60%;
-width: 60%;
-}
-
-.col-md-2 {
-	border-right: 1px solid gray;
-	height: 50px;
-	text-align: center;
-}
-
-.input-sty {
-	width: 90%;
-	line-height: 3;
-}
-
-.row {
-	border-top: 1px solid gray;
-}
-
-#rowBtn {
-	text-align: center;
-}
-
-#note {
-	height: 400px;
-}
-
-#noteText {
-	height: 100%;
-	width: 100%;
-}
-
-.btn-outline-secondary {
-	height: 50px;
-}
+	div
+	{
+	box-sizing:border-box;
+	}
+	
+	textarea 
+	{
+	font-size: 10px;
+	}
+	
+		.wrapper{
+		width:50%;
+		padding: 30px 0;
+		margin:50px auto;
+		}
+		#postTitle
+		{
+			padding-bottom:50px;
+		}
+		.subject
+		{
+			background-color:#dcdcdc;
+			text-align:center;
+			border-top: 2px solid gray;
+			border-bottom: 1px solid gray;
+			line-height:30px;
+		height:33px;
+		}
+		.realSubject
+		{
+		height:33px;
+			border-top: 2px solid gray;
+			border-bottom: 1px solid gray;
+		}
+		
+		.report
+		{
+			background-color:#dcdcdc;
+			text-align:center;
+			border-bottom: 2px solid gray;
+		}
+		
+		.realReport
+		{
+			border-bottom: 2px solid gray;
+		}
+		.content
+		{
+			background-color:#dcdcdc;
+			height:400px;
+			line-height:350px;
+			text-align:center;
+			border-bottom: 2px solid gray;
+		}
+		
+		.realContent
+		{
+			border-bottom: 2px solid gray;
+		}
+		
+		#QnAtitle{
+		display:inline-block;
+		}
+		.titleBox{
+		height:33px;}
 </style>
+</head>
 <body>
 
-	<div id="wrapper">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+		crossorigin="anonymous"></script>
+	<script>
+		$(function() {
+			$('#backBtn').click(function() {
+				history.back(-1); //그전의 기록으로 돌아감
+			});
+		});
+	</script>
+
+
 	<%@ include file="/views/common/header&footer/header.jsp"%>
+
+
+	<div class="wrapper">
 	
-
-	<form action="/reportWrite.do" method="post">
-		<div id="content">
-			<div id="container">
-					<h1 style="text-align : center;">신고 게시판</h1><br>
-				<div class="row">
-					<div class="col-md-2">제목</div>
-					<div class="col-md-10">
-						<input type="text" class="input-sty" name="subject" />
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-2">작성자</div>
-					<div class="col-md-10"><%=m.getUserId() %></div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-2">신고할 계정</div>
-					<div class="col-md-10">
-						<input type="text" class="input-sty" name="reguserId" />
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-2" id="note">내용</div>
-					<div class="col-md-10" style="padding: 20px;">
-						<textarea name="content" style="height: 100%; width: 100%;"></textarea>
-
-					</div>
-				</div><br>
-
-				<div class="row" id="rowBtn">
-					<div class="col-md-12"><br><br>
-
-						<input id="Btn" type="submit" class="btn btn-outline-secondary"
-							value="등록" /> <input id="Btn" type="button"
-							class="btn btn-outline-secondary" value="취소" /><br>
-					</div>
-				</div>
+	<div id="postTitle">
+		<div class="container">
+		<center>
+			<div class="row p-0 m-0" id="QnAtitle">
+				<H1>회원 신고</H1>
+			</div>
+		</center>
+		</div>
+	</div>
+	
+	<div id="postContent">
+	
+	<%if(m!=null){%>
+	<form action="/reportWrite.do" method="get">
+		<div class="row p-0 m-0 titleBox">
+			<div class="col-3 subject">제목</div>
+			<div class="col-9 p-0 realSubject">
+			<textarea style="resize:none; border:none; outline: none;" rows="1" cols="101" placeholder="제목을 작성하세요" name="subject"></textarea>
 			</div>
 		</div>
-	</form>
+		
+		<div class="row p-0 m-0">
+			<div class="col-3 report">신고할 회원 ID</div>
+			<div class="col-9 p-0 realReport">
+			<textarea style="resize:none; border:none; outline: none;" rows="1" cols="101" placeholder="신고할 회원의 ID를 입력하세요" name="reportId"></textarea>
+			</div>
+		</div>
+		<div class="row p-0 m-0 ">
+			<div class="col-3 content">내용</div>
+			<div class="col-9 p-0 realContent">
+				<textarea style="resize:none ; border:none; outline: none;" rows="16" cols="101" placeholder="신고사항을 작성하세요"
+					name="content"></textarea>
+			</div>
+		</div>
+		<div>
+				<center>	
+				<br>
+				<input type="submit" value="작성 완료" />
+				<input type="reset" value="작성 초기화" />
+				</center>
+		</div>
+		</form>
+		<%}else{ %>
+		<script>
+			alert('로그인 후 회원 신고가 가능합니다. \n 로그인 후 이용해 주세요.');
+			history.back(-1);
+		</script>
+		<%} %>
+	</div>
+	</div>
 	
 
 	<%@ include file="/views/common/header&footer/footer.jsp"%>
-	</div>
 </body>
 </html>
