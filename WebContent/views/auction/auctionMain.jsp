@@ -68,7 +68,7 @@
 		<div id="contents">
 			<div class="container">
 				<div id="core-contents-1" class="row">
-					<h3>제품 페이지</h3>
+					<span>제품 페이지</span>
 				</div>
 				<div id="core-contents-2" class="row">
 					<div class="d-none d-md-block col-md-1"></div>

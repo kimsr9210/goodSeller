@@ -1,17 +1,41 @@
-/* div{
+
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+/* 수정 사항*/
+#core-contents-1>span {
+	height: 15%;
+	margin: 20px auto;
+	margin-bottom: 0px;
+}
+
+/* 수정 사항*/
+
+#contents{
 	border: 0px solid black;
 	text-align: center;
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-} */
+
 
 /*--contents--*/
-#core-contents-1>h3 {
+/*#core-contents-1>h3 {
 	height: 15%;
 	margin: 30px auto;
 }
-
+*/
 #core-contents-2 {
 	height: 15%;
 }
