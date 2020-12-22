@@ -115,18 +115,19 @@
 .card-text{
 	z-index: 1;
 	overflow: hidden;
-	font-weight: 600;
 	font-size: 12px;
+	color: black;
+	font-weight: normal;
 }
 .startPrice{
 	font-weight: bold;
 	color: #ED4C00;
-	font-size: 18px;
+	font-size: 14px;
 }
 .buyPrice{
-	font-weight: bold;
-	color: #5B5AFF;
-	font-size: 18px;
+	color: black;
+	font-weight: normal;
+	font-size: 12px;
 }
 #postImgBox{
 	height:250px;
@@ -136,5 +137,10 @@
 	color:black;
 	text-decoration: none;
 }
-
+.moneyFont{
+		color: #808080;
+}
+.postBox{
+		border-bottom: 1px solid #cccccc;
+	}
 

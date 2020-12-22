@@ -112,30 +112,30 @@
 						<div id="goods" class="row">
 						<%for(Post p : list){ %>
 							<%
-							if(p.getSubject().length()>=28){
-								subject = p.getSubject().substring(0,25)+"...";
+							if(p.getSubject().length()>=32){
+								subject = p.getSubject().substring(0,28)+"...";
 							} else{
 								subject = p.getSubject();
 							}
 							%>
-							<div class="col-md-3">
+							<div class="postBox col-md-3">
 								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-									<div class="card" style="border:0;border-radius: 10%;">
+									<div class="card" style="border:0; border-radius: 10%;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
 										<div class="card-body">
 											<h6 class="card-title"><%=subject %></h6>
 											<p class="card-text">
-												현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
-												원<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
 												원
 											</p>
 										</div>
 									</div>
 								</a>
 							</div>
-							<%} %>			
+							<%} %>		
 					</div>
 				</div>
 			</div>
