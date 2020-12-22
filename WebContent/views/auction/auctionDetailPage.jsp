@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import ="hotsix.goodseller.user.post.model.vo.Post" %>
+    <%@ page import="java.text.DecimalFormat"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,6 +23,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+
 <script>
 //게시물 상세 페이지 사진 변경
 $(function() {
@@ -73,6 +75,7 @@ $(function() {
 
 <%
 	Post p = (Post)request.getAttribute("post");
+	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 
 <div id="wrap">
@@ -81,7 +84,7 @@ $(function() {
 		<div id="contents">
 			<div class="container">
 				<div id="contents-deail-1" class="row">
-					<h3>게시물 상세 페이지</h3>
+					<span id="mainCate">게시물 상세 페이지</span>
 				</div>
 				<hr>
 				<div id="contents-deail-2" class="row">
@@ -127,7 +130,7 @@ $(function() {
 							<div class="col-12">
 								<div class="row">
 									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										즉시 구매가 : <%=p.getBuyPrice() %>
+										즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
 									</div>
 									<div class="col-3  p-1">
 										<button type="button" class="btn btn-danger float-right" style="width: 140px">즉시 구매</button>
@@ -137,7 +140,7 @@ $(function() {
 							<div class="col-12">
 								<div class="row">
 									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										현재 입찰가 : <strong style="color:red"><%=p.getAuctionPrice() %></strong>
+										<span class="moneyFont">현재 입찰금 : </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
 									</div>
 									<div class="col-3  p-1">
 										<button id="InterestedBtn" type="button" class="btn btn-secondary float-right" style="width: 140px">관심상품등록</button>

@@ -1,17 +1,22 @@
-#contents {
-	border: 0px solid black;
-	text-align: center;
-	box-sizing: border-box;
-	margin: 0px;
-	padding: 0px;
-}
-
-
 /*--detail page--*/
-#contents-deail-1>h3{
-	height: 15%;
-	margin: 30px auto;
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+/* -------------------------------폰트 모음----------------------------- */
+#mainCate{
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+#contents-deail-1>span {
+	height: 15%;
+	margin: 20px auto;
+	margin-bottom: 0px;
+}
+
 #contents-deail-1{
 	height: 100px;
 }
@@ -79,4 +84,17 @@ fieldset {
 legend {
 	text-align: left;	
 	border: 1px solid black;
+}
+.startPrice{
+	font-weight: bold;
+	color: #ED4C00;
+	font-size: 30px;
+}
+.buyPrice{
+	color: black;
+	font-weight: normal;
+	font-size: 25px;
+}
+.moneyFont{
+		color: #808080;
 }
