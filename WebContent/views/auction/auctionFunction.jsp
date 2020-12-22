@@ -93,7 +93,7 @@ table.auctionTbl td {
 					if(result == true){
 					
 					//$("#offerPrice", parent.opener.document).val(offerPrice);
-					opener.parent.location.replace("/auctionOffer.do?postNo=<%=postNo%>&offerPrice="+offerPrice+"&userId=<%=m.getUserId()%>);
+					opener.parent.location.replace("/auctionOffer.do?postNo=<%=postNo%>&offerPrice="+offerPrice+"&userId=<%=m.getUserId()%>");
 					self.close();
 					}
 				}
