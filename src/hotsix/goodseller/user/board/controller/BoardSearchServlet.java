@@ -51,7 +51,7 @@ public class BoardSearchServlet extends HttpServlet {
 		if(selectBox.equals("subject")) {
 			bpd = new BoardService().BoardSearchSubject(currentPage, searchText);
 			
-			RequestDispatcher view = request.getRequestDispatcher("/views/board/boardSearchSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardSearchSuccess.jsp");
 
 			request.setAttribute("pageData", bpd);
 			request.setAttribute("selectBox", selectBox);
@@ -61,7 +61,7 @@ public class BoardSearchServlet extends HttpServlet {
 		}else if (selectBox.equals("content")) {
 			bpd = new BoardService().BoardSearchContent(currentPage, searchText);
 
-			RequestDispatcher view = request.getRequestDispatcher("/views/board/boardSearchSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardSearchSuccess.jsp");
 
 			request.setAttribute("pageData", bpd);
 			request.setAttribute("selectBox", selectBox);
@@ -71,7 +71,7 @@ public class BoardSearchServlet extends HttpServlet {
 		}else if (selectBox.equals("writer")) {
 			bpd = new BoardService().BoardSearchWriter(currentPage,searchText);	
 
-			RequestDispatcher view = request.getRequestDispatcher("/views/board/boardSearchSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardSearchSuccess.jsp");
 
 			request.setAttribute("pageData", bpd);
 			request.setAttribute("selectBox", selectBox);
@@ -79,7 +79,7 @@ public class BoardSearchServlet extends HttpServlet {
 			view.forward(request, response);
 		}else {
 			
-			response.sendRedirect("/views/board/boardSearchFail.jsp");
+			response.sendRedirect("/views/csBoard/boardSearchFail.jsp");
 		}
 
 	}

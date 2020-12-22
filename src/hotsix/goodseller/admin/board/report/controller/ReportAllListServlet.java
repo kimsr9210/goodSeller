@@ -1,4 +1,4 @@
-package hotsix.goodseller.admin.board.controller;
+package hotsix.goodseller.admin.board.report.controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.admin.board.service.RegisterService;
+import hotsix.goodseller.admin.board.report.service.ReportService;
 import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 
 
@@ -21,13 +21,13 @@ import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 //여기 위에 적혀 있는걸 /registerAllList.do -> /registerAdminAllList.do
 //으로 바꾸고 웹에서도 /registerAdminAllList.do 로 접근해야 해요 아 ! 네네 이것만 바꾸면 되는거에요 ?
 //넵! 그러면 수고하세용 ^^감사합니다
-public class BoardRegisterAllListServlet extends HttpServlet {
+public class ReportAllListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardRegisterAllListServlet() {
+    public ReportAllListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,7 +50,7 @@ public class BoardRegisterAllListServlet extends HttpServlet {
 		}
 		
 		//ReqBoardPageData result = new BoardService().selectRegisterAllListPage(currentPage,selectBox,searchText);
-		ReqBoardPageData result = new RegisterService().selectRegisterAllListPage(currentPage,selectBox,searchText);
+		ReqBoardPageData result = new ReportService().selectRegisterAllListPage(currentPage,selectBox,searchText);
 		RequestDispatcher view = request.getRequestDispatcher("/views/admin/register/boardRegisterList.jsp");
 		request.setAttribute("pageData", result);
 		view.forward(request, response);

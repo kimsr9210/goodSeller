@@ -1,4 +1,4 @@
-package hotsix.goodseller.admin.board.controller;
+package hotsix.goodseller.admin.board.report.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.admin.board.service.RegisterService;
-import hotsix.goodseller.admin.board.vo.RegisterComment;
+import hotsix.goodseller.admin.board.report.service.ReportService;
+import hotsix.goodseller.admin.board.report.vo.ReportPost;
 import hotsix.goodseller.user.board.model.vo.Register;
 
 /**
@@ -21,13 +21,13 @@ import hotsix.goodseller.user.board.model.vo.Register;
  */
 @WebServlet("/boardRegisterAdminOneClick.do")
 //여기 맵핑 이름하고 다른것도 ㄱ벼쳐서 그래요
-public class BoardRegisterOneClickServlet extends HttpServlet {
+public class ReportPostClickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BoardRegisterOneClickServlet() {
+	public ReportPostClickServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,10 +43,10 @@ public class BoardRegisterOneClickServlet extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 
 		// 비즈니스 로직 처리
-		Register register = new RegisterService().RegisterOneClick(boardNo);
+		Register register = new ReportService().RegisterOneClick(boardNo);
 
 		// 신고게시판 댓글
-		ArrayList<RegisterComment> list = new RegisterService().selectCommentBoard(boardNo);
+		ArrayList<ReportPost> list = new ReportService().selectCommentBoard(boardNo);
 		RequestDispatcher view = request.getRequestDispatcher("/views/admin/register/boardRegisterOneClick.jsp");
 		request.setAttribute("register", register);
 		request.setAttribute("commentList", list);

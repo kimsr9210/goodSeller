@@ -57,7 +57,7 @@ width: 60%;
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	
 
-	<form action="/boradRegister.do" method="post">
+	<form action="/reportWrite.do" method="post">
 		<div id="content">
 			<div id="container">
 					<h1 style="text-align : center;">신고 게시판</h1><br>

@@ -1,4 +1,4 @@
-package hotsix.goodseller.admin.board.controller;
+package hotsix.goodseller.admin.board.report.controller;
 
 import java.io.IOException;
 
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import hotsix.goodseller.admin.board.service.RegisterService;
+import hotsix.goodseller.admin.board.report.service.ReportService;
 import hotsix.goodseller.member.model.vo.Member;
 
 /**
  * Servlet implementation class BoardRegisterCommentWriteServlet
  */
 @WebServlet("/registerCommentWrite.do")
-public class BoardRegisterCommentInsertServlet extends HttpServlet {
+public class ReportAnswerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BoardRegisterCommentInsertServlet() {
+	public ReportAnswerServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -57,7 +57,7 @@ public class BoardRegisterCommentInsertServlet extends HttpServlet {
 		//System.out.println("게시물 번호:" + boardNo);
 		
 		//비지니스 로직
-		int result = new RegisterService().insertBoardComment(boardNo,comment,userId);
+		int result = new ReportService().insertBoardComment(boardNo,comment,userId);
 
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminRegisetComment.jsp");

@@ -66,15 +66,15 @@ public class BoradRegisterServlet extends HttpServlet {
 				
 				if(result>0)
 				{
-				   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterSuccess.jsp");
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardRegisterSuccess.jsp");
 				   	view.forward(request, response);
 				}else {
-				   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteFail.jsp");
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardWriteFail.jsp");
 				   	view.forward(request, response);
 				}
 				
 			} catch (Exception e) {
-				response.sendRedirect("/views/board/boardWriteFail.jsp");
+				response.sendRedirect("/views/csBoard/boardWriteFail.jsp");
 			}
 		}
 		

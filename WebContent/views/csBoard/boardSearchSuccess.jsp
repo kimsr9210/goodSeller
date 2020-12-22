@@ -93,7 +93,7 @@
 					<div class="col-12 col-md-5 p-0">
 
 						<%if(board.getPostLockYN()=='N'){ %>
-							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
 								id="postClickBtn"><%=board.getSubject() %></a>
 						<%}else if(board.getPostLockYN()=='Y'){ %>
 							<%if(m!=null &&(m.getUserId().equals(board.getUserId()))){ %>
@@ -166,7 +166,7 @@
 	<script>
 		$(function() {
 			$('#writeBtn').click(function() {
-				location.href = "/views/board/boardWrite.jsp";
+				location.href = "/views/csBoard/boardWrite.jsp";
 			});
 
 			$('#postLock').click(function() {

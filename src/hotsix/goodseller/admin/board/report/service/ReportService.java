@@ -1,16 +1,16 @@
-package hotsix.goodseller.admin.board.service;
+package hotsix.goodseller.admin.board.report.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import hotsix.goodseller.admin.board.dao.RegisterDAO;
-import hotsix.goodseller.admin.board.vo.RegisterComment;
+import hotsix.goodseller.admin.board.report.dao.ReportDAO;
+import hotsix.goodseller.admin.board.report.vo.ReportPost;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Register;
 import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 
-public class RegisterService {
-	RegisterDAO registerDAO = new RegisterDAO();
+public class ReportService {
+	ReportDAO registerDAO = new ReportDAO();
 
 	public ReqBoardPageData selectRegisterAllListPage(int currentPage, String selectBox, String searchText) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -55,10 +55,10 @@ public class RegisterService {
 	}
 	
 	//신고게시판 댓글
-	public ArrayList<RegisterComment> selectCommentBoard(int boardNo) {
+	public ArrayList<ReportPost> selectCommentBoard(int boardNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<RegisterComment> list = RegisterDAO.selectCommentBoard(conn,boardNo);
+		ArrayList<ReportPost> list = ReportDAO.selectCommentBoard(conn,boardNo);
 		
 		JDBCTemplate.close(conn);
 		return list;

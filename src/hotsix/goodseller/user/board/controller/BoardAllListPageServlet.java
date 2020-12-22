@@ -43,7 +43,7 @@ public class BoardAllListPageServlet extends HttpServlet {
 		BoardPageData bpd = new BoardService().selectAllListPage(currentPage);
 		
 		//결과 처리
-		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardMain.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardMain.jsp");
 		request.setAttribute("pageData", bpd);
 		view.forward(request, response);
 		//System.out.println(bpd.getPageNavi());

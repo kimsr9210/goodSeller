@@ -45,7 +45,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		int result = new BoardService().boardDelete(boardNo, userId);
 		
 		//결과 처리 
-		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardDelete.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardDelete.jsp");
 		if(result>0) {
 			request.setAttribute("result", true);
 		}else {

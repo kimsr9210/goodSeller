@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.Register"%>
-<%@ page import="hotsix.goodseller.admin.board.vo.RegisterComment"%>
+<%@ page import="hotsix.goodseller.admin.board.report.vo.ReportPost"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -57,10 +57,8 @@
 
 	<%
 		Register r = (Register) request.getAttribute("register");	// 내용 출력
-	
-		ArrayList<RegisterComment> list = (ArrayList<RegisterComment>) request.getAttribute("commentList");	// 댓글 출력
 		
-		
+			ArrayList<ReportPost> list = (ArrayList<ReportPost>) request.getAttribute("commentList");	// 댓글 출력
 	%>
 
 
@@ -114,7 +112,7 @@
 					</tr>
 
 					<%
-						for (RegisterComment rc : list) {
+						for (ReportPost rc : list) {
 					%>
 					<tr>
 						<td id="content_<%=rc.getCommntNo()%>"><%=rc.getContent()%></td>

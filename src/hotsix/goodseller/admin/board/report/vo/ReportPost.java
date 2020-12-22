@@ -1,8 +1,8 @@
-package hotsix.goodseller.admin.board.vo;
+package hotsix.goodseller.admin.board.report.vo;
 
 import java.sql.Date;
 
-public class RegisterComment {
+public class ReportPost {
 	
 	private int commntNo;
 	private int boardNo;
@@ -46,7 +46,7 @@ public class RegisterComment {
 	public void setDelYm(char delYm) {
 		this.delYm = delYm;
 	}
-	public RegisterComment(int commntNo, int boardNo, String content, String userId, Date regDate, char delYm) {
+	public ReportPost(int commntNo, int boardNo, String content, String userId, Date regDate, char delYm) {
 		super();
 		this.commntNo = commntNo;
 		this.boardNo = boardNo;
@@ -55,7 +55,7 @@ public class RegisterComment {
 		this.regDate = regDate;
 		this.delYm = delYm;
 	}
-	public RegisterComment() {
+	public ReportPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

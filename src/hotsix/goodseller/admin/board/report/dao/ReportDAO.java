@@ -1,4 +1,4 @@
-package hotsix.goodseller.admin.board.dao;
+package hotsix.goodseller.admin.board.report.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import hotsix.goodseller.admin.board.vo.RegisterComment;
+import hotsix.goodseller.admin.board.report.vo.ReportPost;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Register;
 
-public class RegisterDAO {
+public class ReportDAO {
 
 	public ArrayList<Register> selectRegisterAllListPage(Connection conn, int currentPage, int recordPerPage,
 			String selectBox, String searchText) {
@@ -199,12 +199,12 @@ public class RegisterDAO {
 	}
 
 	//신고게시판 댓글
-	public static ArrayList<RegisterComment> selectCommentBoard(Connection conn, int boardNo) {
+	public static ArrayList<ReportPost> selectCommentBoard(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		
-		ArrayList<RegisterComment> list = new ArrayList<RegisterComment>();
+		ArrayList<ReportPost> list = new ArrayList<ReportPost>();
 		
 		String query = "SELECT * FROM REG_COMMENT WHERE DEL_YN='N' AND boardNo=? ORDER BY conmmentNo DESC" ;
 		
@@ -215,7 +215,7 @@ public class RegisterDAO {
 			
 			
 			while(rset.next()) {
-				RegisterComment bc = new RegisterComment();
+				ReportPost bc = new ReportPost();
 				bc.setCommntNo(rset.getInt("conmmentNo"));
 				bc.setBoardNo(rset.getInt("boardNo"));
 				bc.setContent(rset.getString("content"));
