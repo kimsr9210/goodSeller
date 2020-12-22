@@ -15,7 +15,8 @@ import hotsix.goodseller.user.board.model.vo.Register;
 /**
  * Servlet implementation class BoardRegisterOneClickServlet
  */
-@WebServlet("/boardRegisterOneClick.do")
+@WebServlet("/boardRegisterAdminOneClick.do")
+//여기 맵핑 이름하고 다른것도 ㄱ벼쳐서 그래요
 public class BoardRegisterOneClickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

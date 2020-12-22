@@ -176,7 +176,7 @@ public class RegisterDAO {
 		return postTotalCount;
 	}
 
-	public static int insertBoardComment(Connection conn, int boardNo, String comment, String userId) {
+	public int insertBoardComment(Connection conn, int boardNo, String comment, String userId) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = "INSERT INTO REG_COMMENT VALUES(BC_SEQ.NEXTVAL,?,?,?,SYSDATE,'N')";
@@ -195,9 +195,7 @@ public class RegisterDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
-		
-		
-		
-		
 	}
+
+	
 }

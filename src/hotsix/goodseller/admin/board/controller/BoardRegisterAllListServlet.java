@@ -17,7 +17,10 @@ import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
 /**
  * Servlet implementation class BoardRegisterAllListServlet
  */
-@WebServlet("/registerAllList.do")
+@WebServlet("/registerAdminAllList.do")
+//여기 위에 적혀 있는걸 /registerAllList.do -> /registerAdminAllList.do
+//으로 바꾸고 웹에서도 /registerAdminAllList.do 로 접근해야 해요 아 ! 네네 이것만 바꾸면 되는거에요 ?
+//넵! 그러면 수고하세용 ^^감사합니다
 public class BoardRegisterAllListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

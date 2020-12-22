@@ -34,6 +34,8 @@ public class RegisterService {
 		Connection conn = JDBCTemplate.getConnection();
 		Register register = registerDAO.RegisterOneClick(conn, boardNo);
 
+		JDBCTemplate.close(conn);
+		
 		return register;
 	}
 
@@ -41,7 +43,7 @@ public class RegisterService {
 	public int insertBoardComment(int boardNo, String comment, String userId) {
 		Connection conn = JDBCTemplate.getConnection();
 
-		int result = RegisterDAO.insertBoardComment(conn, boardNo, comment, userId);
+		int result = registerDAO.insertBoardComment(conn, boardNo, comment, userId);
 		if (result > 0) {
 			JDBCTemplate.commit(conn);
 		} else {

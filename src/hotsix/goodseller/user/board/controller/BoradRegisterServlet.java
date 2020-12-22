@@ -47,35 +47,38 @@ public class BoradRegisterServlet extends HttpServlet {
 		
 
 		if(m == null) {
-			out.println("<script>alert('로그인한 회원정보가 없습니다. \n 다시 로그인해주세요.');</script>");
-			return;
+			//로그인 안되있을 때
+			out.println("<script>alert('로그인한 회원정보가 없습니다. \\n 다시 로그인해주세요.');</script>");
+		} else {
+			//로그인 됬을 때
+			try {
+
+				//2.이전 페이지에서 작성한 내용 가져오기 
+				String subject = request.getParameter("subject");
+				String content = request.getParameter("content");
+				String reguserId = request.getParameter("reguserId");
+				
+				//3.session에서 작성자 값 불러오기 
+				String userId = m.getUserId();
+				
+				int result = new BoardService().InsertRegister(userId, subject, content,reguserId);
+				//제목 내용 신고할사람
+				
+				if(result>0)
+				{
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterSuccess.jsp");
+				   	view.forward(request, response);
+				}else {
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteFail.jsp");
+				   	view.forward(request, response);
+				}
+				
+			} catch (Exception e) {
+				response.sendRedirect("/views/board/boardWriteFail.jsp");
+			}
 		}
 		
-		try {
-
-			//2.이전 페이지에서 작성한 내용 가져오기 
-			String subject = request.getParameter("subject");
-			String content = request.getParameter("content");
-			String reguserId = request.getParameter("reguserId");
-			
-			//3.session에서 작성자 값 불러오기 
-			String userId = m.getUserId();
-			
-			int result = new BoardService().InsertRegister(userId, subject, content,reguserId);
-			//제목 내용 신고할사람
-			
-			if(result>0)
-			{
-			   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterSuccess.jsp");
-			   	view.forward(request, response);
-			}else {
-			   	RequestDispatcher view = request.getRequestDispatcher("/views/board/boardWriteFail.jsp");
-			   	view.forward(request, response);
-			}
-			
-		} catch (Exception e) {
-			response.sendRedirect("/views/board/boardWriteFail.jsp");
-		}
+		
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
