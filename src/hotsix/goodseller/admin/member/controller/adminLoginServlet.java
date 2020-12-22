@@ -1,4 +1,4 @@
-package hotsix.goodseller.admin.controller;
+package hotsix.goodseller.admin.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,7 +47,7 @@ request.setCharacterEncoding("UTF-8");
 		if(admin!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("admin", admin);
-			response.sendRedirect("/views/admin/adminIndex.jsp");
+			response.sendRedirect("/memberAllList.do");
 			
 		} else {
 			out.println("<script>alert('ID 또는 PW를 확인해주세요');</script>");

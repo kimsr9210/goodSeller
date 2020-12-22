@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12" id="contents-header">
-                    <img src="/resources/images/logo.png" style="width: 80px;">
+                    <a href="/index.do"><img src="/resources/images/logo.png" style="width: 80px;"></a>
                     웹 사이트 관리
                 </div>
             </div>
