@@ -26,17 +26,7 @@
 	
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
-<!-- font 사용 -->
-<style>
-	#tooltiptext-side
-        {
-            margin-top: 11px;
-        }
-        #tooltiptext-search
-        {
-            margin-top: 11px;
-        }
-</style>
+
 </head>
 <body>
 	<div id="header">
@@ -101,9 +91,9 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/board1.png" class="imgSize"/>&nbsp;&nbsp;자유게시판</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/board1.png" class="imgSize"/>&nbsp;&nbsp;Q&A</a></li>
 						<li><a href="/views/board/boardRegister.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/surprise.png" class="imgSize"/>&nbsp;&nbsp;신고게시판</a></li>
-						<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/info.png" class="imgSize"/>&nbsp;&nbsp;이용안내</a></li>
+						<li><a href="/views/common/guide.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/info.png" class="imgSize"/>&nbsp;&nbsp;이용안내</a></li>
 					</ul>
 				</div>
 			</div>
