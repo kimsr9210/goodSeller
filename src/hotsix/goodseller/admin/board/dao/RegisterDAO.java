@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import hotsix.goodseller.admin.board.vo.RegisterComment;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Register;
 
@@ -195,6 +196,44 @@ public class RegisterDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	//신고게시판 댓글
+	public static ArrayList<RegisterComment> selectCommentBoard(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		
+		ArrayList<RegisterComment> list = new ArrayList<RegisterComment>();
+		
+		String query = "SELECT * FROM REG_COMMENT WHERE DEL_YN='N' AND boardNo=? ORDER BY conmmentNo DESC" ;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				RegisterComment bc = new RegisterComment();
+				bc.setCommntNo(rset.getInt("conmmentNo"));
+				bc.setBoardNo(rset.getInt("boardNo"));
+				bc.setContent(rset.getString("content"));
+				bc.setUserId(rset.getString("userId"));
+				bc.setRegDate(rset.getDate("regDate"));
+				
+				list.add(bc);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+		
 	}
 
 	

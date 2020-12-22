@@ -51,7 +51,7 @@ public class BoardRegisterAllListServlet extends HttpServlet {
 		
 		//ReqBoardPageData result = new BoardService().selectRegisterAllListPage(currentPage,selectBox,searchText);
 		ReqBoardPageData result = new RegisterService().selectRegisterAllListPage(currentPage,selectBox,searchText);
-		RequestDispatcher view = request.getRequestDispatcher("/views/admin/boardRegisterList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/admin/register/boardRegisterList.jsp");
 		request.setAttribute("pageData", result);
 		view.forward(request, response);
 	}

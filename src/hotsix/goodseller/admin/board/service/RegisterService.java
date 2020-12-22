@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import hotsix.goodseller.admin.board.dao.RegisterDAO;
+import hotsix.goodseller.admin.board.vo.RegisterComment;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Register;
 import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
@@ -51,5 +52,16 @@ public class RegisterService {
 		}
 		JDBCTemplate.close(conn);
 		return result;
+	}
+	
+	//신고게시판 댓글
+	public ArrayList<RegisterComment> selectCommentBoard(int boardNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<RegisterComment> list = RegisterDAO.selectCommentBoard(conn,boardNo);
+		
+		JDBCTemplate.close(conn);
+		return list;
+		
 	}
 }
