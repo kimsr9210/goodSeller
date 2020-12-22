@@ -33,28 +33,11 @@
 
 	
 	<center>
-	
-	<div class="wrapper">
-	<div class="container">
-		<div class="row p-0 m-0">
-			<div class="col-4">입찰 시작가</div>
-			<div class="col-8"><%=startPrice %></div>
-		</div>
-		<div class="row p-0 m-0">
-			<div class="col-4">현재 입찰가</div>
-			<div class="col-8"><%=startPrice %></div>
-		</div>
-		<div class="row p-0 m-0">
-			<div class="col-4">제시할 입찰가</div>
-			<div class="col-8"><input type="text" name="offerPrice"/></div>
-		</div>
-	</div>
-	</div>
-	
-	
+	<form action = "">
 	<table class="auctionTbl" style="border:1px solid black; ">
-		<legend>입찰</legend>
-		
+		<tr>
+			<th colspan="2">입찰</th>
+		</tr>
 		<tr>
 			<th>입찰 시작가</th>
 			<td><%=startPrice %></td>
@@ -64,12 +47,25 @@
 			<td><%=auctionPrice %></td>
 		</tr>
 		<tr>
-			<th>제시할 입찰가</th>
+			<th>제시 할 입찰가</th>
 			<td><input type="text" name="offerPrice"/></td>
 		</tr>
 		
+		<tr>
+		<td colspan="2"><button id="submitBtn">입찰하기</button>
+		<input type="reset" value="취소하기"/></td>
+		
+		</tr>
+		
+	<script>
+	$(function(){
+		$('#submitBtn').click(function(){
+			var result = window.confirm("입찰을 진행하시겠습니까? 입찰 후 취소는 패널티가 부과될 수 있습니다.");
+		});
+	});
+	</script>
 	</table>
-	
+	</form>
 	</center>
 	
 </body>
