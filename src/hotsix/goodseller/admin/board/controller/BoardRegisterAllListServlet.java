@@ -1,4 +1,4 @@
-package hotsix.goodseller.user.board.controller;
+package hotsix.goodseller.admin.board.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.board.model.service.BoardService;
+import hotsix.goodseller.admin.board.service.RegisterService;
 import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
+
+
 
 /**
  * Servlet implementation class BoardRegisterAllListServlet
@@ -44,7 +46,8 @@ public class BoardRegisterAllListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		ReqBoardPageData result = new BoardService().selectRegisterAllListPage(currentPage,selectBox,searchText);
+		//ReqBoardPageData result = new BoardService().selectRegisterAllListPage(currentPage,selectBox,searchText);
+		ReqBoardPageData result = new RegisterService().selectRegisterAllListPage(currentPage,selectBox,searchText);
 		RequestDispatcher view = request.getRequestDispatcher("/views/board/boardRegisterList.jsp");
 		request.setAttribute("pageData", result);
 		view.forward(request, response);

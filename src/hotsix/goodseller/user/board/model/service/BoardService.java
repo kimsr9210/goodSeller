@@ -145,33 +145,6 @@ public class BoardService {
 		return result;
 	}
 
-	public ReqBoardPageData selectRegisterAllListPage(int currentPage, String selectBox, String searchText) {
-		Connection conn = JDBCTemplate.getConnection();
-		int recordPerPage = 15; //한 페이지당 몇개씩 게시물이 보이게 할 것인지를 정함.
-		ArrayList<Register> list = boardDAO.selectRegisterAllListPage(conn, currentPage, recordPerPage, selectBox, searchText);
-		
-		//네비바 만듬 12345> <678910> ...
-		int naviCountPerPage = 5; // PageNavi 값이 몇개씩 보여줄 것인지 
-		String regGetpageNavi = boardDAO.regGetpageNavi(conn,currentPage,recordPerPage,naviCountPerPage);
-		
-		ReqBoardPageData bpd = new ReqBoardPageData();
-		bpd.setList(list);
-		bpd.setPageNavi(regGetpageNavi);
-		
-		JDBCTemplate.close(conn);
-		return bpd;
-		
-	}
-
-	public Register RegisterOneClick(int boardNo) {
-		Connection conn = JDBCTemplate.getConnection();
-		Register register = boardDAO.RegisterOneClick(conn,boardNo);
-		
-		
-		return register;
-	}
-
-
 
 
 
