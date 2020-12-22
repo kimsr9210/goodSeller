@@ -11,6 +11,8 @@ public class Register {
 	private String reguserId;
 	private Date createdate;
 	private String boardcomment;
+	
+	
 	public int getBoardNo() {
 		return boardNo;
 	}

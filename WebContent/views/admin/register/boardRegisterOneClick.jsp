@@ -62,7 +62,6 @@
 		<%@ include file="/views/common/header&footer/header.jsp"%>
 
 
-		<form action="/boardRegisterOneClick.do" method="post">
 			<div id="content">
 				<div id="container">
 					<h1 style="text-align: center;">신고 게시판</h1>
@@ -108,7 +107,6 @@
 
 				</div>
 			</div>
-		</form>
 
 
 		<%@ include file="/views/common/header&footer/footer.jsp"%>

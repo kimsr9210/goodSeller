@@ -162,7 +162,7 @@ $(function() {
 										$('#auctionBtn').click(function(){
 							
 											<%if(m!=null){%>
-											var settings = "width=500px, height=170px";
+											var settings = "width=500px, height=280px";
 											auctionPage = window.open("/views/auction/auctionFunction.jsp", "childwin", settings);
 											$('#auctionForm').submit();
 											<%}else{%>
