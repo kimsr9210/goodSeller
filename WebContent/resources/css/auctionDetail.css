@@ -54,16 +54,3 @@ legend {
 	text-align: left;	
 	border: 1px solid black;
 }
-.startPrice{
-	font-weight: bold;
-	color: #ED4C00;
-	font-size: 30px;
-}
-.buyPrice{
-	color: black;
-	font-weight: normal;
-	font-size: 25px;
-}
-.moneyFont{
-		color: #808080;
-}

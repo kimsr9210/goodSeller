@@ -24,6 +24,12 @@
 	
 	
 <style>
+@font-face {
+    font-family: 'RIDIBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #postTitle{
 	border:1px solid #cccccc;
 	color:#3c3c3c;
@@ -37,20 +43,65 @@
 	height:500px;
 	overflow:hidden;
 }
-#sub-img{
 
+.priceBox{
+	float: left;
+	width:55%;
+	font-size:12px;
+	margin-left: 30px;
+	margin-top:5px;
 }
-#contents-deail-1{
+.priceBtnBox{
+	width:30%;
+	float:left;
 }
 
-#contents-deail-2{
+.startPrice{
+	font-family:RIDIBatang;
+	font-weight: bold;
+	color: #ED4C00;
+	font-size: 21px;
 }
-#contents-deail-3{
+.buyPrice{
+	font-family:RIDIBatang;
+	color: black;
+	font-weight: normal;
+	font-size: 17px;
 }
-#contents-deail-4{
+.moneyFont{
+	color: #808080;
+	font-size:12px;
 }
 
-#contents-deail-5{
+.priceBtnBox>button{
+	width:78px;
+	height: 47px;
+	font-size:12px;
+	border-radius: 0;
+	border-top: 1px solid white;
+	font-weight: 700;
+}
+#price-navi-1{
+	width:80%;
+	float:left;
+}
+#price-navi-2{
+	width:20%;
+	float:left;
+}
+#auctionBtn{
+	width:100%;
+	height: 100%;
+	font-size: 16px;
+	float:left;
+	border-radius: 0;
+	font-weight: 700;
+	border-top: 1px solid white;
+}
+#auctionBox{
+	width:100px;
+	height: 94px;
+	margin-left: -18px;
 }
 </style>
 	
@@ -169,37 +220,41 @@ $(function() {
 						</div>
 					</div>
 				</div>
+				<hr>
 				<div id="contents-deail-4" class="row">
-					<div class="col-6">
+					<div class="col-12 col-md-6">
 						<div id="bid">
 							<div id="progress-height" class="col-12">
 								<div class="progress" style="height: 100%; margin: 1px;">
- 									 <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><%=p.getEndDate() %></div>
+	 								 <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><%=p.getEndDate() %></div>
 								</div>
 							</div>
-							<br>
-							<div class="col-12">
-								<div class="row">
-									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span>원
-									</div>
-									<div class="col-3  p-1">
-										<button type="button" class="btn btn-danger float-right" style="width: 140px">즉시 구매</button>
+								<br>
+								<div id="price-navi-1">
+								<div class="col-12">
+									<div>
+										<div class="priceBox">
+											<span class="moneyFont">즉시 구매가 : </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span> 원
+										</div>
+										<div class="priceBtnBox">
+											<button type="button" class="btn btn-danger float-right" >즉시 구매</button>
+										</div>
 									</div>
 								</div>
+								<br>
+								<div class="col-12">
+									<div>
+										<div class="priceBox">
+											<span class="moneyFont">현재 입찰금 : </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
+										</div>
+										<div class="priceBtnBox">
+											<button id="InterestedBtn" type="button" class="btn btn-secondary float-right" >찜하기</button>
+										</div>
+									</div>
+								</div>	
 							</div>
-							<br>
-							<div class="col-12">
-								<div class="row">
-									<div class="col-9" style="font-size: x-large; margin-top: 5px; text-align: left;">
-										<span class="moneyFont">현재 입찰금 : </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice())%></span>원
-									</div>
-									<div class="col-3  p-1">
-										<button id="InterestedBtn" type="button" class="btn btn-secondary float-right" style="width: 140px">관심상품등록</button>
-									</div>
-								</div>
-							</div>	
-							<div class="col-12 p-1"><button type="button" class="btn btn-primary btn-lg btn-block" id="auctionBtn">입찰 하기</button>
+							<div id="price-navi-2">
+							<div id="auctionBox"><button type="button" class="btn btn-dark" id="auctionBtn">입찰</button>
 
 								<form  id="auctionForm" method="post" action="/views/auction/auctionFunction.jsp" target="childwin">
 									<input type="hidden" name="startPrice" value="<%=p.getStartPrice()%>"/>
@@ -226,11 +281,11 @@ $(function() {
 									
 									
 								</script>
-								
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-12 col-md-6">
 					<br>
 						<div class="selleInformation">
 						<div class="row">
