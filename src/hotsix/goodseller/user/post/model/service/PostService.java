@@ -132,5 +132,23 @@ public class PostService {
 		
 		return list;
 	}
+	public int AuctionPriceUpdate(int postNo, String userId, int offerPrice) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		int auctionInsertResult = pDAO.auctionTblInsert(conn, postNo, userId, offerPrice);
+		int postTBLUpdateResult = pDAO.auctionPriceUpdate(conn, postNo, userId, offerPrice);
+		
+		if(auctionInsertResult>0 && postTBLUpdateResult>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		int result = auctionInsertResult + postTBLUpdateResult ;
+
+		return result;
+		
+		
+	}
 
 }

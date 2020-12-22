@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="hotsix.goodseller.member.model.vo.Member"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,6 +35,9 @@
 		char sell_YN = request.getParameter("sell_YN").charAt(0);
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 
+
+		Member m = (Member) session.getAttribute("member");
+		
 	%>
 
 	
@@ -79,7 +83,7 @@
 				//새로운 tbl만들어야한다
 				
 					//창이닫히고 새로고침
-			       opener.parent.location.replace("/auctionDetailPage.do?postNo=<%=postNo %>&offerPrice="+offerPrice);
+			       opener.parent.location.replace("/auctionOffer.do?postNo=<%=postNo %>&offerPrice="+offerPrice+"&userId=<%=m.getUserId()%>");
 			       self.close();
 		}
 			}

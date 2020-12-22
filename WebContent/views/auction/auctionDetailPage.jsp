@@ -160,9 +160,14 @@ $(function() {
 								<script>
 									$(function(){
 										$('#auctionBtn').click(function(){
+							
+											<%if(m!=null){%>
 											var settings = "width=500px, height=170px";
 											auctionPage = window.open("/views/auction/auctionFunction.jsp", "childwin", settings);
 											$('#auctionForm').submit();
+											<%}else{%>
+												alert("로그인 한 후 입찰기능을 이용할 수 있습니다.");
+											<%}%>
 										});
 										
 									});

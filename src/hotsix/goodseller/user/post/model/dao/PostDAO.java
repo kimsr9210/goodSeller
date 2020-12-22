@@ -730,5 +730,55 @@ public class PostDAO {
 			
 		}
 
+		public int auctionPriceUpdate(Connection conn, int postNo, String userId, int offerPrice) {
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			String query = "UPDATE POSTTBL SET buyer=? , auctionPrice=? WHERE POSTNO=?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userId);
+				pstmt.setInt(2, offerPrice);
+				pstmt.setInt(3, postNo);
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+			
+		}
+
+		public int auctionTblInsert(Connection conn, int postNo, String userId, int offerPrice) {
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			String query = "INSERT INTO auction VALUES(?,?,sysdate,?,'N')";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,postNo);
+				pstmt.setString(2, userId);
+				pstmt.setInt(3, offerPrice);
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+			
+			
+		}
+
 
 }
