@@ -103,11 +103,11 @@
 							%>
 							<div class="postBox col-md-3">
 								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-									<div class="card" style="border:0; border-radius: 10%;">
+									<div class="card" style="border:0; border-radius: 5px;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
-										<div class="card-body">
+										<div class="card-body-size">
 											<h6 class="card-title"><%=subject %></h6>
 											<p class="card-text">
 												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
@@ -118,7 +118,7 @@
 									</div>
 								</a>
 							</div>
-							<%} %>		
+							<%} %>	
 					</div>
 				</div>
 			</div>

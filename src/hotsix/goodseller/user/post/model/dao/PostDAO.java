@@ -231,7 +231,7 @@ public class PostDAO {
 			ArrayList<Post> list = new ArrayList<Post>();
 			Post p = null;
 			
-			String query = "SELECT * FROM POSTTBL WHERE ROWNUM <= 4 ORDER BY hit DESC";
+			String query = "SELECT * FROM (SELECT * FROM POSTTBL ORDER BY hit DESC) WHERE ROWNUM <= 8";
 			try {
 				pstmt = conn.prepareStatement(query);
 				rset = pstmt.executeQuery();

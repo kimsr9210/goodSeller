@@ -18,6 +18,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #core-contents-3 {
 	height: 100%;
 	padding: 0;
@@ -49,7 +55,6 @@
 }
 
 #postImgMain {
-	border-radius: 10%;
 	transform: scale(1);
 	transition: all 0.2s ease-in-out;
 }
@@ -58,41 +63,53 @@
 	overflow: hidden;
 }
 
-.card-title {
+.card-title{
 	z-index: 1;
 	height: 30px;
 	overflow: hidden;
 	font-size: 12px;
 }
-
-.card-text {
+.card-text{
 	z-index: 1;
 	overflow: hidden;
-	font-weight: 600;
 	font-size: 12px;
+	color: black;
+	font-weight: normal;
 }
-
-.startPrice {
+.startPrice{
 	font-weight: bold;
 	color: #ED4C00;
-	font-size: 18px;
+	font-size: 14px;
 }
-
-.buyPrice {
-	font-weight: bold;
-	color: #5B5AFF;
-	font-size: 18px;
-}
-
-#postImgBox {
-	height: 250px;
-	overflow: hidden;
-}
-
-#postClick {
+.buyPrice{
 	color: black;
+	font-weight: normal;
+	font-size: 12px;
+}
+#postImgBox{
+	height:250px;
+	overflow:hidden;
+}
+#postClick{
+	color:black;
 	text-decoration: none;
-	border: 0;
+}
+.moneyFont{
+		font-size: 11px;
+		color: #808080;
+}
+.postBox{
+		border-bottom: 1px solid #cccccc;
+}
+.card-body-size{
+	padding: 5px;
+}
+#hotPostTitle{
+	font-size: 20px;
+	font-family: Wemakeprice-Bold;
+}
+.main-img{
+	width: 100%;
 }
 </style>
 </head>
@@ -113,61 +130,42 @@
 			
 				<div id="core-contents-top" class="row">
 					<div class="col-12 col-md-6">
-						<img src="/resources/images/carrot.jpg" class="col-10 col-md-12"
-							id="main-img">
+						<img src="/resources/images/mainContentImg_1.png" class="main-img">
 					</div>
-					<div class="col-12 col-md-6" id="contents-exp">
-						<pre>간단 경매 방법!<br>
-						</pre>
-						<p>
-							첫번째, 간편 회원가입 후 로그인<br>
-							<br>
-						</p>
-						<p>
-							두번째, 원하는 물품 검색 후 입찰<br>
-							<br>
-						</p>
-						<p>
-							세번째, 더이상 입찰하는 고객이 없으면 즉시 구매!<br>
-							<br>
-						</p>
-						<a href="/views/auction/auctionInsert.jsp">게시물 작 성페이지</a><br>
-						<a href="/views/member/memberInfo.jsp">마이페이지로 이동</a><br> <a
-							href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">의류
-							브랜드 패션</a><br>
+					<div class="col-12 col-md-6" class="row">
+						<img src="/resources/images/mainContentImg_2.png" class="main-img">
 					</div>
 				</div>
 				
-				
+				<hr>
 				<div id="core-contents-bottom" class="row">
-					<div class="col-md-12"
-						style="font: 50px Wemakeprice-Bold; text-align: center; line-height: 350px">
-						현재 핫한 상품</div>
+					<div class="col-12">
+						<span id="hotPostTitle">현재 핫한 상품</span></div>
 				</div>
-				
+				<br>
 				
 				<div id="core-contents-3" class="row">
 					<div class="col-12 p-0">
 						<div id="goods" class="row">
 							<%for(Post p : list){ %>
 							<%
-							if(p.getSubject().length()>=28){
-								subject = p.getSubject().substring(0,25)+"...";
+							if(p.getSubject().length()>=32){
+								subject = p.getSubject().substring(0,28)+"...";
 							} else{
 								subject = p.getSubject();
 							}
 							%>
-							<div class="col-md-3">
+							<div class="postBox col-md-3">
 								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-									<div class="card" style="border:0;border-radius: 10%;">
+									<div class="card" style="border:0; border-radius: 5px;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
-										<div class="card-body">
+										<div class="card-body-size">
 											<h6 class="card-title"><%=subject %></h6>
 											<p class="card-text">
-												현재 입찰금 : <span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
-												원<br> 즉시 구매가 : <span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
+												<span class="moneyFont">현재입찰금  </span><span class="startPrice"><%=formatter.format(p.getAuctionPrice()) %></span>
+												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
 												원
 											</p>
 										</div>

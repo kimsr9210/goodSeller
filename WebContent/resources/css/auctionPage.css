@@ -142,5 +142,8 @@
 }
 .postBox{
 		border-bottom: 1px solid #cccccc;
-	}
+}
 
+.card-body-size{
+	padding: 5px;
+}
