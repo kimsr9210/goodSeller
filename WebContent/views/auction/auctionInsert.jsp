@@ -50,8 +50,6 @@
 	String zDate = xYear+"-"+xMonth+"-"+xDay;
 	%>
 	
-	<%=eDate %>
-	<%=zDate %>
 <%
 	if(m != null){
 %>
