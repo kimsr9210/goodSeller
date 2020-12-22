@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="/views/admin/adminHeader.jsp"%>
+	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
 	<div id="wrap" >
         <div class="container">
             <div id="contents" class="row" style="height: 100%;">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <%@ include file="/views/admin/adminFooter.jsp"%>
+    <%@ include file="/views/admin/header&footer/adminFooter.jsp"%>
 	
 
 </body>

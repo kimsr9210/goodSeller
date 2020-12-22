@@ -17,7 +17,7 @@
 <style>
 #contents-navi {
 	padding: 0px;
-	margin: 0px;
+	margin: 10px 0px;
 }
 
 #contents-navi>li {
@@ -44,7 +44,7 @@
 		ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
 		int userNo = (int) request.getAttribute("userNo");
 	%>
-	<%@ include file="/views/admin/adminHeader.jsp"%>
+	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
 	<div id="wrap">
 		<div class="container">
 			<div class="row">
@@ -99,7 +99,7 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="/views/admin/adminFooter.jsp"%>
+	<%@ include file="/views/admin/header&footer/adminFooter.jsp"%>
 
 </body>
 </html>

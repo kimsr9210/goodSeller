@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="hotsix.goodseller.member.model.vo.Member"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,25 @@
 	href="/resources/css/adminHeader.css" />
 </head>
 <body>
-<div id="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12" id="contents-header">
-                    <a href="/index.do"><img src="/resources/images/logo.png" style="width: 80px;"></a>
-                    웹 사이트 관리
-                </div>
-            </div>
-        </div>
-    </div>
+	<%
+		Member admin = (Member) session.getAttribute("admin");
+	%>
+	<div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-12" id="contents-header">
+					<a href="/index.do"><img src="/resources/images/logo.png"
+						style="width: 80px;"></a> 웹 사이트 관리
+				</div>
+				<%
+					if (admin != null) {
+				%>
+				
+				<%
+					}
+				%>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
