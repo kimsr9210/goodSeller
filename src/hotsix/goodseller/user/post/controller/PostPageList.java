@@ -2,6 +2,11 @@ package hotsix.goodseller.user.post.controller;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.user.post.model.service.PostService;
+import hotsix.goodseller.user.post.model.vo.Post;
 import hotsix.goodseller.user.post.model.vo.PostPageData;
 
 /**
@@ -48,6 +54,26 @@ public class PostPageList extends HttpServlet {
 		//페이지를 가져올 수 있는 비지니스 로직 처리
 		PostPageData ppd = new PostService().selectPostClothingPage(currentPage, mainCategory, subCategory);
 		
+		//꺼내온 데이터중 끝나는 날이 오늘(+1)이랑 맞다면
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String mYear = String.valueOf(cal.get(Calendar.YEAR));
+		String mMonth = String.valueOf(cal.get(Calendar.MONTH)+1);
+		String mDay = String.valueOf(cal.get(Calendar.DATE)+1);
+		String eDate = mYear+"-"+mMonth+"-"+mDay;
+		
+		System.out.println("eDate : " + eDate);
+		ArrayList<Post> list = ppd.getList();
+		for(Post p : list) {
+			
+			if(format.format(p.getEndDate()).equals(eDate)) {
+				int result = new PostService().updatePostSellyn(p.getPostNo());
+				if(result>0) {
+					System.out.println("상품번호 ["+p.getPostNo()+"]는 종료날짜가 되어 거래 완료되었습니다.");
+				} 
+			}
+		}
 		// 카테고리별 페이지 옮기기
 		String cate = "";
 		switch(mainCategory) {

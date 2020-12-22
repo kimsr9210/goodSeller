@@ -74,7 +74,7 @@ public class PostDAO {
 		int end = currentPage*recordCountPerPage;
 		
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY PostNO DESC) AS ROW_NUM, POSTTBL.* "+
-						"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=? AND SELL_YN='N') WHERE ROW_NUM between ? and ?";
+						"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=?) WHERE ROW_NUM between ? and ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, mainCategory);
@@ -778,6 +778,26 @@ public class PostDAO {
 			return result;
 			
 			
+		}
+
+		public int updatePostSellyn(Connection conn, int postNo) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+			String query = "UPDATE POSTTBL SET SELL_YN='Y' WHERE POSTNO=?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, postNo);
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
 		}
 
 

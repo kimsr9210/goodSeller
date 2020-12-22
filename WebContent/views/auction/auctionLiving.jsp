@@ -110,7 +110,7 @@
 							}
 							%>
 							<div class="postBox col-md-3">
-								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>" class="post<%=p.getPostNo() %>">
 									<div class="card" style="border:0; border-radius: 5px;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
@@ -126,7 +126,20 @@
 									</div>
 								</a>
 							</div>
+							<% if(p.getSell_yn()=='Y'){ %>
+								<script>
+									$(function(){
+										var postNo = $('.post<%=p.getPostNo() %>');
+										postNo.children().css('cursor','default');
+										postNo.parent().css('opacity','0.5');
+										$(postNo).click(function(){
+											alert('판매 완료된 상품입니다.');
+											return false;
+										});
+									});
+								</script>
 							<%} %>
+							<%} %>	
 					</div>
 				</div>
 			</div>

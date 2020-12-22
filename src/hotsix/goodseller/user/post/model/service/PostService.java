@@ -150,5 +150,19 @@ public class PostService {
 		
 		
 	}
+	public int updatePostSellyn(int postNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = pDAO.updatePostSellyn(conn, postNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
 
 }
