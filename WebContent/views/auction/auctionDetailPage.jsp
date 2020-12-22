@@ -146,20 +146,26 @@ $(function() {
 							<div class="col-12 p-1"><button type="button" class="btn btn-primary btn-lg btn-block" id="auctionBtn">입찰 하기</button>
 
 								<form  id="auctionForm" method="post" action="/views/auction/auctionFunction.jsp" target="childwin">
-									<input type="hidden" name="startPrice" value="<%=p.getStartPrice()%>">
-									<input type="hidden" name="auctionPrice" value="<%=p.getAuctionPrice()%>">
-									<input type="hidden" name="sell_YN" value="<%=p.getSell_yn()%>">
+									<input type="hidden" name="startPrice" value="<%=p.getStartPrice()%>"/>
+									<input type="hidden" name="auctionPrice" value="<%=p.getAuctionPrice()%>"/>
+									<input type="hidden" name="sell_YN" value="<%=p.getSell_yn()%>"/>
+									<input type="hidden" name="postNo" value="<%=p.getPostNo()%>"/>
+									<input type="hidden" name="offerPrice" id="offerPrice"/>
 								</form>
 								
 								<script>
 									$(function(){
 										$('#auctionBtn').click(function(){
-											var settings = "width=500px, height=500px";
+											var settings = "width=500px, height=170px";
 											auctionPage = window.open("/views/auction/auctionFunction.jsp", "childwin", settings);
 											$('#auctionForm').submit();
 										});
+										
 									});
+									
+									
 								</script>
+								
 							</div>
 						</div>
 					</div>
@@ -187,7 +193,7 @@ $(function() {
 				<br>
 				<div id="contents-deail-5" class="row">
 					<div class="col-12">
-						<textarea name="textarea" id="textarea" readonly="readonly" disabled></textarea>
+						<textarea name="textarea" id="textarea" readonly="readonly" disabled> <%=p.getContent() %></textarea>
 					</div>
 				</div>
 					
