@@ -9,8 +9,8 @@
 <body>
 
 	<script>
-		alert("신고 접수가 완료 되었습니다. \n 마이페이지를 통해 확인해주세요.");
-		history.back(-1);
+		alert("신고 접수가 완료 되었습니다. \n마이페이지를 통해 확인해주세요.");
+		location.replace('/index.do');
 	</script>
 
 </body>

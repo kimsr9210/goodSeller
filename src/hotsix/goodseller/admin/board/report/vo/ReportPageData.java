@@ -1,20 +1,25 @@
-package hotsix.goodseller.user.board.model.vo;
+package hotsix.goodseller.admin.board.report.vo;
 
 import java.util.ArrayList;
 
-public class ReqBoardPageData {
-	
+import hotsix.goodseller.user.board.model.vo.Report;
+
+public class ReportPageData {
+
 	private ArrayList<Report> list;
 	private String pageNavi;
-	public ReqBoardPageData() {
+	
+	public ReportPageData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReqBoardPageData(ArrayList<Report> list, String pageNavi) {
+	
+	public ReportPageData(ArrayList<Report> list, String pageNavi) {
 		super();
 		this.list = list;
 		this.pageNavi = pageNavi;
 	}
+	
 	public ArrayList<Report> getList() {
 		return list;
 	}
@@ -28,5 +33,5 @@ public class ReqBoardPageData {
 		this.pageNavi = pageNavi;
 	}
 	
-
+	
 }

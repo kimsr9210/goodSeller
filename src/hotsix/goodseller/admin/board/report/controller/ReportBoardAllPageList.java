@@ -10,24 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.admin.board.report.service.ReportService;
-import hotsix.goodseller.user.board.model.vo.ReqBoardPageData;
-
-
+import hotsix.goodseller.admin.board.report.vo.ReportPageData;
 
 /**
- * Servlet implementation class BoardRegisterAllListServlet
+ * Servlet implementation class ReportBoardAllPageList
  */
-@WebServlet("/registerAdminAllList.do")
-//여기 위에 적혀 있는걸 /registerAllList.do -> /registerAdminAllList.do
-//으로 바꾸고 웹에서도 /registerAdminAllList.do 로 접근해야 해요 아 ! 네네 이것만 바꾸면 되는거에요 ?
-//넵! 그러면 수고하세용 ^^감사합니다
-public class ReportAllListServlet extends HttpServlet {
+@WebServlet("/adminReportAllPageList.do")
+public class ReportBoardAllPageList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportAllListServlet() {
+    public ReportBoardAllPageList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,24 +30,21 @@ public class ReportAllListServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
-    //관리자용 신고게시판 리스트 서블릿 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int currentPage;//현재 페이지 값을 가지고 있는 변수
 		
-		int currentPage; 
-		String selectBox = request.getParameter("selectBox");
-		String searchText = request.getParameter("searchText");
-		
-		if(request.getParameter("currentPage")==null) {
+		if(request.getParameter("currentPage") == null) {
 			currentPage = 1;
 		}else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		//ReqBoardPageData result = new BoardService().selectRegisterAllListPage(currentPage,selectBox,searchText);
-		ReqBoardPageData result = new ReportService().selectRegisterAllListPage(currentPage,selectBox,searchText);
-		RequestDispatcher view = request.getRequestDispatcher("/views/admin/register/boardRegisterList.jsp");
-		request.setAttribute("pageData", result);
+		//비즈니스 로직 처리
+		ReportPageData rpd = new ReportService().selectAllListPage(currentPage);
+		
+		//결과 처리
+		RequestDispatcher view = request.getRequestDispatcher("/views/admin/reportBoard/reportAllPageList.jsp");
+		request.setAttribute("ReportPageData", rpd);
 		view.forward(request, response);
 	}
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Board;
-import hotsix.goodseller.user.board.model.vo.Register;
+import hotsix.goodseller.user.board.model.vo.Report;
 
 public class BoardDAO {
 
@@ -479,19 +479,19 @@ public class BoardDAO {
 
 	}
 	
-	public ArrayList<Register> MyPageRegisterList(Connection conn,int currentPage,int recordPerPage, String userId) {
+	public ArrayList<Report> MyPageRegisterList(Connection conn,int currentPage,int recordPerPage, String userId) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		ArrayList<Register> list = new ArrayList<Register>();
-		Register register = null;
+		ArrayList<Report> list = new ArrayList<Report>();
+		Report report = null;
 
 		int start = currentPage * recordPerPage - (recordPerPage - 1);
 		int end = currentPage * recordPerPage;
 
-		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + "AS Row_Num,REG_BOARD.* "
-				+ "FROM reg_board WHERE USERID= ?) WHERE Row_Num between ? and ?";
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by reportNo DESC) " + "AS Row_Num,REPORTTBL.* "
+				+ "FROM REPORTTBL WHERE USERID= ?) WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -501,15 +501,17 @@ public class BoardDAO {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				register = new Register();
+				report = new Report();
 
-				register.setBoardNo(rset.getInt("boardNo"));
-				register.setSubject(rset.getString("subject"));
-				register.setReguserId(rset.getString("reguserid"));
-				register.setCreatedate(rset.getDate("createdate"));
-				register.setBoardcomment(rset.getString("boardcomment"));
+				report.setReportNo(rset.getInt("boardNo"));
+				report.setUserId(rset.getString("userId"));
+				report.setReportId(rset.getString("reportId"));
+				report.setSubject(rset.getString("subject"));
+				report.setContent(rset.getString("content"));
+				report.setWriteDate(rset.getTimestamp("writeDate"));
+				report.setAnswerYN(rset.getString("answerYN").charAt(0));
 
-				list.add(register);
+				list.add(report);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
