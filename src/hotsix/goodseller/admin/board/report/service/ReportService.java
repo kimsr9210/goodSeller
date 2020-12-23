@@ -35,6 +35,29 @@ public class ReportService {
 		return r;
 	}
 
+	public int reportAnswerWrite(int reportNo, String adminId, String subject, String content) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int reportAnswerInsertResult = rDAO.reportAnswerWrite(conn, reportNo, adminId, subject, content);
+		
+		//reportTBL에 ANS_YN='Y'로 변경
+		int changeAnswerYNResult = rDAO.reportAnswerYNUpdate(conn,reportNo);
+		
+		if(reportAnswerInsertResult>0 && changeAnswerYNResult>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		int result = reportAnswerInsertResult + changeAnswerYNResult ;
+
+		return result;
+	}
+
+
+
 	
 	
 }

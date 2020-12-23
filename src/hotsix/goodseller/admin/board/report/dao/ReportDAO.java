@@ -167,6 +167,53 @@ public class ReportDAO {
 		return r;
 	}
 
+	public int reportAnswerWrite(Connection conn, int reportNo, String adminId, String subject, String content) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "INSERT INTO REPORTANSWER VALUES(?, ?, ?, ?, default)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reportNo);
+			pstmt.setString(2, adminId);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+
+	}
+
+	public int reportAnswerYNUpdate(Connection conn, int reportNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "UPDATE REPORTTBL SET ANSWER_YN='Y' where reportNo=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reportNo);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+
+	}
+
+	
 
 	
 }
