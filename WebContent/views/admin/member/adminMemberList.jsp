@@ -59,8 +59,12 @@
         color: black;
     }
     
-    .menu>a:hover {
+    .menu>a {
        color: black;
+    }
+    
+    a {
+    color: black;
     }
     
     .hide {
@@ -71,6 +75,9 @@
     
     .hide>li {
         padding: 1px;
+    }
+    table {
+    
     }
     
 </style>
@@ -104,13 +111,13 @@
                         <li class="menu">
                            <a>회원관리</a>
                             <ul class="hide">
-                                <li>전체 회원 관리</li><hr>
+                                <li >전체 회원 관리</li><hr>
                                 <li>탈퇴 회원 관리</li><hr>
                                 <li>관리자</li>
                             </ul>
                         </li><hr>
-                        <li>게시물 관리</li><hr>
-                        <li>신고 관리</li><hr>
+                        <li><a>게시물 관리</a></li><hr>
+                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li><hr>
                         <li>QnA</li><hr>
                         <li class="menu">
                           <a>통계</a>
@@ -118,7 +125,6 @@
                                 <li>수익현황</li>
                             </ul>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
