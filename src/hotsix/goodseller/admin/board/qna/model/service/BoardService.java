@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import hotsix.goodseller.admin.board.qna.model.dao.BoardDAO;
 import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
 import hotsix.goodseller.admin.board.qna.model.vo.BoardPageData;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Board;
 
@@ -39,15 +40,32 @@ public class BoardService {
 		return board;
 	}
 
-	public ArrayList<BoardAnswer> csBoardAnwser(int boardNo) {
-		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<BoardAnswer> answer = BoardDAO.csBoardAnwser(conn, boardNo);
-		return answer;
+	public int boardAnswerWrite(int boardNo, String adminId, String subject, String content) {
+Connection conn = JDBCTemplate.getConnection();
+		
+		int boardAnswerInsertResult = BoardDAO.boardAnswerWrite(conn, boardNo, adminId, subject, content);
+		
+		//reportTBL에 ANS_YN='Y'로 변경
+		int changeAnswerYNResult = BoardDAO.boardAnswerYNUpdate(conn,boardNo);
+		
+		if(boardAnswerInsertResult>0 && changeAnswerYNResult>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		int result = boardAnswerInsertResult + changeAnswerYNResult ;
+
+		return result;
 	}
-	
-	public void insertAdminAnswerBoard(HttpServletRequest request) {
+
+	public BoardAnswer BoardAnswerInfo(int boardNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		BoardDAO.insertAdminAnswerBoard(conn, request);
+		
+		BoardAnswer dAnswer = BoardDAO.reportAnswerInfo(conn, boardNo);
+		return dAnswer;
 	}
 	
 	

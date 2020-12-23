@@ -1,6 +1,7 @@
 package hotsix.goodseller.admin.board.qna.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -12,12 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import hotsix.goodseller.admin.board.qna.model.service.BoardService;
 import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
+import hotsix.goodseller.admin.board.report.service.ReportService;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.user.board.model.vo.Board;
+import hotsix.goodseller.user.board.model.vo.Report;
 
 /**
  * Servlet implementation class CSClickServlet
  */
-@WebServlet("/adminCSBoardClick.do")
+@WebServlet("/answerCsBoardClick.do")
 public class CSClickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,21 +39,34 @@ public class CSClickServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//답변이 완료된 게시글을 클릭했을때 
 
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		try {
 
-		Board board = new BoardService().CSOneClick(boardNo);
-		ArrayList<BoardAnswer> answer = new BoardService().csBoardAnwser(boardNo);
+			//이전 페이지에서 넘어온 값 저장
+			int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 
-		if (board != null) {
+			//System.out.println("게시글번호"+reportNo);
+			
+			//비즈니스 로직 처리 
+			Board board = new BoardService().CSOneClick(boardNo);
+			
+			//답변이 완료 된 경우 그 객체도 가져와주기 
+			BoardAnswer bAnswer = new BoardService().BoardAnswerInfo(boardNo);
+			
 			RequestDispatcher view = request.getRequestDispatcher("/views/admin/csBoard/csBoardClick.jsp");
 			request.setAttribute("board", board);
-			request.setAttribute("answer", answer);
+			
+			request.setAttribute("boardAnswer", bAnswer);
+			
 			view.forward(request, response);
-		} else {
-			response.sendRedirect("/views/admin/reportBoard/reportPostReadFail.jsp");
 
+			
+		} catch (Exception e) {
+			RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminSessionFail.jsp");
+			view.forward(request, response);
 		}
+		
 	}
 
 	/**

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.CsBoardAnswer;
@@ -172,50 +173,6 @@ public class BoardDAO {
 		}
 		return board;
 	}
-
-	public static ArrayList<BoardAnswer> csBoardAnwser(Connection conn, int boardNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		BoardAnswer answer = null;
-		ArrayList<BoardAnswer> list = new ArrayList<BoardAnswer>();
-
-		String query = "SELECT B.BOARDNO," + 
-				"    B.ADMINID," + 
-				"    B.SUBJECT," + 
-				"    B.CONTENT," + 
-				"    TO_CHAR(B.WRITEDATE,'YYYY-MM-DD HH24:MI:SS') AS WRITEDATE," + 
-				"    B.COMMENTNO FROM CSBOARD A " + 
-				"INNER JOIN CSBOARDANSWER B " + 
-				"ON A.BOARDNO = B.BOARDNO " + 
-				"WHERE A.BOARDNO = ?";
-
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNo);
-			rset = pstmt.executeQuery();
-
-			if (rset.next()) {
-				answer = new BoardAnswer();
-
-				answer.setBoardNo(rset.getInt("boardNo"));
-				answer.setAdminId(rset.getString("adminId"));
-				answer.setSubject(rset.getString("subject"));
-				answer.setContent(rset.getString("content"));
-				answer.setWriteDate(rset.getString("writeDate"));
-
-				list.add(answer);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-
-		return list;
-		
-	}
 	
 	public static void insertAdminAnswerBoard(Connection conn, HttpServletRequest request) {
 		PreparedStatement pstmt = null;
@@ -239,4 +196,83 @@ public class BoardDAO {
 		}
 		
 	}
+
+	public static int boardAnswerWrite(Connection conn, int boardNo, String adminId, String subject, String content) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "INSERT INTO CSBOARDANSWER VALUES(?, ?, ?, ?, default)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, adminId);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public static int boardAnswerYNUpdate(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "UPDATE CSBOARD SET ANSWER_YN='Y' where boardNo=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
+	public static BoardAnswer reportAnswerInfo(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		BoardAnswer dAnswer = null;
+
+		String query = "SELECT * FROM CSBOARDANSWER WHERE boardNo = ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				dAnswer = new BoardAnswer();
+
+				dAnswer.setBoardNo(rset.getInt("boardNo"));
+				dAnswer.setAdminId(rset.getString("adminId"));
+				dAnswer.setSubject(rset.getString("subject"));
+				dAnswer.setContent(rset.getString("content"));
+				dAnswer.setWriteDate(rset.getTimestamp("writeDate"));
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return dAnswer;
+	}
+
+
 }

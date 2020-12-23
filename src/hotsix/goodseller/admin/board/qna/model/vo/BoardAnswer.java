@@ -1,26 +1,30 @@
 package hotsix.goodseller.admin.board.qna.model.vo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BoardAnswer {
 	private int boardNo;
-	private int commentNo;
 	private String adminId;
 	private String subject;
 	private String content;
-	private String writeDate;
-	
+	private Timestamp writeDate;
+	public BoardAnswer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BoardAnswer(int boardNo, String adminId, String subject, String content, Timestamp writeDate) {
+		super();
+		this.boardNo = boardNo;
+		this.adminId = adminId;
+		this.subject = subject;
+		this.content = content;
+		this.writeDate = writeDate;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
-	}
-	public int getCommentNo() {
-		return commentNo;
-	}
-	public void setCommentNo(int commentNo) {
-		this.commentNo = commentNo;
 	}
 	public String getAdminId() {
 		return adminId;
@@ -40,11 +44,13 @@ public class BoardAnswer {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWriteDate() {
+	public Timestamp getWriteDate() {
 		return writeDate;
 	}
-	public void setWriteDate(String writeDate) {
+	public void setWriteDate(Timestamp writeDate) {
 		this.writeDate = writeDate;
 	}
+	
+	
 	
 }

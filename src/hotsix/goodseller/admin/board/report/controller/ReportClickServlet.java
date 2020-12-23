@@ -41,17 +41,16 @@ public class ReportClickServlet extends HttpServlet {
 
 			//이전 페이지에서 넘어온 값 저장
 			int reportNo = Integer.parseInt(request.getParameter("reportNo"));
-			ReportAnswer rAnswer = null;
+			
 			
 			//System.out.println("게시글번호"+reportNo);
 			
 			//비즈니스 로직 처리 
 			Report r = new ReportService().postOneClick(reportNo);
 			
-			if(r.getAnswerYN()=='Y') {
 			//답변이 완료 된 경우 그 객체도 가져와주기 
-			rAnswer = new ReportService().reportAnswerInfo(reportNo);
-			}
+			ReportAnswer rAnswer = new ReportService().reportAnswerInfo(reportNo);
+			
 			
 			if(r!=null) {
 			RequestDispatcher view = request.getRequestDispatcher("/views/admin/reportBoard/reportPostClick.jsp");

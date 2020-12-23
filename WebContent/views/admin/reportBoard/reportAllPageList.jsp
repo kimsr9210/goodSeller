@@ -23,7 +23,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/adminReportBoard.css?ver=1.1" />
+	href="/resources/css/adminReportBoard.css?ver=1.2" />
 
 <style>
 @font-face {

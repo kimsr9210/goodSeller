@@ -133,7 +133,7 @@ div {
 			$("#answerWriteBtn").click(function() {
 				var reportAnswerWrite = $('#reportAnswerWrite');
 
-				// submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+				//화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
 				if (reportAnswerWrite.is(":visible")) {
 					reportAnswerWrite.slideUp();
 				} else {

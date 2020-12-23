@@ -24,7 +24,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/adminReportBoard.css?ver=1.1" />
+	href="/resources/css/adminReportBoard.css?ver=1.2" />
 
 <style>
 @font-face {
@@ -124,8 +124,12 @@
 								<div class="d-none d-md-block col-md-1 p-0 "><%=cs.getBoardNo()%></div>
 								<div class="col-12 col-md-6 p-0">
 									
-			<a id="afont" href="/adminCSBoardClick.do?boardNo=<%=cs.getBoardNo()%>"><%=cs.getSubject()%></a>
-									
+								<%if(cs.getAnswerYN()=='Y'){ %>
+								<a id="afont" href="/answerCsBoardClick.do?boardNo=<%=cs.getBoardNo()%>"><%=cs.getSubject()%></a>
+								<%}else{ %>
+								<a id="afont" href="/notAnswerCsBoardClick.do?boardNo=<%=cs.getBoardNo()%>"><%=cs.getSubject()%></a>
+								<%} %>
+								
 									</div>
 								<div class="col-3 col-md-1 p-0 "><%=cs.getUserId()%></div>
 								<%

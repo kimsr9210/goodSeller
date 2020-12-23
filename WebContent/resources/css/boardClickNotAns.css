@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+div {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	width: 50%;
+	padding: 30px 0;
+	margin: 50px auto;
+}
+
+#postTitle {
+	padding-bottom: 50px;
+}
+
+.subject {
+	background-color: #FBF1F2;
+	line-height: 50px;
+	text-align: center;
+	border-top: 2px solid #C85C67;
+	border-bottom: 1px solid #C85C67;
+}
+
+.realSubject {
+	line-height: 50px;
+	border-top: 2px solid #C85C67;
+	border-bottom: 1px solid #C85C67;
+}#C85C67
+
+.postInfo {
+	line-height: 28px;
+	text-align: center;
+	border-bottom: 1px solid #C85C67;
+}
+
+.postInfoNone {
+	line-height: 28px;
+}
+
+.postInfoMain {
+	background-color: #FBF1F2;
+	border-bottom: 1px solid #C85C67;
+}
+
+.content {
+	background-color: #FBF1F2;
+	height: 400px;
+	line-height: 350px;
+	text-align: center;
+	border-bottom: 2px solid #C85C67;
+}
+
+.realContent {
+	padding-top: 10px;
+	border-bottom: 2px solid #C85C67;
+}
+
+#ReportTitle {
+	display: inline-block;
+}
+
+.reportBoardContents {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 50px;
+}

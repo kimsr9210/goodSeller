@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<% 
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+	%>
 	<script>
-		alert("신고 게시글을 읽어오는데 실패하였습니다.");
-		location.replace('/adminLogin.jsp');
+		alert("답변 게시글 작성에 실패하였습니다. 다시 시도해 주세요.");
+		location.replace('/notAnswerCsBoardClick.do?boardNo=<%=boardNo%>');
 	</script>
 </body>
 </html>

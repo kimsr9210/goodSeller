@@ -136,22 +136,69 @@ public class AdminPostDAO {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		if(startNavi!=1) {
-			sb.append("<li class='page-item'><a href='/adminPostAllList.do?currentPage="+(startNavi-1)+"'> < </a></li>");
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminPostAllList.do?currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
 		}
-		
-		for(int i=startNavi; i<=endNavi; i++) {
-			if(i==currentPage) {
-				sb.append("<li class='page-item'><a href='/adminPostAllList.do?currentPage="+i+"'><b> "+i+" </b> </a></li>");
-			}else {
-				sb.append("<li class='page-item'><a href='/adminPostAllList.do?currentPage="+i+"'> "+i+" </a></li>");
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminPostAllList.do?currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminPostAllList.do?currentPage=" + i
+						+ "'> " + i + " </a></li>");
 			}
 		}
-		if(endNavi!=pageTotalCount) {
-			sb.append("<li class='page-item'><a href='/adminPostAllList.do?currentPage="+(endNavi+1)+"'> > </a></li>");
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminPostAllList.do?currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
 		}
 
 		return sb.toString();
+	}
+	
+
+	public String getpageNavi(Connection conn, int currentPage, int recordPerPage, int naviCountPerPage) {
+		int postTotalCount = postTotalCount(conn);
+
+		int pageTotalCount;
+		if (postTotalCount % recordPerPage > 0) {
+			pageTotalCount = postTotalCount / recordPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordPerPage;
+		}
+
+		int startNavi = currentPage;
+		int endNavi = startNavi + 4;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminReportAllPageList.do?currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+
 	}
 
 	public int postTotalCount(Connection conn) {

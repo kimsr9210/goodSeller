@@ -126,11 +126,11 @@ width: 100%;
                             </ul>
                         </li>
                         <hr class="line">
-                        <li><a a href="/adminPostAllList.do">게시물 관리</a>
+                        <li><a a href="/adminPostAllList.do">게시물 관리</a></li>
                         <hr class="line">
                         <li><a href="/adminReportAllPageList.do">신고 관리</a></li>
                         <hr class="line">
-                        <li><a href="/admincsBoardAllPageList.do">QnA</li>
+                        <li><a href="/adminCsBoardAllPageList.do">QnA</li>
                         <hr class="line">
                         <li class="menu">
                           <a>통계</a>

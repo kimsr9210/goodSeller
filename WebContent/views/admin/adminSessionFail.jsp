@@ -9,8 +9,9 @@
 <body>
 	
 	<script>
-		alert("신고 게시글을 읽어오는데 실패하였습니다.");
-		location.replace('/adminLogin.jsp');
+		alert("관리자만 접근 할 수 있습니다. 다시 로그인 해보세요.");
+		location.replace('/adminReportAllPageList.do');
 	</script>
+	
 </body>
 </html>

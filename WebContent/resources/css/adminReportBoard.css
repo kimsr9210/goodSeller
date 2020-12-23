@@ -20,8 +20,8 @@
 }
 
 .c-name {
-	background-color: #CDECFA;
-	border-bottom: 2px solid #28AEFF;
+	background-color: #E9A5AC;
+	border-bottom: 2px solid #D6626E;
 }
 
 .line-name {
@@ -30,11 +30,11 @@
 
 .line-content {
 	line-height: 32px;
-	border-bottom: 1px solid #dcdcdc;
+	border-bottom: 1px solid #FBF1F2;
 }
 
 .line-content:hover {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 }
 
 .write {
