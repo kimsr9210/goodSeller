@@ -133,7 +133,7 @@ width: 100%;
                             <ul class="hide">
                                 <li><a href="/adminReportAllPageList.do">신고 게시글 관리</a></li>
                                 <hr class="line">
-                                <li><a href="/memberReportAdmin.do">회원 신고 처리</a></li>
+                                <li><a href="/views/admin/reportBoard/memberReportPage.jsp">회원 신고 처리</a></li>
                             </ul>
                         </li>
                         <hr class="line">
@@ -142,7 +142,7 @@ width: 100%;
                         <li class="menu">
                           <a>통계</a>
                             <ul class="hide">
-                                <li>수익현황</li>
+                                <li><a href="/salesMonth.do">수익 현황</a></li>
                             </ul>
                         </li>
                         

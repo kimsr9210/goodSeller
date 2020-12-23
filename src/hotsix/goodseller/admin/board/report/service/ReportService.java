@@ -63,6 +63,34 @@ public class ReportService {
 		return rAnswer;
 	}
 
+	public int memberReportInsert(String reportId, String adminId, String reportReason) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = rDAO.memberReportInsert(conn, reportId, adminId, reportReason);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public void UpdateReported(String reportId) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		int result = rDAO.updateReported(conn, reportId);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+	}
+
 
 
 	

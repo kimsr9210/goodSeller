@@ -245,6 +245,48 @@ public class ReportDAO {
 		return rAnswer;
 	}
 
+	public int memberReportInsert(Connection conn, String reportId, String adminId, String reportReason) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "INSERT INTO memberReport VALUES(?,?,?)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reportId);
+			pstmt.setString(2, adminId);
+			pstmt.setString(3, reportReason);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int updateReported(Connection conn, String reportId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = "UPDATE Member SET reported = reported+1 where userId=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reportId);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
 	
 
 	
