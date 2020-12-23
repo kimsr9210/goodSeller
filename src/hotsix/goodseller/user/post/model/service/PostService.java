@@ -152,24 +152,21 @@ public class PostService {
 		
 		
 	}
-	public int AuctionSellUpdate(Connection conn, int postNo) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = "UPDATE POSTTBL SET SELL_YN='Y' WHERE POSTNO=?";
+	public int AuctionSellUpdate(int postNo, String userId) {
 		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, postNo);
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(pstmt);
+		Connection conn = JDBCTemplate.getConnection();
+		int result = pDAO.AuctionSellUpdate(conn, postNo);
+
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
 		}
+		JDBCTemplate.close(conn);
 		
 		return result;
 		
+		
 	}
+	
 }
