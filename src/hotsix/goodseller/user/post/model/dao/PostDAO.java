@@ -973,6 +973,28 @@ public class PostDAO {
 			return postTotalCount;
 			
 		}
+		public int InterestUpdate(Connection conn, int postNo, String userId) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+
+			String query = "INSERT INTO INTEREST VALUES(?,?)";
+				try {
+					pstmt = conn.prepareStatement(query);
+					pstmt.setInt(1, postNo);
+					pstmt.setString(2, userId);
+					
+					result = pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					JDBCTemplate.close(pstmt);
+				}
+				return result;
+			
+
+			
+		}
 
 
 }
