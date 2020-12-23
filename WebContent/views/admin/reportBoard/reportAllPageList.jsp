@@ -25,6 +25,36 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/adminReportBoard.css?ver=1.1" />
 
+<style>
+
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title{
+font-family: Wemakeprice-Bold;
+}
+
+#stitle{
+font-family: Binggrae-Bold;
+}
+
+#afont{
+color : black;
+}
+
+
+</style>
+
 </head>
 <body>
 	<!-- jQuery CDN -->
@@ -38,14 +68,14 @@
 			<div id="container p-0 m-0">
 
 				<div class="row title p-0 m-0">
-					<div class="col-12 text-center p-0 m-0">신고 게시글 관리</div>
+					<div id="title" class="col-12 text-center p-0 m-0">신고 게시글 관리</div>
 				</div>
 
-				<div class="row p-0 m-0 category line-name text-center">
+				<div id="stitle" class="row p-0 m-0 category line-name text-center">
 					<div class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name ">No</div>
-					<div class="col-7 d-none d-lg-block p-0 m-0 font-weight-bold c-name">제목</div>
+					<div class="col-6 d-none d-lg-block p-0 m-0 font-weight-bold c-name">제목</div>
 					<div class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">작성자</div>
-					<div class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">날짜</div>
+					<div class="col-2 d-none d-lg-block p-0 m-0 font-weight-bold c-name">날짜</div>
 					<div class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">시간</div>
 					<div class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name">답변여부</div>
 				</div>
@@ -62,14 +92,14 @@
 				%>
 				<div class="row p-0 m-0 line-content text-center">
 					<div class="d-none d-md-block col-md-1 p-0 "><%=r.getReportNo() %></div>
-					<div class="col-12 col-md-7 p-0"><a href="/adminReportClick.do?reportNo=<%=r.getReportNo()%>"><%=r.getSubject() %></a></div>
+					<div class="col-12 col-md-6 p-0"><a id="afont" href="/adminReportClick.do?reportNo=<%=r.getReportNo()%>"><%=r.getSubject() %></a></div>
 					<div class="col-3 col-md-1 p-0 "><%=r.getUserId() %></div>
 					<% 
 					String writeDate = String.valueOf(r.getWriteDate());
 					String yymmdd = writeDate.substring(0, 10);
 					String hhmm = writeDate.substring(11, 16);
 					%>
-					<div class="col-3 col-md-1 p-0 "><%=yymmdd %></div>
+					<div class="col-3 col-md-2 p-0 "><%=yymmdd %></div>
 					<div class="col-3 col-md-1 p-0 "><%=hhmm %></div>
 					<div class="col-2 col-md-1 p-0 ">
 						<%if(r.getAnswerYN()=='N'){ %>

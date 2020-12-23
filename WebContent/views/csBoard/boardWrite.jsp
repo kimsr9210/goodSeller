@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 <style>
 
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title{
+font-family: Wemakeprice-Bold;
+}
+
+
 	div
 	{
 	box-sizing:border-box;
@@ -101,7 +113,7 @@
 		<div class="container">
 		<center>
 			<div class="row p-0 m-0" id="QnAtitle">
-				<H1>Q&A게시글 작성</H1>
+				<H1 id="title">Q&A게시글 작성</H1>
 			</div>
 		</center>
 		</div>

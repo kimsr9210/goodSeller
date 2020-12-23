@@ -23,6 +23,32 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/boardMain.css?ver=1.8" />
 
+<style>
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title{
+font-family: Wemakeprice-Bold;
+}
+
+#stitle{
+font-family: Binggrae-Bold;
+}
+
+
+</style>
+
+
 </head>
 <body>
 
@@ -43,7 +69,7 @@
 			<div id="container p-0 m-0">
 
 				<div class="row title p-0 m-0">
-					<div class="col-12 text-center p-0 m-0">게시판</div>
+					<div id="title"class="col-12 text-center p-0 m-0">게시판</div>
 				</div>
 				<div class="row p-0 m-0">
 					<div class="col-12 p-0 searchBar">
@@ -63,7 +89,7 @@
 					</div>
 				</div>
 
-				<div class="row p-0 m-0 category line-name text-center">
+				<div  id="stitle" class="row p-0 m-0 category line-name text-center">
 					<div
 						class="col-1 d-none d-lg-block p-0 m-0 font-weight-bold c-name ">No</div>
 					<div
