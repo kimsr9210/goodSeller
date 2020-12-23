@@ -17,6 +17,11 @@
 </head>
 <body>
 	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
+	<%
+		if(admin!=null){
+			response.sendRedirect("/memberAllList.do");
+		} else{
+	%>	
 	<div id="wrap" >
         <div class="container">
             <div id="contents" class="row" style="height: 100%;">
@@ -34,7 +39,7 @@
         </div>
     </div>
     <%@ include file="/views/admin/header&footer/adminFooter.jsp"%>
-	
+	<%} %>
 
 </body>
 </html>

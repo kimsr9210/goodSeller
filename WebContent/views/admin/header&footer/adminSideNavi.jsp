@@ -64,11 +64,22 @@ width: 100%;
     .hide {
         display: none;
         list-style-type: none;
-        margin-top: 10px;
+         margin-top: 5px;
+        padding: 10px;
     }
     
     .hide>li {
-        padding: 1px;
+        padding: 10px;
+    }
+    
+    .hide>li>a {
+        text-decoration: none;
+       color: black 
+    }
+    
+    .hide>li>a:hover {
+        text-decoration: none;
+       color: #5B5AFF; 
     }
     #fixedNavi
     {   
@@ -76,6 +87,11 @@ width: 100%;
   		position: sticky;
   		top:0px;
     }
+    
+    .line {
+    	margin: 0px;
+    }
+    
 </style>
 </head>
 <body>
@@ -100,16 +116,22 @@ width: 100%;
                 <div id="navigation">
                     <ul id="fixedNavi">
                         <li class="menu">
-                           <a>회원관리</a>
+                           	<a>회원관리</a>
                             <ul class="hide">
-                                <li >전체 회원 관리</li><hr>
-                                <li>탈퇴 회원 관리</li><hr>
-                                <li>관리자</li>
+                                <li><a href="/memberAllList.do">전체 회원 관리</a></li>
+                                <hr class="line">
+                                <li><a href="/endMemberAllList.do">탈퇴 회원 관리</a></li>
+                                <hr class="line">
+                                <li><a href="/adminAllList.do">관리자</a></li>
                             </ul>
-                        </li><hr>
-                        <li>게시물 관리</a></li><hr>
-                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li><hr>
-                        <li><a href="/admincsBoardAllPageList.do">QnA</li><hr>
+                        </li>
+                        <hr class="line">
+                        <li><a>게시물 관리</a></li>
+                        <hr class="line">
+                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li>
+                        <hr class="line">
+                        <li><a href="/admincsBoardAllPageList.do">QnA</li>
+                        <hr class="line">
                         <li class="menu">
                           <a>통계</a>
                             <ul class="hide">

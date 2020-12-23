@@ -14,7 +14,15 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/adminIndex.css" />
-
+<style>
+	table {
+		margin: 10px;
+		width: 100%;
+	}
+	td {
+		font-size: 12px;
+	}
+</style>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -37,18 +45,18 @@
 				<div id="membertable" class="row" style="height: 100%;">
 					<table border=1px cellspacing=1px cellpadding=1px>
 						<tr>
-							<td>회원번호</td>
-							<td>ID</td>
-							<td>이름</td>
-							<td>별명</td>
-							<td>생년월일</td>
-							<td>성별</td>
-							<td>이메일</td>
-							<td>전화번호</td>
-							<td>주소</td>
-							<td>신고 횟수</td>
-							<td>취소 횟수</td>
-							<td>가입일</td>
+							<th>회원번호</th>
+							<th>ID</th>
+							<th>이름</th>
+							<th>별명</th>
+							<th>생년월일</th>
+							<th>성별</th>
+							<th>이메일</th>
+							<th>전화번호</th>
+							<th>주소</th>
+							<th>신고 횟수</th>
+							<th>취소 횟수</th>
+							<th>가입일</th>
 						</tr>
 						<%for (Member m : list){%>
 						<tr>
