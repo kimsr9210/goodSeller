@@ -38,8 +38,59 @@
 }
 </style>
 </head>
+<style>
+    #navigation>ul {
+        padding: 0px;
+        margin: 0px;
+        background-color: ghostwhite;
+    }
+    
+    
+    #navigation>ul>li {
+        list-style-type: none;
+        text-align: left;
+        
+        color: black;
+        padding: 10px;
+    }
+    
+     #navigation>ul>li:hover {
+        background-color: whitesmoke;
+        color: black;
+    }
+    
+    .menu>a:hover {
+       color: black;
+    }
+    
+    .hide {
+        display: none;
+        list-style-type: none;
+        margin-top: 10px;
+    }
+    
+    .hide>li {
+        padding: 1px;
+    }
+    
+</style>
 <body>
-<body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+     $(document).ready(function(){
+        // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+        $(".menu>a").click(function(){
+            var submenu = $(this).next("ul");
+ 
+            // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+            if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+        });
+    });
+</script>
 	<%
 		ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
 		int userNo = (int) request.getAttribute("userNo");
@@ -47,19 +98,31 @@
 	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
 	<div id="wrap">
 		<div class="container">
-			<div class="row">
-				<ul class="col-12" id="contents-navi" style="width: 100%;">
-					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/memberAllList.do">회원 관리</a></li>
-					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/views/member/memberList.jsp">게시글 관리</a></li>
-					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/adminReportAllPageList.do">회원 신고</a></li>
-					<li class="col-3 col-md-3 col-lg-3"><a
-						href="/views/member/memberList.jsp">QnA</a></li>
-				</ul>
-			</div>
-		</div>
+            <div id="contents" class="row" style="height: 100%;">
+                <div class="col-lg-3 col-md-4 col-sm-3" id="navigation">
+                    <ul>
+                        <li class="menu">
+                           <a>회원관리</a>
+                            <ul class="hide">
+                                <li>전체 회원 관리</li><hr>
+                                <li>탈퇴 회원 관리</li><hr>
+                                <li>관리자</li>
+                            </ul>
+                        </li><hr>
+                        <li>게시물 관리</li><hr>
+                        <li>신고 관리</li><hr>
+                        <li>QnA</li><hr>
+                        <li class="menu">
+                          <a>통계</a>
+                            <ul class="hide">
+                                <li>수익현황</li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
 		<div>
 			<div class="container">
 				<div id="membertable" class="row" style="height: 100%;">
