@@ -98,6 +98,8 @@ div {
 
 	<%
 		Board board = (Board) request.getAttribute("board");
+		String writeDate = String.valueOf(board.getWriteDate());
+		String yymmdd = writeDate.substring(0, 10);
 	%>
 
 
@@ -127,13 +129,13 @@ div {
 				<div class="col-2 postInfo postInfoMain">작성자</div>
 				<div class="col-2 postInfo"><%=board.getUserId()%></div>
 				<div class="col-2 postInfo postInfoMain">작성일</div>
-				<div class="col-2 postInfo"><%=board.getWriteDate()%></div>
+				<div class="col-2 postInfo"><%=yymmdd%></div>
 				<div class="col-2 postInfo postInfoMain">조회수</div>
 				<div class="col-2 postInfo"><%=board.getHit()%></div>
 			</div>
 			<div class="row p-0 m-0">
 				<div class="col-2 content">내용</div>
-				<div class="col-10 realContent"><%=board.getBoardContent()%></div>
+				<div class="col-10 realContent"><%=board.getContent()%></div>
 			</div>
 		</div>
 
@@ -162,13 +164,13 @@ div {
 		$(function(){
 			$('#postDelBtn').click(function(){
 				var result = window.confirm("해당 문의글을 삭제하시겠습니까?");
+				
 				if(result==true)
 				{
-					location.href="/boardDelete.do?boardNo=<%=board.getBoardNo()%>
-			";
-									}
+					location.href="/boardDelete.do?boardNo=<%=board.getBoardNo()%>";	
+				}
 
-								});
+				});
 			});
 		</script>
 

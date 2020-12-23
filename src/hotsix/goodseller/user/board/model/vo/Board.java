@@ -6,32 +6,29 @@ public class Board {
 	private int boardNo;
 	private String userId;
 	private String subject;
-	private String boardContent;
+	private String content;
 	private int hit;
 	private Timestamp writeDate;
 	private char postLockYN;
 	private char answerYN;
 	private char delYN;
-	
 	public Board() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Board(int boardNo, String userId, String subject, String boardContent, int hit, Timestamp writeDate,
+	public Board(int boardNo, String userId, String subject, String content, int hit, Timestamp writeDate,
 			char postLockYN, char answerYN, char delYN) {
 		super();
 		this.boardNo = boardNo;
 		this.userId = userId;
 		this.subject = subject;
-		this.boardContent = boardContent;
+		this.content = content;
 		this.hit = hit;
 		this.writeDate = writeDate;
 		this.postLockYN = postLockYN;
 		this.answerYN = answerYN;
 		this.delYN = delYN;
 	}
-	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -50,11 +47,11 @@ public class Board {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getBoardContent() {
-		return boardContent;
+	public String getContent() {
+		return content;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public int getHit() {
 		return hit;
@@ -86,5 +83,6 @@ public class Board {
 	public void setDelYN(char delYN) {
 		this.delYN = delYN;
 	}
+	
 	
 }

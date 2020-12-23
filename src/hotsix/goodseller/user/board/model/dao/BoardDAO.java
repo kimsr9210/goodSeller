@@ -186,7 +186,7 @@ public class BoardDAO {
 				board.setBoardNo(rset.getInt("boardNo"));
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
-				board.setBoardContent(rset.getString("boardContent"));
+				board.setContent(rset.getString("content"));
 				board.setHit(rset.getInt("hit"));
 				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
@@ -289,7 +289,7 @@ public class BoardDAO {
 		int end = currentPage * recordPerPage;
 
 		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by BOARDNO DESC) " + "AS Row_Num,CSBOARD.* "
-				+ "FROM CSBOARD WHERE BOARDCONTENT LIKE ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
+				+ "FROM CSBOARD WHERE CONTENT LIKE ? AND DEL_YN='N') WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);

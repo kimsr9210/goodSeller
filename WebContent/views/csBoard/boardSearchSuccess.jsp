@@ -105,7 +105,11 @@
 						<%}%>
 					</div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
-					<div class="col-3 col-md-2 p-0 "><%=board.getWriteDate() %></div>
+					<%
+					String writeDate = String.valueOf(board.getWriteDate());
+					String yymmdd = writeDate.substring(0, 10);
+					%>
+					<div class="col-3 col-md-2 p-0 "><%=yymmdd%></div>
 					<div class="col-2 col-md-1 p-0 "><%=board.getHit() %></div>
 					<div class="col-2 col-md-1 p-0 ">
 						<%if(board.getPostLockYN()=='Y'){ %>
