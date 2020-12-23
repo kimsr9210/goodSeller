@@ -123,7 +123,10 @@
 							<div class="row p-0 m-0 line-content text-center">
 								<div class="d-none d-md-block col-md-1 p-0 "><%=cs.getBoardNo()%></div>
 								<div class="col-12 col-md-6 p-0">
-									</a><%=cs.getSubject()%></div>
+									
+			<a id="afont" href="/adminCSBoardClick.do?boardNo=<%=cs.getBoardNo()%>"><%=cs.getSubject()%></a>
+									
+									</div>
 								<div class="col-3 col-md-1 p-0 "><%=cs.getUserId()%></div>
 								<%
 									String writeDate = String.valueOf(cs.getWriteDate());

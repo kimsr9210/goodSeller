@@ -1,26 +1,19 @@
-package hotsix.goodseller.admin.board.qna.model.vo;
+package hotsix.goodseller.user.board.model.vo;
 
-import java.util.Date;
-
-public class BoardAnswer {
+public class CsBoardAnswer {
+	
 	private int boardNo;
-	private int commentNo;
 	private String adminId;
 	private String subject;
 	private String content;
 	private String writeDate;
+	private String commentNo;
 	
 	public int getBoardNo() {
 		return boardNo;
 	}
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
-	}
-	public int getCommentNo() {
-		return commentNo;
-	}
-	public void setCommentNo(int commentNo) {
-		this.commentNo = commentNo;
 	}
 	public String getAdminId() {
 		return adminId;
@@ -46,5 +39,10 @@ public class BoardAnswer {
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
-	
+	public String getCommentNo() {
+		return commentNo;
+	}
+	public void setCommentNo(String commentNo) {
+		this.commentNo = commentNo;
+	}
 }
