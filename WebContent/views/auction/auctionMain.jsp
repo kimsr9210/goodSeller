@@ -183,13 +183,20 @@
 						<div id="carouselExampleControls-1" class="carousel slide"
 							data-ride="carousel">
 							<div class="carousel-inner">
+								
 								<div class="carousel-item active">
 
 									<div id="goods" class="row">
 									<%if(clothingList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(clothingList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = clothingList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = clothingList.get(i);
 												
@@ -224,6 +231,8 @@
 									</div>
 
 								</div>
+								
+								<%if(clothingList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
@@ -233,7 +242,7 @@
 										if(clothingList.isEmpty()){%>
 										등록된 상품이 없습니다. 옥션에 참여해보세요!
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i<clothingList.size(); i++) {
 												Post p = new Post();
 												p = clothingList.get(i);
 										%>
@@ -268,6 +277,8 @@
 									</div>
 
 								</div>
+								<%} %>
+								
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-1" role="button"
@@ -300,7 +311,13 @@
 										<%if(livingList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(livingList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = livingList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = livingList.get(i);
 										
@@ -334,13 +351,14 @@
 										
 									</div>
 								</div>
+								<%if(livingList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
 										<%if(livingList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < livingList.size(); i++) {
 												Post p = new Post();
 												p = livingList.get(i);
 												
@@ -374,6 +392,7 @@
 									</div>
 
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-2" role="button"
@@ -406,7 +425,13 @@
 										<%if(homeAppliancesList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(homeAppliancesList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = homeAppliancesList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = homeAppliancesList.get(i);
 										%>
@@ -440,6 +465,8 @@
 										%>
 									</div>
 								</div>
+								
+								<%if(homeAppliancesList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
@@ -447,7 +474,7 @@
 										<%if(homeAppliancesList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < homeAppliancesList.size(); i++) {
 												Post p = new Post();
 												p = homeAppliancesList.get(i);
 										%>
@@ -481,6 +508,7 @@
 										%>
 									</div>
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-3" role="button"
@@ -512,7 +540,13 @@
 										<%if(digitalList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(digitalList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = digitalList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = digitalList.get(i);
 										%>
@@ -546,12 +580,13 @@
 										%>
 									</div>
 								</div>
+								<%if(digitalList.size()>4){ %>
 								<div class="carousel-item">
 									<div id="goods" class="row">
 										<%if(digitalList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < digitalList.size(); i++) {
 												Post p = new Post();
 												p = digitalList.get(i);
 										%>
@@ -586,6 +621,7 @@
 									</div>
 
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-4" role="button"
@@ -618,7 +654,13 @@
 										<%if(booksList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(booksList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = booksList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = booksList.get(i);
 										%>
@@ -653,13 +695,14 @@
 									</div>
 
 								</div>
+								<%if(booksList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
 										<%if(booksList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < booksList.size(); i++) {
 												Post p = new Post();
 												p = booksList.get(i);
 										%>
@@ -694,6 +737,7 @@
 									</div>
 
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-5" role="button"
@@ -726,7 +770,13 @@
 										<%if(beautyList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(beautyList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = beautyList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = beautyList.get(i);
 										%>
@@ -761,13 +811,14 @@
 									</div>
 
 								</div>
+								<%if(beautyList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
 										<%if(beautyList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < beautyList.size(); i++) {
 												Post p = new Post();
 												p = beautyList.get(i);
 										%>
@@ -802,6 +853,7 @@
 									</div>
 
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-6" role="button"
@@ -834,7 +886,13 @@
 										<%if(sportsList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 0; i < 4; i++) {
+											int listSize = 0;
+											if(sportsList.size()>4){
+												listSize = 4;
+											}else{
+												listSize = sportsList.size();
+											}
+											for (int i = 0; i<listSize; i++) {
 												Post p = new Post();
 												p = sportsList.get(i);
 										%>
@@ -869,13 +927,14 @@
 									</div>
 
 								</div>
+								<%if(sportsList.size()>4){ %>
 								<div class="carousel-item">
 
 									<div id="goods" class="row">
 										<%if(sportsList.isEmpty()){ %>
 										등록된 게시글이 없습니다. 게시글 등록 후 이용해주세요 
 										<%}else{
-											for (int i = 4; i < 8; i++) {
+											for (int i = 4; i < sportsList.size(); i++) {
 												Post p = new Post();
 												p = sportsList.get(i);
 										%>
@@ -909,6 +968,7 @@
 									</div>
 
 								</div>
+								<%} %>
 							</div>
 							<a class="carousel-control-prev"
 								href="#carouselExampleControls-7" role="button"
