@@ -503,13 +503,13 @@ public class BoardDAO {
 			while (rset.next()) {
 				report = new Report();
 
-				report.setReportNo(rset.getInt("boardNo"));
+				report.setReportNo(rset.getInt("reportNo"));
 				report.setUserId(rset.getString("userId"));
 				report.setReportId(rset.getString("reportId"));
 				report.setSubject(rset.getString("subject"));
 				report.setContent(rset.getString("content"));
 				report.setWriteDate(rset.getTimestamp("writeDate"));
-				report.setAnswerYN(rset.getString("answerYN").charAt(0));
+				report.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
 				list.add(report);
 			}
