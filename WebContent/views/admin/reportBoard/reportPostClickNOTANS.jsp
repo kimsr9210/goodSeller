@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/boardClickNotAns.css?ver=1.1" />
 <style>
 @font-face {
 	font-family: 'Wemakeprice-Bold';
@@ -30,85 +33,6 @@
 	font-family: Wemakeprice-Bold;
 }
 
-div {
-	box-sizing: border-box;
-}
-
-.wrapper {
-	width: 50%;
-	padding: 30px 0;
-	margin: 50px auto;
-}
-
-#postTitle {
-	padding-bottom: 50px;
-}
-
-.subject {
-	background-color: #dcdcdc;
-	line-height: 50px;
-	text-align: center;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
-}
-
-.realSubject {
-	line-height: 50px;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
-}
-
-.postInfo {
-	line-height: 28px;
-	text-align: center;
-	border-bottom: 1px solid gray;
-}
-
-.postInfoNone {
-	line-height: 28px;
-	border-bottom: 1px solid gray;
-}
-
-.postInfoMain {
-	background-color: #dcdcdc;
-	border-bottom: 1px solid gray;
-}
-
-.content {
-	background-color: #dcdcdc;
-	height: 400px;
-	line-height: 350px;
-	text-align: center;
-	border-bottom: 2px solid gray;
-}
-
-.realContent {
-	padding-top: 10px;
-	border-bottom: 2px solid gray;
-}
-
-#ReportTitle {
-	display: inline-block;
-}
-
-#postHome>center>a {
-	text-decoration: none;
-	color: black;
-	border: 1px solid gray;
-	border-radius: 5px;
-}
-
-#postHome>center>a:hover {
-	text-decoration: none;
-	color: white;
-	background-color: gray;
-}
-
-.reportBoardContents {
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 50px;
-}
 
 #reportAnswerWrite {
 	display: none

@@ -26,7 +26,7 @@ div {
 	line-height: 50px;
 	border-top: 2px solid #C85C67;
 	border-bottom: 1px solid #C85C67;
-}#C85C67
+}
 
 .postInfo {
 	line-height: 28px;
@@ -36,6 +36,7 @@ div {
 
 .postInfoNone {
 	line-height: 28px;
+	border-bottom: 1px solid #C85C67;
 }
 
 .postInfoMain {
