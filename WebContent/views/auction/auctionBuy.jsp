@@ -47,10 +47,17 @@ table.auctionBuyTbl td {
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous"></script>
 <%
+request.setCharacterEncoding("utf-8");
+		
 		int buyPrice = Integer.parseInt(request.getParameter("buyPrice"));
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		String sellMethod = request.getParameter("sellMethod");
+		String subCategory = request.getParameter("subCategory");
+		String userNick = request.getParameter("userNick");
+				
 		DecimalFormat formatter = new DecimalFormat("###,###");
 		Member m = (Member) session.getAttribute("member");
+
 %>
 	
 <center>
@@ -59,8 +66,25 @@ table.auctionBuyTbl td {
 					<th colspan="2">즉시 구매</th>
 				</tr>
 				<tr>
+					<th>제품 번호</th>
+					<td>No.<%=postNo%></td>
+				</tr>
+				<tr>
+					<th>상품 분류</th>
+					<td><%=subCategory%></td>
+				</tr>
+				<tr>
 					<th>즉시 구매가</th>
 					<td><%=formatter.format(buyPrice)%>원</td>
+				</tr>
+				<tr>
+					<th>판매자 아이디</th>
+					<td><%=userNick%></td>
+				</tr>
+				
+				<tr>
+					<th>거래 방식</th>
+					<td><%=sellMethod%></td>
 				</tr>
 				<tr>
 				

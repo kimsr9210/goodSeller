@@ -30,6 +30,8 @@ public class PostAuctionBuyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		String userId = request.getParameter("userId");
 		

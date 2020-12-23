@@ -181,6 +181,15 @@
 		});
 
 		// 관심 상품 등록
+		$(function(){
+				
+		});
+		
+		
+		
+		
+		
+		
 		$(function() {
 			var result;
 			$("#InterestedBtn").click(
@@ -307,9 +316,12 @@
 												id="buyBtn">즉시 구매</button>
 											<form id="auctionBuyForm" method="post"
 												action="/views/auction/auctionBuy.jsp" target="childwin">
-												<input type="hidden" name="buyPrice"
-													value="<%=p.getBuyPrice()%>" /> <input type="hidden"
-													name="postNo" value="<%=p.getPostNo()%>" />
+												<input type="hidden" name="buyPrice" value="<%=p.getBuyPrice()%>" /> 
+												<input type="hidden" name="subCategory" value="<%=p.getSubCategory()%>" />
+												<input type="hidden" name="postNo" value="<%=p.getPostNo()%>" />
+												<input type="hidden" name="sellMethod" value="<%=p.getSellMethod()%>" />
+												<input type="hidden" name="userNick" value="<%=writer.getUserNick()%>" />
+												
 											</form>
 											<script>
 												$(function() {
