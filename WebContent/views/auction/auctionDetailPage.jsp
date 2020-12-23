@@ -129,7 +129,7 @@
 #userImgBox {
 	margin: 0 auto;
 	width: 100%;
-	height: 150px;
+	height: 120px;
 	overflow: hidden;
 }
 
@@ -142,19 +142,63 @@
 }
 
 #userId {
-	font-family: RIDIBatang;
-	font-size: 16px;
+	font-size: 12px;
 	line-height: 30px;
 	border-bottom: 1px solid #cccccc;
+	font-family: '굴림';
 }
-
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .wInfo {
 	font-family: '굴림';
+	font-size: 12px;
+}
+
+.infoFont{
+	font-family: GmarketSansMedium;
 	font-size: 14px;
 }
 
-#sellBox{
+#progress{
+	width: 100%;
+	height:100%;
 }
+#progressFont{
+	font-family: GmarketSansMedium;
+	float: right;
+	font-size: 14px;
+}
+#endDate{
+font-family: GmarketSansMedium;
+	color: #ED4C00;
+	font-size: 14px;
+}
+#textBox{
+	width: 100%;
+	height: 200px;
+	border: 1px solid #cccccc;
+	overflow:hidden;
+}
+#textarea{
+	width:90%;
+	height:90%;
+	overflow:hidden;
+	resize: none;
+	font-family: "굴림";
+	font-size: 14px;
+	border: 0;
+	background-color: white;
+	margin: 15px;
+}
+.contentsFont{
+	font-family: GmarketSansMedium;
+	font-size: 15px;
+}
+
 </style>
 
 </head>
@@ -216,6 +260,7 @@
 		String postCount = (String)request.getAttribute("postCount");
 		String auctionCount = (String)request.getAttribute("auctionCount");
 		DecimalFormat formatter = new DecimalFormat("###,###");
+		long d_day = (long)request.getAttribute("d_day");
 		
 		
 	%>
@@ -228,10 +273,11 @@
 				<div id="contents-deail-1" class="row">
 					<span id="mainCate">게시물 상세 페이지</span>
 				</div>
-				<hr>
 				<div id="contents-deail-2" class="row">
 					<div class="col-12">
+						<span class="contentsFont">제목</span>
 						<div id="postTitle" class="alert alert-light" role="alert"><%=p.getSubject()%></div>
+				<hr>
 					</div>
 					<div></div>
 				</div>
@@ -287,13 +333,10 @@
 					<div id="sellBox" class="col-12 col-md-6">
 						<div id="bid">
 							<div id="progress-height" class="col-12">
-								<div class="progress" style="height: 100%; margin: 1px;">
-									<div class="progress-bar bg-success" role="progressbar"
-										style="width: 80%" aria-valuenow="100" aria-valuemin="0"
-										aria-valuemax="100"><%=p.getEndDate()%></div>
+								<div id="progress">
+									<span id="progressFont">종료일까지 <span id="endDate"><%=d_day%>일 남음</span></span>
 								</div>
 							</div>
-							<br>
 							<div id="price-navi-1">
 								<div class="col-12">
 									<div>
@@ -399,12 +442,12 @@
 								<div class="col-9 col-md-8 col-lg-9">
 									<div>
 										<h4 id="userId">
-											판매자 아이디 :
+											<span class="infoFont">판매자 아이디 : </span>
 											<%=p.getWriter()%></h4>
-										<span class="wInfo"> 판매자 닉네임 : <%=writer.getUserNick() %></span><br>
-										<span class="wInfo"> 판매자 게시물 수 : <%=postCount %> 개</span><br>
-										<span class="wInfo"> 판매자 구매 내역 : <%=auctionCount %> 개</span> <br>
-										<span class="wInfo"> 판매자 신고 횟수 : <%=writer.getReported() %> 번</span>
+										<span class="wInfo"> <span class="infoFont">판매자 닉네임 : </span><%=writer.getUserNick() %></span><br>
+										<span class="wInfo"> <span class="infoFont">판매자 게시물 수 : </span><%=postCount %> 개</span><br>
+										<span class="wInfo"> <span class="infoFont">판매자 구매 내역 : </span><%=auctionCount %> 개</span> <br>
+										<span class="wInfo"> <span class="infoFont">판매자 신고 횟수 : </span><%=writer.getReported() %> 번</span>
 									</div>
 								</div>
 							</div>
@@ -414,8 +457,12 @@
 				<br>
 				<div id="contents-deail-5" class="row">
 					<div class="col-12">
-						<textarea name="textarea" id="textarea" readonly="readonly"
-							disabled> <%=p.getContent() %></textarea>
+						<hr>
+						<span class="contentsFont">내용</span>
+						<div id="textBox">
+							<textarea id="textarea" disabled="disabled" readonly="readonly"><%=p.getContent() %>
+							</textarea>
+						</div>
 					</div>
 				</div>
 
