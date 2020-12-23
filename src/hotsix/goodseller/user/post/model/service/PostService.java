@@ -32,7 +32,7 @@ public class PostService {
 		return result;
 		
 	}
-	public PostPageData selectPostClothingPage(int currentPage, String mainCategory, String subCategory) {
+	public PostPageData selectPostAllPage(int currentPage, String mainCategory, String subCategory) {
 		Connection conn = JDBCTemplate.getConnection();
 		int recordCountPerPage = 12; //한 페이지 당 몇개씩 보여줄 것이냐
 		
@@ -187,6 +187,24 @@ public class PostService {
 		String result = pDAO.selectPostNum(conn, writer);
 		JDBCTemplate.close(conn);
 		return result;
+	}
+	public PostPageData selectSearchPost(int currentPage, String keyword) {
+		Connection conn = JDBCTemplate.getConnection();
+		int recordCountPerPage = 12; //한 페이지 당 몇개씩 보여줄 것이냐
+		
+		//화면 만들기
+		ArrayList<Post> list = pDAO.selectSearchPost(conn, currentPage, recordCountPerPage, keyword);
+		
+		
+		//navi 값 보여주기
+		int naviCountPerPage = 5; //navi 값 몇개 보여줄지
+		String pageNavi = pDAO.getPageNavi(conn, currentPage, recordCountPerPage, naviCountPerPage, keyword);
+		
+		PostPageData ppd = new PostPageData();
+		ppd.setList(list);
+		ppd.setPageNavi(pageNavi);
+		JDBCTemplate.close(conn);
+		return ppd;
 	}
 	
 }

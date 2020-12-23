@@ -58,8 +58,8 @@
 				<div class="col-6 col-md-5 col-lg-7">
 					<div id="search-box">
 						<div class="mb-3">
-							<form id="searchForm" action="#">
-								<fildset> <input type="text" id="search-input"
+							<form id="searchForm" action="/postingSearch.do" method="get">
+								<fildset> <input type="text" id="search-input" name="keyword"
 									placeholder="  찾고싶은 상품을 검색해주세요!" class="menu-none"/>
 								<button type="submit" id="search-btn">
 									<img src="/resources/images/searchImg.png" id="search-img">

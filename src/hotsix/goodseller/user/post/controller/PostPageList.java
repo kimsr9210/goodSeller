@@ -52,7 +52,7 @@ public class PostPageList extends HttpServlet {
 		
 		
 		//페이지를 가져올 수 있는 비지니스 로직 처리
-		PostPageData ppd = new PostService().selectPostClothingPage(currentPage, mainCategory, subCategory);
+		PostPageData ppd = new PostService().selectPostAllPage(currentPage, mainCategory, subCategory);
 		
 		//날짜 D-DAY 계산
 		ArrayList<Post> list = ppd.getList();
@@ -85,7 +85,6 @@ public class PostPageList extends HttpServlet {
 				
 				long diff = d_day.getTimeInMillis() - day.getTimeInMillis();
 				long d_diff = diff / (24 * 60 * 60 * 1000);
-				System.out.println(p.getPostNo()+"번 : "+d_diff+"일 남음");
 				if(diff<=0 && p.getSell_yn()=='N') {
 					new PostService().updatePostSellyn(p.getPostNo());
 					System.out.println("상품번호 ["+p.getPostNo()+"]는 종료날짜가 되어 거래 완료처리되었습니다.");
