@@ -10,6 +10,37 @@
 <title>Insert title here</title>
 </head>
 <body>
+<style>
+table.auctionBuyTbl {
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	border: 1px solid #ccc;
+	margin: 20px 10px;
+	width: 300px;
+	height: 90px;
+}
+table.auctionBuyTbl th {
+	width: 40%;
+	height:30px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #153d73;
+	border: 1px solid #ccc;
+}
+
+table.auctionBuyTbl td {
+	width: 100%;
+	height:30px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	vertical-align: top;
+	border: 1px solid #ccc;
+	}
+
+</style>
 
 	<!-- jQuery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -32,9 +63,13 @@
 					<td><%=formatter.format(buyPrice)%>원</td>
 				</tr>
 				<tr>
-					<td colspan="2"><button id="submitBuyBtn">즉시 구매</button> 
+				
+					<td colspan="2"><center>
+					<button id="submitBuyBtn">즉시 구매</button> 
 					<input type="reset" value="취소하기" />
+					</center>	
 					</td>
+				
 				</tr>
 			</table>
 		</center>
