@@ -42,7 +42,7 @@
 				</div>
 				<!--                    여기가 메뉴-->
 				<ul id="main-menu">
-					<li><a id="home" href="/auctionMain.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/home.png" class="imgSize"/>&nbsp;&nbsp;Home</a></li>
+					<li><a id="home" href="/auctionMain.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/home.png" class="imgSize"/>&nbsp;&nbsp;Home</a></li>
 					<li><a href="/auctionList.do?mainCategory=의류 브랜드 패션&subCategory=티셔츠">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/clothes.png" class="imgSize"/>&nbsp;&nbsp;의류 브랜드 패션</a></li>
 					<li><a href="/auctionList.do?mainCategory=생활 건강&subCategory=인테리어 용품">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/muscle.png" class="imgSize"/>&nbsp;&nbsp;생활 건강</a></li>
 					<li><a href="/auctionList.do?mainCategory=가구 가전&subCategory=수납 가구">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/product.png" class="imgSize"/>&nbsp;&nbsp;가구 가전</a></li>
@@ -91,9 +91,9 @@
 						%>
 					</div>
 					<ul id="side-menu">
-						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/board1.png" class="imgSize"/>&nbsp;&nbsp;Q&A</a></li>
-						<li><a href="/views/reportBoard/reportWrite.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/surprise.png" class="imgSize"/>&nbsp;&nbsp;신고게시판</a></li>
-						<li><a href="/views/common/guide.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/info.png" class="imgSize"/>&nbsp;&nbsp;이용안내</a></li>
+						<li><a href="/boardAllListPage.do">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/board1.png" class="imgSize"/>&nbsp;&nbsp;Q&A</a></li>
+						<li><a href="/views/reportBoard/reportWrite.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/surprise.png" class="imgSize"/>&nbsp;&nbsp;신고게시판</a></li>
+						<li><a href="/views/common/guide.jsp">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/resources/images/info.png" class="imgSize"/>&nbsp;&nbsp;이용안내</a></li>
 					</ul>
 				</div>
 			</div>
