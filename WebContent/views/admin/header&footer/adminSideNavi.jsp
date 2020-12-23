@@ -126,9 +126,16 @@ width: 100%;
                             </ul>
                         </li>
                         <hr class="line">
-                        <li><a>게시물 관리</a></li>
+                        <li><a>옥션 상품 관리</a></li>
                         <hr class="line">
-                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li>
+                        <li class="menu">
+                        	<a>회원 신고 관리</a>
+                            <ul class="hide">
+                                <li><a href="/adminReportAllPageList.do">신고 게시글 관리</a></li>
+                                <hr class="line">
+                                <li><a href="/memberReportAdmin.do">회원 신고 처리</a></li>
+                            </ul>
+                        </li>
                         <hr class="line">
                         <li><a href="/admincsBoardAllPageList.do">QnA</li>
                         <hr class="line">

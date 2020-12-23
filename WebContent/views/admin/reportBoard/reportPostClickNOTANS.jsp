@@ -212,7 +212,7 @@ div {
 							%>
 							<div id="reportAnswerWrite">
 
-								<form action="/reportAnswerWrite.do" method="get">
+								<form action="/reportAnswerWrite.do" method="post">
 									<div class="row p-0 m-0 titleBox">
 										<div class="col-3 subject">제목</div>
 										<div class="col-9 p-0 realSubject">

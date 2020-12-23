@@ -251,40 +251,6 @@ div {
 							</div>
 							
 							<%
-								}else if(r.getAnswerYN() == 'N') {
-							%>
-							<div id="reportAnswerWrite">
-
-								<form action="/reportAnswerWrite.do" method="get">
-									<div class="row p-0 m-0 titleBox">
-										<div class="col-3 subject">제목</div>
-										<div class="col-9 p-0 realSubject">
-											<textarea style="resize: none; border: none; outline: none;"
-												rows="1" cols="101" placeholder="제목을 작성하세요" name="subject"></textarea>
-										</div>
-									</div>
-									<div class="row p-0 m-0 ">
-										<div class="col-3 content">내용</div>
-										<div class="col-9 p-0 realContent">
-											<textarea style="resize: none; border: none; outline: none;"
-												rows="16" cols="101" placeholder="신고사항에 대해 조치한 내용을 적어주세요"
-												name="content"></textarea>
-										</div>
-									</div>
-									<div>
-										<center>
-											<br>
-											<button type="submit" class="btn btn-outline-secondary">작성
-												완료</button>
-											<button type="reset" class="btn btn-outline-secondary">작성
-												초기화</button>
-										</center>
-										<input type="hidden" name="reportNo"
-											value="<%=r.getReportNo()%>" />
-									</div>
-								</form>
-							</div>
-							<%
 								}
 							%>
 							<div id="postHome">
