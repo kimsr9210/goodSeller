@@ -237,7 +237,24 @@ $(function() {
 											<span class="moneyFont">즉시 구매가 : </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice())%></span> 원
 										</div>
 										<div class="priceBtnBox">
-											<button type="button" class="btn btn-danger float-right" >즉시 구매</button>
+											<button type="button" class="btn btn-danger float-right" id="buyBtn">즉시 구매</button>
+											<form id="auctionBuyForm" method="post" action="/views/auction/auctionBuy.jsp" target="childwin">
+											<input type="hidden" name="buyPrice" value="<%=p.getBuyPrice()%>"/>
+											<input type="hidden" name="postNo" value="<%=p.getPostNo()%>"/>
+										</form>
+										<script>
+											$(function(){
+												$("#buyBtn").click(function(){
+													<%if(m!=null){%>
+													var settings = "width=500px, height=280px";
+													auctionBuyPage = window.open("/views/auction/auctionBuy.jsp", "childwin", settings);
+													$("#auctionBuyForm").submit();
+													<%}else{%>
+													alert("로그인 한 후 입찰기능을 이용할 수 있습니다.");
+												<%}%>
+												});
+											});
+										</script>
 										</div>
 									</div>
 								</div>

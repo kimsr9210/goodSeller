@@ -1,6 +1,8 @@
 package hotsix.goodseller.user.post.model.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
@@ -150,19 +152,24 @@ public class PostService {
 		
 		
 	}
-	public int updatePostSellyn(int postNo) {
-		Connection conn = JDBCTemplate.getConnection();
-		int result = pDAO.updatePostSellyn(conn, postNo);
+	public int AuctionSellUpdate(Connection conn, int postNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE POSTTBL SET SELL_YN='Y' WHERE POSTNO=?";
 		
-		if(result>0) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
-		JDBCTemplate.close(conn);
 		return result;
 		
 	}
-
 }
