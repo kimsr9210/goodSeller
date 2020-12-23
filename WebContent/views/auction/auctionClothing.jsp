@@ -124,6 +124,7 @@
 												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
 												원
 											</p>
+											<p class="card-text"><span class="methodFont"><%=p.getSellMethod() %></span></p>
 										</div>
 									</div>
 								</a>

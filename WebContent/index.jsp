@@ -111,6 +111,15 @@
 .main-img{
 	width: 100%;
 }
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+	.methodFont{
+		font-family: GmarketSansMedium;
+	}
 </style>
 </head>
 
@@ -156,7 +165,7 @@
 							}
 							%>
 							<div class="postBox col-md-3">
-								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
+								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>" class="post<%=p.getPostNo() %>">
 									<div class="card" style="border:0; border-radius: 5px;">
 										<div id="postImgBox">
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
@@ -168,6 +177,7 @@
 												원<br> <span class="moneyFont">즉시구매가  </span><span class="buyPrice"><%=formatter.format(p.getBuyPrice()) %></span>
 												원
 											</p>
+											<p class="card-text"><span class="methodFont"><%=p.getSellMethod() %></span></p>
 										</div>
 									</div>
 								</a>
