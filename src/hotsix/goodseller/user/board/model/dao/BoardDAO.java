@@ -37,7 +37,7 @@ public class BoardDAO {
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
@@ -188,7 +188,7 @@ public class BoardDAO {
 				board.setSubject(rset.getString("subject"));
 				board.setBoardContent(rset.getString("boardContent"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
@@ -258,7 +258,7 @@ public class BoardDAO {
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
@@ -305,7 +305,7 @@ public class BoardDAO {
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
@@ -352,7 +352,7 @@ public class BoardDAO {
 				board.setUserId(rset.getString("userId"));
 				board.setSubject(rset.getString("subject"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
@@ -420,7 +420,7 @@ public class BoardDAO {
 				board.setBoardNo(rset.getInt("boardNo"));
 				board.setSubject(rset.getString("subject"));
 				board.setHit(rset.getInt("hit"));
-				board.setWriteDate(rset.getDate("writeDate"));
+				board.setWriteDate(rset.getTimestamp("writeDate"));
 				board.setPostLockYN(rset.getString("postLock_YN").charAt(0));
 				board.setAnswerYN(rset.getString("answer_YN").charAt(0));
 
