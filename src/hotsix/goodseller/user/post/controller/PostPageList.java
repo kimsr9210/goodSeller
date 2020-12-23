@@ -54,25 +54,44 @@ public class PostPageList extends HttpServlet {
 		//페이지를 가져올 수 있는 비지니스 로직 처리
 		PostPageData ppd = new PostService().selectPostClothingPage(currentPage, mainCategory, subCategory);
 		
-		//꺼내온 데이터중 끝나는 날이 오늘(+1)이랑 맞다면
-		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		
-		String mYear = String.valueOf(cal.get(Calendar.YEAR));
-		String mMonth = String.valueOf(cal.get(Calendar.MONTH)+1);
-		String mDay = String.valueOf(cal.get(Calendar.DATE)+1);
-		String eDate = mYear+"-"+mMonth+"-"+mDay;
-		
-		System.out.println("eDate : " + eDate);
+		//날짜 D-DAY 계산
 		ArrayList<Post> list = ppd.getList();
 		for(Post p : list) {
 			
-			if(format.format(p.getEndDate()).equals(eDate)) {
-				int result = new PostService().updatePostSellyn(p.getPostNo());
-				if(result>0) {
-					System.out.println("상품번호 ["+p.getPostNo()+"]는 종료날짜가 되어 거래 완료되었습니다.");
-				} 
-			}
+			System.out.println(p.getEndDate());
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Calendar day = Calendar.getInstance();
+				Calendar d_day = Calendar.getInstance();
+						
+				int year = day.get(Calendar.YEAR);
+				int month = day.get(Calendar.MONTH)+1;
+				int date = day.get(Calendar.DATE)-1;
+				
+				day.set(year, month, date);
+				
+				//오늘날짜 시간으로계산
+				//System.out.println(day.getTimeInMillis());
+				
+				//endDate 가져오기
+				String[] arr = sdf.format(p.getEndDate()).split("-");
+				int d_year = Integer.parseInt(arr[0]);
+				int d_month = Integer.parseInt(arr[1]);
+				int d_date = Integer.parseInt(arr[2]);
+				
+				d_day.set(d_year, d_month, d_date);
+				
+				//d_day날짜 시간으로 계산
+				//System.out.println(d_day.getTimeInMillis());
+				
+				long diff = d_day.getTimeInMillis() - day.getTimeInMillis();
+				long d_diff = diff / (24 * 60 * 60 * 1000);
+				System.out.println(p.getPostNo()+"번 : "+d_diff+"일 남음");
+				if(diff<=0 && p.getSell_yn()=='N') {
+					new PostService().updatePostSellyn(p.getPostNo());
+					System.out.println("상품번호 ["+p.getPostNo()+"]는 종료날짜가 되어 거래 완료처리되었습니다.");
+				};
+				
+				
 		}
 		// 카테고리별 페이지 옮기기
 		String cate = "";

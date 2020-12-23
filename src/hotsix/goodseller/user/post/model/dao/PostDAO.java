@@ -205,7 +205,7 @@ public class PostDAO {
 			int postTotalCount = 0;
 			
 			String query = "SELECT COUNT(*) AS TOTALCOUNT " + 
-					"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=? AND SELL_YN='N' ";
+					"FROM POSTTBL WHERE DEL_YN='N' AND MAINCATEGORY=? AND subCategory=?";
 			
 			try {
 				pstmt = conn.prepareStatement(query);

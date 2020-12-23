@@ -54,7 +54,6 @@ public class PostMainPageServlet extends HttpServlet {
 		ArrayList<Post> beautyList = new PostService().auctionMainPostBeauty(cateBeauty);
 		ArrayList<Post> sportsList = new PostService().auctionMainPostSports(cateSports);
 		
-		
 		//결과 전송
 		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionMain.jsp");
 		request.setAttribute("clothingList", clothingList);
@@ -64,6 +63,14 @@ public class PostMainPageServlet extends HttpServlet {
 		request.setAttribute("booksList", booksList);
 		request.setAttribute("beautyList", beautyList);
 		request.setAttribute("sportsList", sportsList);
+		
+		System.out.println("의류 :"+clothingList.size());
+		System.out.println("생활 :"+livingList.size());
+		System.out.println("가구 :"+homeAppliancesList.size());
+		System.out.println("컴터 :"+digitalList.size());
+		System.out.println("도서 :"+booksList.size());
+		System.out.println("뷰티 :"+beautyList.size());
+		System.out.println("스포 :"+sportsList.size());
 		
 		view.forward(request, response);
 	}
