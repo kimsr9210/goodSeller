@@ -26,7 +26,31 @@
 <!-- <link rel="stylesheet" type="text/css"
 	href="/resources/css/qnaList.css" /> -->
 <style>
-	@charset "UTF-8";
+@charset "UTF-8";
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+	font-family: 'Wemakeprice-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Binggrae-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+#mainCate {
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+
 #contents {
 	background-color: white;
 }
@@ -128,7 +152,6 @@
 	font-size: 12px;
 }
 
-
 /* 태그 글자 색 */
 .qna-box-size a {
 	color: black;
@@ -161,18 +184,17 @@
 </style>
 </head>
 <body>
-<%
-	BoardPageData bpd = (BoardPageData)request.getAttribute("pageData");
-				
-	ArrayList<Board> list = bpd.getList();
-	String pageNavi = bpd.getPageNavi();
-	
-%>
+	<%
+		BoardPageData bpd = (BoardPageData) request.getAttribute("pageData");
+
+		ArrayList<Board> list = bpd.getList();
+		String pageNavi = bpd.getPageNavi();
+	%>
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	<%
-	if (m != null) {
-
-%>
+		if (m != null) {
+			if (!list.isEmpty()) {
+	%>
 	<div id="wrap">
 		<!-- 전체 틀-->
 		<!-- -------------------------------------------------------------------- -->
@@ -193,37 +215,59 @@
 						<div class="col-1">상태</div>
 					</div>
 
-					<%for(Board board : list){ %>
+					<%
+						for (Board board : list) {
+					%>
 					<div class="row p-0 m-0 line-content text-center py-1">
-						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
+						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo()%></div>
 
 						<div class="col-7 col-md-7 p-0">
 
-							<%if(board.getPostLockYN()=='N'){ %>
+							<%
+								if (board.getPostLockYN() == 'N') {
+							%>
 							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else if(board.getPostLockYN()=='Y'){ %>
-							<%if(m!=null &&(m.getUserId().equals(board.getUserId()))){ %>
+								id="postClickBtn"><%=board.getSubject()%></a>
+							<%
+								} else if (board.getPostLockYN() == 'Y') {
+							%>
+							<%
+								if (m != null && (m.getUserId().equals(board.getUserId()))) {
+							%>
 							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ %>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
-							<%} %>
-							<%}%>
+								id="postClickBtn"><%=board.getSubject()%></a>
+							<%
+								} else {
+							%>
+							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject()%></a>
+							<%
+								}
+							%>
+							<%
+								}
+							%>
 						</div>
 
-						<div class="col-2 col-md-2 p-0 "><%=board.getWriteDate() %></div>
-						<div class="col-1 col-md-1 p-0 "><%=board.getHit() %></div>
+						<div class="col-2 col-md-2 p-0 "><%=board.getWriteDate()%></div>
+						<div class="col-1 col-md-1 p-0 "><%=board.getHit()%></div>
 
 						<div class="col-1 col-md-1 p-0 ">
-							<%if(board.getAnswerYN()=='N'){ %>
+							<%
+								if (board.getAnswerYN() == 'N') {
+							%>
 							미답변
-							<%}else{ %>
+							<%
+								} else {
+							%>
 							답변완료
-							<%} %>
+							<%
+								}
+							%>
 						</div>
 					</div>
-					<%} %>
+					<%
+						}
+					%>
 
 				</div>
 
@@ -231,7 +275,7 @@
 					<div class="col-12 p-0 m-0 overview">
 						<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
-							<%=pageNavi %>
+							<%=pageNavi%>
 						</ul>
 						</nav>
 					</div>
@@ -240,12 +284,40 @@
 		</div>
 
 	</div>
-	<%@ include file="/views/common/header&footer/footer.jsp"%>
-	<%} else { %>
+	<%
+		} else {
+	%>
+	<div id="wrap">
+		<div id="contents" class="menu-none">
+			<%@ include file="/views/common/memberInfoNav.jsp"%>
+			<div id="contents-mypage">
+				<div class="container" id="qna-box">
+					<div class="row">
+						<div class="col-12 text-center">
+							<img src="/resources/images/hide.png" />
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 text-center">
+							<span id="mainCate">내가 작성한 Q&A 게시물이 없습니다.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%
+		}
+		} else {
+	%>
 	<script>
 		alert("세션 만료. 다시 로그인하여 주십시오");
-		location.href ="/index.do";
+		location.href = "/index.do";
 	</script>
-	<% } %>
+	<%
+		}
+	%>
+	<%@ include file="/views/common/header&footer/footer.jsp"%>
 </body>
 </html>
