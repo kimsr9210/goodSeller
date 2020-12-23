@@ -1,6 +1,6 @@
 package hotsix.goodseller.admin.board.report.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ReportAnswer {
 
@@ -8,12 +8,12 @@ public class ReportAnswer {
 	private String adminId;
 	private String subject;
 	private String content;
-	private Date writeDate;
+	private Timestamp writeDate;
 	public ReportAnswer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReportAnswer(int reportNo, String adminId, String subject, String content, Date writeDate) {
+	public ReportAnswer(int reportNo, String adminId, String subject, String content, Timestamp writeDate) {
 		super();
 		this.reportNo = reportNo;
 		this.adminId = adminId;
@@ -45,12 +45,12 @@ public class ReportAnswer {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getWriteDate() {
+	public Timestamp getWriteDate() {
 		return writeDate;
 	}
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(Timestamp writeDate) {
 		this.writeDate = writeDate;
 	}
-
+	
 	
 }

@@ -2,9 +2,6 @@ package hotsix.goodseller.admin.board.report.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,16 +15,16 @@ import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.user.board.model.vo.Report;
 
 /**
- * Servlet implementation class ReportClickServlet
+ * Servlet implementation class AdminReportNOTANSClickSerlvet
  */
-@WebServlet("/adminReportClick.do")
-public class ReportClickServlet extends HttpServlet {
+@WebServlet("/adminReportNOTANSClick.do")
+public class ReportNOTANSClickSerlvet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportClickServlet() {
+    public ReportNOTANSClickSerlvet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +33,7 @@ public class ReportClickServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		try {
 
 			//이전 페이지에서 넘어온 값 저장
@@ -48,17 +45,10 @@ public class ReportClickServlet extends HttpServlet {
 			//비즈니스 로직 처리 
 			Report r = new ReportService().postOneClick(reportNo);
 			
-			if(r.getAnswerYN()=='Y') {
-			//답변이 완료 된 경우 그 객체도 가져와주기 
-			rAnswer = new ReportService().reportAnswerInfo(reportNo);
-			}
 			
 			if(r!=null) {
-			RequestDispatcher view = request.getRequestDispatcher("/views/admin/reportBoard/reportPostClick.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/admin/reportBoard/reportPostClickNOTANS.jsp");
 			request.setAttribute("report", r);
-			
-			request.setAttribute("reportAnswer", rAnswer);
-			
 			view.forward(request, response);
 			}else {
 				response.sendRedirect("/views/admin/reportBoard/reportPostReadFail.jsp");

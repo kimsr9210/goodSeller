@@ -51,7 +51,9 @@ public class ReportAnswerWriteServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			Member admin = (Member) session.getAttribute("admin");
 			String adminId = admin.getUserId();
-
+			
+			
+			//비즈니스 로직 처리
 			int result = new ReportService().reportAnswerWrite(reportNo, adminId, subject, content);
 			
 			if(result>=2) {

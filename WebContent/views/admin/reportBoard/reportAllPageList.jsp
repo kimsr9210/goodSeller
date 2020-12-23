@@ -122,8 +122,13 @@ padding-top : 50px;
 							<div class="row p-0 m-0 line-content text-center">
 								<div class="d-none d-md-block col-md-1 p-0 "><%=r.getReportNo()%></div>
 								<div class="col-12 col-md-6 p-0">
+								<%if(r.getAnswerYN()=='Y'){ %>
 									<a id="afont"
 										href="/adminReportClick.do?reportNo=<%=r.getReportNo()%>"><%=r.getSubject()%></a>
+								<%}else{ %>
+								<a id="afont"
+										href="/adminReportNOTANSClick.do?reportNo=<%=r.getReportNo()%>"><%=r.getSubject()%></a>
+								<%} %>
 								</div>
 								<div class="col-3 col-md-1 p-0 "><%=r.getUserId()%></div>
 								<%

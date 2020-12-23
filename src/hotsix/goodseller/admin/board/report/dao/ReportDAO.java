@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.Report;
 
 public class ReportDAO {
@@ -211,6 +210,39 @@ public class ReportDAO {
 
 		return result;
 
+	}
+
+	public ReportAnswer reportAnswerInfo(Connection conn, int reportNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ReportAnswer rAnswer = null;
+
+		String query = "SELECT * FROM REPORTANSWER WHERE reportNo = ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reportNo);
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				rAnswer = new ReportAnswer();
+
+				rAnswer.setReportNo(rset.getInt("reportNo"));
+				rAnswer.setAdminId(rset.getString("adminId"));
+				rAnswer.setSubject(rset.getString("subject"));
+				rAnswer.setContent(rset.getString("content"));
+				rAnswer.setWriteDate(rset.getTimestamp("writeDate"));
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return rAnswer;
 	}
 
 	

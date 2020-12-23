@@ -149,11 +149,6 @@ div {
 		String yymmdd = writeDate.substring(0, 10);
 		String hhmm = writeDate.substring(11, 16);
 		
-		ReportAnswer rAnswer = (ReportAnswer)request.getAttribute("reportAnswer");
-
-		String writeDateRA = String.valueOf(rAnswer.getWriteDate());
-		String yymmddRA = writeDate.substring(0, 10);
-		String hhmmRA = writeDate.substring(11, 16);
 
 	%>
 
@@ -211,47 +206,9 @@ div {
 								</div>
 							</div>
 							<hr>
-
-							<%
-								if (r.getAnswerYN() == 'Y') {
-									//답변이 완료된 상태일때만 보여줌
-							%>
-
-							<div id="postAnswer">
-
-								<div class="row p-0 m-0 contentTitle">
-									<div class="col-2 subject">제목</div>
-									<div class="col-10 realSubject">
-										<b> 
-										<%=rAnswer.getSubject() %>
-										</b>
-									</div>
-								</div>
-								<div class="row p-0 m-0">
-									<div class="col-2 postInfo postInfoMain">작성자</div>
-									<div class="col-2 postInfo">
-										<%=rAnswer.getAdminId() %>
-									</div>
-									<div class="col-2 postInfo postInfoMain">작성 날짜</div>
-									<div class="col-2 postInfo">
-										<%=yymmddRA %>
-									</div>
-									<div class="col-2 postInfo postInfoMain">작성 시간</div>
-									<div class="col-2 postInfo">
-										<%=hhmmRA %>
-									</div>
-								</div>
-								<div class="row p-0 m-0">
-									<div class="col-2 content">내용</div>
-									<div class="col-10 realContent">
-										<%=rAnswer.getContent() %>
-									</div>
-								</div>
-
-							</div>
 							
 							<%
-								}else if(r.getAnswerYN() == 'N') {
+								if(r.getAnswerYN() == 'N') {
 							%>
 							<div id="reportAnswerWrite">
 

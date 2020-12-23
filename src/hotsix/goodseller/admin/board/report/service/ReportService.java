@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import hotsix.goodseller.admin.board.report.dao.ReportDAO;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
 import hotsix.goodseller.admin.board.report.vo.ReportPageData;
 import hotsix.goodseller.common.JDBCTemplate;
-import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.Report;
 
 public class ReportService {
@@ -54,6 +54,13 @@ public class ReportService {
 		int result = reportAnswerInsertResult + changeAnswerYNResult ;
 
 		return result;
+	}
+
+	public ReportAnswer reportAnswerInfo(int reportNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ReportAnswer rAnswer = rDAO.reportAnswerInfo(conn, reportNo);
+		return rAnswer;
 	}
 
 
