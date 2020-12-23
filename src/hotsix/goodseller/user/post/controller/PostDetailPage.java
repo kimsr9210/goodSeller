@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.board.model.service.BoardService;
+import hotsix.goodseller.auction.model.service.AuctionService;
+import hotsix.goodseller.member.model.service.MemberService;
+import hotsix.goodseller.member.model.vo.Member;
 import hotsix.goodseller.user.post.model.service.PostService;
 import hotsix.goodseller.user.post.model.vo.Post;
 
@@ -37,10 +39,25 @@ public class PostDetailPage extends HttpServlet {
 		
 		Post p = new PostService().auctionDetail(postNo);
 		new PostService().updateHit(postNo);
-		System.out.println(postNo);
+		
+		//판매자 닉네임, 신고당한횟수 가져오기
+		Member m = new MemberService().selectWriterInfo(p.getWriter());
+		
+		//판매자 거래내역 가져오기
+		String auctionCount = new AuctionService().selectTransactionInfo(p.getWriter());
+		
+		//판매자 올린 게시물 갯수 가져오기
+		String postCount = new PostService().selectPostNum(p.getWriter());
+		
+
+		response.setCharacterEncoding("UTF-8"); 
+		response.setContentType("text/html; charset=UTF-8");
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");
 		request.setAttribute("post", p);
+		request.setAttribute("writer", m);
+		request.setAttribute("postCount", postCount);
+		request.setAttribute("auctionCount", auctionCount);
 		view.forward(request, response);		
 		
 	}

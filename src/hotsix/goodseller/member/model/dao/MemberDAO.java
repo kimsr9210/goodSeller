@@ -384,4 +384,34 @@ public class MemberDAO {
 
 		return admin;
 	}
+
+	public Member selectWriterInfo(Connection conn, String writer) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+
+		String query = "SELECT * FROM MEMBER WHERE USERID=? AND END_YN='N'";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, writer);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				m = new Member();
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setReported(rset.getInt("reported"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return m;
+	}
 }

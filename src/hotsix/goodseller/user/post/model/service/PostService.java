@@ -181,5 +181,12 @@ public class PostService {
 		
 		return result;
 	}
+	public String selectPostNum(String writer) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String result = pDAO.selectPostNum(conn, writer);
+		JDBCTemplate.close(conn);
+		return result;
+	}
 	
 }

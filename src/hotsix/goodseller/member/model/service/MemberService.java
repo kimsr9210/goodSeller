@@ -117,4 +117,12 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return admin;
 	}
+
+	public Member selectWriterInfo(String writer) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member m=mDAO.selectWriterInfo(conn, writer);
+		JDBCTemplate.close(conn);
+		return m;
+		
+	}
 }

@@ -1,5 +1,6 @@
 package hotsix.goodseller.user.post.model.dao;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -809,6 +810,31 @@ public class PostDAO {
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, postNo);
 				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+			
+		}
+
+		public String selectPostNum(Connection conn, String writer) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String result = "";
+			String query = "select count(*) from POSTTBL WHERE writer=?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, writer);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					result = rset.getString("count(*)");
+				}
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
