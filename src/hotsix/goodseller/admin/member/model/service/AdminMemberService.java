@@ -18,4 +18,18 @@ public class AdminMemberService {
 		return list;
 	}
 
+	public ArrayList<Member> selectEndMemberAll() {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Member> list = aDAO.selectEndMemberAll(conn);
+		JDBCTemplate.close(conn);
+		return list;
+	}
+
+	public ArrayList<Member> selectAdminAll() {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Member> list = aDAO.selectAdminAll(conn);
+		JDBCTemplate.close(conn);
+		return list;
+	}
+
 }

@@ -16,16 +16,16 @@ import hotsix.goodseller.admin.member.model.service.AdminMemberService;
 import hotsix.goodseller.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberAllListServlet
+ * Servlet implementation class AdminAllListServlet
  */
-@WebServlet("/memberAllList.do")
-public class MemberAllListServlet extends HttpServlet {
+@WebServlet("/adminAllList.do")
+public class AdminAllListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberAllListServlet() {
+    public AdminAllListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,46 +35,45 @@ public class MemberAllListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			
-			HttpSession session=request.getSession();
-			Member admin=(Member)session.getAttribute("admin");
-			
-			//비로그인자 처리
-			//1. Exception 처리
-			//2. m!=null 아닌 경우만 처리하도록
-			if(admin!=null && 0==admin.getUserNo()||(1<=admin.getUserNo()&&admin.getUserNo()<=100)) {
-				//모든 회원을 가져오는 비즈니스 로직 처리
-				ArrayList<Member> list=new AdminMemberService().selectMemberAll();
-				if(!(list.isEmpty())) {
-					RequestDispatcher view=request.getRequestDispatcher("/views/admin/member/adminMemberList.jsp");
+
+			HttpSession session = request.getSession();
+			Member admin = (Member) session.getAttribute("admin");
+
+			// 비로그인자 처리
+			// 1. Exception 처리
+			// 2. m!=null 아닌 경우만 처리하도록
+			if (admin != null && 0 == admin.getUserNo() || (1 <= admin.getUserNo() && admin.getUserNo() <= 100)) {
+				// 모든 회원을 가져오는 비즈니스 로직 처리
+				ArrayList<Member> list = new AdminMemberService().selectAdminAll();
+				if (!(list.isEmpty())) {
+					RequestDispatcher view = request.getRequestDispatcher("/views/admin/member/adminMemberList.jsp");
 					request.setAttribute("list", list);
 					request.setAttribute("userNo", admin.getUserNo());
 					view.forward(request, response);
-				}
-				else {
+				} else {
 					response.setCharacterEncoding("UTF-8");
 					response.setContentType("text/html; charset=UTF-8");
-					
-					PrintWriter out=response.getWriter();
+
+					PrintWriter out = response.getWriter();
 					out.println("<h3>회원정보 읽어오기 실패</h3>");
 				}
-				
+
 			} else {
-				//관리자가 아닌 유저가 요청했을 경우
+				// 관리자가 아닌 유저가 요청했을 경우
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html; charset=UTF-8");
-				
-				PrintWriter out=response.getWriter();
+
+				PrintWriter out = response.getWriter();
 				out.println("관리자가 아닌 유저가 요청");
-				//response.sendRedirect("/views/common/error/error.jsp");
+				// response.sendRedirect("/views/common/error/error.jsp");
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
-			
-			PrintWriter out=response.getWriter();
+
+			PrintWriter out = response.getWriter();
 			out.println("Exception e");
-			//response.sendRedirect("/views/common/error/error.jsp");
+			// response.sendRedirect("/views/common/error/error.jsp");
 		}
 	}
 
