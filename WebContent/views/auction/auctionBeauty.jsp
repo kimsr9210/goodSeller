@@ -104,7 +104,9 @@
 							<div class="postBox col-md-3">
 								<a id="postClick" href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>" class="post<%=p.getPostNo() %>">
 									<div class="card" style="border:0; border-radius: 5px;">
+										<div class="sellynText">판매가 완료된 상품입니다.</div>
 										<div id="postImgBox">
+											
 											<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="card-img-top" alt="..." />
 										</div>
 										<div class="card-body-size">
@@ -124,7 +126,8 @@
 									$(function(){
 										var postNo = $('.post<%=p.getPostNo() %>');
 										postNo.children().css('cursor','default');
-										postNo.parent().css('opacity','0.5');
+										postNo.parent().css('opacity','0.7'); 
+										postNo.children().children().css('display','block');
 										$(postNo).click(function(){
 											alert('판매 완료된 상품입니다.');
 											return false;
