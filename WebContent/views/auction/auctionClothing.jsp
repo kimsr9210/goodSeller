@@ -29,6 +29,9 @@
 	crossorigin="anonymous"></script>
 <!--    폰트-->
 <title>Insert title here</title>
+<style>
+	
+</style>
 </head>
 <body>
 <%@ include file="/views/common/header&footer/header.jsp"%>
@@ -160,7 +163,7 @@
 					<br>
 					
 						<nav aria-label="Page navigation example">
-						<ul id="" class="pagination justify-content-center" >
+						<ul id="pageNaviBox" class="pagination justify-content-center" >
 							<%=ppd.getPageNavi() %>
 						</ul>
 						</nav>

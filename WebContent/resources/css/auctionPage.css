@@ -171,3 +171,6 @@
 		margin:0 auto;
 		display: none;
 	}
+	#pageNaviBox a{
+		color: black;
+	}
