@@ -107,7 +107,7 @@ width: 100%;
                                 <li>관리자</li>
                             </ul>
                         </li><hr>
-                        <li><a>게시물 관리</a></li><hr>
+                        <li><a href="/admincsBoardAllPageList.do">게시물 관리</a></li><hr>
                         <li><a href="/adminReportAllPageList.do">신고 관리</a></li><hr>
                         <li>QnA</li><hr>
                         <li class="menu">

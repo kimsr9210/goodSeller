@@ -98,14 +98,20 @@ div {
 	color: white;
 	background-color: gray;
 }
+.reportBoardContents
+{
+width:80%;
+margin : 0 auto;
+padding-top : 50px;
+}
 </style>
 </head>
 <body>
 
+	<!-- jQuery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous"></script>
-
 
 	<%
 		Report r = (Report) request.getAttribute("report");
@@ -114,12 +120,24 @@ div {
 	String yymmdd = writeDate.substring(0, 10);
 	String hhmm = writeDate.substring(11, 16);
 	%>
+	
+	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
+	<div id="wrap">
+		<div class="contentWrapper m-0 p-0">
 
-	<%@ include file="/views/common/header&footer/header.jsp"%>
+			<div class="row m-0">
+				<div class="col-2 p-0 m-0 ">
+
+	<%@ include file="/views/admin/header&footer/adminSideNavi.jsp"%>
+
+				</div>
+				<div class="col-10">
+					<div class="row" style="height: 100%;">
 
 
-	<div class="wrapper">
+						<div class="reportBoardContents" >
 
+	
 		<div id="postTitle">
 			<div class="container">
 				<center>
@@ -189,11 +207,11 @@ div {
 				<div class="col-10 realContent"><%=r.getContent()%></div>
 			</div>
 	<%} %>
-		<br><br>
 
 	</div>
 	
 	<div id="postHome">
+			<br><br>
 			<center>
 				<%
 					if (r.getAnswerYN() == 'N') {
@@ -206,6 +224,7 @@ div {
 				<button type="submmit" id="backBtn"
 					class="btn btn-outline-secondary">신고 관리 게시판으로 돌아가기</button>
 			</center>
+			<br><br>
 
 			<script>
 		$(function(){
@@ -219,8 +238,15 @@ div {
 
 		</div>
 
-	</div>
+						</div>
 
-	<%@ include file="/views/common/header&footer/footer.jsp"%>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<%@ include file="/views/admin/header&footer/adminFooter.jsp"%>
+
 </body>
 </html>
