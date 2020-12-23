@@ -40,44 +40,44 @@ font-family: Wemakeprice-Bold;
 		}
 		.subject
 		{
-			background-color:#dcdcdc;
+			background-color:#FBF1F2;
 			text-align:center;
-			border-top: 2px solid gray;
-			border-bottom: 1px solid gray;
+			border-top: 2px solid #D6626E;
+			border-bottom: 1px solid #D6626E;
 			line-height:30px;
 		height:33px;
 		}
 		.realSubject
 		{
 		height:33px;
-			border-top: 2px solid gray;
-			border-bottom: 1px solid gray;
+			border-top: 2px solid #D6626E;
+			border-bottom: 1px solid #D6626E;
 		}
 		
 		.postInfo
 		{
 			line-height:28px;
-			border-bottom: 1px solid gray;
+			border-bottom: 1px solid #D6626E;
 		}
 		
 		.postInfoMain
 		{
-			background-color:#dcdcdc;
+			background-color:#FBF1F2;
 			text-align:center;
 		}
 		
 		.content
 		{
-			background-color:#dcdcdc;
+			background-color:#FBF1F2;
 			height:400px;
 			line-height:350px;
 			text-align:center;
-			border-bottom: 2px solid gray;
+			border-bottom: 2px solid #D6626E;
 		}
 		
 		.realContent
 		{
-			border-bottom: 2px solid gray;
+			border-bottom: 2px solid #D6626E;
 		}
 		
 		#QnAtitle{

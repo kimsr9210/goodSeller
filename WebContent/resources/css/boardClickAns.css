@@ -40,30 +40,30 @@ div {
 	background-color: #FBF1F2;
 	line-height: 50px;
 	text-align: center;
-	border-top: 2px solid #C85C67;
-	border-bottom: 1px solid #C85C67;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 }
 
 .realSubject {
 	line-height: 50px;
-	border-top: 2px solid #C85C67;
-	border-bottom: 1px solid #C85C67;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 }
 
 .postInfo {
 	line-height: 28px;
 	text-align: center;
-	border-bottom: 1px solid #C85C67;
+	border-bottom: 1px solid #D6626E;
 }
 
 .postInfoNone {
 	line-height: 28px;
-	border-bottom: 1px solid #C85C67;
+	border-bottom: 1px solid #D6626E;
 }
 
 .postInfoMain {
 	background-color: #FBF1F2;
-	border-bottom: 1px solid #C85C67;
+	border-bottom: 1px solid #D6626E;
 }
 
 .content {
@@ -71,12 +71,12 @@ div {
 	height: 400px;
 	line-height: 350px;
 	text-align: center;
-	border-bottom: 2px solid #C85C67;
+	border-bottom: 2px solid #D6626E;
 }
 
 .realContent {
 	padding-top: 10px;
-	border-bottom: 2px solid #C85C67;
+	border-bottom: 2px solid #D6626E;
 }
 
 #ReportTitle {

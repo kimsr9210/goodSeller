@@ -56,15 +56,23 @@ public class ReportPostWriteServlet extends HttpServlet {
 				//3.session에서 작성자 값 불러오기 
 				String userId = m.getUserId();
 				
-				int result = new BoardService().ReportInsert(userId, subject, content, reportId);
-				//제목 내용 신고할사람
+				//아이디가 있는지 확인 
+				boolean reportIdSearch = new BoardService().ReportIdSearch(reportId);
 				
-				if(result>0)
-				{
-				   	RequestDispatcher view = request.getRequestDispatcher("/views/reportBoard/reportWriteSuccess.jsp");
-				   	view.forward(request, response);
-				}else {
-				   	RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardWriteFail.jsp");
+				if(reportIdSearch==true) {
+					int result = new BoardService().ReportInsert(userId, subject, content, reportId);
+					//제목 내용 신고할사람
+				
+					if(result>0)
+					{
+						RequestDispatcher view = request.getRequestDispatcher("/views/reportBoard/reportWriteSuccess.jsp");
+						view.forward(request, response);
+					}else {
+						RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardWriteFail.jsp");
+						view.forward(request, response);
+					}
+				}else if(reportIdSearch==false) {
+				   	RequestDispatcher view = request.getRequestDispatcher("/views/reportBoard/reportWriteFailUserNull.jsp");
 				   	view.forward(request, response);
 				}
 				

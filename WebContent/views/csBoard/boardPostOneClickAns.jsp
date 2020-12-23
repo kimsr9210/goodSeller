@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.Board"%>
+<%@ page import="hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,58 +36,47 @@ div {
 }
 
 .subject {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 	line-height: 50px;
 	text-align: center;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 }
 
 .realSubject {
 	line-height: 50px;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 }
 
 .postInfo {
 	line-height: 28px;
 	text-align: center;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid #D6626E;
 }
 
 .postInfoMain {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 }
 
 .content {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 	height: 400px;
 	line-height: 350px;
 	text-align: center;
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 .realContent {
 	padding-top: 10px;
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 #QnAtitle {
 	display: inline-block;
 }
 
-#postHome>center>a {
-	text-decoration: none;
-	color: black;
-	border: 1px solid gray;
-	border-radius: 5px;
-}
 
-#postHome>center>a:hover {
-	text-decoration: none;
-	color: white;
-	background-color: gray;
-}
 </style>
 </head>
 <body>
@@ -100,6 +90,12 @@ div {
 		Board board = (Board) request.getAttribute("board");
 		String writeDate = String.valueOf(board.getWriteDate());
 		String yymmdd = writeDate.substring(0, 10);
+		
+		BoardAnswer bAnswer = (BoardAnswer) request.getAttribute("boardAnswer");
+
+		String writeDateANS = String.valueOf(bAnswer.getWriteDate());
+		String yymmddANS = writeDateANS.substring(0, 10);
+		String hhmmANS = writeDateANS.substring(11, 16);
 	%>
 
 
@@ -138,27 +134,65 @@ div {
 				<div class="col-10 realContent"><%=board.getContent()%></div>
 			</div>
 		</div>
+<hr>
+							<%
+								if (board.getAnswerYN() == 'Y') {
+									//답변이 완료된 상태일때만 보여줌
+							%>
 
-		<div id="postAnswer">
-			<div class="row p-0 m-0">
-				<br>
-				<br> 관리자페이지에서 답변 표시 (if문 사용해서 answer_YN='Y'이면 보여주고 없으면 아직
-				답변전이라고 안내) <br>
-				<br>
-			</div>
-		</div>
+							<div id="postAnswer">
 
+								<div class="row p-0 m-0 contentTitle">
+									<div class="col-2 subject">제목</div>
+									<div class="col-10 realSubject">
+										<b> 
+										<%=bAnswer.getSubject() %>
+										</b>
+									</div>
+								</div>
+								<div class="row p-0 m-0">
+									<div class="col-2 postInfo postInfoMain">작성자</div>
+									<div class="col-2 postInfo">
+										<%=bAnswer.getAdminId() %>
+									</div>
+									<div class="col-2 postInfo postInfoMain">작성 날짜</div>
+									<div class="col-2 postInfo">
+										<%=yymmddANS %>
+									</div>
+									<div class="col-2 postInfo postInfoMain">작성 시간</div>
+									<div class="col-2 postInfo">
+										<%=hhmmANS %>
+									</div>
+								</div>
+								<div class="row p-0 m-0">
+									<div class="col-2 content">내용</div>
+									<div class="col-10 realContent">
+										<%=bAnswer.getContent() %>
+									</div>
+									
+								</div>
+					
+							</div>
+							
+							<%
+								}
+							%>
 		<div id="postHome">
 			<center>
 				<%
 					if (m != null && m.getUserId().equals(board.getUserId())) {
 				%>
-				<a id="postDelBtn">&nbsp; 삭제 &nbsp;</a>
+				<br><br>
+				<button type="submmit" id="postDelBtn"
+										class="btn btn-outline-secondary">삭제</button>
 				<%
 					}
 				%>
-				<a href="/boardAllListPage.do">&nbsp; 게시판으로 돌아가기 &nbsp;</a>
+				<button type="submmit" id="backBtn"
+										class="btn btn-outline-secondary">QnA 게시판으로 돌아가기</button>
+				
 			</center>
+
 		</div>
 		<script>
 		$(function(){
@@ -171,7 +205,11 @@ div {
 				}
 
 				});
+			
+			$('#backBtn').click(function() {
+				location.href = "/boardAllListPage.do";
 			});
+		});
 		</script>
 
 	</div>

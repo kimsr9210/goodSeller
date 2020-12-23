@@ -36,8 +36,8 @@ public class BoardDAO {
 		int start = currentPage * recordPerPage - (recordPerPage - 1);
 		int end = currentPage * recordPerPage;
 
-		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by writeDate) " + "AS Row_Num,CSBOARD.* "
-				+ "FROM CSBOARD) WHERE Row_Num between ? and ?";
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by writeDate desc) " + "AS Row_Num,CSBOARD.* "
+				+ "FROM CSBOARD WHERE DEL_YN='N') WHERE Row_Num between ? and ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);

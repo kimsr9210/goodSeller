@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
 import hotsix.goodseller.user.board.model.service.BoardService;
 import hotsix.goodseller.user.board.model.vo.Board;
 
 /**
- * Servlet implementation class BoardPostClickServlet
+ * Servlet implementation class BoardPostClickNotAnsServlet
  */
-@WebServlet("/boardPostClick.do")
-public class BoardPostClickServlet extends HttpServlet {
+@WebServlet("/boardPostClickNotAns.do")
+public class BoardPostClickNotAnsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPostClickServlet() {
+    public BoardPostClickNotAnsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +32,18 @@ public class BoardPostClickServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//이전 페이지에서 넘어온 값 저장
+		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+
+		System.out.println(boardNo);
 		
 		//비즈니스 로직 처리 
 		Board board = new BoardService().postOneClick(boardNo);
-		
-		//조회수 증가 
 		new BoardService().updateHit(boardNo);
-		
-		//답변 불러오기 
-		BoardAnswer bAnswer = new BoardService().BoardAnswerInfo(boardNo);
-		
 		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardPostOneClickAns.jsp");
 		request.setAttribute("board", board);
-		request.setAttribute("boardAnswer", bAnswer);
 		view.forward(request, response);
-	}
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

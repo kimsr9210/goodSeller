@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.vo.Board;
 import hotsix.goodseller.user.board.model.vo.Report;
@@ -564,5 +565,65 @@ public class BoardDAO {
 
 		return sb.toString();
 
+	}
+
+	public boolean ReportIdSearch(Connection conn, String reportId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "SELECT * FROM MEMBER WHERE USERID = ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reportId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = true;
+			}else {
+				result = false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
+	public static BoardAnswer reportAnswerInfo(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		BoardAnswer dAnswer = null;
+
+		String query = "SELECT * FROM CSBOARDANSWER WHERE boardNo = ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				dAnswer = new BoardAnswer();
+
+				dAnswer.setBoardNo(rset.getInt("boardNo"));
+				dAnswer.setAdminId(rset.getString("adminId"));
+				dAnswer.setSubject(rset.getString("subject"));
+				dAnswer.setContent(rset.getString("content"));
+				dAnswer.setWriteDate(rset.getTimestamp("writeDate"));
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return dAnswer;
 	}
 }

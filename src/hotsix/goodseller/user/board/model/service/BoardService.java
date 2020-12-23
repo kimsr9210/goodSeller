@@ -3,6 +3,7 @@ package hotsix.goodseller.user.board.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer;
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.board.model.dao.BoardDAO;
 import hotsix.goodseller.user.board.model.vo.Board;
@@ -178,6 +179,20 @@ public class BoardService {
 		JDBCTemplate.close(conn);
 		
 		return rbpd;
+	}
+
+	public boolean ReportIdSearch(String reportId) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		boolean result = boardDAO.ReportIdSearch(conn, reportId);
+		return result;
+	}
+
+	public BoardAnswer BoardAnswerInfo(int boardNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		BoardAnswer dAnswer = BoardDAO.reportAnswerInfo(conn, boardNo);
+		return dAnswer;
 	}
 
 	

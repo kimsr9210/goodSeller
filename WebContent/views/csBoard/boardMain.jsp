@@ -21,7 +21,7 @@
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/boardMain.css?ver=1.8" />
+	href="/resources/css/boardMain.css?ver=1.9" />
 
 <style>
 @font-face {
@@ -81,7 +81,7 @@ font-family: Binggrae-Bold;
 									<option value="writer">작성자</option>
 								</select> <input type="text" name="searchText" id="searchText" />
 								<input type="submit" class="btn btn-outline-dark"
-									name="searchBtn" id="searchBtn">
+									name="searchBtn" id="searchBtn" value="검색">
 								<br>
 							</fieldset>
 						</form>
@@ -119,16 +119,24 @@ font-family: Binggrae-Bold;
 					<div class="col-12 col-md-5 p-0">
 
 						<%if(board.getPostLockYN()=='N'){ %>
+							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
 							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+									id="postClickBtn"><%=board.getSubject() %></a>
+							<%}else{ //답변 전%>
+							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
 								id="postClickBtn"><%=board.getSubject() %></a>
-						<%}else if(board.getPostLockYN()=='Y'){ %>
-							<%if(m!=null &&(m.getUserId().equals(board.getUserId()))){ %>
-							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ %>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
 							<%} %>
-						<%}%>
+						<%}else if(board.getPostLockYN()=='Y'){ %>
+							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+									id="postClickBtn"><%=board.getSubject() %></a>
+							<%}else{ //답변 전%>
+							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+							<%} %>
+						<%}else{ %>
+							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+						<%} %>
 						
 					</div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
@@ -154,10 +162,24 @@ font-family: Binggrae-Bold;
 					</div>
 				</div>
 				<%} %>
+				
+				<%if(m!=null){ %>
+				<div class="row p-0 m-0 write">
+					<div class="col-12 p-0 ">
+					</div>
+				</div>
+				<div class="row p-0 m-0 write">
+					<div class="col-12 p-0 ">
+						<button type="button" class="btn btn-danger" id="writeBtn">게시글 작성</button>
+					</div>
+				</div>
 
+				<%} %>
+				
 				<div class="row p-0 m-0 boardNavi">
+				
 					<div class="col-12 p-0 m-0 overview">
-					<br><br>
+					<br>
 						<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
 
@@ -181,13 +203,7 @@ font-family: Binggrae-Bold;
 						</nav>
 					</div>
 				</div>
-				<%if(m!=null){ %>
-				<div class="row p-0 m-0 write">
-					<div class="col-12 p-0 ">
-						<button type="button" class="btn btn-primary" id="writeBtn">게시글 작성</button>
-					</div>
-				</div>
-				<%} %>
+
 			</div>
 
 		</div>
@@ -204,9 +220,6 @@ font-family: Binggrae-Bold;
 				alert("작성자만 게시글을 조회할 수 있습니다.");
 			});
 			
-			$('#searchBtn').click(function(){
-				 
-			});
 
 		})
 	</script>

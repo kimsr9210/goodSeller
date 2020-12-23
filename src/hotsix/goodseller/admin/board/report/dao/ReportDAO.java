@@ -31,7 +31,7 @@ public class ReportDAO {
 		int start = currentPage * recordPerPage - (recordPerPage - 1);
 		int end = currentPage * recordPerPage;
 
-		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by writeDate) " + "AS Row_Num,REPORTTBL.* "
+		String query = "SELECT * FROM (SELECT Row_NUMBER() OVER (order by writeDate desc) " + "AS Row_Num,REPORTTBL.* "
 				+ "FROM REPORTTBL) WHERE Row_Num between ? and ?";
 
 		try {

@@ -48,40 +48,40 @@ textarea {
 }
 
 .subject {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 	text-align: center;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 	line-height: 30px;
 	height: 33px;
 }
 
 .realSubject {
 	height: 33px;
-	border-top: 2px solid gray;
-	border-bottom: 1px solid gray;
+	border-top: 2px solid #D6626E;
+	border-bottom: 1px solid #D6626E;
 }
 
 .report {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 	text-align: center;
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 .realReport {
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 .content {
-	background-color: #dcdcdc;
+	background-color: #FBF1F2;
 	height: 400px;
 	line-height: 350px;
 	text-align: center;
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 .realContent {
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid #D6626E;
 }
 
 #QnAtitle {
@@ -103,6 +103,7 @@ textarea {
 			$('#backBtn').click(function() {
 				history.back(-1); //그전의 기록으로 돌아감
 			});
+			
 		});
 	</script>
 
