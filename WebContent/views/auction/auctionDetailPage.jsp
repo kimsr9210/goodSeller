@@ -198,6 +198,13 @@ font-family: GmarketSansMedium;
 	font-family: GmarketSansMedium;
 	font-size: 15px;
 }
+#methodBox{
+	position:absolute;
+	left:45px;
+}
+#methodFont{
+	font-family: GmarketSansMedium;
+}
 
 </style>
 
@@ -343,6 +350,7 @@ font-family: GmarketSansMedium;
 						<div id="bid">
 							<div id="progress-height" class="col-12">
 								<div id="progress">
+									<p id="methodBox"><span id="methodFont"><%=p.getSellMethod() %></span></p>
 									<span id="progressFont">종료일까지 <span id="endDate"><%=d_day%>일 남음</span></span>
 								</div>
 							</div>

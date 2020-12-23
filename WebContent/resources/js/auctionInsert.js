@@ -111,6 +111,15 @@ $(function(){
         }
         return true;
     });
+    
+    $('#trans-method').change(function(){
+    	var text = $('#trans-method').val();
+    	if(text=='직거래'){
+    		$('#content').attr('placeholder',' 직거래이실 경우 장소를 꼭! 적어주세요');
+    	} else{
+    		$('#content').attr('placeholder',' 상세 내용을 입력해주세요');
+    	}
+    });
 });
             
 
