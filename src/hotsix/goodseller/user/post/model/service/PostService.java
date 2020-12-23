@@ -206,5 +206,17 @@ public class PostService {
 		JDBCTemplate.close(conn);
 		return ppd;
 	}
-	
+public int InterestUpdate(int postNo, String userId) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		int result = pDAO.InterestUpdate(conn, postNo,userId);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 }
