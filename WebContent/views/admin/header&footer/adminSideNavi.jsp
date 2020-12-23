@@ -126,23 +126,16 @@ width: 100%;
                             </ul>
                         </li>
                         <hr class="line">
-                        <li><a>옥션 상품 관리</a></li>
+                        <li><a a href="/adminPostAllList.do">게시물 관리</a>
                         <hr class="line">
-                        <li class="menu">
-                        	<a>회원 신고 관리</a>
-                            <ul class="hide">
-                                <li><a href="/adminReportAllPageList.do">신고 게시글 관리</a></li>
-                                <hr class="line">
-                                <li><a href="/views/admin/reportBoard/memberReportPage.jsp">회원 신고 처리</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li>
                         <hr class="line">
                         <li><a href="/admincsBoardAllPageList.do">QnA</li>
                         <hr class="line">
                         <li class="menu">
                           <a>통계</a>
                             <ul class="hide">
-                                <li><a href="/salesMonth.do">수익 현황</a></li>
+                                <li>수익현황</li>
                             </ul>
                         </li>
                         

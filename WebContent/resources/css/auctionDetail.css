@@ -25,6 +25,7 @@
 .sub-img{
 	width: 125px;
 	height: 250px;	
+	overflow: hidden;
 }
 #progress-height{
 	height: 30px;
