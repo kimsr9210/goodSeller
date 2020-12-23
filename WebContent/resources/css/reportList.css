@@ -29,7 +29,7 @@
             border-top: 1px solid #CCCCCC;
         }
         /* 선택된 front 색깔 표시*/
-        #contents-navi>li:nth-child(6)>a{
+        #contents-navi>li:nth-child(5)>a{
             color: #5B5AFF;
             border-bottom: 2px solid #5B5AFF;
         }
@@ -90,7 +90,6 @@
             width: 10%;
             float: left;
             font-size: 12px;
-            border-right: 1px solid black;
         }
         
         /* 거래내역 상세 */
