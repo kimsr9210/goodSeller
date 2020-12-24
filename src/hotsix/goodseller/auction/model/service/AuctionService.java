@@ -1,6 +1,7 @@
 package hotsix.goodseller.auction.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import hotsix.goodseller.auction.model.dao.AuctionDAO;
 import hotsix.goodseller.common.JDBCTemplate;
@@ -23,5 +24,12 @@ public class AuctionService {
 		
 		return auction;
 	}
-
+	
+	public ArrayList<Auction> selectMyBidInfo(String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Auction> list = aDAO.selectMyBidInfo(conn, userId);
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
 }

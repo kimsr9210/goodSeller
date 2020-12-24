@@ -55,18 +55,21 @@ public class MyPageTradeSellListServlet extends HttpServlet {
 		
 		
 		ArrayList<Trade> sellList = new TradeService().myPageSellList(userId);
-		ArrayList<Post> sellPostList = new ArrayList<Post>();
-
-
-		if (sellList != null) {
-			for (Trade t : sellList) {
-				sellPostList.add(new PostService().auctionDetail(t.getPostNo()));
-			}
-			// ArrayList<Board> list = new BoardService().MyPageQnAList(userId);
-		}
+		ArrayList<Post> sellPostList = null;
+		int prevPostNo = -1;
 		
-		System.out.println(sellList);
-		System.out.println(sellPostList);
+		if (sellList != null) {
+			sellPostList = new ArrayList<Post>();
+			for (Trade t : sellList) {
+				if(prevPostNo != t.getPostNo()) {
+					sellPostList.add(new PostService().auctionDetail(t.getPostNo()));
+					prevPostNo = t.getPostNo();
+				} else {
+					continue;
+				}
+			}
+		}
+
 		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/tradeSellList.jsp");
 		request.setAttribute("sellList", sellList);
 		request.setAttribute("sellPostList", sellPostList);
