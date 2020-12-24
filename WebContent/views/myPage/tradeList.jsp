@@ -203,7 +203,7 @@
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	<%
 	if (m != null) {
-		if (buyList != null && buyPostList.isEmpty()) {
+		if (!buyList.isEmpty() && !buyPostList.isEmpty()) {
 %>
 	<div id="wrap"> <!-- 전체 틀-->
     

@@ -72,7 +72,8 @@ public class MyPageTradeListServlet extends HttpServlet {
 			}
 		}
 		
-		
+		System.out.println(buyList);
+		System.out.println(buyPostList);
 		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/tradeList.jsp");
 		request.setAttribute("buyList", buyList);
 		request.setAttribute("buyPostList", buyPostList);

@@ -6,7 +6,7 @@
 		<li class="col-3 col-lg-1"><a
 			href="/views/member/memberInfo.jsp">회원정보</a></li>
 		<li class="col-3 col-lg-1"><a
-			href="/views/myPage/purchaseList.jsp">입찰내역</a></li>
+			href="/bidList.do">입찰내역</a></li>
 		<li class="col-3 col-lg-1"><a
 			href="/tradeList.do">구매내역</a></li>
 		<li class="col-3 col-lg-1"><a
