@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import hotsix.goodseller.auction.model.service.AuctionService;
 import hotsix.goodseller.member.model.service.MemberService;
 import hotsix.goodseller.member.model.vo.Member;
 import hotsix.goodseller.user.post.model.service.PostService;
+import hotsix.goodseller.user.post.model.vo.Auction;
 import hotsix.goodseller.user.post.model.vo.Post;
 
 /**
@@ -38,12 +40,14 @@ public class PostDetailPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		HttpSession session = request.getSession();
+		Member currentUser = (Member)session.getAttribute("member");
 		
 		Post p = new PostService().auctionDetail(postNo);
 		new PostService().updateHit(postNo);
 		
 		//판매자 닉네임, 신고당한횟수 가져오기
-		Member m = new MemberService().selectWriterInfo(p.getWriter());
+		Member seller = new MemberService().selectWriterInfo(p.getWriter());
 		
 		//판매자 거래내역 가져오기
 		String auctionCount = new AuctionService().selectTransactionInfo(p.getWriter());
@@ -81,19 +85,40 @@ public class PostDetailPage extends HttpServlet {
 		long d_diff = diff / (24 * 60 * 60 * 1000);
 		
 		//System.out.println(d_diff+"일 남았습니다.");
-		
-		
-		
-		response.setCharacterEncoding("UTF-8"); 
-		response.setContentType("text/html; charset=UTF-8");
-		
-		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");
-		request.setAttribute("post", p);
-		request.setAttribute("writer", m);
-		request.setAttribute("postCount", postCount);
-		request.setAttribute("auctionCount", auctionCount);
-		request.setAttribute("d_day", d_diff);
-		view.forward(request, response);		
+		Auction auction = new AuctionService().getAuctionInfo(p.getPostNo());
+		boolean timeSet = (double)diff <= 0;
+
+		if(timeSet && auction != null && (auction.getUserId().equals(currentUser.getUserId()) || p.getWriter().equals(currentUser.getUserId()))) {
+			Member buyer = new MemberService().selectWriterInfo(auction.getUserId());
+			
+			response.setCharacterEncoding("UTF-8"); 
+			response.setContentType("text/html; charset=UTF-8");
+			
+			RequestDispatcher view =null;
+	
+			view = request.getRequestDispatcher("/views/auction/auctionBidBuySuccess.jsp");
+			
+			request.setAttribute("post", p);
+			request.setAttribute("seller", seller);
+			request.setAttribute("buyer", seller);
+			request.setAttribute("auction", auction);
+			request.setAttribute("postCount", postCount);
+			request.setAttribute("auctionCount", auctionCount);
+			
+			view.forward(request, response);
+		} else {
+
+			response.setCharacterEncoding("UTF-8"); 
+			response.setContentType("text/html; charset=UTF-8");
+			
+			RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionDetailPage.jsp");
+			request.setAttribute("post", p);
+			request.setAttribute("writer", seller);
+			request.setAttribute("postCount", postCount);
+			request.setAttribute("auctionCount", auctionCount);
+			request.setAttribute("d_day", d_diff);
+			view.forward(request, response);		
+		}
 		
 	}
 

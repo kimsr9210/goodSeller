@@ -736,13 +736,13 @@ public class PostDAO {
 			PreparedStatement pstmt = null;
 			int result = 0;
 			
-			String query = "UPDATE POSTTBL SET buyer=? , auctionPrice=? WHERE POSTNO=?";
+			String query = "UPDATE POSTTBL SET auctionPrice=? WHERE POSTNO=?";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, userId);
-				pstmt.setInt(2, offerPrice);
-				pstmt.setInt(3, postNo);
+
+				pstmt.setInt(1, offerPrice);
+				pstmt.setInt(2, postNo);
 				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {

@@ -400,8 +400,19 @@ public class MemberDAO {
 
 			if (rset.next()) {
 				m = new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
 				m.setUserNick(rset.getString("USERNICK"));
-				m.setReported(rset.getInt("reported"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
 			}
 
 		} catch (SQLException e) {

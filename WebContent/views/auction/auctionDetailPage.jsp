@@ -435,6 +435,7 @@ font-family: GmarketSansMedium;
 											name="auctionPrice" value="<%=p.getAuctionPrice()%>" /> <input
 											type="hidden" name="sell_YN" value="<%=p.getSell_yn()%>" /> <input
 											type="hidden" name="postNo" value="<%=p.getPostNo()%>" /> <input
+											type="hidden" name="buyPrice" value="<%=p.getBuyPrice()%>" /> <input
 											type="hidden" name="offerPrice" id="offerPrice" />
 									</form>
 
