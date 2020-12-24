@@ -72,8 +72,8 @@ public class AdminAllListServlet extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 
 			PrintWriter out = response.getWriter();
-			out.println("Exception e");
-			// response.sendRedirect("/views/common/error/error.jsp");
+			out.println("<script>alert('잘못된 경로입니다.')</script>");
+			response.sendRedirect("/views/admin/adminLogin.jsp");
 		}
 	}
 

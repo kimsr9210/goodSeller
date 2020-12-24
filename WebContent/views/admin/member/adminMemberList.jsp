@@ -15,71 +15,132 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/adminIndex.css" />
 <style>
-	table {
-		margin: 10px;
-		width: 100%;
-	}
-	td {
-		font-size: 12px;
-	}
+table {
+	margin: 10px;
+	width: 100%;
+	border-top: 2px solid black;
+	border-bottom: 1px solid gray;
+}
+
+th {
+	background-color: ghostwhite;
+	font-size: 12px;
+}
+
+.column {
+	text-align: center;
+	padding: 10px;
+}
+
+td {
+	font-size: 12px;
+	text-align: center;
+	padding: 10px 5px;
+	padding:
+}
+
+#title {
+	margin: 10px 0;
+}
+
 </style>
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+		crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			//최상단 체크박스 클릭
+			$("#checkAll").click(function() {
+				//클릭되었으면
+				if ($("#checkAll").prop("checked")) {
+					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+					$("input[name=chk]").prop("checked", true);
+					//클릭이 안되있으면
+				} else {
+					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+					$("input[name=chk]").prop("checked", false);
+				}
+			})
+		})
+	</script>
 	<%
 		ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
-		int userNo = (int) request.getAttribute("userNo");
+	int userNo = (int) request.getAttribute("userNo");
 	%>
 	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
 	<div id="wrap">
 		<div class="contentWrapper m-0 p-0">
-		
-		<div class="row m-0">
-		<div class="col-2 p-0 m-0 ">  
 
-	<%@ include file="/views/admin/header&footer/adminSideNavi.jsp"%>
+			<div class="row m-0">
+				<div class="col-2 p-0 m-0 ">
 
-        </div>
-		<div class="col-10">
-				<div id="membertable" class="row" style="height: 100%;">
-					<table border=1px cellspacing=1px cellpadding=1px>
-						<tr>
-							<th>회원번호</th>
-							<th>ID</th>
-							<th>이름</th>
-							<th>별명</th>
-							<th>생년월일</th>
-							<th>성별</th>
-							<th>이메일</th>
-							<th>전화번호</th>
-							<th>주소</th>
-							<th>신고 횟수</th>
-							<th>취소 횟수</th>
-							<th>가입일</th>
-						</tr>
-						<%for (Member m : list){%>
-						<tr>
-							<td><%=m.getUserNo() %></td>
-							<td><%=m.getUserId() %></td>
-							<td><%=m.getUserName() %></td>
-							<td><%=m.getUserNick() %></td>
-							<td><%=m.getBirth() %></td>
-							<td><%=m.getGender() %></td>
-							<td><%=m.getEmail() %></td>
-							<td><%=m.getPhone() %></td>
-							<td><%=m.getAddress() %></td>
-							<td><%=m.getReported() %></td>
-							<td><%=m.getCancellation() %></td>
-							<td><%=m.getEnrollDate() %></td>
-						</tr>
-						<%} %>
-					</table>
+					<%@ include file="/views/admin/header&footer/adminSideNavi.jsp"%>
+
+				</div>
+				<div class="col-10">
+					<h3 id="title">전체 회원 관리</h3>
+					<div>
+						<div>
+						<form>
+							<label>회원 검색</label>&nbsp&nbsp&nbsp <select>
+								<option value="userId">아이디</option>
+								<option value="userNick">닉네임</option>
+							</select> <input type="text" /> <input type="submit" value="검색" />
+							</form>
+						</div>
+					</div>
+					
+					<div id="membertable" class="row" style="height:">
+						<table cellspacing=1px cellpadding=1px>
+							<tr>
+								<th class="column"><input type="checkbox" id="checkAll" /></th>
+								<th class="column">회원번호</th>
+								<th class="column">ID</th>
+								<th class="column">이름</th>
+								<th class="column">별명</th>
+								<th class="column">생년월일</th>
+								<th class="column">성별</th>
+								<th class="column">이메일</th>
+								<th class="column">전화번호</th>
+								<th class="column" style="width: 200px;">주소</th>
+								<th class="column">신고 횟수</th>
+								<th class="column">취소 횟수</th>
+								<th class="column">가입일</th>
+							</tr>
+							<form>
+							<%
+								for (Member m : list) {
+							%>
+							<tr>
+								<td><input type="checkbox" name="chk" /></td>
+								<td><%=m.getUserNo()%></td>
+								<td><%=m.getUserId()%></td>
+								<td><%=m.getUserName()%></td>
+								<td><%=m.getUserNick()%></td>
+								<td><%=m.getBirth()%></td>
+								<td><%=m.getGender()%></td>
+								<td><%=m.getEmail()%></td>
+								<td><%=m.getPhone()%></td>
+								<td><%=m.getAddress()%></td>
+								<td><%=m.getReported()%></td>
+								<td><%=m.getCancellation()%></td>
+								<td><%=m.getEnrollDate()%></td>
+							</tr>
+							<%
+								}
+							%>
+							</form>
+						</table>
+						<p style="margin: 10px">선택한 회원을 <input type="submit" value="강제탈퇴"/></p>
+						
+					</div>
+					
 				</div>
 			</div>
-			</div>
-		
-	</div>
+
+		</div>
 	</div>
 	<%@ include file="/views/admin/header&footer/adminFooter.jsp"%>
 
