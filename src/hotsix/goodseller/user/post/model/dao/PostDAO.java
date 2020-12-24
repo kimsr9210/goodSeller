@@ -1091,7 +1091,6 @@ public class PostDAO {
 				}
 				return result;
 		}
-<<<<<<< HEAD
 
 		public int InterestCheck(Connection conn, int postNo, String userId) {
 			PreparedStatement pstmt = null;
@@ -1109,7 +1108,15 @@ public class PostDAO {
 				if(rset.next()) {
 					check = rset.getInt("postNo");
 				}
-=======
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rset);
+			}
+			return check;
+		}
 		
 		public int postUpdate(Connection conn, int postNo, int i) {
 			// TODO Auto-generated method stub
@@ -1122,22 +1129,16 @@ public class PostDAO {
 				pstmt.setInt(1, i);
 				pstmt.setInt(2, postNo);
 				result = pstmt.executeUpdate();
-				
->>>>>>> 516a2554722a77a5b18bafa98f28d03223be135f
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				JDBCTemplate.close(pstmt);
 			}
-<<<<<<< HEAD
-			return check;
-			
-		}
+		
 
-=======
 			return result;
 		}
->>>>>>> 516a2554722a77a5b18bafa98f28d03223be135f
 
 }
