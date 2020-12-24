@@ -46,7 +46,7 @@ table.auctionTbl td {
 		int auctionPrice = Integer.parseInt(request.getParameter("auctionPrice"));
 		char sell_YN = request.getParameter("sell_YN").charAt(0);
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		int buyPrice = Integer.parseInt(request.getParameter("buyPrice"));
+
 		Member m = (Member) session.getAttribute("member");
 	%>
 
@@ -72,7 +72,7 @@ table.auctionTbl td {
 				<td colspan="2">
 					<center>
 						<button id="submitBtn">입찰하기</button>
-						<input type="reset" id="cancelBtn" value="취소하기" />
+						<input type="reset" value="취소하기" />
 					</center>
 				</td>
 			</tr>
@@ -88,10 +88,7 @@ table.auctionTbl td {
 				if(offerPrice < <%=auctionPrice%> || offerPrice == <%=auctionPrice%>){
 					alert('입찰가격은 현재 입찰가보다 높아야 합니다.');
 					return false;
-				}else if(offerPrice >= <%=buyPrice%>){
-					alert('입찰금액이 즉시구매가보다 높습니다. 즉시구매를 진행해주세요.');
-					return false;
-				} else if(offerPrice > <%=auctionPrice%>){
+				}else if(offerPrice > <%=auctionPrice%>){
 					var result = window.confirm("입찰을 진행하시겠습니까? 입찰 후 취소는 패널티가 부과될 수 있습니다.");
 					if(result == true){
 					
@@ -101,9 +98,6 @@ table.auctionTbl td {
 					}
 				}
 				
-				});
-			$('#cancelBtn').click(function(){
-				self.close();
 				});
 			});
 		</script>
