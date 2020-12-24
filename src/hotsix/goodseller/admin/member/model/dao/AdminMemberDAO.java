@@ -512,7 +512,6 @@ public class AdminMemberDAO {
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));
 				list.add(m);
 			}
-			System.out.println(m);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -546,21 +545,21 @@ public class AdminMemberDAO {
 		StringBuilder sb = new StringBuilder();
 
 		if (startNavi != 1) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
 		}
 
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'><b> " + i + " </b></a></li>");
 			} else {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'> " + i + " </a></li>");
 			}
 		}
 		if (endNavi != pageTotalCount) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearchList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (endNavi + 1) + "'> > </a></li>");
 		}
 
@@ -641,7 +640,6 @@ public class AdminMemberDAO {
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));
 				list.add(m);
 			}
-			System.out.println(m);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -675,21 +673,21 @@ public class AdminMemberDAO {
 		StringBuilder sb = new StringBuilder();
 
 		if (startNavi != 1) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
 		}
 
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'><b> " + i + " </b></a></li>");
 			} else {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'> " + i + " </a></li>");
 			}
 		}
 		if (endNavi != pageTotalCount) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (endNavi + 1) + "'> > </a></li>");
 		}
 
@@ -770,7 +768,6 @@ public class AdminMemberDAO {
 				m.setEnrollDate(rset.getDate("ENROLLDATE"));
 				list.add(m);
 			}
-			System.out.println(m);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -804,21 +801,21 @@ public class AdminMemberDAO {
 		StringBuilder sb = new StringBuilder();
 
 		if (startNavi != 1) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
 		}
 
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (i == currentPage) {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'><b> " + i + " </b></a></li>");
 			} else {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?currentPage=" + i
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
 						+ "'> " + i + " </a></li>");
 			}
 		}
 		if (endNavi != pageTotalCount) {
-			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?currentPage="
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
 					+ (endNavi + 1) + "'> > </a></li>");
 		}
 

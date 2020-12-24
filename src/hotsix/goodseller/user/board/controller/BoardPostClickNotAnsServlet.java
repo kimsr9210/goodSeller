@@ -40,7 +40,7 @@ public class BoardPostClickNotAnsServlet extends HttpServlet {
 		//비즈니스 로직 처리 
 		Board board = new BoardService().postOneClick(boardNo);
 		new BoardService().updateHit(boardNo);
-		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardPostOneClickNotAns.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/boardPostOneClickNotAns.jsp");
 		request.setAttribute("board", board);
 		view.forward(request, response);
 		}
