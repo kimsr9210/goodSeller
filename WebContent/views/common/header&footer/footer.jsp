@@ -42,16 +42,17 @@
 				</div>
 				<div class="col-3">
 					<ul class="footer-ul">
-						<li><a href="#">회사 소개</a></li>
-						<li><a href="#">협력 업체</a></li>
-						<li><a href="#">참고 사이트</a></li>
+						<li><a href="views/myPage/develop.jsp">회사 소개</a></li>
+						<!-- /views/csBoard/boardPostOneClickAns.jsp  -->
+						<li><a href="views/myPage/develop.jsp">협력 업체</a></li>
+						<li><a href="views/myPage/develop.jsp">참고 사이트</a></li>
 					</ul>
 				</div>
 				<div class="col-3">
 					<ul class="footer-ul">
-						<li><a href="#">이용 약관</a></li>
-						<li><a href="#">개인정보처리방침</a></li>
-						<li><a href="#">위치기반서비스 이용약관</a></li>
+						<li><a href="views/myPage/develop.jsp">이용 약관</a></li>
+						<li><a href="views/myPage/develop.jsp">개인정보처리방침</a></li>
+						<li><a href="views/myPage/develop.jsp">위치기반서비스 이용약관</a></li>
 					</ul>
 				</div>
 			</div>
