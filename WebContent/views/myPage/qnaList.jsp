@@ -223,29 +223,25 @@
 
 						<div class="col-7 col-md-7 p-0">
 
-							<%
-								if (board.getPostLockYN() == 'N') {
-							%>
-							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject()%></a>
-							<%
-								} else if (board.getPostLockYN() == 'Y') {
-							%>
-							<%
-								if (m != null && (m.getUserId().equals(board.getUserId()))) {
-							%>
-							<a href="boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject()%></a>
-							<%
-								} else {
-							%>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject()%></a>
-							<%
-								}
-							%>
-							<%
-								}
-							%>
+						<%if(board.getPostLockYN()=='N'){ %>
+							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+									id="postClickBtn"><%=board.getSubject() %></a>
+							<%}else{ //답변 전%>
+							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+							<%} %>
+						<%}else if(board.getPostLockYN()=='Y'){ %>
+							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+									id="postClickBtn"><%=board.getSubject() %></a>
+							<%}else{ //답변 전%>
+							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+							<%} %>
+						<%}else{ %>
+							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+						<%} %>
 						</div>
 
 						<div class="col-2 col-md-2 p-0 "><%=board.getWriteDate()%></div>
