@@ -1091,6 +1091,26 @@ public class PostDAO {
 				}
 				return result;
 		}
-
+		
+		public int postUpdate(Connection conn, int postNo, int i) {
+			// TODO Auto-generated method stub
+			PreparedStatement pstmt = null;
+			int result = 0;
+			String query = "UPDATE POSTTBL SET auctionprice=? WHERE POSTNO=?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, i);
+				pstmt.setInt(2, postNo);
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return result;
+		}
 
 }

@@ -26,7 +26,32 @@
 <!-- css -->
 <!-- 	<link rel="stylesheet" type="text/css" href="/resources/css/reportList.css" /> -->
 <style>
-		        #contents{
+@charset "UTF-8";
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+	font-family: 'Wemakeprice-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Binggrae-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+#mainCate {
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+
+		#contents{
             background-color: white;
         }
         #contents-navi{
@@ -221,40 +246,60 @@
                         <div id="transaction-navi">
                                 <div>상품정보</div>
                                 <div>등록일자</div>
-                                <div>희망판매가</div>
+                                <div>판매가격</div>
                                 <div>판매자</div>
                                 <div>거래상태</div>
                         </div>
-                        <%for(Post p : sellPostList){ %>
-                        <div class="transaction-box-size">
-                                <%for(Trade t : sellList){ 
-                                 	if(t.getPostNo() == p.getPostNo() && t.getSellerState() == 'N') {
-                                 %>
-                                 	<div><a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
-                                <img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
-                                <div><a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
-                                <%= p.getSubject()%></a></div>
-                          		<%} else {%>
-                                	<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
-                                <img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
-                                <div><a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
-                                <%= p.getSubject()%></a></div>
-              					<%} } %>
-                             
-                                <div><%= p.getRegDate()%></div>
-                                <div><%= p.getBuyPrice()%></div>
-                                <div><a href="#"><%=p.getWriter()%></a></div>
-                                 
-                                 <%for(Trade t : sellList){ 
-                                 	if(t.getPostNo() == p.getPostNo() && t.getTradeEnd() == 'N') {
-                                 %>
-                                	<div>거래중</div>
-                          		<%} else {%>
-                                	<div>거래완료</div>
-              					<%} } %>
-                        </div>
-                        <%} %>
                         
+                         
+                        <%for(Post p : sellPostList){ %>
+                        
+                                <%for(Trade t : sellList){
+                                	if(t.getPostNo() == p.getPostNo()) {
+                                		%>
+                                    	<div class="transaction-box-size"><% 
+                                 		if(t.getSellerState() == 'N') {
+                                 %>
+		                                 <div>
+			                                 <a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                	<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
+			                                </a>
+			                             </div>
+		                                
+		                                <div>
+			                                <a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                <%= p.getSubject()%></a>
+		                                </div>
+                          			<%} else {%>
+		                          		<div>
+		                                	<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+		                                		<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
+		                                	</a>
+		                                </div>
+                                		
+                                		<div>
+                                			<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+                                			<%= p.getSubject()%></a>
+                                		</div>
+              						<%} %>
+              						<div><%= p.getRegDate()%></div>
+                               			
+                               		<div><%= p.getBuyPrice()%></div>
+                                		
+                                	<div><%=p.getWriter()%></div>
+                                	
+                                	<%
+                                 	if(t.getTradeEnd() == 'N') {
+                                 	%>
+                                 		<div>거래중</div>
+                                 <% } else {%>
+                             			<div>거래완료</div>
+                                 <%} %>
+                                 </div>          
+                        	<%}
+                            }
+                         }%>
+
                     </div>
                 </div>
             </div>
@@ -276,7 +321,7 @@
 					</div>
 					<div class="row">
 						<div class="col-12 text-center">
-							<span id="mainCate">거래 내역이 없습니다.</span>
+							<span id="mainCate">판매 내역이 없습니다.</span>
 						</div>
 					</div>
 				</div>

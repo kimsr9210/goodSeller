@@ -249,4 +249,17 @@ public int deleteInterestPost(String userId, int postNo) {
 	return result;
 	
 }
+
+public void postUpdate(int postNo, int i) {
+	// TODO Auto-generated method stub
+	Connection conn = JDBCTemplate.getConnection();
+	int result = pDAO.postUpdate(conn, postNo,i);
+	if(result>0) {
+		JDBCTemplate.commit(conn);
+	}else {
+		JDBCTemplate.rollback(conn);
+	}
+	JDBCTemplate.close(conn);
+	
+}
 }

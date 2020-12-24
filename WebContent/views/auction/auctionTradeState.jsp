@@ -510,7 +510,7 @@
 									<div class="m-4 text-center">
 									<%if (m.getUserId().equals(p.getWriter())) {
 									%>
-										<span  style="font-size:1.5em"class="infoFont">구매자가 결제가 완료하였습니다.</span><br>
+										<span  style="font-size:1.5em"class="infoFont">구매자가 결제를 완료하였습니다.</span><br>
 										<span class="infoFont">거래 종료 후 거래 종료 버튼을 눌러 거래를 종료하여 주십시오</span><br>
 									<%} else { %>
 										<span  style="font-size:1.5em"class="infoFont">결제가 완료되었습니다.</span><br>
