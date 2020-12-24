@@ -25,7 +25,6 @@
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 </head>
 <body>
 	<div id="footer" class="menu-none">
@@ -37,7 +36,7 @@
 				</div>
 				<div class="col-3">
 					<ul class="footer-ul">
-						<li><a href="#">이용 안내</a></li>
+						<li><a href="/views/common/guide.jsp">이용 안내</a></li>
 						<li><a href="#">자주 묻는 질문</a></li>
 					</ul>
 				</div>

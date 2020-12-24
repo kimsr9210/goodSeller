@@ -50,6 +50,9 @@ td {
 	height: 100%;
 	background-color: #cccccc;
 }
+.pagination>ul>a{
+	color: black;
+}
 </style>
 </head>
 <body>
