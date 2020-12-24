@@ -414,4 +414,27 @@ public class MemberDAO {
 
 		return m;
 	}
+	
+	public int buyCancel(Connection conn, String userId) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		
+		String query = "update member set CANCELLATION = CANCELLATION+1 where userid=?";
+
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 }

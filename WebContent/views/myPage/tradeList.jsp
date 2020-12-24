@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.post.model.vo.Post"%>
 <%@ page import="hotsix.goodseller.user.trade.model.vo.Trade"%>
 <%@ page import="java.util.ArrayList"%>
@@ -8,15 +8,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
-	<!-- css -->
-	<!--  <link rel="stylesheet" type="text/css" href="/resources/css/transactionList.css" /> -->
-	<style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+<!-- css -->
+<!-- 	<link rel="stylesheet" type="text/css" href="/resources/css/reportList.css" /> -->
+<style>
 		        #contents{
             background-color: white;
         }
@@ -185,20 +194,18 @@
 	</style>
 </head>
 <body>
-	<%@ include file="/views/common/header&footer/header.jsp" %>
-<%
+	<%
+	ArrayList<Trade> buyList = (ArrayList<Trade>) request.getAttribute("buyList");
+	ArrayList<Post> buyPostList = (ArrayList<Post>) request.getAttribute("buyPostList");
 
-	ArrayList<Trade> tList = (ReqBoardPageData)request.getAttribute("pageDataTrade");
-	ArrayList<Trade> pList = (ReqBoardPageData)request.getAttribute("pageDataPost");			
-	Iterator it = tList.iterator();
 	
 %>
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	<%
 	if (m != null) {
-		if (!plist.isEmpty()) {
+		if (buyList != null && buyPostList != null) {
 %>
-     <div id="wrap"> <!-- 전체 틀-->
+	<div id="wrap"> <!-- 전체 틀-->
     
         <!-- -------------------------------------------------------------------- -->
         <div id="contents" class="menu-none">
@@ -207,7 +214,7 @@
                 <div class="container">
                     <div id="transaction-box" class="row col-12 col-lg-12">
                         <div id="info-title">
-                            <div>ㅠㅏㅁ내 내역</div>
+                            <div>거래 내역(구매)</div>
                         </div>
                         
                         <div id="transaction-navi">
@@ -217,83 +224,42 @@
                                 <div>판매자</div>
                                 <div>거래상태</div>
                         </div>
-                        <%for(Post p : pList){ %>
-                        
+                        <%for(Post p : buyPostList){ %>
                         <div class="transaction-box-size">
-                                <div><a href="#"><img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
-                                <div><a href="#"><%= p.getSubject()%></a></div>
+                                <%for(Trade t : buyList){ 
+                                 	if(t.getPostNo() == p.getPostNo() && t.getBuyerState() == 'N') {
+                                 %>
+                                 	<div><a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+                                <img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
+                                <div><a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+                                <%= p.getSubject()%></a></div>
+                          		<%} else {%>
+                                	<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+                                <img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
+                                <div><a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+                                <%= p.getSubject()%></a></div>
+              					<%} } %>
+                             
                                 <div><%= p.getRegDate()%></div>
                                 <div><%= p.getBuyPrice()%></div>
                                 <div><a href="#"><%=p.getWriter()%></a></div>
-                                 <%=if(p.getSell_yn() == 'Y'){ %>
-                                <div>거래중</div>
-                                <%=} else { %>
-                                <div>경매중</div>
-                                <%} %>
+                                 
+                                 <%for(Trade t : buyList){ 
+                                 	if(t.getPostNo() == p.getPostNo() && t.getTradeEnd() == 'N') {
+                                 %>
+                                	<div>거래중</div>
+                          		<%} else {%>
+                                	<div>거래완료</div>
+              					<%} } %>
                         </div>
                         <%} %>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>2020.12.11</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<%
+	<%
 		} else {
 	%>
 	<div id="wrap">
@@ -309,7 +275,7 @@
 					</div>
 					<div class="row">
 						<div class="col-12 text-center">
-							<span id="mainCate">내역이 없습니다.</span>
+							<span id="mainCate">거래 내역이 없습니다.</span>
 						</div>
 					</div>
 				</div>

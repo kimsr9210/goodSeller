@@ -10,8 +10,8 @@
 <% int postNo = (int)request.getAttribute("postNo"); %>
 	
 	<script>
-		alert("정상적으로 구매처가 되지 않았습니다. 지속적으로 문제 발생 시 문의게시판을 이용해주세요");
-		location.replace('/auctionDetailPage.do?postNo=<%=postNo%>');
+		alert("이미 판매가 완료된 게시물이거나 삭제된 게시물입니다.");
+		location.replace('/auctionMain.do');
 	</script>
 </body>
 </html>

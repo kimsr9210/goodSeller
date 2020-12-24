@@ -230,7 +230,44 @@ font-family: GmarketSansMedium;
 			});
 
 		});
+		$(function() {
+			var result;
+			$("#InterestedBtn").click(
+					function() {
+						if (result == null) {
+							result = confirm('관심상품으로 등록 하시겠습니까?');
+							if (result == true) {
+								$(this).attr("class",
+										"btn btn-warning float-right");
+							} else {
+								result = null;
+							}
 
+						} else {
+							if (result == true) {
+								result = confirm('관심상품등록을 취소 하시겠습니까?');
+								if (result == true) {
+									$(this).attr("class",
+											"btn btn-secondary float-right");
+									result = null;
+								}
+							} else {
+								result = true;
+							}
+						}
+					});
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
 
 	<%

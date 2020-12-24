@@ -801,14 +801,15 @@ public class PostDAO {
 			return result;
 		}
 
-		public int AuctionSellUpdate(Connection conn, int postNo) {
+		public int AuctionSellUpdate(Connection conn, int postNo, String userId) {
 			PreparedStatement pstmt = null;
 			int result = 0;
-			String query = "UPDATE POSTTBL SET SELL_YN='Y' WHERE POSTNO=?";
+			String query = "UPDATE POSTTBL SET SELL_YN='Y', buyer=? WHERE POSTNO=?";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, postNo);
+				pstmt.setString(1, userId);
+				pstmt.setInt(2, postNo);
 				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {

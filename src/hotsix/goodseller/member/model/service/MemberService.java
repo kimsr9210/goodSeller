@@ -125,4 +125,19 @@ public class MemberService {
 		return m;
 		
 	}
+	
+	public int buyCancle(String userId) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = mDAO.buyCancel(conn, userId);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}
+		else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 }

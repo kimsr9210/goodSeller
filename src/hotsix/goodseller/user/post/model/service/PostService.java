@@ -155,7 +155,7 @@ public class PostService {
 	public int AuctionSellUpdate(int postNo, String userId) {
 		
 		Connection conn = JDBCTemplate.getConnection();
-		int result = pDAO.AuctionSellUpdate(conn, postNo);
+		int result = pDAO.AuctionSellUpdate(conn, postNo, userId);
 
 		if(result>0) {
 			JDBCTemplate.commit(conn);
