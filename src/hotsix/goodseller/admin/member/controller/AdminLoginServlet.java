@@ -17,13 +17,13 @@ import hotsix.goodseller.member.model.vo.Member;
  * Servlet implementation class adminLoginServlet
  */
 @WebServlet("/adminLogin.do")
-public class adminLoginServlet extends HttpServlet {
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminLoginServlet() {
+    public AdminLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

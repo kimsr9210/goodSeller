@@ -69,6 +69,8 @@ td {
 		MemberPageData mpd = (MemberPageData) request.getAttribute("MemberPageData");
 	ArrayList<Member> list = mpd.getList();
 	String pageNavi = mpd.getPageNavi();
+	String keyword=(String)request.getAttribute("keyword");
+	String select=(String)request.getAttribute("select");
 	%>
 	<%@ include file="/views/admin/header&footer/adminHeader.jsp"%>
 	<div id="wrap">
@@ -93,6 +95,15 @@ td {
 								<input type="text" name="keyword"/>
 								<input type="submit" value="검색" />
 							</form>
+						</div>
+						<div>
+						<% if(select.equals("userId")){ %>
+						[ 아이디 : "<%=keyword %>"로 검색한 결과]
+						<%} else if(select.equals("userNick")){ %>
+						[ 닉네임 : "<%=keyword %>"로 검색한 결과]
+						<%} %>
+						
+						
 						</div>
 					</div>
 
@@ -140,7 +151,7 @@ td {
 							</form>
 						</table>
 						<p style="margin: 10px">
-							선택한 회원을 <input type="submit" value="계정 정지" />
+							선택한 회원을 <input type="submit" value="강제탈퇴" />
 						</p>
 
 					</div>
