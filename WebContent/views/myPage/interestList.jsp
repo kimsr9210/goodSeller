@@ -328,7 +328,7 @@
 					</div>
 					<div class="row">
 						<div class="col-12 text-center">
-							<span id="mainCate">내가 작성한 Q&A 게시물이 없습니다.</span>
+							<span id="mainCate">찜한 상품이 존재하지 않습니다.</span>
 						</div>
 					</div>
 				</div>
