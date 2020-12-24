@@ -81,7 +81,7 @@ td {
 
 				</div>
 				<div class="col-10">
-					<h3 id="title">전체 회원 관리</h3>
+					<h3 id="title">관리자 회원</h3>
 					<div>
 						<div>
 							<form>
@@ -101,13 +101,9 @@ td {
 								<th class="column">ID</th>
 								<th class="column">이름</th>
 								<th class="column">별명</th>
-								<th class="column">생년월일</th>
 								<th class="column">성별</th>
 								<th class="column">이메일</th>
 								<th class="column">전화번호</th>
-								<th class="column" style="width: 200px;">주소</th>
-								<th class="column">신고 횟수</th>
-								<th class="column">취소 횟수</th>
 								<th class="column">가입일</th>
 							</tr>
 							<form>
@@ -120,7 +116,6 @@ td {
 									<td><%=m.getUserId()%></td>
 									<td><%=m.getUserName()%></td>
 									<td><%=m.getUserNick()%></td>
-									<td><%=m.getBirth()%></td>
 									<%
 										if (m.getGender() == 'M') {
 									%>
@@ -134,9 +129,6 @@ td {
 									%>
 									<td><%=m.getEmail()%></td>
 									<td><%=m.getPhone()%></td>
-									<td><%=m.getAddress()%></td>
-									<td><%=m.getReported()%></td>
-									<td><%=m.getCancellation()%></td>
 									<td><%=m.getEnrollDate()%></td>
 								</tr>
 								<%
@@ -145,7 +137,7 @@ td {
 							</form>
 						</table>
 						<p style="margin: 10px">
-							선택한 회원을 <input type="submit" value="강제탈퇴" />
+							선택한 회원을 <input type="submit" value="계정 정지" />
 						</p>
 
 					</div>

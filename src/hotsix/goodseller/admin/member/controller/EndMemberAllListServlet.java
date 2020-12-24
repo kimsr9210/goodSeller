@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import hotsix.goodseller.admin.member.model.service.AdminMemberService;
+import hotsix.goodseller.admin.member.model.vo.MemberPageData;
 import hotsix.goodseller.member.model.vo.Member;
 
 /**
@@ -45,19 +46,25 @@ public class EndMemberAllListServlet extends HttpServlet {
 			// 1. Exception 처리
 			// 2. m!=null 아닌 경우만 처리하도록
 			if (admin != null && 0 == admin.getUserNo() || (1 <= admin.getUserNo() && admin.getUserNo() <= 100)) {
-				// 모든 회원을 가져오는 비즈니스 로직 처리
-				ArrayList<Member> list = new AdminMemberService().selectEndMemberAll();
-				if (!(list.isEmpty())) {
-					RequestDispatcher view = request.getRequestDispatcher("/views/admin/member/adminMemberList.jsp");
-					request.setAttribute("list", list);
-					request.setAttribute("userNo", admin.getUserNo());
+				int currentPage;
+				if (request.getParameter("currentPage") == null) {
+					currentPage = 1;
+				} else {
+					currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				}
+
+				// 페이지를 가져올 수 있는 비지니스 로직 처리
+				MemberPageData mpd = new AdminMemberService().selectEndMemberListPage(currentPage);
+				if (mpd != null) {
+					RequestDispatcher view = request.getRequestDispatcher("/views/admin/member/endMemberList.jsp");
+					request.setAttribute("MemberPageData", mpd);
 					view.forward(request, response);
 				} else {
 					response.setCharacterEncoding("UTF-8");
 					response.setContentType("text/html; charset=UTF-8");
 
 					PrintWriter out = response.getWriter();
-					out.println("<h3>회원정보 읽어오기 실패</h3>");
+					out.println("<h3>회원 정보 읽어오기 실패</h3>");
 				}
 
 			} else {
@@ -74,8 +81,8 @@ public class EndMemberAllListServlet extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 
 			PrintWriter out = response.getWriter();
-			out.println("Exception e");
-			// response.sendRedirect("/views/common/error/error.jsp");
+			out.println("<script>alert('잘못된 경로입니다.')</script>");
+			response.sendRedirect("/views/admin/adminLogin.jsp");
 		}
 	}
 

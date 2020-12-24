@@ -81,7 +81,7 @@ td {
 
 				</div>
 				<div class="col-10">
-					<h3 id="title">전체 회원 관리</h3>
+					<h3 id="title">탈퇴 회원 관리</h3>
 					<div>
 						<div>
 							<form>
@@ -144,8 +144,8 @@ td {
 								%>
 							</form>
 						</table>
-						<p style="margin: 10px">
-							선택한 회원을 <input type="submit" value="강제탈퇴" />
+						<p style="margin: 10px; display: block;">
+							선택한 회원을 <input type="submit" value="탈퇴 해제" />
 						</p>
 
 					</div>
@@ -161,6 +161,7 @@ td {
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>
