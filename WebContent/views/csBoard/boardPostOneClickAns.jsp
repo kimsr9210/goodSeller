@@ -93,9 +93,9 @@ div {
 		
 		BoardAnswer bAnswer = (BoardAnswer) request.getAttribute("boardAnswer");
 
-		String writeDateANS = String.valueOf(bAnswer.getWriteDate());
+		/* String writeDateANS = String.valueOf(bAnswer.getWriteDate());
 		String yymmddANS = writeDateANS.substring(0, 10);
-		String hhmmANS = writeDateANS.substring(11, 16);
+		String hhmmANS = writeDateANS.substring(11, 16); */
 	%>
 
 
@@ -157,11 +157,11 @@ div {
 									</div>
 									<div class="col-2 postInfo postInfoMain">작성 날짜</div>
 									<div class="col-2 postInfo">
-										<%=yymmddANS %>
+										<%-- <%=yymmddANS %> --%>
 									</div>
 									<div class="col-2 postInfo postInfoMain">작성 시간</div>
 									<div class="col-2 postInfo">
-										<%=hhmmANS %>
+										<%-- <%=hhmmANS %> --%>
 									</div>
 								</div>
 								<div class="row p-0 m-0">
@@ -207,7 +207,7 @@ div {
 				});
 			
 			$('#backBtn').click(function() {
-				location.href = "/boardAllListPage.do";
+				location.href = "/qnaList.do";
 			});
 		});
 		</script>
