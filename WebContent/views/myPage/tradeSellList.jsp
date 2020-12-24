@@ -56,7 +56,7 @@
             border-top: 1px solid #CCCCCC;
         }
         /* 선택된 front 색깔 표시*/
-        #contents-navi>li:nth-child(3)>a{
+        #contents-navi>li:nth-child(4)>a{
             color: #5B5AFF;
             border-bottom: 2px solid #5B5AFF;
         }
@@ -204,7 +204,7 @@
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	<%
 	if (m != null) {
-		if (sellList != null && sellPostList != null) {
+		if (sellList != null && sellPostList.isEmpty()) {
 %>
 	<div id="wrap"> <!-- 전체 틀-->
     
@@ -215,7 +215,7 @@
                 <div class="container">
                     <div id="transaction-box" class="row col-12 col-lg-12">
                         <div id="info-title">
-                            <div>거래 내역(구매)</div>
+                            <div>거래 내역(판매)</div>
                         </div>
                         
                         <div id="transaction-navi">

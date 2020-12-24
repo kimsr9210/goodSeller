@@ -85,7 +85,7 @@
 	border-top: 1px solid #CCCCCC;
 }
 /* 선택된 front 색깔 표시*/
-#contents-navi>li:nth-child(6)>a {
+#contents-navi>li:nth-child(7)>a {
 	color: #5B5AFF;
 	border-bottom: 2px solid #5B5AFF;
 }
