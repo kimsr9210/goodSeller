@@ -31,17 +31,32 @@
 <!-- css -->
 
 <style>
+
+#title {
+	margin: 10px 0;
+}
+
+
 table {
 	margin: 10px;
-	width: 100%;
+	border-top: 2px solid black;
+	border-bottom: 1px solid gray;
 }
 
 th {
-	font-size: 14px;
+	font-size: 12px;
+	background-color: ghostwhite;
+}
+
+.column {
+	text-align: center;
+	padding: 10px 0px;
 }
 
 td {
 	font-size: 12px;
+	text-align: center;
+	padding: 10px 5px;
 }
 
 
@@ -52,6 +67,10 @@ td {
 }
 .pagination>ul>a{
 	color: black;
+}
+
+#title {
+	margin: 10px 0;
 }
 </style>
 </head>
@@ -79,30 +98,31 @@ td {
 
 				</div>
 				<div class="col-10">
+				<h3 id="title">경매 게시글 관리</h3>
 					<div class="row" style="height: 100%;">
 
 
 						<div class="reportBoardContents" >
 
 					<div id="membertable" class="row">
-						<table border=1px cellspacing=1px cellpadding=1px>
+						<table cellspacing=1px cellpadding=1px>
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>내용</th>
-								<th>작성자</th>
-								<th>입찰종료일</th>
-								<th>작성일</th>
-								<th>시작금액</th>
-								<th>즉시구매</th>
-								<th>구매자</th>
-								<th>구매방법</th>
-								<th>경매최종</th>
-								<th>카테고리</th>
-								<th>상세카테고리</th>
-								<th>종료여부</th>
-								<th>삭제여부</th>
-								<th>조회수</th>
+								<th class="column">번호</th>
+								<th class="column" style="width: 100px;">제목</th>
+								<th class="column" style="width: 200px;">내용</th>
+								<th class="column">작성자</th>
+								<th class="column">입찰종료일</th>
+								<th class="column">작성일</th>
+								<th class="column">시작금액</th>
+								<th class="column">즉시구매</th>
+								<th class="column">구매자</th>
+								<th class="column">구매방법</th>
+								<th class="column">경매최종</th>
+								<th class="column" style="width: 100px;">카테고리</th>
+								<th class="column" style="width: 100px;">상세카테고리</th>
+								<th class="column">종료여부</th>
+								<th class="column">삭제여부</th>
+								<th class="column">조회수</th>
 							</tr>
 							<%
 								for (Post p : list) {
