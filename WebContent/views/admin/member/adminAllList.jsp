@@ -140,7 +140,7 @@ td {
 							</form>
 						</table>
 						<p style="margin: 10px">
-							선택한 회원을 <!-- <input type="submit" value="계정 정지" />  -->
+							<!--선택한 회원을  <input type="submit" value="계정 정지" />  -->
 						</p>
 
 					</div>

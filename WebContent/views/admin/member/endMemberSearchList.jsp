@@ -159,7 +159,7 @@ td {
 							</form>
 						</table>
 						<p style="margin: 10px">
-							선택한 회원을 <!-- <input type="submit" value="강제탈퇴" /> -->
+							<!--선택한 회원을  <input type="submit" value="강제탈퇴" /> -->
 						</p>
 
 					</div>

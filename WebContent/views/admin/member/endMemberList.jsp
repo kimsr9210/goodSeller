@@ -148,7 +148,7 @@ td {
 							</form>
 						</table>
 						<p style="margin: 10px; display: block;">
-							선택한 회원을 <!-- <input type="submit" value="탈퇴 해제" /> --> 
+							<!--선택한 회원을 <input type="submit" value="탈퇴 해제" /> --> 
 						</p>
 
 					</div>

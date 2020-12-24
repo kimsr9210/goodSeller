@@ -120,7 +120,7 @@ td {
 								<th class="column">경매최종</th>
 								<th class="column" style="width: 100px;">카테고리</th>
 								<th class="column" style="width: 100px;">상세카테고리</th>
-								<th class="column">종료여부</th>
+								<th class="column">판매여부</th>
 								<th class="column">삭제여부</th>
 								<th class="column">조회수</th>
 							</tr>
