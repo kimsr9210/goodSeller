@@ -44,7 +44,7 @@ public class BoardPostClickServlet extends HttpServlet {
 		//답변 불러오기 
 		BoardAnswer bAnswer = new BoardService().BoardAnswerInfo(boardNo);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardPostOneClickAns.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/boardPostOneClickAns.jsp");
 		request.setAttribute("board", board);
 		request.setAttribute("boardAnswer", bAnswer);
 		view.forward(request, response);
