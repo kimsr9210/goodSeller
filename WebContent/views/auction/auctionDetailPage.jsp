@@ -230,44 +230,7 @@ font-family: GmarketSansMedium;
 			});
 
 		});
-		$(function() {
-			var result;
-			$("#InterestedBtn").click(
-					function() {
-						if (result == null) {
-							result = confirm('관심상품으로 등록 하시겠습니까?');
-							if (result == true) {
-								$(this).attr("class",
-										"btn btn-warning float-right");
-							} else {
-								result = null;
-							}
 
-						} else {
-							if (result == true) {
-								result = confirm('관심상품등록을 취소 하시겠습니까?');
-								if (result == true) {
-									$(this).attr("class",
-											"btn btn-secondary float-right");
-									result = null;
-								}
-							} else {
-								result = true;
-							}
-						}
-					});
-		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	</script>
 
 	<%
@@ -380,7 +343,7 @@ font-family: GmarketSansMedium;
 															.click(
 																	function() {
 											<%if (m != null) {%>
-												var settings = "width=500px, height=280px";
+												var settings = "width=500px, height=400px";
 																		auctionBuyPage = window
 																				.open(
 																						"/views/auction/auctionBuy.jsp",
@@ -411,12 +374,16 @@ font-family: GmarketSansMedium;
 									<script>
 									$(function(){
                                         $("#InterestedBtn").click(function(){
-                                           <%if (m != null) {%>
-                                           location.href="/interest.do?userId=<%=m.getUserId()%>&postNo=<%=p.getPostNo()%>";
-                                           //$("#interestUpdate").submit();
-                                           <%} else {%>
-                                           alert("로그인 한 후 관심상품 등록이 가능합니다.");
-                                       	 <%}%>
+                                        	var result = confirm('관심상품으로 등록 하시겠습니까?');
+        									if(result == true)
+        										{
+                                           			<%if (m != null) {%>
+                                           			location.href="/interest.do?userId=<%=m.getUserId()%>&postNo=<%=p.getPostNo()%>";
+                                           			//$("#interestUpdate").submit();
+                                          			 <%} else {%>
+                                          			alert("로그인 한 후 관심상품 등록이 가능합니다.");
+                                       				 <%}%>
+                                    			}
                                         });
                                      });
 									</script>

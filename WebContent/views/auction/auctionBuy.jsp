@@ -17,12 +17,12 @@ table.auctionBuyTbl {
 	line-height: 1.5;
 	border: 1px solid #ccc;
 	margin: 20px 10px;
-	width: 300px;
+	width: 450px;
 	height: 90px;
 }
 table.auctionBuyTbl th {
-	width: 40%;
-	height:30px;
+	width: 35%;
+	height:25px;
 	border: 1px solid #ccc;
 	padding: 10px;
 	font-weight: bold;
@@ -33,7 +33,7 @@ table.auctionBuyTbl th {
 
 table.auctionBuyTbl td {
 	width: 100%;
-	height:30px;
+	height:25px;
 	border: 1px solid #ccc;
 	padding: 10px;
 	vertical-align: top;
