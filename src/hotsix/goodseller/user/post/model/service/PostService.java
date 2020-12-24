@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import hotsix.goodseller.common.JDBCTemplate;
 import hotsix.goodseller.user.post.model.dao.PostDAO;
+import hotsix.goodseller.user.post.model.vo.InterestProduct;
 import hotsix.goodseller.user.post.model.vo.Post;
 import hotsix.goodseller.user.post.model.vo.PostPageData;
 
@@ -219,4 +220,20 @@ public int InterestUpdate(int postNo, String userId) {
 		
 		return result;
 	}
+public ArrayList<InterestProduct> InterestSelect(String userId) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<InterestProduct> iplist = pDAO.InterestSelect(conn, userId);
+		JDBCTemplate.close(conn);
+		
+		return iplist;
+	
+	}
+public Post InterestSelectPostInfo(int postNo) {
+	Connection conn = JDBCTemplate.getConnection();
+	Post p = pDAO.InterestSelectPostInfo(conn, postNo);
+	JDBCTemplate.close(conn);
+	
+	return p;
+	
+}
 }

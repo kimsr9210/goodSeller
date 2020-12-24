@@ -2,9 +2,7 @@ package hotsix.goodseller.user.post.model.vo;
 
 public class InterestProduct {
 	private int postNo;
-	
-	
-	
+	private String userId;
 	public InterestProduct() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,7 +24,14 @@ public class InterestProduct {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	private String userId;
+	@Override
+	public String toString() {
+		return "InterestProduct [postNo=" + postNo + ", userId=" + userId + "]";
+	}
+	
+	
+	
+	
 
 	
 	

@@ -12,7 +12,7 @@
 		<li class="col-3 col-lg-1"><a
 			href="/tradeSellList.do">판매내역</a></li>
 		<li class="col-3 col-lg-1"><a
-			href="/views/myPage/interestList.jsp">관심목록</a></li>
+			href="/userInterestList.do">관심목록</a></li>
 		<li class="col-3 col-lg-1"><a
 			href="/reportList.do">신고내역</a></li>
 		<li class="col-3 col-lg-1"><a

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="hotsix.goodseller.user.post.model.vo.Post" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,177 +16,217 @@
 
 <!-- 	<link rel="stylesheet" type="text/css" href="/resources/css/interestList.css" />  -->
 <style>
-	@charset "UTF-8";
-        #contents{
-            background-color: white;
-        }
-        #contents-navi{
-            margin-left: -40px;
-            line-height: 50px;
-        }
-        #contents-navi>li{
-            list-style-type: none;
-            float: left;
-            text-align: center;
-            height: 30px;
-        }
-        #contents-navi>li>a{
-            height: 300px;
-            height: 100%;
-            text-decoration: none;
-            font-size: 12px;
-            color: black;
-            font-weight: 600;
-        }
-        #contents-navi>li>a:hover{
-            color: #5B5AFF;
-            border-bottom: 2px solid #5B5AFF;
-        }
-        
-        #contents-mypage{
-            border-top: 1px solid #CCCCCC;
-        }
-        /* 선택된 front 색깔 표시*/
-        #contents-navi>li:nth-child(5)>a{
-            color: #5B5AFF;
-            border-bottom: 2px solid #5B5AFF;
-        }
-        /*-----------------컨텐츠내용-------------------*/
-        #transaction-box{
-            border: 1px solid #CCCCCC;
-            margin: 30px auto;
-            border-radius: 12px;
-            padding: 0;
-        }
-        
-        #info-title{
-            width: 100%;
-            align-content: center;
-            margin: 30px 0px 30px 20px;
-            font-size: 20px;
-            font-weight: 600;
-        }
-        
-        /* 거래내역 네비 */
-        #transaction-navi{
-            width: 100%;
-            margin: 0px 0px 0px 0px;
-            height: 50px;
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-            line-height: 50px;
-            font-weight: 800;
-            text-align: center;
-            overflow: hidden;
-        }
-        
-        #transaction-navi>div:nth-child(1){
-            width: 45%;
-            float: left;
-            font-size: 16px;
-        }
-        #transaction-navi>div:nth-child(2){
-            width: 15%;
-            float: left;
-            font-size: 14px;
-        }
-        #transaction-navi>div:nth-child(3){
-            width: 15%;
-            float: left;
-            font-size: 14px;
-        }
-        #transaction-navi>div:nth-child(4){
-            width: 13%;
-            float: left;
-            font-size: 14px;
-        }
-        #transaction-navi>div:nth-child(5){
-            width: 12%;
-            float: left;
-            font-size: 14px;
-        }
-        
-        /* 거래내역 상세 */
-        .transaction-box-size{
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #CCCCCC;
-            margin: 10px auto;
-            text-align: center;
-            line-height: 100px;
-            overflow: hidden;
-        }
-        .transaction-box-size>div:nth-child(1){
-            width: 15%;
-            float: left;
-            font-size: 14px;
-        }
-        .transaction-box-size>div:nth-child(2){
-            width: 30%;
-            float: left;
-            font-size: 14px;
-            text-align:left;
-        }
-        .transaction-box-size>div:nth-child(3){
-            width: 15%;
-            float: left;
-            font-size: 14px;
-        }
-        .transaction-box-size>div:nth-child(4){
-            width: 15%;
-            float: left;
-            font-size: 14px;
-        }
-        .transaction-box-size>div:nth-child(5){
-            width: 13%;
-            float: left;
-            font-size: 14px;
-        }
-        .transaction-box-size>div:nth-child(6){
-            width: 12%;
-            float: left;
-            font-size: 14px;
-        }
-        .transaction-box-size:nth-last-child(1){
-            margin-bottom: 0;
-            border-bottom: 0;
-        }
-        
-        /* 상품 사진 크기*/
-        .transaction-box-size img{
-            width: 60%;
-        }
-        /* 태그 글자 색 */
-        .transaction-box-size a{
-            color: black;
-        }
-        /* 날짜 선택 태그 */
-        #search-date{
-            margin-bottom:10px;
-            margin-left:10px;
-        }
-        #search-date input[type="date"]{
-            border-radius: 3px;
-            background-color: white;
-            border: 1px solid #cccccc;
-        }
-        #search-date button{
-            border-radius: 3px;
-            background-color: #e8e8e8;
-            border: 1px solid #cccccc;
-            font-size: 12px;
-        }
-        #search-date button:hover{
-            background-color: #D9D9D9;
-        }
-        #search-date form{
-            display: inline;
-            font-size: 12px;
-        }
+@charset "UTF-8";
+
+#contents {
+	background-color: white;
+}
+
+#contents-navi {
+	margin-left: -40px;
+	line-height: 50px;
+}
+
+#contents-navi>li {
+	list-style-type: none;
+	float: left;
+	text-align: center;
+	height: 30px;
+}
+
+#contents-navi>li>a {
+	height: 300px;
+	height: 100%;
+	text-decoration: none;
+	font-size: 12px;
+	color: black;
+	font-weight: 600;
+}
+
+#contents-navi>li>a:hover {
+	color: #5B5AFF;
+	border-bottom: 2px solid #5B5AFF;
+}
+
+#contents-mypage {
+	border-top: 1px solid #CCCCCC;
+}
+/* 선택된 front 색깔 표시*/
+#contents-navi>li:nth-child(5)>a {
+	color: #5B5AFF;
+	border-bottom: 2px solid #5B5AFF;
+}
+/*-----------------컨텐츠내용-------------------*/
+#transaction-box {
+	border: 1px solid #CCCCCC;
+	margin: 30px auto;
+	border-radius: 12px;
+	padding: 0;
+}
+
+#info-title {
+	width: 100%;
+	align-content: center;
+	margin: 30px 0px 30px 20px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+/* 거래내역 네비 */
+#transaction-navi {
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	height: 50px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	line-height: 50px;
+	font-weight: 800;
+	text-align: center;
+	overflow: hidden;
+}
+
+#transaction-navi>div:nth-child(1) {
+	width: 45%;
+	float: left;
+	font-size: 16px;
+}
+
+#transaction-navi>div:nth-child(2) {
+	width: 15%;
+	float: left;
+	font-size: 14px;
+}
+
+#transaction-navi>div:nth-child(3) {
+	width: 15%;
+	float: left;
+	font-size: 14px;
+}
+
+#transaction-navi>div:nth-child(4) {
+	width: 13%;
+	float: left;
+	font-size: 14px;
+}
+
+#transaction-navi>div:nth-child(5) {
+	width: 12%;
+	float: left;
+	font-size: 14px;
+}
+
+/* 거래내역 상세 */
+.transaction-box-size {
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid #CCCCCC;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 100px;
+	overflow: hidden;
+}
+
+.transaction-box-size>div:nth-child(1) {
+	width: 15%;
+	float: left;
+	font-size: 14px;
+}
+
+.transaction-box-size>div:nth-child(2) {
+	width: 30%;
+	float: left;
+	font-size: 14px;
+	text-align: left;
+}
+
+.transaction-box-size>div:nth-child(3) {
+	width: 15%;
+	float: left;
+	font-size: 14px;
+}
+
+.transaction-box-size>div:nth-child(4) {
+	width: 15%;
+	float: left;
+	font-size: 14px;
+}
+
+.transaction-box-size>div:nth-child(5) {
+	width: 13%;
+	float: left;
+	font-size: 14px;
+}
+
+.transaction-box-size>div:nth-child(6) {
+	width: 12%;
+	float: left;
+	font-size: 14px;
+}
+
+.transaction-box-size:nth-last-child(1) {
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+
+/* 상품 사진 크기*/
+.transaction-box-size img {
+	width: 60%;
+}
+/* 태그 글자 색 */
+.transaction-box-size a {
+	color: black;
+}
+/* 날짜 선택 태그 */
+#search-date {
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+#search-date input[type="date"] {
+	border-radius: 3px;
+	background-color: white;
+	border: 1px solid #cccccc;
+}
+
+#search-date button {
+	border-radius: 3px;
+	background-color: #e8e8e8;
+	border: 1px solid #cccccc;
+	font-size: 12px;
+}
+
+#search-date button:hover {
+	background-color: #D9D9D9;
+}
+
+#search-date form {
+	display: inline;
+	font-size: 12px;
+}
+
+@font-face {
+	font-family: 'Wemakeprice-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#mainCate {
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
 </style>
 </head>
 <body>
+	<%
+		ArrayList<Post> list = (ArrayList<Post>)request.getAttribute("list");
+	%>
+
 <%@ include file="/views/common/header&footer/header.jsp" %>
+
+	<%if(!list.isEmpty()){ %>
     <div id="wrap"> <!-- 전체 틀-->
     
     
@@ -201,78 +243,53 @@
                                 <div>상품정보</div>
                                 <div>시작가</div>
                                 <div>현재가</div>
-                                <div>판매자</div>
+                                <div>즉시구매가</div>
                                 <div>거래상태</div>
                         </div>
+                        <%for(Post p : list) { %>
                         <div class="transaction-box-size">
-                                <div><a href="#"><img src="/resources/images/exe.jpg" class="image"></a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
+                                <div><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><img src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
+                                <div><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><%=p.getSubject() %></a></div>
+                                <div><%=p.getAuctionPrice() %></div>
+                                <div><%=p.getBuyPrice() %></div>
+                                <div><a href="#"><%=p.getWriter() %></a></div>
+                                <div>
+                                	<%if(p.getSell_yn()=='Y'){ %>
+                                	판매완료
+                                	<%} else{ %>
+                                	판매중
+                                	<%} %>
+                                </div>
                         </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래완료</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>거래중</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div>
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
-                        </div>
-                        <div class="transaction-box-size">
-                                <div><a href="#">사진</a></div>
-                                <div><a href="#">와이드 히든 밴딩 슬랙스</a></div>
-                                <div>20,000원</div>
-                                <div>30,000원</div >
-                                <div><a href="#">asd0049</a></div>
-                                <div>판매중</div>
-                        </div>
+                        <%} %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <%} else{  %>
+    <div id="wrap">
+		<div id="contents" class="menu-none">
+			<%@ include file="/views/common/memberInfoNav.jsp"%>
+			<div id="contents-mypage">
+				<div class="container" id="qna-box">
+					<div class="row">
+						<div class="col-12 text-center">
+							<img src="/resources/images/hide.png" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 text-center">
+							<span id="mainCate">내가 작성한 Q&A 게시물이 없습니다.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%} %>
+	
     <%@ include file="/views/common/header&footer/footer.jsp" %>
 </body>
 </html>
