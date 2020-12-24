@@ -18,16 +18,16 @@ import hotsix.goodseller.user.post.model.vo.InterestProduct;
 import hotsix.goodseller.user.post.model.vo.Post;
 
 /**
- * Servlet implementation class UserInterestList
+ * Servlet implementation class UserInterestDelServlet
  */
-@WebServlet("/userInterestList.do")
-public class UserInterestListServlet extends HttpServlet {
+@WebServlet("/userInterestDel.do")
+public class UserInterestDelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserInterestListServlet() {
+    public UserInterestDelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,25 +43,26 @@ public class UserInterestListServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member)session.getAttribute("member");
-		ArrayList<Post> plist = new ArrayList<Post>();
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		
 		PrintWriter out = response.getWriter();
 		Post p = null;
 		
 		if(m!=null) {
 			String userId = m.getUserId();
-			ArrayList<InterestProduct> ipList = new PostService().InterestSelect(userId);
-			for(InterestProduct ip : ipList) {
-				p = new PostService().InterestSelectPostInfo(ip.getPostNo());
-				plist.add(p);
+			int result = new PostService().deleteInterestPost(userId, postNo);
+			if(result>0) {
+				RequestDispatcher view = request.getRequestDispatcher("/userInterestList.do");
+				view.forward(request, response);
+			}else {
+				out.print("<script>alert('관심목록이 삭제되지 않았습니다.'); </script>");
+				out.print("<script>history.back(-1);</script>");
 			}
-			RequestDispatcher view = request.getRequestDispatcher("/views/myPage/interestList.jsp");
-			request.setAttribute("list", plist);
-			view.forward(request, response);
+			
 		} else {
 			out.print("<script>alert('세션 만료. 다시 로그인하여 주십시오'); </script>");
 			out.print("<script>location.href ='/index.do';</script>");
 		} 
-		
 	}
 
 	/**

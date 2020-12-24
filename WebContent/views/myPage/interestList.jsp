@@ -125,6 +125,9 @@
 	line-height: 100px;
 	overflow: hidden;
 }
+.transaction-box-size>div {
+	border-bottom: 1px solid #CCCCCC;
+}
 
 .transaction-box-size>div:nth-child(1) {
 	width: 15%;
@@ -217,6 +220,13 @@
 	font-family: Wemakeprice-Bold;
 	font-size: 30px;
 }
+.delBtn{
+	width: 20px;
+	height: 100px;
+	border: 1px solid #cccccc;
+	background-color: black;
+	color: white
+}
 </style>
 </head>
 <body>
@@ -247,8 +257,9 @@
                                 <div>거래상태</div>
                         </div>
                         <%for(Post p : list) { %>
+                        
                         <div class="transaction-box-size">
-                                <div><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><img src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
+                                <div><button class="delBtn">x</button><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><img src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
                                 <div><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><%=p.getSubject() %></a></div>
                                 <div><%=p.getAuctionPrice() %></div>
                                 <div><%=p.getBuyPrice() %></div>
@@ -260,6 +271,9 @@
                                 	판매중
                                 	<%} %>
                                 </div>
+                                <form class="delForm" action="/userInterestDel.do" method="post">
+                                <input type="hidden" name="postNo" value="<%=p.getPostNo() %>"/>
+                        		</form>
                         </div>
                         <%} %>
                     </div>
@@ -267,6 +281,20 @@
             </div>
         </div>
     </div>
+    
+    <script>
+    	$(function(){
+    		$('.delBtn').click(function(){
+    			var result = window.confirm("정말로 관심품목을 삭제하시겠습니까?");
+    			if(result){
+    				$('.delForm').submit();
+    			}else{
+    				return false;
+    			}
+    		});
+    	});   	
+    </script>
+    
     
     <%} else{  %>
     <div id="wrap">

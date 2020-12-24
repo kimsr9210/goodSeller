@@ -236,4 +236,17 @@ public Post InterestSelectPostInfo(int postNo) {
 	return p;
 	
 }
+public int deleteInterestPost(String userId, int postNo) {
+	Connection conn = JDBCTemplate.getConnection();
+	int result = pDAO.deleteInterestPost(conn, postNo, userId);
+	if(result>0) {
+		JDBCTemplate.commit(conn);
+	}else {
+		JDBCTemplate.rollback(conn);
+	}
+	JDBCTemplate.close(conn);
+	
+	return result;
+	
+}
 }

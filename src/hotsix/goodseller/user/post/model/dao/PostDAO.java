@@ -1072,5 +1072,25 @@ public class PostDAO {
 				return p;
 		}
 
+		public int deleteInterestPost(Connection conn, int postNo, String userId) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+
+			String query = "DELETE FROM INTEREST WHERE USERID=? AND POSTNO=?";
+				try {
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, userId);
+					pstmt.setInt(2, postNo);
+					
+					result = pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					JDBCTemplate.close(pstmt);
+				}
+				return result;
+		}
+
 
 }
