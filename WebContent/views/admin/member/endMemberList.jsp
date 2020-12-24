@@ -84,11 +84,14 @@ td {
 					<h3 id="title">탈퇴 회원 관리</h3>
 					<div>
 						<div>
-							<form>
-								<label>회원 검색</label>&nbsp&nbsp&nbsp <select>
+							<form action="/endMemberSearchList.do" method="get">
+								<label>회원 검색</label>&nbsp&nbsp&nbsp 
+								<select name="select">
 									<option value="userId">아이디</option>
 									<option value="userNick">닉네임</option>
-								</select> <input type="text" /> <input type="submit" value="검색" />
+								</select>
+								<input type="text" name="keyword"/>
+								<input type="submit" value="검색" />
 							</form>
 						</div>
 					</div>
