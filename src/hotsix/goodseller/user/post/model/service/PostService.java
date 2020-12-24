@@ -249,4 +249,11 @@ public int deleteInterestPost(String userId, int postNo) {
 	return result;
 	
 }
+public int InterestCheck(int postNo, String userId) {
+	Connection conn = JDBCTemplate.getConnection();
+	int check = pDAO.InterestCheck(conn, postNo, userId);
+	JDBCTemplate.close(conn);
+	return check;
+	
+}
 }

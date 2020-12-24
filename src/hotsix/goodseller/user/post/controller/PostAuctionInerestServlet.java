@@ -17,47 +17,60 @@ import hotsix.goodseller.user.post.model.service.PostService;
 @WebServlet("/interest.do")
 public class PostAuctionInerestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PostAuctionInerestServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//인코딩
+	public PostAuctionInerestServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-		
-		try {
-			// 이전 페이지에서 보내준 값 가져오기
+		// 이전 페이지에서 보내준 값 가져오기
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		String userId = request.getParameter("userId");
-		
-		int result = new PostService().InterestUpdate(postNo, userId);
-		
-		if(result>0)
-		{
-		   	RequestDispatcher view = request.getRequestDispatcher("/views/auction/interestSuccess.jsp");
-		   	view.forward(request, response);
-		}else {
-		   	RequestDispatcher view = request.getRequestDispatcher("/views/auction/interestFail.jsp");
-		   	view.forward(request, response);
+
+		int check = new PostService().InterestCheck(postNo, userId);
+		System.out.print(check);
+		if (check < 0) {
+			try {
+
+				// 이전 페이지에서 보내준 값 가져오기
+				postNo = Integer.parseInt(request.getParameter("postNo"));
+				userId = request.getParameter("userId");
+
+				int result = new PostService().InterestUpdate(postNo, userId);
+
+				if (result > 0) {
+					RequestDispatcher view = request.getRequestDispatcher("/views/auction/interestSuccess.jsp");
+					view.forward(request, response);
+				} else {
+					RequestDispatcher view = request.getRequestDispatcher("/views/auction/interestFail.jsp");
+					view.forward(request, response);
+				}
+
+			} catch (Exception e) {
+				response.sendRedirect("/views/auction/interestFail.jsp");
+			}
+		} else {
+			response.sendRedirect("/views/auction/interestCheck.jsp");
 		}
-		
-	} catch (Exception e) {
-		response.sendRedirect("/views/auction/interestFail.jsp");
-	}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

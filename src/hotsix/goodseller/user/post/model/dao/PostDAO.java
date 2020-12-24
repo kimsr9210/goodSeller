@@ -1092,5 +1092,31 @@ public class PostDAO {
 				return result;
 		}
 
+		public int InterestCheck(Connection conn, int postNo, String userId) {
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			int check = -1;
+			
+			String query = "SELECT * FROM INTEREST WHERE POSTNO=? AND USERID=?";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, postNo);
+				pstmt.setString(2, userId);
+				
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					check = rset.getInt("postNo");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return check;
+			
+		}
+
 
 }
