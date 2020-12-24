@@ -91,6 +91,7 @@ public class PostDetailPage extends HttpServlet {
 		if(timeSet && auction != null && (auction.getUserId().equals(currentUser.getUserId()) || p.getWriter().equals(currentUser.getUserId()))) {
 			Member buyer = new MemberService().selectWriterInfo(auction.getUserId());
 			
+			new PostService().postUpdate(postNo, auction.getOfferPrice());
 			response.setCharacterEncoding("UTF-8"); 
 			response.setContentType("text/html; charset=UTF-8");
 			
@@ -100,7 +101,7 @@ public class PostDetailPage extends HttpServlet {
 			
 			request.setAttribute("post", p);
 			request.setAttribute("seller", seller);
-			request.setAttribute("buyer", seller);
+			request.setAttribute("buyer", buyer);
 			request.setAttribute("auction", auction);
 			request.setAttribute("postCount", postCount);
 			request.setAttribute("auctionCount", auctionCount);

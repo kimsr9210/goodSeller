@@ -135,7 +135,7 @@ font-family: Binggrae-Bold;
 								id="postClickBtn"><%=board.getSubject() %></a>
 							<%} %>
 						<%}else{ %>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+							<a href="/qnaList.do" id="postLock"><%=board.getSubject() %></a>
 						<%} %>
 						
 					</div>

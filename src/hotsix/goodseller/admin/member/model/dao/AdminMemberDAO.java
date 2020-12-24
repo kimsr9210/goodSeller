@@ -13,21 +13,21 @@ import hotsix.goodseller.user.post.model.vo.Post;
 public class AdminMemberDAO {
 
 	public ArrayList<Member> selectMemberAll(Connection conn) {
-		PreparedStatement pstmt=null;
-		ResultSet rset=null;
-		
-		//회원정보를 담을 객체
-		ArrayList<Member> list=new ArrayList<Member>();
-		
-		String query="SELECT * FROM MEMBER WHERE USERNO>=1000 AND END_YN='N'";
-		//SELECT * FROM MEMBER WHERE END_YN='N'
-		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		// 회원정보를 담을 객체
+		ArrayList<Member> list = new ArrayList<Member>();
+
+		String query = "SELECT * FROM MEMBER WHERE USERNO>=1000 AND END_YN='N'";
+		// SELECT * FROM MEMBER WHERE END_YN='N'
+
 		try {
-			pstmt=conn.prepareStatement(query);
-			rset=pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -50,27 +50,27 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
+
 		return list;
-		
+
 	}
 
 	public ArrayList<Member> selectEndMemberAll(Connection conn) {
-		PreparedStatement pstmt=null;
-		ResultSet rset=null;
-		
-		//회원정보를 담을 객체
-		ArrayList<Member> list=new ArrayList<Member>();
-		
-		String query="SELECT * FROM MEMBER WHERE USERNO>=1000 AND END_YN='Y'";
-		//SELECT * FROM MEMBER WHERE END_YN='N'
-		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		// 회원정보를 담을 객체
+		ArrayList<Member> list = new ArrayList<Member>();
+
+		String query = "SELECT * FROM MEMBER WHERE USERNO>=1000 AND END_YN='Y'";
+		// SELECT * FROM MEMBER WHERE END_YN='N'
+
 		try {
-			pstmt=conn.prepareStatement(query);
-			rset=pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -93,26 +93,26 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
+
 		return list;
 	}
 
 	public ArrayList<Member> selectAdminAll(Connection conn) {
-		PreparedStatement pstmt=null;
-		ResultSet rset=null;
-		
-		//회원정보를 담을 객체
-		ArrayList<Member> list=new ArrayList<Member>();
-		
-		String query="SELECT * FROM MEMBER WHERE USERNO<=100";
-		//SELECT * FROM MEMBER WHERE END_YN='N'
-		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		// 회원정보를 담을 객체
+		ArrayList<Member> list = new ArrayList<Member>();
+
+		String query = "SELECT * FROM MEMBER WHERE USERNO<=100";
+		// SELECT * FROM MEMBER WHERE END_YN='N'
+
 		try {
-			pstmt=conn.prepareStatement(query);
-			rset=pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -135,7 +135,7 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
+
 		return list;
 	}
 
@@ -144,10 +144,10 @@ public class AdminMemberDAO {
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList<Member>();
 		Post p = null;
-		
-		int start = (currentPage*recordCountPerPage)-(recordCountPerPage-1);
-		int end = currentPage*recordCountPerPage;
-		
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
 				+ "Member.* FROM Member WHERE USERNO>=1000 AND END_YN='N') WHERE ROW_NUM between ? and ?";
 		try {
@@ -155,9 +155,9 @@ public class AdminMemberDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -180,30 +180,30 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		
+
 		return list;
 	}
 
 	public String getMemberPageNavi(Connection conn, int currentPage, int recordCountPerPage, int naviCountPerPage) {
-		int postTotalCount = memberTotalCount(conn);	
-		
-		int pageTotalCount;		//전체 페이지의 개수를 저장하는 변수
-		
-		if(postTotalCount % recordCountPerPage > 0) {
+		int postTotalCount = memberTotalCount(conn);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = postTotalCount / recordCountPerPage + 1;
 		} else {
 			pageTotalCount = postTotalCount / recordCountPerPage + 0;
 		}
-		int startNavi = ((currentPage-1) / naviCountPerPage) * naviCountPerPage + 1;
-		
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
 		int endNavi = startNavi + naviCountPerPage - 1;
-		
-		if(endNavi > pageTotalCount) {
+
+		if (endNavi > pageTotalCount) {
 			endNavi = pageTotalCount;
 		}
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (startNavi != 1) {
 			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberAllList.do?currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
@@ -230,16 +230,16 @@ public class AdminMemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int memberTotalCount = 0;
-		
+
 		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE USERNO>=1000 AND END_YN='N'";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
-			
+
 			rset = pstmt.executeQuery();
 			rset.next();
 			memberTotalCount = rset.getInt("TOTALCOUNT");
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -254,10 +254,10 @@ public class AdminMemberDAO {
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList<Member>();
 		Post p = null;
-		
-		int start = (currentPage*recordCountPerPage)-(recordCountPerPage-1);
-		int end = currentPage*recordCountPerPage;
-		
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
 				+ "Member.* FROM Member WHERE USERNO>=1000  AND END_YN='Y') WHERE ROW_NUM between ? and ?";
 		try {
@@ -265,9 +265,9 @@ public class AdminMemberDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -290,30 +290,30 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		
+
 		return list;
 	}
 
 	public String getEndMemberPageNavi(Connection conn, int currentPage, int recordCountPerPage, int naviCountPerPage) {
-		int postTotalCount = endMemberTotalCount(conn);	
-		
-		int pageTotalCount;		//전체 페이지의 개수를 저장하는 변수
-		
-		if(postTotalCount % recordCountPerPage > 0) {
+		int postTotalCount = endMemberTotalCount(conn);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = postTotalCount / recordCountPerPage + 1;
 		} else {
 			pageTotalCount = postTotalCount / recordCountPerPage + 0;
 		}
-		int startNavi = ((currentPage-1) / naviCountPerPage) * naviCountPerPage + 1;
-		
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
 		int endNavi = startNavi + naviCountPerPage - 1;
-		
-		if(endNavi > pageTotalCount) {
+
+		if (endNavi > pageTotalCount) {
 			endNavi = pageTotalCount;
 		}
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (startNavi != 1) {
 			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberAllList.do?currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
@@ -335,21 +335,21 @@ public class AdminMemberDAO {
 
 		return sb.toString();
 	}
-	
+
 	private int endMemberTotalCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int memberTotalCount = 0;
-		
+
 		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE USERNO>=1000 AND END_YN='Y'";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
-			
+
 			rset = pstmt.executeQuery();
 			rset.next();
 			memberTotalCount = rset.getInt("TOTALCOUNT");
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -364,10 +364,10 @@ public class AdminMemberDAO {
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList<Member>();
 		Post p = null;
-		
-		int start = (currentPage*recordCountPerPage)-(recordCountPerPage-1);
-		int end = currentPage*recordCountPerPage;
-		
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
 				+ "Member.* FROM Member WHERE USERNO<=100) WHERE ROW_NUM between ? and ?";
 		try {
@@ -375,9 +375,9 @@ public class AdminMemberDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m=new Member();
+
+			while (rset.next()) {
+				Member m = new Member();
 				m.setUserNo(rset.getInt("USERNO"));
 				m.setUserId(rset.getString("USERID"));
 				m.setUserPw(rset.getString("USERPW"));
@@ -400,29 +400,30 @@ public class AdminMemberDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		
+
 		return list;
 	}
+
 	public String getAdminPageNavi(Connection conn, int currentPage, int recordCountPerPage, int naviCountPerPage) {
-		int postTotalCount = adminTotalCount(conn);	
-		
-		int pageTotalCount;		//전체 페이지의 개수를 저장하는 변수
-		
-		if(postTotalCount % recordCountPerPage > 0) {
+		int postTotalCount = adminTotalCount(conn);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = postTotalCount / recordCountPerPage + 1;
 		} else {
 			pageTotalCount = postTotalCount / recordCountPerPage + 0;
 		}
-		int startNavi = ((currentPage-1) / naviCountPerPage) * naviCountPerPage + 1;
-		
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
 		int endNavi = startNavi + naviCountPerPage - 1;
-		
-		if(endNavi > pageTotalCount) {
+
+		if (endNavi > pageTotalCount) {
 			endNavi = pageTotalCount;
 		}
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (startNavi != 1) {
 			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminAllList.do?currentPage="
 					+ (startNavi - 1) + "'> < </a></li>");
@@ -444,21 +445,21 @@ public class AdminMemberDAO {
 
 		return sb.toString();
 	}
-	
+
 	private int adminTotalCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int memberTotalCount = 0;
-		
+
 		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE USERNO<=100";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
-			
+
 			rset = pstmt.executeQuery();
 			rset.next();
 			memberTotalCount = rset.getInt("TOTALCOUNT");
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -467,5 +468,388 @@ public class AdminMemberDAO {
 		}
 		return memberTotalCount;
 	}
-}
 
+	public ArrayList<Member> memberSearchList(Connection conn, int currentPage, int recordCountPerPage, String select,
+			String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList<Member>();
+		Member m = null;
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+		
+		String query = null;
+		if(select.equals("userId")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERID LIKE ? AND USERNO>=1000 AND END_YN='N') WHERE ROW_NUM between ? and ?";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERNICK LIKE ? AND USERNO>=1000 AND END_YN='N') WHERE ROW_NUM between ? and ?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				m = new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+
+		return list;
+	}
+
+	public String getMemberSearchPageNavi(Connection conn, int currentPage, int recordCountPerPage,
+			int naviCountPerPage, String select, String keyword) {
+		int postTotalCount = memberSearchTotalCount(conn, select, keyword);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = postTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordCountPerPage + 0;
+		}
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
+		int endNavi = startNavi + naviCountPerPage - 1;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/memberSearhList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+	}
+
+	private int memberSearchTotalCount(Connection conn, String select, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int memberSearchTotalCount = 0;
+		
+		String query = null;
+		
+		if(select.equals("userId")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userId LIKE ? AND USERNO>=1000 AND END_YN='N'";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userNick LIKE ? AND USERNO>=1000 AND END_YN='N'";
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			memberSearchTotalCount = rset.getInt("TOTALCOUNT");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return memberSearchTotalCount;
+	}
+
+	public ArrayList<Member> endMemberSearchList(Connection conn, int currentPage, int recordCountPerPage,
+			String select, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList<Member>();
+		Member m = null;
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+		
+		String query = null;
+		if(select.equals("userId")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERID LIKE ? AND USERNO>=1000 AND END_YN='Y') WHERE ROW_NUM between ? and ?";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERNICK LIKE ? AND USERNO>=1000 AND END_YN='Y') WHERE ROW_NUM between ? and ?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				m = new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+
+		return list;
+	}
+
+	public String getEndMemberSearchPageNavi(Connection conn, int currentPage, int recordCountPerPage,
+			int naviCountPerPage, String select, String keyword) {
+		int postTotalCount = endMemberSearchTotalCount(conn, select, keyword);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = postTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordCountPerPage + 0;
+		}
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
+		int endNavi = startNavi + naviCountPerPage - 1;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/endMemberSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+	}
+
+	private int endMemberSearchTotalCount(Connection conn, String select, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int memberSearchTotalCount = 0;
+		
+		String query = null;
+		
+		if(select.equals("userId")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userId LIKE ? AND USERNO>=1000 AND END_YN='Y'";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userNick LIKE ? AND USERNO>=1000 AND END_YN='Y'";
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			memberSearchTotalCount = rset.getInt("TOTALCOUNT");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return memberSearchTotalCount;
+	}
+
+	public ArrayList<Member> adminSearchList(Connection conn, int currentPage, int recordCountPerPage, String select,
+			String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList<Member>();
+		Member m = null;
+
+		int start = (currentPage * recordCountPerPage) - (recordCountPerPage - 1);
+		int end = currentPage * recordCountPerPage;
+		
+		String query = null;
+		if(select.equals("userId")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERID LIKE ? AND USERNO<=100) WHERE ROW_NUM between ? and ?";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY userNo DESC) AS ROW_NUM, "
+					+ "Member.* FROM Member WHERE USERNICK LIKE ? AND USERNO<=100) WHERE ROW_NUM between ? and ?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				m = new Member();
+				m.setUserNo(rset.getInt("USERNO"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserPw(rset.getString("USERPW"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserNick(rset.getString("USERNICK"));
+				m.setBirth(rset.getString("BIRTH"));
+				m.setGender(rset.getString("GENDER").charAt(0));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setReported(rset.getInt("REPORTED"));
+				m.setCancellation(rset.getInt("CANCELLATION"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+
+		return list;
+	}
+
+	public String getAdminSearchPageNavi(Connection conn, int currentPage, int recordCountPerPage, int naviCountPerPage,
+			String select, String keyword) {
+		int postTotalCount = adminSearchTotalCount(conn, select, keyword);
+
+		int pageTotalCount; // 전체 페이지의 개수를 저장하는 변수
+
+		if (postTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = postTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = postTotalCount / recordCountPerPage + 0;
+		}
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+
+		int endNavi = startNavi + naviCountPerPage - 1;
+
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		if (startNavi != 1) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (startNavi - 1) + "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (i == currentPage) {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'><b> " + i + " </b></a></li>");
+			} else {
+				sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage=" + i
+						+ "'> " + i + " </a></li>");
+			}
+		}
+		if (endNavi != pageTotalCount) {
+			sb.append("<li class=\"page-item\"><a class=\"page-link\" href='/adminSearchList.do?select="+select+"&keyword="+keyword+"&currentPage="
+					+ (endNavi + 1) + "'> > </a></li>");
+		}
+
+		return sb.toString();
+	}
+
+	private int adminSearchTotalCount(Connection conn, String select, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int adminSearchTotalCount = 0;
+		
+		String query = null;
+		
+		if(select.equals("userId")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userId LIKE ? AND USERNO<=100";
+		}
+		else if(select.equals("userNick")) {
+			query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE userNick LIKE ? AND USERNO<=100";
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			adminSearchTotalCount = rset.getInt("TOTALCOUNT");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return adminSearchTotalCount;
+	}
+}

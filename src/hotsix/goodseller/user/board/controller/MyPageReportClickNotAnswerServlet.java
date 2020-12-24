@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotsix.goodseller.user.board.model.service.BoardService;
-import hotsix.goodseller.user.board.model.vo.Board;
+import hotsix.goodseller.admin.board.report.service.ReportService;
+import hotsix.goodseller.admin.board.report.vo.ReportAnswer;
+import hotsix.goodseller.user.board.model.vo.Report;
 
 /**
- * Servlet implementation class BoardPostClickNotAnsServlet
+ * Servlet implementation class MyPageReportClickNotAnswerServlet
  */
-@WebServlet("/boardPostClickNotAns.do")
-public class BoardPostClickNotAnsServlet extends HttpServlet {
+@WebServlet("/myPageReportNOTANSClick.do")
+public class MyPageReportClickNotAnswerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPostClickNotAnsServlet() {
+    public MyPageReportClickNotAnswerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +33,23 @@ public class BoardPostClickNotAnsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//이전 페이지에서 넘어온 값 저장
+		int reportNo = Integer.parseInt(request.getParameter("reportNo"));
+		ReportAnswer rAnswer = null;
 		
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-
-		System.out.println(boardNo);
+		//System.out.println("게시글번호"+reportNo);
 		
 		//비즈니스 로직 처리 
-		Board board = new BoardService().postOneClick(boardNo);
-		new BoardService().updateHit(boardNo);
-		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/boardPostOneClickNotAns.jsp");
-		request.setAttribute("board", board);
+		Report r = new ReportService().postOneClick(reportNo);
+		
+		
+		if(r!=null) {
+		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/reportPostClickNOTANS.jsp");
+		request.setAttribute("report", r);
 		view.forward(request, response);
+		}else {
+			response.sendRedirect("/views/admin/reportBoard/reportPostReadFail.jsp");
 		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

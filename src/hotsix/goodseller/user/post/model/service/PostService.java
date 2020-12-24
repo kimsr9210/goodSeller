@@ -249,11 +249,25 @@ public int deleteInterestPost(String userId, int postNo) {
 	return result;
 	
 }
+<<<<<<< HEAD
 public int InterestCheck(int postNo, String userId) {
 	Connection conn = JDBCTemplate.getConnection();
 	int check = pDAO.InterestCheck(conn, postNo, userId);
 	JDBCTemplate.close(conn);
 	return check;
+=======
+
+public void postUpdate(int postNo, int i) {
+	// TODO Auto-generated method stub
+	Connection conn = JDBCTemplate.getConnection();
+	int result = pDAO.postUpdate(conn, postNo,i);
+	if(result>0) {
+		JDBCTemplate.commit(conn);
+	}else {
+		JDBCTemplate.rollback(conn);
+	}
+	JDBCTemplate.close(conn);
+>>>>>>> 516a2554722a77a5b18bafa98f28d03223be135f
 	
 }
 }

@@ -91,7 +91,7 @@ width: 100%;
     .line {
     	margin: 0px;
     }
-    
+
 </style>
 </head>
 <body>
@@ -126,16 +126,23 @@ width: 100%;
                             </ul>
                         </li>
                         <hr class="line">
-                        <li><a a href="/adminPostAllList.do">게시물 관리</a></li>
+                        <li><a a href="/adminPostAllList.do">경매 게시글관리</a></li>
                         <hr class="line">
-                        <li><a href="/adminReportAllPageList.do">신고 관리</a></li>
+                        <li>
+                        <a>신고 관리</a>
+                            <ul class="hide">
+                                <li><a href="/adminReportAllPageList.do">전체 신고 게시물</a></li>
+                                <hr class="line">
+                                <li><a href="/endMemberAllList.do">회원 신고 처리</a></li>
+                            </ul>
+                        </li>
                         <hr class="line">
-                        <li><a href="/adminCsBoardAllPageList.do">QnA</li>
+                        <li><a href="/adminCsBoardAllPageList.do">QnA</a></li>
                         <hr class="line">
                         <li class="menu">
                           <a>통계</a>
                             <ul class="hide">
-                                <li>수익현황</li>
+                                <li><a href="/views/admin/statistic/incomeStatistic.jsp">수익 통계</a></li>
                             </ul>
                         </li>
                         

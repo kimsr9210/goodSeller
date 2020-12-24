@@ -160,7 +160,11 @@
 				<br>
 				<hr>
 				
-				<div id="moveBtn">거래하러 가기</div>
+				<div id="core-contents-4" class="row">
+					<div class="col-12 p-0">
+						<a href="/auctionMain.do"><button id="insertBtn" type="button" class="btn btn-outline-dark">상품보러가기</button></a>
+					</div>
+				</div>
 		</div>
 	</div>
 

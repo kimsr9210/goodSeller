@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.post.model.vo.Post"%>
 <%@ page import="hotsix.goodseller.user.post.model.vo.Auction"%>
+<%@ page import="hotsix.goodseller.user.trade.service.TradeService"%>
+<%@ page import="hotsix.goodseller.user.trade.model.vo.Trade"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,7 +29,31 @@
 <!-- css -->
 <!-- 	<link rel="stylesheet" type="text/css" href="/resources/css/reportList.css" /> -->
 <style>
-		        #contents{
+@charset "UTF-8";
+/* -------------------------------폰트 모음----------------------------- */
+@font-face {
+	font-family: 'Wemakeprice-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Binggrae-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/* -------------------------------폰트 모음----------------------------- */
+#mainCate {
+	font-family: Wemakeprice-Bold;
+	font-size: 30px;
+}
+		#contents{
             background-color: white;
         }
         #contents-navi{
@@ -57,7 +83,7 @@
             border-top: 1px solid #CCCCCC;
         }
         /* 선택된 front 색깔 표시*/
-        #contents-navi>li:nth-child(3)>a{
+        #contents-navi>li:nth-child(2)>a{
             color: #5B5AFF;
             border-bottom: 2px solid #5B5AFF;
         }
@@ -214,9 +240,9 @@
             <%@ include file="/views/common/memberInfoNav.jsp"%>
             <div id="contents-mypage">
                 <div class="container">
-                    <div id="transaction-box" class="row col-12 col-lg-12">
+                <div id="transaction-box" class="row col-12 col-lg-12">
                         <div id="info-title">
-                            <div>입찰 내역(구매)</div>
+                            <div>거래 내역(구매)</div>
                         </div>
                         
                         <div id="transaction-navi">
@@ -226,26 +252,55 @@
                                 <div>현재입찰가</div>
                                 <div>입찰상태</div>
                         </div>
-                        <%for(Post p : postList){ %>
-                        <div class="transaction-box-size row">
+                         <%for(Post p : postList){ %>
+                        
                                 <%for(Auction a : bidList){ 
                                 	java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
                                  	if(a.getPostNo() == p.getPostNo()) {
+                                 	Trade t = new TradeService().tradeStateCheck(a.getPostNo());
+                                 	%>
+                                 	<div class="transaction-box-size">
+                                  <%if(t == null){
                                  %>
-                                 <div">
-                                 	<a href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-                                	<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
-                                	</a>
-                                </div>
-                                
-                                <div>
-                                <a href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>">
-                                <%= p.getSubject()%></a>
-                                </div>
-                                <div><%= a.getOfferPrice()%></div>
+		                                 <div>
+			                                 <a href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                	<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
+			                                </a>
+			                             </div>
+		                                
+		                                <div>
+			                                <a href="/auctionDetailPage.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                <%= p.getSubject()%></a>
+		                                </div>
+                          			<%}else	if(t != null && t.getBuyerState() == 'N'){
+                                 %>
+		                                 <div>
+			                                 <a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                	<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
+			                                </a>
+			                             </div>
+		                                
+		                                <div>
+			                                <a href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>">
+			                                <%= p.getSubject()%></a>
+		                                </div>
+                          			<%} else {%>
+		                          		<div>
+		                                	<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+		                                		<img id="postImgMain" src="/resources/file/<%=p.getMainImgName() %>" class="image">
+		                                	</a>
+		                                </div>
+                                		
+                                		<div>
+                                			<a href="/tradeSellerEnd.do?postNo=<%=p.getPostNo()%>&sellerId=<%=p.getWriter()%>&buyerId=<%=m.getUserId()%>">
+                                			<%= p.getSubject()%></a>
+                                		</div>
+              						<%} %>
+              						<div><%= a.getOfferPrice()%></div>
                                 <div><%= sdf.format(a.getBiddingDate())%></div>
                                 <div><%= p.getAuctionPrice()%></div>
-                                <%if (p.getAuctionPrice() == a.getOfferPrice()) {
+                                	
+                                	<%if (p.getAuctionPrice() == a.getOfferPrice()) {
                                 %>
                                 <div>입찰중</div>
                                  <%} else if (p.getAuctionPrice() == a.getOfferPrice() && p.getBuyer().equals(a.getUserId())) {	 
@@ -254,18 +309,17 @@
                                  <%} else { %>
                                 	<div>입찰취소</div>
               					<%} %>
-                        </div>
-                        <%}
-                         }
-                         } %>
+                                 </div>          
+                        	<%}
+                            }}
+                         %>
                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
-	<%
-		} else {
+	<%}else {
 	%>
 	<div id="wrap">
 		<div id="contents" class="menu-none">
@@ -288,7 +342,7 @@
 		</div>
 	</div>
 	<%
-		}
+	}
 		} else {
 	%>
 	<script>

@@ -488,12 +488,18 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row text-center my-3">
 					<div class="col-12 text-center">
+					<%if (m.getUserId().equals(p.getWriter())) {
+					%>
+						<span class="infoFont">※판매자 정보를 변경하시려면 마이페이지에서 변동 후 이용해 주십시오※</span>
+					<%} else { %>
 						<span class="infoFont">※구매자 정보를 변경하시려면 마이페이지에서 변동 후 이용해 주십시오※</span>
+					<%} %>
 					</div>
 				</div>
-
+				
 				<hr>
 				<span class="infoFont">결제 정보</span>
 				<div id="contents-deail-4" class="row">
@@ -502,16 +508,24 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="m-4 text-center">
+									<%if (m.getUserId().equals(p.getWriter())) {
+									%>
+										<span  style="font-size:1.5em"class="infoFont">입찰자 결제 완료시 거래를 시작합니다</span><br>
+									<%} else { %>
 										<span style="color:red; font-size:1.5em"class="infoFont">결제 금액 : <%=formatter.format(auction.getOfferPrice())%></span><br>
 										<span class="infoFont">거래 유형 : <%=p.getSellMethod() %></span><br>
 										<span class="infoFont">상기 구매정보를 확인하였으며 결제를 진행합니다.</span><br>
 										<span class="infoFont">구매 취소 시 패널티가 부과될 수 있습니다.</span><br>
+									<%} %>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<%if (m.getUserId().equals(buyer.getUserId())) {
+				%>
 				<div class ="row text-center my-3">
 					<div class="col-12 text-center">
 						<button type="button" class="btn btn-dark" id="paymentBtn">결제</button>
@@ -519,7 +533,7 @@
 					</div>
 				</div>
 				<br>
-
+				<%} %>
 			</div>
 		</div>
 	</div>

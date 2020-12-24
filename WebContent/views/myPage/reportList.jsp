@@ -244,17 +244,16 @@
 </head>
 <body>
 	<%
-	ReqBoardPageData rbpd = (ReqBoardPageData)request.getAttribute("pageData");
-				
-	ArrayList<Report> list = rbpd.getList();
-	String pageNavi = rbpd.getPageNavi();
-	
-%>
+		ReqBoardPageData rbpd = (ReqBoardPageData) request.getAttribute("pageData");
+
+		ArrayList<Report> list = rbpd.getList();
+		String pageNavi = rbpd.getPageNavi();
+	%>
 	<%@ include file="/views/common/header&footer/header.jsp"%>
 	<%
-	if (m != null) {
-		if (!list.isEmpty()) {
-%>
+		if (m != null) {
+			if (!list.isEmpty()) {
+	%>
 	<div id="wrap">
 		<!-- 전체 틀-->
 		<!-- -------------------------------------------------------------------- -->
@@ -275,29 +274,48 @@
 						<div class="col-1">상태</div>
 					</div>
 
-					<%for(Report register : list){ %>
+					<%
+						for (Report register : list) {
+					%>
 					<div class="row p-0 m-0 line-content text-center py-1">
-						<div class="d-none d-md-block col-md-1 p-0 "><%=register.getReportNo() %></div>
+						<div class="d-none d-md-block col-md-1 p-0 "><%=register.getReportNo()%></div>
 
 						<div class="col-7 col-md-7 p-0">
-
-							<!--<a href="boardPostClick.do?boardNo=<%=register.getReportNo()%>"
-								id="postClickBtn"></a>-->
-							<%=register.getSubject() %>
+							<%
+								if (register.getAnswerYN() == 'Y') {
+							%>
+							<a id="afont"
+								href="/myPageReportClick.do?reportNo=<%=register.getReportNo()%>"><%=register.getSubject()%></a>
+							<%
+								} else {
+							%>
+							<a id="afont"
+								href="/myPageReportNOTANSClick.do?reportNo=<%=register.getReportNo()%>"><%=register.getSubject()%></a>
+							<%
+								}
+							%>
 						</div>
 
-						<div class="col-2 col-md-2 p-0 "><%=register.getWriteDate() %></div>
-						<div class="col-1 col-md-1 p-0 "><%=register.getReportId() %></div>
+						<div class="col-2 col-md-2 p-0 "><%=register.getWriteDate()%></div>
+						<div class="col-1 col-md-1 p-0 "><%=register.getReportId()%></div>
 
 						<div class="col-1 col-md-1 p-0 ">
-							<%if(register.getAnswerYN()== 'N'){ %>
+							<%
+								if (register.getAnswerYN() == 'N') {
+							%>
 							미답변
-							<%}else{ %>
+							<%
+								} else {
+							%>
 							답변완료
-							<%} %>
+							<%
+								}
+							%>
 						</div>
 					</div>
-					<%} %>
+					<%
+						}
+					%>
 
 				</div>
 
@@ -305,7 +323,7 @@
 					<div class="col-12 p-0 m-0 overview">
 						<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
-							<%=pageNavi %>
+							<%=pageNavi%>
 						</ul>
 						</nav>
 					</div>

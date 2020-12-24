@@ -189,7 +189,7 @@ div {
 					}
 				%>
 				<button type="submmit" id="backBtn"
-										class="btn btn-outline-secondary">QnA 게시판으로 돌아가기</button>
+										class="btn btn-outline-secondary">나의 문의글로 돌아가기</button>
 				
 			</center>
 
@@ -207,7 +207,7 @@ div {
 				});
 			
 			$('#backBtn').click(function() {
-				location.href = "/boardAllListPage.do";
+				location.href = "/qnaList.do";
 			});
 		});
 		</script>

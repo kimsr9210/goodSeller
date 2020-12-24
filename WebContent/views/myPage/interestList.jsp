@@ -92,25 +92,30 @@
 }
 
 #transaction-navi>div:nth-child(2) {
-	width: 15%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 #transaction-navi>div:nth-child(3) {
-	width: 15%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 #transaction-navi>div:nth-child(4) {
-	width: 13%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 #transaction-navi>div:nth-child(5) {
-	width: 12%;
+	width: 11%;
+	float: left;
+	font-size: 14px;
+}
+#transaction-navi>div:nth-child(6) {
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
@@ -143,25 +148,30 @@
 }
 
 .transaction-box-size>div:nth-child(3) {
-	width: 15%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 .transaction-box-size>div:nth-child(4) {
-	width: 15%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 .transaction-box-size>div:nth-child(5) {
-	width: 13%;
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
 
 .transaction-box-size>div:nth-child(6) {
-	width: 12%;
+	width: 11%;
+	float: left;
+	font-size: 14px;
+}
+.transaction-box-size>div:nth-child(7) {
+	width: 11%;
 	float: left;
 	font-size: 14px;
 }
@@ -227,6 +237,13 @@
 	background-color: black;
 	color: white
 }
+
+#qna-box {
+	border: 1px solid #CCCCCC;
+	margin: 30px auto;
+	border-radius: 12px;
+	padding: 0;
+}
 </style>
 </head>
 <body>
@@ -235,7 +252,7 @@
 	%>
 
 <%@ include file="/views/common/header&footer/header.jsp" %>
-
+	<%if (m != null) {%>
 	<%if(!list.isEmpty()){ %>
     <div id="wrap"> <!-- 전체 틀-->
     
@@ -251,6 +268,7 @@
                         </div>
                         <div id="transaction-navi">
                                 <div>상품정보</div>
+                                <div>종료날짜</div>
                                 <div>시작가</div>
                                 <div>현재가</div>
                                 <div>즉시구매가</div>
@@ -261,9 +279,10 @@
                         <div class="transaction-box-size">
                                 <div><button class="delBtn">x</button><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><img src="/resources/file/<%=p.getMainImgName() %>" class="image"></a></div>
                                 <div><a href="auctionDetailPage.do?postNo=<%=p.getPostNo()%>"><%=p.getSubject() %></a></div>
+                                <div><%=p.getEndDate() %></div>
+                                <div><%=p.getStartPrice() %></div>
                                 <div><%=p.getAuctionPrice() %></div>
-                                <div><%=p.getBuyPrice() %></div>
-                                <div><a href="#"><%=p.getWriter() %></a></div>
+                                <div><%=p.getBuyPrice() %></a></div>
                                 <div>
                                 	<%if(p.getSell_yn()=='Y'){ %>
                                 	판매완료
@@ -317,7 +336,14 @@
 		</div>
 	</div>
 	<%} %>
-	
+	<%} else { %>
+	<script>
+		alert("세션 만료. 다시 로그인하여 주십시오");
+		location.href = "/index.do";
+	</script>
+	<%
+	}
+	%>
     <%@ include file="/views/common/header&footer/footer.jsp" %>
 </body>
 </html>

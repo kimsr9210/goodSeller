@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.Board"%>
-<%@ page import="hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -90,12 +89,6 @@ div {
 		Board board = (Board) request.getAttribute("board");
 		String writeDate = String.valueOf(board.getWriteDate());
 		String yymmdd = writeDate.substring(0, 10);
-		
-		BoardAnswer bAnswer = (BoardAnswer) request.getAttribute("boardAnswer");
-
-		String writeDateANS = String.valueOf(bAnswer.getWriteDate());
-		String yymmddANS = writeDateANS.substring(0, 10);
-		String hhmmANS = writeDateANS.substring(11, 16);
 	%>
 
 
@@ -134,62 +127,29 @@ div {
 				<div class="col-10 realContent"><%=board.getContent()%></div>
 			</div>
 		</div>
-<hr>
-							<%
-								if (board.getAnswerYN() == 'Y') {
-									//답변이 완료된 상태일때만 보여줌
-							%>
 
-							<div id="postAnswer">
+		<div id="postAnswer">
+			<div class="row p-0 m-0">
+				<br>
+				<br>
+				
+				<br>
+				<br>
+			</div>
+		</div>
 
-								<div class="row p-0 m-0 contentTitle">
-									<div class="col-2 subject">제목</div>
-									<div class="col-10 realSubject">
-										<b> 
-										<%=bAnswer.getSubject() %>
-										</b>
-									</div>
-								</div>
-								<div class="row p-0 m-0">
-									<div class="col-2 postInfo postInfoMain">작성자</div>
-									<div class="col-2 postInfo">
-										<%=bAnswer.getAdminId() %>
-									</div>
-									<div class="col-2 postInfo postInfoMain">작성 날짜</div>
-									<div class="col-2 postInfo">
-										<%-- <%=yymmddANS %> --%>
-									</div>
-									<div class="col-2 postInfo postInfoMain">작성 시간</div>
-									<div class="col-2 postInfo">
-										<%=hhmmANS %>
-									</div>
-								</div>
-								<div class="row p-0 m-0">
-									<div class="col-2 content">내용</div>
-									<div class="col-10 realContent">
-										<%=bAnswer.getContent() %>
-									</div>
-									
-								</div>
-					
-							</div>
-							
-							<%
-								}
-							%>
 		<div id="postHome">
 			<center>
 				<%
 					if (m != null && m.getUserId().equals(board.getUserId())) {
 				%>
-				<br><br>
 				<button type="submmit" id="postDelBtn"
 										class="btn btn-outline-secondary">삭제</button>
 				<%
 					}
 				%>
 				<button type="submmit" id="backBtn"
-										class="btn btn-outline-secondary">QnA 게시판으로 돌아가기</button>
+										class="btn btn-outline-secondary">나의 문의글로 돌아가기</button>
 				
 			</center>
 
@@ -207,7 +167,7 @@ div {
 				});
 			
 			$('#backBtn').click(function() {
-				location.href = "/boardAllListPage.do";
+				location.href = "/qnaList.do";
 			});
 		});
 		</script>
