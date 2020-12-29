@@ -36,7 +36,7 @@ public class MyPageQnAListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session=request.getSession();
-		Member m = (Member) session.getAttribute("member");
+		Member m = (Member)session.getAttribute("member");
 		
 		int currentPage;
 		BoardPageData bpd=null;

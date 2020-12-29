@@ -157,7 +157,7 @@ div {
 									</div>
 									<div class="col-2 postInfo postInfoMain">작성 날짜</div>
 									<div class="col-2 postInfo">
-										<%-- <%=yymmddANS %> --%>
+										<%=yymmddANS %>
 									</div>
 									<div class="col-2 postInfo postInfoMain">작성 시간</div>
 									<div class="col-2 postInfo">
@@ -179,10 +179,11 @@ div {
 							%>
 		<div id="postHome">
 			<center>
+			<br><br>
 				<%
 					if (m != null && m.getUserId().equals(board.getUserId())) {
 				%>
-				<br><br>
+				
 				<button type="submmit" id="postDelBtn"
 										class="btn btn-outline-secondary">삭제</button>
 				<%

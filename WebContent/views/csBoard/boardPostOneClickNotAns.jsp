@@ -128,18 +128,10 @@ div {
 			</div>
 		</div>
 
-		<div id="postAnswer">
-			<div class="row p-0 m-0">
-				<br>
-				<br>
-				
-				<br>
-				<br>
-			</div>
-		</div>
 
 		<div id="postHome">
 			<center>
+			<br><br>
 				<%
 					if (m != null && m.getUserId().equals(board.getUserId())) {
 				%>

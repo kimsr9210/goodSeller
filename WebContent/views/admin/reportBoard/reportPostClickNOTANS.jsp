@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/boardClickNotAns.css?ver=1.1" />
+	href="/resources/css/boardClickNotAns.css?ver=1.2" />
 <style>
 @font-face {
 	font-family: 'Wemakeprice-Bold';

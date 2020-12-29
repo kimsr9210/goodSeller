@@ -181,6 +181,10 @@
 	background-color: #D9D9D9;
 	color: black;
 }
+
+#qnaPostSubject>a{
+text-decoration : none;
+}
 </style>
 </head>
 <body>
@@ -221,26 +225,13 @@
 					<div class="row p-0 m-0 line-content text-center py-1">
 						<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo()%></div>
 
-						<div class="col-7 col-md-7 p-0">
-
-						<%if(board.getPostLockYN()=='N'){ %>
-							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
-							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+						<div class="col-7 col-md-7 p-0" id="qnaPostSubject">
+						<%if(board.getAnswerYN() == 'Y'){ %>
+							<a href="/myPageCsBoardClick.do?boardNo=<%=board.getBoardNo()%>"
 									id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ //답변 전%>
-							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
-							<%} %>
-						<%}else if(board.getPostLockYN()=='Y'){ %>
-							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
-							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-									id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ //답변 전%>
-							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
-							<%} %>
 						<%}else{ %>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+							<a href="/myPageCsBoardClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
+									id="postClickBtn"><%=board.getSubject() %></a>
 						<%} %>
 						</div>
 

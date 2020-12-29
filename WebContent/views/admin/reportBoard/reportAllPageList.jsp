@@ -23,7 +23,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/adminReportBoard.css?ver=1.2" />
+	href="/resources/css/adminReportBoard.css?ver=1.4" />
 
 <style>
 @font-face {
@@ -62,6 +62,11 @@ width:80%;
 margin : 0 auto;
 padding-top : 50px;
 }
+
+#allSubject>a{
+	text-decoration : none;
+}
+
 </style>
 
 </head>

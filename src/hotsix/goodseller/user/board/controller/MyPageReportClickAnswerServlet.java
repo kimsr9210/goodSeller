@@ -1,7 +1,6 @@
 package hotsix.goodseller.user.board.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,7 +55,7 @@ public class MyPageReportClickAnswerServlet extends HttpServlet {
 			
 			view.forward(request, response);
 			}else {
-				response.sendRedirect("/views/admin/reportBoard/reportPostReadFail.jsp");
+				response.sendRedirect("/views/myPage/reportClickAnswer.jsp");
 			}
 			
 		

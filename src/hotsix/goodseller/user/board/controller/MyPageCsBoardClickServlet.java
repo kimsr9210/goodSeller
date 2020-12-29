@@ -14,16 +14,16 @@ import hotsix.goodseller.user.board.model.service.BoardService;
 import hotsix.goodseller.user.board.model.vo.Board;
 
 /**
- * Servlet implementation class BoardPostClickServlet
+ * Servlet implementation class MyPageCsBoardClickServlet
  */
-@WebServlet("/boardPostClick.do")
-public class BoardPostClickServlet extends HttpServlet {
+@WebServlet("/myPageCsBoardClick.do")
+public class MyPageCsBoardClickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPostClickServlet() {
+    public MyPageCsBoardClickServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,14 +40,14 @@ public class BoardPostClickServlet extends HttpServlet {
 		
 		//조회수 증가 
 		new BoardService().updateHit(boardNo);
-		
+				
 		//답변 불러오기 
 		BoardAnswer bAnswer = new BoardService().BoardAnswerInfo(boardNo);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/views/csBoard/boardPostOneClickAns.jsp");
+			
+		RequestDispatcher view = request.getRequestDispatcher("/views/myPage/boardPostOneClickAns.jsp");
 		request.setAttribute("board", board);
 		request.setAttribute("boardAnswer", bAnswer);
-		view.forward(request, response);
+		view.forward(request, response);		
 	}
 
 	/**

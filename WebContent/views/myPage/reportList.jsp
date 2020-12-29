@@ -240,6 +240,11 @@
 	background-color: #D9D9D9;
 	color: black;
 }
+
+
+#reportPostSubject>a{
+text-decoration : none;
+}
 </style>
 </head>
 <body>
@@ -280,7 +285,7 @@
 					<div class="row p-0 m-0 line-content text-center py-1">
 						<div class="d-none d-md-block col-md-1 p-0 "><%=register.getReportNo()%></div>
 
-						<div class="col-7 col-md-7 p-0">
+						<div class="col-7 col-md-7 p-0" id="reportPostSubject">
 							<%
 								if (register.getAnswerYN() == 'Y') {
 							%>

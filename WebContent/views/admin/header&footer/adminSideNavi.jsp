@@ -128,12 +128,12 @@ width: 100%;
                         <hr class="line">
                         <li><a a href="/adminPostAllList.do">경매 게시글관리</a></li>
                         <hr class="line">
-                        <li>
+                        <li class="menu">
                         <a>신고 관리</a>
                             <ul class="hide">
                                 <li><a href="/adminReportAllPageList.do">전체 신고 게시물</a></li>
                                 <hr class="line">
-                                <li><a href="/endMemberAllList.do">회원 신고 처리</a></li>
+                                <li><a href="/views/admin/reportBoard/memberReportPage.jsp">회원 신고 처리</a></li>
                             </ul>
                         </li>
                         <hr class="line">

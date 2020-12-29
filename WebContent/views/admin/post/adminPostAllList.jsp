@@ -104,7 +104,7 @@ td {
 
 						<div class="reportBoardContents" >
 
-					<div id="membertable" class="row">
+					<div id="membertable" class="row m-0">
 						<table cellspacing=1px cellpadding=1px>
 							<tr>
 								<th class="column">번호</th>

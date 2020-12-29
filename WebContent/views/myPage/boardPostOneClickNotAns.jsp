@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="hotsix.goodseller.user.board.model.vo.Board"%>
+<%@ page import="hotsix.goodseller.admin.board.qna.model.vo.BoardAnswer"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -89,6 +90,7 @@ div {
 		Board board = (Board) request.getAttribute("board");
 		String writeDate = String.valueOf(board.getWriteDate());
 		String yymmdd = writeDate.substring(0, 10);
+		
 	%>
 
 
@@ -127,22 +129,13 @@ div {
 				<div class="col-10 realContent"><%=board.getContent()%></div>
 			</div>
 		</div>
-
-		<div id="postAnswer">
-			<div class="row p-0 m-0">
-				<br>
-				<br>
-				
-				<br>
-				<br>
-			</div>
-		</div>
-
+<hr>
 		<div id="postHome">
 			<center>
 				<%
 					if (m != null && m.getUserId().equals(board.getUserId())) {
 				%>
+				<br><br>
 				<button type="submmit" id="postDelBtn"
 										class="btn btn-outline-secondary">삭제</button>
 				<%

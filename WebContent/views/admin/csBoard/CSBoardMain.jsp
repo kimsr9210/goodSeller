@@ -24,7 +24,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/adminReportBoard.css?ver=1.2" />
+	href="/resources/css/adminReportBoard.css?ver=1.4" />
 
 <style>
 @font-face {
@@ -62,6 +62,12 @@
 	margin: 0 auto;
 	padding-top: 50px;
 }
+
+#allSubject>a{
+	text-decoration : none;
+}
+
+
 </style>
 
 </head>
@@ -122,7 +128,7 @@
 							%>
 							<div class="row p-0 m-0 line-content text-center">
 								<div class="d-none d-md-block col-md-1 p-0 "><%=cs.getBoardNo()%></div>
-								<div class="col-12 col-md-6 p-0">
+								<div class="col-12 col-md-6 p-0" id="allSubject">
 									
 								<%if(cs.getAnswerYN()=='Y'){ %>
 								<a id="afont" href="/answerCsBoardClick.do?boardNo=<%=cs.getBoardNo()%>"><%=cs.getSubject()%></a>

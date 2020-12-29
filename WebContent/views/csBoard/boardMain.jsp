@@ -126,17 +126,21 @@ font-family: Binggrae-Bold;
 							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
 								id="postClickBtn"><%=board.getSubject() %></a>
 							<%} %>
+							
 						<%}else if(board.getPostLockYN()=='Y'){ %>
-							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
-							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+							<%if(board.getUserId().equals(m.getUserId())){ %>
+								<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+								<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+										id="postClickBtn"><%=board.getSubject() %></a>
+								<%}else{ //답변 전%>
+								<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
 									id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ //답변 전%>
-							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
-								id="postClickBtn"><%=board.getSubject() %></a>
+								<%} %>
+							<%}else{ %>
+							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
 							<%} %>
-						<%}else{ %>
-							<a href="/qnaList.do" id="postLock"><%=board.getSubject() %></a>
 						<%} %>
+							
 						
 					</div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>
