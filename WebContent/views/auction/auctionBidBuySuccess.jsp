@@ -557,7 +557,7 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: "<%=p.getSubject()%>",
-            amount: 100,
+            amount: <%=auction.getOfferPrice()%>,
             buyer_email: "<%=buyer.getEmail()%>",
             buyer_name: "<%=buyer.getUserName()%>",
             buyer_tel: "<%=buyer.getPhone()%>",

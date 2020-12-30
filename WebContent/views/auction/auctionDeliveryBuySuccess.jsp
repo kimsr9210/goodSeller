@@ -541,7 +541,7 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: "<%=p.getSubject()%>",
-            amount: 100,
+            amount: "<%=p.getBuyPrice()%>",
             buyer_email: "<%=m.getEmail()%>",
             buyer_name: "<%=m.getUserName()%>",
             buyer_tel: "<%=m.getPhone()%>",
