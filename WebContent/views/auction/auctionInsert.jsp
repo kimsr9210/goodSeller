@@ -53,6 +53,9 @@
 <%
 	if(m != null){
 %>
+	<script>
+		alert("거래금액의 3.3%는 수수료로 부과됩니다.");
+	</script>
 	<div id="wrap">
 		<!-- 전체 틀-->
 		<div id="contents" class="menu-none">

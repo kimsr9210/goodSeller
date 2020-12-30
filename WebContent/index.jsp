@@ -138,10 +138,10 @@
 			
 			
 				<div id="core-contents-top" class="row">
-					<div class="col-12 col-md-6">
+					<div class="col-12 col-md-12 col-lg-6">
 						<img src="/resources/images/mainContentImg_1.png" class="main-img">
 					</div>
-					<div class="col-12 col-md-6" class="row">
+					<div class="col-12 col-md-12 col-lg-6" class="row">
 						<img src="/resources/images/mainContentImg_2.png" class="main-img">
 					</div>
 				</div>

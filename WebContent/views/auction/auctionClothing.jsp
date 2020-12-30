@@ -173,7 +173,5 @@
 			</div>
 		</div>
 <%@ include file="/views/common/header&footer/footer.jsp"%>
-
-
 </body>
 </html>
