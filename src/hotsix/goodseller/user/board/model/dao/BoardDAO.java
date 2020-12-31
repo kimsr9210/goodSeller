@@ -126,7 +126,8 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
-		String query = "INSERT INTO CSBOARD VALUES(boardNo_seq.nextval, ?, ?, ?, default, default , ?, 'N', 'N' )";
+		String query = "INSERT INTO CSBOARD "
+				+ "VALUES(boardNo_seq.nextval, ?, ?, ?, default, default , ?, 'N', 'N' )";
 
 		try {
 			pstmt = conn.prepareStatement(query);
