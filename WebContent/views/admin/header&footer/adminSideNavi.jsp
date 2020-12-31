@@ -142,7 +142,9 @@ width: 100%;
                         <li class="menu">
                           <a>통계</a>
                             <ul class="hide">
-                                <li><a href="/views/admin/statistic/incomeStatistic.jsp">수익 통계</a></li>
+                                <li><a href="/signUpMonth.do">월별 회원 가입 통계</a></li>
+                                <hr class="line">
+                                <li><a href="/incomeMonth.do">월별 수익 통계</a></li>
                             </ul>
                         </li>
                         

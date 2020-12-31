@@ -557,8 +557,7 @@
             		},
             		type: "post"
             	});		
-
-                location.href="/trade.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>";
+                location.href="/auctionInfoChange.do?postNo=<%=p.getPostNo()%>&buyerId=<%=m.getUserId()%>&sellerId=<%=p.getWriter()%>";
             } else {
                 var msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

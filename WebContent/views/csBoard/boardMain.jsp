@@ -69,7 +69,7 @@ font-family: Binggrae-Bold;
 			<div id="container p-0 m-0">
 
 				<div class="row title p-0 m-0">
-					<div id="title"class="col-12 text-center p-0 m-0">게시판</div>
+					<div id="title"class="col-12 text-center p-0 m-0">QnA 게시판</div>
 				</div>
 				<div class="row p-0 m-0">
 					<div class="col-12 p-0 searchBar">
@@ -118,29 +118,25 @@ font-family: Binggrae-Bold;
 					<div class="d-none d-md-block col-md-1 p-0 "><%=board.getBoardNo() %></div>
 					<div class="col-12 col-md-5 p-0">
 
-						<%if(board.getPostLockYN()=='N'){ %>
-							<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+					<%if(board.getPostLockYN()=='Y' && m!=null && board.getUserId().equals(m.getUserId())){ %>
+						<%if(board.getAnswerYN()=='Y'){ //답변 후%>
 							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-									id="postClickBtn"><%=board.getSubject() %></a>
-							<%}else{ //답변 전%>
+								id="postClickBtn"><%=board.getSubject() %></a>
+						<%}else{ //답변 전%>
 							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
 								id="postClickBtn"><%=board.getSubject() %></a>
-							<%} %>
-							
-						<%}else if(board.getPostLockYN()=='Y'){ %>
-							<%if(board.getUserId().equals(m.getUserId())){ %>
-								<%if(board.getAnswerYN()=='Y'){ //답변 후%>
-								<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
-										id="postClickBtn"><%=board.getSubject() %></a>
-								<%}else{ //답변 전%>
-								<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
-									id="postClickBtn"><%=board.getSubject() %></a>
-								<%} %>
-							<%}else{ %>
-							<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
-							<%} %>
 						<%} %>
-							
+					<%}else if(board.getPostLockYN()=='N'){ %>
+						<%if(board.getAnswerYN()=='Y'){ //답변 후%>
+							<a href="/boardPostClick.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+						<%}else{ //답변 전%>
+							<a href="/boardPostClickNotAns.do?boardNo=<%=board.getBoardNo()%>"
+								id="postClickBtn"><%=board.getSubject() %></a>
+						<%} %>
+					<%}else{ %>
+						<a href="/boardAllListPage.do" id="postLock"><%=board.getSubject() %></a>
+					<%} %>
 						
 					</div>
 					<div class="col-3 col-md-1 p-0 "><%=board.getUserId() %></div>

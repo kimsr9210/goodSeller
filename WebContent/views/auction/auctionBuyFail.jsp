@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% int postNo = (int)request.getAttribute("postNo"); %>
-	
 	<script>
 		alert("이미 판매가 완료된 게시물이거나 삭제된 게시물입니다.");
 		location.replace('/auctionMain.do');

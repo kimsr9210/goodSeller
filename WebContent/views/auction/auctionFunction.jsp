@@ -44,7 +44,7 @@ table.auctionTbl td {
 	<%
 		int startPrice = Integer.parseInt(request.getParameter("startPrice"));
 		int auctionPrice = Integer.parseInt(request.getParameter("auctionPrice"));
-		char sell_YN = request.getParameter("sell_YN").charAt(0);
+		int buyPrice = Integer.parseInt(request.getParameter("buyPrice"));
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 
 		Member m = (Member) session.getAttribute("member");
@@ -87,6 +87,9 @@ table.auctionTbl td {
 			
 				if(offerPrice < <%=auctionPrice%> || offerPrice == <%=auctionPrice%>){
 					alert('입찰가격은 현재 입찰가보다 높아야 합니다.');
+					return false;
+				}else if(offerPrice > <%=buyPrice%> || offerPrice == <%=buyPrice%>){
+					alert('입찰가격은 즉시 입찰가를 넘을 수 없습니다.\n즉시 입찰 버튼을 눌러 구매해주세요.');
 					return false;
 				}else if(offerPrice > <%=auctionPrice%>){
 					var result = window.confirm("입찰을 진행하시겠습니까? 입찰 후 취소는 패널티가 부과될 수 있습니다.");

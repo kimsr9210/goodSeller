@@ -76,7 +76,8 @@ padding-bottom : 50px;
 						<div class="incomeReport">
 
 							<center>
-								<H1 id="title">2020년 월별 수익 통계</H1>
+								<H1 id="title">2020년 월별 회원가입 통계</H1>
+							
 							
 							<canvas id="myChart" style="height:30vh; width:50vw"></canvas>
 							<script>
@@ -89,8 +90,9 @@ padding-bottom : 50px;
 												labels : [ '1월', '2월',
 														'3월', '4월',
 														'5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ],
+												
 												datasets : [ {
-													label : '월별 수익 (원) ',
+													label : '월별 회원가입 수 (명) ',
 													data : [ 
 														<%=list.get(0)%>,<%=list.get(1)%>,<%=list.get(2)%>,<%=list.get(3)%>,<%=list.get(4)%>,
 														<%=list.get(5)%>,<%=list.get(6)%>,<%=list.get(7)%>,<%=list.get(8)%>,<%=list.get(9)%>,
@@ -115,7 +117,8 @@ padding-bottom : 50px;
 															'rgba(255, 206, 86, 1)',
 															'rgba(75, 192, 192, 1)',
 															'rgba(153, 102, 255, 1)',
-															'rgba(255, 159, 64, 1)','rgba(255, 99, 132, 1)',
+															'rgba(255, 159, 64, 1)',
+															'rgba(255, 99, 132, 1)',
 															'rgba(54, 162, 235, 1)',
 															'rgba(255, 206, 86, 1)',
 															'rgba(75, 192, 192, 1)',
@@ -135,6 +138,9 @@ padding-bottom : 50px;
 												},
 											}
 										});
+							
+								
+								
 							</script>
 							</center>
 						</div>

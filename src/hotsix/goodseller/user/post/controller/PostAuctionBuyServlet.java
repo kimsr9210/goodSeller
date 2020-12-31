@@ -58,7 +58,6 @@ public class PostAuctionBuyServlet extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 			
 			RequestDispatcher view =null;
-	
 			view = request.getRequestDispatcher("/views/auction/auctionDeliveryBuySuccess.jsp");
 			
 			request.setAttribute("post", p);
@@ -67,7 +66,7 @@ public class PostAuctionBuyServlet extends HttpServlet {
 			request.setAttribute("auctionCount", auctionCount);
 			
 			view.forward(request, response);
-
+			
 		}else {
 
 			RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionBuyFail.jsp");

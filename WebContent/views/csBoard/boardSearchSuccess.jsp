@@ -21,7 +21,32 @@
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/boardMain.css?ver=1.6" />
+	href="/resources/css/boardMain.css?ver=2.0" />
+
+<style>
+@font-face {
+    font-family: 'Wemakeprice-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title{
+font-family: Wemakeprice-Bold;
+}
+
+#stitle{
+font-family: Binggrae-Bold;
+}
+
+
+</style>
 
 </head>
 				<%
@@ -49,7 +74,7 @@
 			<div id="container p-0 m-0">
 
 				<div class="row title p-0 m-0">
-					<div class="col-12 text-center p-0 m-0">게시판</div>
+					<div id="title" class="col-12 text-center p-0 m-0">QnA 게시판</div>
 				</div>
 				<div class="row p-0 m-0">
 					<div class="col-12 p-0 searchBar">

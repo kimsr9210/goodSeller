@@ -41,10 +41,11 @@ public class PostTradeServlet extends HttpServlet {
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		String sellerId = request.getParameter("sellerId");
 		String buyerId = request.getParameter("buyerId");
-
+		
 		new TradeService().insertTrade(postNo, sellerId, buyerId);
 		
-		new PostService().AuctionSellUpdate(postNo, buyerId);
+		
+		//new PostService().AuctionSellUpdate(postNo, buyerId);
 		// Post p = new PostService().auctionDetail(postNo);
 		Post p = new PostService().auctionDetail(postNo);
 		// 판매자 닉네임, 신고당한횟수 가져오기
@@ -62,7 +63,6 @@ public class PostTradeServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		RequestDispatcher view = request.getRequestDispatcher("/views/auction/auctionTradeState.jsp");
-	
 
 		request.setAttribute("post", p);
 		request.setAttribute("writer", m);
